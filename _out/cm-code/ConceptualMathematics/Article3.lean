@@ -52,7 +52,7 @@ instance instCatSetWithEndomap : Category SetWithEndomap where
 instance {X Y : SetWithEndomap}
     : FunLike (instCatSetWithEndomap.Hom X Y) X.t Y.t where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance
     : ConcreteCategory SetWithEndomap instCatSetWithEndomap.Hom where
@@ -88,7 +88,7 @@ instance instCatSetWithIdemEndomap : Category SetWithIdemEndomap where
 instance {X Y : SetWithIdemEndomap}
     : FunLike (instCatSetWithIdemEndomap.Hom X Y) X.t Y.t where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance
     : ConcreteCategory SetWithIdemEndomap instCatSetWithIdemEndomap.Hom
@@ -110,7 +110,7 @@ instance instCatSetWithInvEndomap : Category SetWithInvEndomap where
 instance {X Y : SetWithInvEndomap}
     : FunLike (instCatSetWithInvEndomap.Hom X Y) X.t Y.t where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance
     : ConcreteCategory SetWithInvEndomap instCatSetWithInvEndomap.Hom
@@ -158,7 +158,7 @@ instance instCatEndomap : Category Endomap where
 instance {X Y : Endomap}
     : FunLike (instCatEndomap.Hom X Y) X.carrier Y.carrier where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance : ConcreteCategory Endomap instCatEndomap.Hom where
   hom f := f
@@ -178,7 +178,7 @@ instance instCatIdemEndomap : Category IdemEndomap where
 instance {X Y : IdemEndomap}
     : FunLike (instCatIdemEndomap.Hom X Y) X.carrier Y.carrier where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance : ConcreteCategory IdemEndomap instCatIdemEndomap.Hom where
   hom f := f
@@ -198,7 +198,7 @@ instance instCatInvEndomap : Category InvEndomap where
 instance {X Y : InvEndomap}
     : FunLike (instCatInvEndomap.Hom X Y) X.carrier Y.carrier where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance : ConcreteCategory InvEndomap instCatInvEndomap.Hom where
   hom f := f
@@ -218,7 +218,7 @@ instance instCatInvolEndomap : Category InvolEndomap where
 instance {X Y : InvolEndomap}
     : FunLike (instCatInvolEndomap.Hom X Y) X.carrier Y.carrier where
   coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.eq h
+  coe_injective' := fun _ _ h ↦ Subtype.ext h
 
 instance : ConcreteCategory InvolEndomap instCatInvolEndomap.Hom where
   hom f := f
@@ -991,9 +991,15 @@ example : p₁ ⊚ a = 𝟙 X := by
   cases x <;> rfl
 
 #eval Danilo's_formula (Finset.univ) (Finset.univ) a p₁
-  (by funext x; fin_cases x <;> rfl)
-  (by intro x y _; fin_cases x <;> fin_cases y <;>
-    (first | rfl | simp; trivial))
+  (by
+    funext x
+    fin_cases x <;> rfl)
+  (by
+    intro x y _
+    fin_cases x <;> fin_cases y
+    all_goals
+      first | rfl
+            | simp only [reduceCtorEq]; trivial)
 
 def p₂ : Y ⟶ X
   | Y.y₀ => X.x₀

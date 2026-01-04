@@ -221,9 +221,16 @@ def f : Fin 2 → XElems
   | 1 => r
 
 #eval Danilo's_formula A X f g
-  (by funext x; fin_cases x <;> rfl)
-  (by intro x y _; fin_cases x <;> fin_cases y <;>
-    (first | rfl | simp; trivial))
+  (by
+    funext x
+    fin_cases x <;> rfl)
+  (by
+    intro x y _
+    fin_cases x <;> fin_cases y
+    all_goals
+      first | rfl
+            | simp only [Fin.zero_eta, Fin.isValue, Fin.mk_one,
+                         zero_ne_one]; trivial)
 
 end ExII_5
 

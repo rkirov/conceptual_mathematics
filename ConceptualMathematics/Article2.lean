@@ -492,9 +492,16 @@ Then, by Danilo's formula, we have $`{(\#A)^{(\#X - \#A)} = 2^3 = 8}` different 
 
 ```savedLean (name := outII_5_2)
 #eval Danilo's_formula A X f g
-  (by funext x; fin_cases x <;> rfl)
-  (by intro x y _; fin_cases x <;> fin_cases y <;>
-    (first | rfl | simp; trivial))
+  (by
+    funext x
+    fin_cases x <;> rfl)
+  (by
+    intro x y _
+    fin_cases x <;> fin_cases y
+    all_goals
+      first | rfl
+            | simp only [Fin.zero_eta, Fin.isValue, Fin.mk_one,
+                         zero_ne_one]; trivial)
 ```
 
 ```leanOutput outII_5_2

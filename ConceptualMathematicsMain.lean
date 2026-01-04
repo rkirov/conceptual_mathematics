@@ -32,7 +32,6 @@ partial def buildExercises (mode : Mode) (logError : String → IO Unit) (cfg : 
   let dest := cfg.destination / "cm-code"
   let some mainDir := mainFileName.parent
     | throw <| IO.userError "Can't find directory of `ConceptualMathematicsMain.lean`"
-
   IO.FS.createDirAll <| dest
   for ⟨fn, f⟩ in code do
     -- Make sure the path is relative to that of this one
@@ -44,7 +43,6 @@ partial def buildExercises (mode : Mode) (logError : String → IO Unit) (cfg : 
       IO.FS.writeFile fn f
     else
       logError s!"Couldn't save cm code. The path '{fn}' is not underneath '{mainDir}'."
-
 where
   part : Part Manual → StateT (HashMap String String) IO Unit
     | .mk _ _ _ intro subParts => do
@@ -58,14 +56,12 @@ where
         modify fun saved =>
           let prior := saved[fn]?.getD ""
           saved.insert fn (prior ++ code ++ "\n")
-
       if which.name == ``Block.savedImport then
         let .arr #[.str fn, .str code] := which.data
           | logError s!"Failed to deserialize saved Lean import data {which.data}"
         modify fun saved =>
           let prior := saved[fn]?.getD ""
           saved.insert fn (code.trimRight ++ "\n" ++ prior)
-
       for b in contents do block b
     | .concat bs | .blockquote bs =>
       for b in bs do block b
@@ -78,13 +74,15 @@ where
     | .para .. | .code .. => pure ()
 
 
+def cmCss : CssFile where
+  filename := "cm.css"
+  contents := include_str "ConceptualMathematics/Html/cm.css"
+
 def config : Config where
   emitTeX := false
   emitHtmlSingle := false
   emitHtmlMulti := true
-  extraCssFiles := Html.cmCss
+  extraCssFiles := { cmCss }
   htmlDepth := 2
 
-def config' : Config := Config.addKaTeX config
-
-def main := manualMain (%doc ConceptualMathematics) (extraSteps := [buildExercises]) (config := config')
+def main := manualMain (%doc ConceptualMathematics) (extraSteps := [buildExercises]) (config := {config with})

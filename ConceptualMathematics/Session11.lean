@@ -228,12 +228,12 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
     have h : finv.val ⊚ f.val = 𝟙 X := by
       funext x
       cases x <;> rfl
-    exact Subtype.eq h
+    exact Subtype.ext h
   · -- ff⁻¹ = 𝟙 Y
     have h : f.val ⊚ finv.val = 𝟙 Y := by
       funext y
       cases y <;> rfl
-    exact Subtype.eq h
+    exact Subtype.ext h
 
 def f₂ : X ⟶ Y
   | X.a => Y.q
@@ -270,12 +270,12 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
     have h : finv.val ⊚ f.val = 𝟙 X := by
       funext x
       cases x <;> rfl
-    exact Subtype.eq h
+    exact Subtype.ext h
   · -- ff⁻¹ = 𝟙 Y
     have h : f.val ⊚ finv.val = 𝟙 Y := by
       funext y
       cases y <;> rfl
-    exact Subtype.eq h
+    exact Subtype.ext h
 
 def f₃ : X ⟶ Y
   | X.a => Y.p
@@ -312,12 +312,12 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
     have h : finv.val ⊚ f.val = 𝟙 X := by
       funext x
       cases x <;> rfl
-    exact Subtype.eq h
+    exact Subtype.ext h
   · -- ff⁻¹ = 𝟙 Y
     have h : f.val ⊚ finv.val = 𝟙 Y := by
       funext y
       cases y <;> rfl
-    exact Subtype.eq h
+    exact Subtype.ext h
 ```
 
 ```savedLean -show
@@ -773,7 +773,7 @@ example : graph_a ≅ graph_d := {
     have h₂ : (finv₁.val.1 ⊚ f₁.val.1, finv₁.val.2 ⊚ f₁.val.2) =
         (𝟙 graph_a.tA, 𝟙 graph_a.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂,
+    exact Subtype.ext h₂,
   inv_hom_id := by
     have h₁ : (f₁.val.1 ⊚ finv₁.val.1 = 𝟙 graph_d.tA) ∧
         (f₁.val.2 ⊚ finv₁.val.2 = 𝟙 graph_d.tD) := by
@@ -781,7 +781,7 @@ example : graph_a ≅ graph_d := {
     have h₂ : (f₁.val.1 ⊚ finv₁.val.1, f₁.val.2 ⊚ finv₁.val.2) =
         (𝟙 graph_d.tA, 𝟙 graph_d.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂
+    exact Subtype.ext h₂
 }
 ```
 
@@ -834,7 +834,7 @@ example : graph_b ≅ graph_e := {
     have h₂ : (finv₂.val.1 ⊚ f₂.val.1, finv₂.val.2 ⊚ f₂.val.2) =
         (𝟙 graph_b.tA, 𝟙 graph_b.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂,
+    exact Subtype.ext h₂,
   inv_hom_id := by
     have h₁ : (f₂.val.1 ⊚ finv₂.val.1 = 𝟙 graph_e.tA) ∧
         (f₂.val.2 ⊚ finv₂.val.2 = 𝟙 graph_e.tD) := by
@@ -842,7 +842,7 @@ example : graph_b ≅ graph_e := {
     have h₂ : (f₂.val.1 ⊚ finv₂.val.1, f₂.val.2 ⊚ finv₂.val.2) =
         (𝟙 graph_e.tA, 𝟙 graph_e.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂
+    exact Subtype.ext h₂
 }
 ```
 
@@ -895,7 +895,7 @@ example : graph_c ≅ graph_f := {
     have h₂ : (finv₃.val.1 ⊚ f₃.val.1, finv₃.val.2 ⊚ f₃.val.2) =
         (𝟙 graph_c.tA, 𝟙 graph_c.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂,
+    exact Subtype.ext h₂,
   inv_hom_id := by
     have h₁ : (f₃.val.1 ⊚ finv₃.val.1 = 𝟙 graph_f.tA) ∧
         (f₃.val.2 ⊚ finv₃.val.2 = 𝟙 graph_f.tD) := by
@@ -903,7 +903,7 @@ example : graph_c ≅ graph_f := {
     have h₂ : (f₃.val.1 ⊚ finv₃.val.1, f₃.val.2 ⊚ finv₃.val.2) =
         (𝟙 graph_f.tA, 𝟙 graph_f.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂
+    exact Subtype.ext h₂
 }
 ```
 
@@ -1049,7 +1049,7 @@ example : graph_L ≅ graph_R := {
     have h₂ : (finv.val.1 ⊚ f.val.1, finv.val.2 ⊚ f.val.2) =
         (𝟙 graph_L.tA, 𝟙 graph_L.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂,
+    exact Subtype.ext h₂,
   inv_hom_id := by
     have h₁ : (f.val.1 ⊚ finv.val.1 = 𝟙 graph_R.tA) ∧
         (f.val.2 ⊚ finv.val.2 = 𝟙 graph_R.tD) := by
@@ -1057,7 +1057,7 @@ example : graph_L ≅ graph_R := {
     have h₂ : (f.val.1 ⊚ finv.val.1, f.val.2 ⊚ finv.val.2) =
         (𝟙 graph_R.tA, 𝟙 graph_R.tD) := by
       rw [h₁.1, h₁.2]
-    exact Subtype.eq h₂
+    exact Subtype.ext h₂
 }
 ```
 

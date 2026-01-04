@@ -12,23 +12,21 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>A Lean Companion to Conceptual Mathematics</title><link rel="stylesheet" href="book.css">
     <link rel="stylesheet" href="verso-vars.css">
-    <script>
-      const __versoSiteRoot = document.baseURI;</script>
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js" integrity="sha384-zbcZAIxlvJtNE3Dp5nxLXdXtXyxwOdnILY1TDPVmKFhl4r4nSUG1r8bcFXGVa4Te" crossorigin="anonymous"></script>
     <script src="-verso-search/elasticlunr.min.js"></script>
-    <script src="-verso-search/fuzzysort.js"></script>
+    <script src="-verso-search/fuzzysort.min.js"></script>
     <script src="-verso-search/searchIndex.js"></script>
     <script type="module" src="-verso-search/search-init.js"></script>
     <link rel="stylesheet" href="-verso-search/search-box.css">
     <link rel="stylesheet" href="-verso-search/search-highlight.css">
     <link rel="stylesheet" href="-verso-search/domain-display.css">
-    <script src="-verso-data/katex/katex.js"></script>
-    <script src="-verso-data/katex/math.js"></script>
     <script src="-verso-data/popper.min.js"></script>
+    <script src="-verso-data/katex/math.js"></script>
     <script src="-verso-data/tippy-bundle.umd.min.js"></script>
-    <link rel="stylesheet" href="-verso-data/cm.css">
-    <link rel="stylesheet" href="-verso-data/katex/katex.css">
+    <script src="-verso-data/katex/katex.js"></script>
     <link rel="stylesheet" href="-verso-data/tippy-border.css">
+    <link rel="stylesheet" href="-verso-data/katex/katex.css">
+    <link rel="stylesheet" href="-verso-data/cm.css">
     <style>
 
 .hl.lean {
@@ -758,8 +756,7 @@ window.onload = () => {
         }
     }
     // Add hovers
-    let siteRoot = typeof __versoSiteRoot !== 'undefined' ? __versoSiteRoot : "/";
-    let docsJson = siteRoot + "-verso-docs.json";
+    let docsJson = "-verso-docs.json";
     fetch(docsJson).then((resp) => resp.json()).then((versoDocData) => {
 
       function hideParentTooltips(element) {
@@ -936,7 +933,7 @@ window.onload = () => {
                 Of particular relevance to this <em>Companion</em> is the high-level overview of <a href="https://leanprover-community.github.io/theories/category_theory.html">category theory in mathlib</a> hosted on the community site, which provides a helpful jumping-off point and also covers some of the key notation.</p>
               <p>
                 Regarding notation, it is worth mentioning that composition of morphisms in mathlib uses the notation <code>≫</code> (<code>\gg</code>), as in <code>f ≫ g</code>, which means "<code class="math inline">f</code> <em>followed by</em> <code class="math inline">g</code>". To align with the book and to follow the usual convention, however, we introduce the notation <code>⊚</code> (<code>\oo</code>), as in <code>f ⊚ g</code>, which means "<code class="math inline">f</code> <em>following</em> <code class="math inline">g</code>":</p>
-              <code class="hl lean block" data-lean-context="examples"><span class="keyword token" data-binding="kw-occ-Lean.Parser.Term.local-4029">local</span><span class="inter-text"> </span><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.notation-4029">notation</span><span class="unknown token" data-binding="">:</span><span class="unknown token" data-binding="">80</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.219" data-verso-hover="0">g</span><span class="inter-text"> </span><span class="literal string token" data-binding="" data-verso-hover="1">" ⊚ "</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.212" data-verso-hover="0">f</span><span class="unknown token" data-binding="">:</span><span class="unknown token" data-binding="">80</span><span class="inter-text"> </span><span class="unknown token" data-binding="">=&gt;</span><span class="inter-text"> </span><span class="const token" data-binding="const-CategoryTheory.CategoryStruct.comp" data-verso-hover="2">CategoryStruct.comp</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.212" data-verso-hover="0">f</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.219" data-verso-hover="0">g</span><span class="inter-text">
+              <code class="hl lean block" data-lean-context="examples"><span class="keyword token" data-binding="kw-occ-Lean.Parser.Term.local-3991">local</span><span class="inter-text"> </span><span class="keyword token" data-binding="kw-occ-Lean.Parser.Command.notation-3991">notation</span><span class="unknown token" data-binding="">:</span><span class="unknown token" data-binding="">80</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.221" data-verso-hover="0">g</span><span class="inter-text"> </span><span class="literal string token" data-binding="" data-verso-hover="1">" ⊚ "</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.214" data-verso-hover="0">f</span><span class="unknown token" data-binding="">:</span><span class="unknown token" data-binding="">80</span><span class="inter-text"> </span><span class="unknown token" data-binding="">=&gt;</span><span class="inter-text"> </span><span class="const token" data-binding="const-CategoryTheory.CategoryStruct.comp" data-verso-hover="2">CategoryStruct.comp</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.214" data-verso-hover="0">f</span><span class="inter-text"> </span><span class="var token" data-binding="var-_uniq.221" data-verso-hover="0">g</span><span class="inter-text">
 </span><span class="unknown token" data-binding=""></span></code><p>
                 (This approach is suggested on the high-level overview page mentioned in the previous paragraph as well as elsewhere in the mathlib documentation.)</p>
               <p>

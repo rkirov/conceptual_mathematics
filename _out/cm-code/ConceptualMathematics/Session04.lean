@@ -85,13 +85,13 @@ example : IsIso d := {
         funext x
         dsimp [d, h, RealAdd]
         ring
-      exact Subtype.eq h₀
+      exact Subtype.ext h₀
     · show d ⊚ h = 𝟙 RealAdd
       have h₀ : d.val ∘ h.val = id := by
         funext x
         dsimp [d, h, RealAdd]
         ring
-      exact Subtype.eq h₀
+      exact Subtype.ext h₀
 }
 
 end Ex4_1
@@ -172,11 +172,11 @@ example : IsIso f := {
     · have h₀ : finv.val ∘ f.val = id := by
         funext x
         cases x <;> rfl
-      exact Subtype.eq h₀
+      exact Subtype.ext h₀
     · have h₀ : f.val ∘ finv.val = id := by
         funext x
         cases x <;> rfl
-      exact Subtype.eq h₀
+      exact Subtype.ext h₀
 }
 
 end Ex4_2
@@ -234,12 +234,12 @@ example : IsIso m := {
         funext x
         dsimp [m, minv]
         ring
-      exact Subtype.eq h₀
+      exact Subtype.ext h₀
     · have h₀ : m.val ∘ minv.val = id := by
         funext x
         dsimp [m, minv]
         ring
-      exact Subtype.eq h₀
+      exact Subtype.ext h₀
 }
 
 end Ex4_3_d

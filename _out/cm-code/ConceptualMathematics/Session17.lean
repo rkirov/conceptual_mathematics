@@ -274,7 +274,6 @@ instance : Quiver Dot where
   Hom := Arrow
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Dot ⥤ 𝒞) :
-
     -- Let x₁' be the object in 𝒞 associated with Dot.x₁ in 𝐹(G)
     let x₁' : 𝒞 := F.obj Dot.x₁
     -- Let x₂' be the object in 𝒞 associated with Dot.x₂ in 𝐹(G)
@@ -283,7 +282,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Dot ⥤ 𝒞) :
     let f' : x₁' ⟶ x₂' := F.map (Quiver.Hom.toPath Arrow.f)
     -- Let g' be the morphism in 𝒞 associated with Arrow.g in 𝐹(G)
     let g' : x₂' ⟶ x₁' := F.map (Quiver.Hom.toPath Arrow.g)
-
     -- Dot.x₁ ⟶ Dot.x₁ is interpreted as the identity on x₁' in 𝒞
     (∀ p₁ : Quiver.Path Dot.x₁ Dot.x₁, F.map p₁ = 𝟙 x₁') ∧
     -- Dot.x₂ ⟶ Dot.x₂ is interpreted as the identity on x₂' in 𝒞
@@ -294,7 +292,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Dot ⥤ 𝒞) :
     (∀ p₂₁ : Quiver.Path Dot.x₂ Dot.x₁, F.map p₂₁ = g') ↔
     -- The maps assigned to the two arrows in G are inverse
     g' ⊚ f' = 𝟙 x₁' ∧ f' ⊚ g' = 𝟙 x₂' := by
-
   constructor
   -- Proof of the forward ("only if") direction
   · repeat rw [← F.map_comp]
@@ -432,7 +429,6 @@ instance : Quiver Vertex where
   Hom := Edge
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
-
     -- Let A' be the object in 𝒞 associated with Vertex.A in 𝐹(G)
     let A' : 𝒞 := F.obj Vertex.A
     -- Let B' be the object in 𝒞 associated with Vertex.B in 𝐹(G)
@@ -443,7 +439,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
     let g' : B' ⟶ A' := F.map (Quiver.Hom.toPath Edge.g)
     -- Let h' be the morphism in 𝒞 associated with Edge.h in 𝐹(G)
     let h' : B' ⟶ A' := F.map (Quiver.Hom.toPath Edge.h)
-
     -- The 3 equations required to make the diagram commute
     g' ⊚ f' = 𝟙 A' ∧
     f' ⊚ g' = 𝟙 B' ∧
@@ -456,7 +451,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
     (∀ p : Quiver.Path Vertex.A Vertex.B, F.map p = f') ∧
     -- .B ⟶ .A is interpreted as g' in 𝒞
     (∀ p : Quiver.Path Vertex.B Vertex.A, F.map p = g') := by
-
   intro A' B' f' g' h' ⟨h₁, h₂, h₃⟩
   dsimp [A', B', f', g', h'] at h₁ h₂ h₃
   rw [← F.map_comp] at h₁ h₂
@@ -566,7 +560,6 @@ instance : Quiver Vertex where
   Hom := Edge
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
-
     -- Let A' be the object in 𝒞 associated with Vertex.A in 𝐹(G)
     let A' : 𝒞 := F.obj Vertex.A
     -- Let B' be the object in 𝒞 associated with Vertex.B in 𝐹(G)
@@ -579,7 +572,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
     let g' : B' ⟶ C' := F.map (Quiver.Hom.toPath Edge.g)
     -- Let h' be the morphism in 𝒞 associated with Edge.h in 𝐹(G)
     let h' : C' ⟶ A' := F.map (Quiver.Hom.toPath Edge.h)
-
     -- The 3 equations required to make the diagram commute
     h' ⊚ g' ⊚ f' = 𝟙 A' ∧
     f' ⊚ h' ⊚ g' = 𝟙 B' ∧
@@ -602,7 +594,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
     (∀ p : Quiver.Path Vertex.B Vertex.A, F.map p = h' ⊚ g') ∧
     -- .C ⟶ .B is interpreted as f' ⊚ h' in 𝒞
     (∀ p : Quiver.Path Vertex.C Vertex.B, F.map p = f' ⊚ h') := by
-
   intro A' B' C' f' g' h' ⟨h₁, h₂, h₃⟩
   suffices ∀ {u v : Vertex} (p : Quiver.Path u v), F.map p =
     match u, v with
@@ -651,7 +642,6 @@ instance : Quiver Vertex where
   Hom := Edge
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
-
     -- Let A' be the object in 𝒞 associated with Vertex.A in 𝐹(G)
     let A' : 𝒞 := F.obj Vertex.A
     -- Let B' be the object in 𝒞 associated with Vertex.B in 𝐹(G)
@@ -668,7 +658,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
     let i' : C' ⟶ C' := F.map (Quiver.Hom.toPath Edge.i)
     -- Let j' be the morphism in 𝒞 associated with Edge.j in 𝐹(G)
     let j' : C' ⟶ A' := F.map (Quiver.Hom.toPath Edge.j)
-
     -- The 5 equations required to make the diagram commute
     j' ⊚ h' ⊚ g' = 𝟙 A' ∧
     g' ⊚ j' ⊚ h' = 𝟙 B' ∧
@@ -693,7 +682,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (F : Paths Vertex ⥤ 𝒞) :
     (∀ p : Quiver.Path Vertex.B Vertex.A, F.map p = j' ⊚ h') ∧
     -- .C ⟶ .B is interpreted as g' ⊚ j' in 𝒞
     (∀ p : Quiver.Path Vertex.C Vertex.B, F.map p = g' ⊚ j') := by
-
   intro A' B' C' f' g' h' i' j' ⟨h₁, h₂, h₃, h₄, h₅⟩
   suffices ∀ {u v : Vertex} (p : Quiver.Path u v), F.map p =
     match u, v with
