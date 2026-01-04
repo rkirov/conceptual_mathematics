@@ -1,3 +1,6 @@
+/.github/workflows/create-release.yml
+/.github/workflows/lean_action_ci.yml
+/.github/workflows/update.yml
 /.lake/
 /_out/*
 !/_out/cm-code/
