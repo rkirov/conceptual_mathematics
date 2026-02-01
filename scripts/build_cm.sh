@@ -1,3 +1,3 @@
 #!/bin/sh
 
-lake exe companion --output _out/cm/html --depth 2
+lake exe companion --output _out/cm --depth 2

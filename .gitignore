@@ -3,4 +3,5 @@
 /.github/workflows/update.yml
 /.lake/
 /_out/*
-!/_out/cm-code/
+!/_out/cm/
+/_out/cm/html-multi/

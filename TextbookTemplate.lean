@@ -5,11 +5,11 @@ Author: David Thrane Christiansen
 -/
 
 import VersoManual
-import DemoTextbook.Meta.Lean
-import DemoTextbook.Papers
+import TextbookTemplate.Meta.Lean
+import TextbookTemplate.Papers
 
 -- This is a chapter that's included
-import DemoTextbook.Nat
+import TextbookTemplate.Nat
 
 -- This gets access to most of the manual genre (which is also useful for textbooks)
 open Verso.Genre Manual
@@ -19,7 +19,7 @@ open Verso.Genre Manual
 open Verso.Genre.Manual.InlineLean
 
 
-open DemoTextbook
+open TextbookTemplate
 
 set_option pp.rawOnError true
 
@@ -40,7 +40,7 @@ It's a good idea to read the document's source together with the rendered output
 The tools in this section come from the Verso namespace `Verso.Genre.Manual.InlineLean`.
 
 The {lean}`lean` code block allows Lean code to be included in the text.
-It is elaborated in the context of the text's elaboration, but in a separate section scope (so the set of variables and opened namespaces can be controlled).
+It is elaborated in the context of the text's elaboration.
 
 ```lean
 inductive NatList where
@@ -50,11 +50,11 @@ inductive NatList where
 
 Use the {lean}`leanSection` directive to create a Lean section that delimits scope changes.
 The {lean}`lean` role allows Lean terms to be included as inline elements in paragraphs.
-Use {lean}`name` to refer to a name that can't be easily elaborated as a term, e.g. due to implicit parameters.
+Use {lean}`name` to refer to a name that can't be easily elaborated as a term, e.g. due to implicit parameters or type classes.
 
 ## Saved Lean Code
 
-The tools in this section come from the Verso namespace `DemoTextbook` in the module `DemoTextbook.Meta.Lean`.
+The tools in this section come from the Verso namespace `TextbookTemplate` in the module `TextbookTemplate.Meta.Lean`.
 
 The {lean}`savedLean` code block is just like the {lean}`lean` block, except it additionally saves the contents to a file when the book is built.
 The code is saved to the output directory, in the subdirectory `example-code` (by default, this is `_out/example-code`), with its filename being that of the file in which it is edited.
@@ -85,9 +85,7 @@ Expected error messages must be indicated explicitly:
 Unknown identifier `y`
 ```
 
-{include 1 DemoTextbook.Nat}
-
-{includeLiterate "." DemoTextbook.ListSet "Quotient Demo" (level := 1)}
+{include 1 TextbookTemplate.Nat}
 
 # Notes
 
@@ -125,27 +123,19 @@ Here's one to {ref "sec-ref"}[this section].
 # Viewing the Output
 
 Verso's HTML doesn't presently work correctly when opened directly in a browser, so it should be served via a server.{margin}[This is due to security restrictions on retrieved files: some of the code hovers are deduplicated to a JSON file that's fetched on demand.]
-Python has a simple web server module that's useful for this.
-In the output directory, run:
-```
-python3 -m http.server 8000 --directory .
-```
-The port and root can be customized by modifying the appropriate parameters.
-
-One downside of this simple server is that it sets cache headers optimistically.
-If incorrect hovers are appearing locally, then try disabling caching in your browser's development tools.
+One portable way to do this is documented in the root of this repository.
 
 # Using an Index
 
 {index}[index]
 The index should contain an entry for “lorem ipsum”.
 {index}[lorem ipsum] foo
-{index (subterm:="of lorem")}[ipsum]
-{index (subterm:="per se")}[ipsum]
+{index (subterm := "of lorem")}[ipsum]
+{index (subterm := "per se")}[ipsum]
 {index}[ipsum]
 Lorem ipsum dolor {index}[dolor] sit amet, consectetur adipiscing elit, sed {index}[sed] do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris {index}[laboris] {see "lorem ipsum"}[laboris] {seeAlso "dolor"}[laboris] nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-This is done using the `{index}[term]` syntax. Sub-terms {index (subterm:="sub-term")}[entry] can be added using the `subterm` parameter to `index`.
+This is done using the `{index}[term]` syntax. Sub-terms {index (subterm := "sub-term")}[entry] can be added using the `subterm` parameter to `index`.
 
 Multiple index {index}[index] targets for a term also work.
 

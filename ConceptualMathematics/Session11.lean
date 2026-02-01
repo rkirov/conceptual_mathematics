@@ -581,7 +581,10 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
       : Set.ncard ({f.val 0 % 3, f.val 1 % 3} : Set ℤ) ≤ 2 := by
     have h := Set.ncard_insert_le (f.val 0 % 3) {f.val 1 % 3}
     rwa [Set.ncard_singleton] at h
-  have h_card₂ : Set.ncard ({0, 1, 2} : Set ℤ) = 3 := by norm_num
+  have h_card₂ : Set.ncard ({0, 1, 2} : Set ℤ) = 3 := by
+    apply Set.ncard_eq_three.mpr
+    use 0, 1, 2
+    trivial
   rw [← hf_img_set₁, hf_img_set₂, h_card₂] at h_card₁
   linarith
 ```

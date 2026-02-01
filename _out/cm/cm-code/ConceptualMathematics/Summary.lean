@@ -1,6 +1,7 @@
 import ConceptualMathematics.Article2
 import Mathlib
 open CategoryTheory
+set_option linter.unusedFintypeInType false
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 

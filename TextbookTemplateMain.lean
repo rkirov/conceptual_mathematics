@@ -6,14 +6,14 @@ Author: David Thrane Christiansen
 
 import Std.Data.HashMap
 import VersoManual
-import DemoTextbook
+import TextbookTemplate
 
 open Verso Doc
 open Verso.Genre Manual
 
 open Std (HashMap)
 
-open DemoTextbook
+open TextbookTemplate
 
 
 -- Computes the path of this very `main`, to ensure that examples get names relative to it
@@ -31,13 +31,13 @@ partial def buildExercises (mode : Mode) (logError : String → IO Unit) (cfg : 
   let code := (← part text |>.run {}).snd
   let dest := cfg.destination / "example-code"
   let some mainDir := mainFileName.parent
-    | throw <| IO.userError "Can't find directory of `DemoTextbookMain.lean`"
+    | throw <| IO.userError "Can't find directory of `TextbookTemplateMain.lean`"
 
   IO.FS.createDirAll <| dest
   for ⟨fn, f⟩ in code do
     -- Make sure the path is relative to that of this one
     if let some fn' := fn.dropPrefix? mainDir.toString then
-      let fn' := fn'.toString.dropWhile (· ∈ System.FilePath.pathSeparators)
+      let fn' := (fn'.dropWhile (· ∈ System.FilePath.pathSeparators)).copy
       let fn := dest / fn'
       fn.parent.forM IO.FS.createDirAll
       if (← fn.pathExists) then IO.FS.removeFile fn
@@ -56,15 +56,17 @@ where
         let .arr #[.str fn, .str code] := which.data
           | logError s!"Failed to deserialize saved Lean data {which.data}"
         modify fun saved =>
-          let prior := saved[fn]?.getD ""
-          saved.insert fn (prior ++ code ++ "\n")
+          saved.alter fn fun prior =>
+            let prior := prior.getD ""
+            some (prior ++ code ++ "\n")
 
       if which.name == ``Block.savedImport then
         let .arr #[.str fn, .str code] := which.data
           | logError s!"Failed to deserialize saved Lean import data {which.data}"
         modify fun saved =>
-          let prior := saved[fn]?.getD ""
-          saved.insert fn (code.trimRight ++ "\n" ++ prior)
+          saved.alter fn fun prior =>
+          let prior := prior.getD ""
+          some (code.trimAsciiEnd.copy ++ "\n" ++ prior)
 
       for b in contents do block b
     | .concat bs | .blockquote bs =>
@@ -78,10 +80,10 @@ where
     | .para .. | .code .. => pure ()
 
 
-def config : Config where
+def config : RenderConfig where
   emitTeX := false
-  emitHtmlSingle := false
-  emitHtmlMulti := true
+  emitHtmlSingle := .no
+  emitHtmlMulti := .immediately
   htmlDepth := 2
 
-def main := manualMain (%doc DemoTextbook) (extraSteps := [buildExercises]) (config := {config with})
+def main := manualMain (%doc TextbookTemplate) (extraSteps := [buildExercises]) (config := config)

@@ -7,6 +7,8 @@ open Verso.Genre Manual InlineLean
 open ConceptualMathematics
 open CategoryTheory
 
+set_option linter.unusedFintypeInType false
+
 
 #doc (Manual) "Summary: On the equation p ∘ j = 1A" =>
 
@@ -19,6 +21,7 @@ number := false
 import ConceptualMathematics.Article2
 import Mathlib
 open CategoryTheory
+set_option linter.unusedFintypeInType false
 ```
 
 ```savedLean -show

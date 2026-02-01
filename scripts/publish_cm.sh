@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rsync -avh --delete _out/cm/html/html-multi/ docs
+rsync -avh --delete _out/cm/html-multi/ docs

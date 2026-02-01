@@ -16,12 +16,12 @@ weak.verso.code.warnLineLength = 72
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.26.0"
+rev = "v4.27.0"
 
 [[require]]
 name = "verso"
 git = "https://github.com/leanprover/verso"
-rev = "v4.26.0"
+rev = "v4.27.0"
 
 [[lean_lib]]
 name = "ConceptualMathematics"
@@ -31,8 +31,8 @@ name = "companion"
 root = "ConceptualMathematicsMain"
 
 [[lean_lib]]
-name = "DemoTextbook"
+name = "TextbookTemplate"
 
 [[lean_exe]]
 name = "textbook"
-root = "DemoTextbookMain"
+root = "TextbookTemplateMain"

@@ -36,7 +36,7 @@ partial def buildExercises (mode : Mode) (logError : String → IO Unit) (cfg : 
   for ⟨fn, f⟩ in code do
     -- Make sure the path is relative to that of this one
     if let some fn' := fn.dropPrefix? mainDir.toString then
-      let fn' := fn'.toString.dropWhile (· ∈ System.FilePath.pathSeparators)
+      let fn' := (fn'.dropWhile (· ∈ System.FilePath.pathSeparators)).copy
       let fn := dest / fn'
       fn.parent.forM IO.FS.createDirAll
       if (← fn.pathExists) then IO.FS.removeFile fn
@@ -54,14 +54,16 @@ where
         let .arr #[.str fn, .str code] := which.data
           | logError s!"Failed to deserialize saved Lean data {which.data}"
         modify fun saved =>
-          let prior := saved[fn]?.getD ""
-          saved.insert fn (prior ++ code ++ "\n")
+          saved.alter fn fun prior =>
+            let prior := prior.getD ""
+            some (prior ++ code ++ "\n")
       if which.name == ``Block.savedImport then
         let .arr #[.str fn, .str code] := which.data
           | logError s!"Failed to deserialize saved Lean import data {which.data}"
         modify fun saved =>
-          let prior := saved[fn]?.getD ""
-          saved.insert fn (code.trimRight ++ "\n" ++ prior)
+          saved.alter fn fun prior =>
+          let prior := prior.getD ""
+          some (code.trimAsciiEnd.copy ++ "\n" ++ prior)
       for b in contents do block b
     | .concat bs | .blockquote bs =>
       for b in bs do block b
@@ -78,11 +80,11 @@ def cmCss : CssFile where
   filename := "cm.css"
   contents := include_str "ConceptualMathematics/Html/cm.css"
 
-def config : Config where
+def config : RenderConfig where
   emitTeX := false
-  emitHtmlSingle := false
-  emitHtmlMulti := true
+  emitHtmlSingle := .no
+  emitHtmlMulti := .immediately
   extraCssFiles := { cmCss }
   htmlDepth := 2
 
-def main := manualMain (%doc ConceptualMathematics) (extraSteps := [buildExercises]) (config := {config with})
+def main := manualMain (%doc ConceptualMathematics) (extraSteps := [buildExercises]) (config := config)
