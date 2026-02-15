@@ -849,6 +849,12 @@ instance instCategoryIrreflexiveGraph : Category IrreflexiveGraph where
         · rw [← Category.assoc, hfTgt_comm, Category.assoc, hgTgt_comm,
               ← Category.assoc]
     ⟩
+
+@[ext]
+lemma IrreflexiveGraph.hom_ext {X Y : IrreflexiveGraph}
+    (f g : X ⟶ Y) (hA : f.val.1 = g.val.1) (hD : f.val.2 = g.val.2)
+    : f = g :=
+  Subtype.ext (Prod.ext hA hD)
 ```
 
 :::question (questionTitle := "Exercise 11") (questionPage := "142")
@@ -1074,6 +1080,12 @@ instance : Category SimpleGraph where
         · rw [← Category.assoc, hfSrc_comm, Category.assoc, hgSrc_comm,
               ← Category.assoc]
     ⟩
+
+@[ext]
+lemma SimpleGraph.hom_ext {X Y : SimpleGraph}
+    (f g : X ⟶ Y) (hA : f.val.1 = g.val.1) (hD : f.val.2 = g.val.2)
+    : f = g :=
+  Subtype.ext (Prod.ext hA hD)
 ```
 
 The insertion $`J` is a functor from 𝑺↻ to 𝑺↓.
@@ -1217,6 +1229,12 @@ instance : Category ReflexiveGraph where
         · rw [← Category.assoc, hfCommonSection_comm, Category.assoc,
               hgCommonSection_comm, ← Category.assoc]
     ⟩
+
+@[ext]
+lemma ReflexiveGraph.hom_ext {X Y : ReflexiveGraph}
+    (f g : X ⟶ Y) (hA : f.val.1 = g.val.1) (hD : f.val.2 = g.val.2)
+    : f = g :=
+  Subtype.ext (Prod.ext hA hD)
 ```
 
 :::question (questionTitle := "Exercise 15") (questionPage := "145")

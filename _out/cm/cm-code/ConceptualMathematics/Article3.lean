@@ -490,6 +490,12 @@ instance instCategoryIrreflexiveGraph : Category IrreflexiveGraph where
               ← Category.assoc]
     ⟩
 
+@[ext]
+lemma IrreflexiveGraph.hom_ext {X Y : IrreflexiveGraph}
+    (f g : X ⟶ Y) (hA : f.val.1 = g.val.1) (hD : f.val.2 = g.val.2)
+    : f = g :=
+  Subtype.ext (Prod.ext hA hD)
+
 /-!
 Exercise III.11 (p. 142)
 -/
@@ -651,6 +657,12 @@ instance : Category SimpleGraph where
               ← Category.assoc]
     ⟩
 
+@[ext]
+lemma SimpleGraph.hom_ext {X Y : SimpleGraph}
+    (f g : X ⟶ Y) (hA : f.val.1 = g.val.1) (hD : f.val.2 = g.val.2)
+    : f = g :=
+  Subtype.ext (Prod.ext hA hD)
+
 def functorSetWithEndomapToSimpleGraph
     : Functor SetWithEndomap SimpleGraph := {
   obj (X : SetWithEndomap) := {
@@ -761,6 +773,12 @@ instance : Category ReflexiveGraph where
         · rw [← Category.assoc, hfCommonSection_comm, Category.assoc,
               hgCommonSection_comm, ← Category.assoc]
     ⟩
+
+@[ext]
+lemma ReflexiveGraph.hom_ext {X Y : ReflexiveGraph}
+    (f g : X ⟶ Y) (hA : f.val.1 = g.val.1) (hD : f.val.2 = g.val.2)
+    : f = g :=
+  Subtype.ext (Prod.ext hA hD)
 
 /-!
 Exercise III.15 (p. 145)
