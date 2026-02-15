@@ -41,12 +41,12 @@ We proceed by repeatedly applying the property $`{f \circ \alpha = \beta \circ f
 
 ```savedLean
 example {Xα Yβ : SetWithEndomap} (f : Xα ⟶ Yβ)
-    {x x' : Xα.t} {y y' : Yβ.t}
+    {x x' : Xα.carrier} {y y' : Yβ.carrier}
     (hx' : x' = (Xα.toEnd ⊚ Xα.toEnd ⊚ Xα.toEnd) x)
     (hy : y = f.val x)
     (hy' : y' = (Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd) y)
     : f.val x' = y' := by
-  have hf_comm := f.property.2
+  have hf_comm := f.property
   rw [hy', hy]
   rw [← types_comp_apply f.val (Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd)]
   rw [← Category.assoc, ← Category.assoc]
@@ -151,39 +151,27 @@ The category 𝑺↻↻ in which an object is a set with a specified pair of end
 
 ```savedLean
 structure SetWithTwoEndomaps extends SetWithEndomap where
-  toEnd2 : t ⟶ t
-  toEnd2_mem {a} : a ∈ carrier → toEnd a ∈ carrier
+  toEnd2 : carrier ⟶ carrier
 
 instance instCatSetWithTwoEndomaps : Category SetWithTwoEndomaps where
   Hom X Y := {
-    f : X.t ⟶ Y.t //
-        (∀ x ∈ X.carrier, f x ∈ Y.carrier) -- maps to codomain
-        ∧ f ⊚ X.toEnd = Y.toEnd ⊚ f -- first endomap commutes
+    f : X.carrier ⟶ Y.carrier //
+        f ⊚ X.toEnd = Y.toEnd ⊚ f -- first endomap commutes
         ∧ f ⊚ X.toEnd2 = Y.toEnd2 ⊚ f -- second endomap commutes
   }
-  id X := ⟨
-    𝟙 X.t,
-    by
-      constructor
-      · intro _ hx
-        exact hx
-      · constructor <;> rfl
-  ⟩
+  id X := ⟨𝟙 X.carrier, ⟨rfl, rfl⟩⟩
   comp := by
     rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
     exact ⟨
       g ⊚ f,
       by
-        obtain ⟨hf_mtc, hf_comm, hf2_comm⟩ := hf
-        obtain ⟨hg_mtc, hg_comm, hg2_comm⟩ := hg
+        obtain ⟨hf_comm, hf2_comm⟩ := hf
+        obtain ⟨hg_comm, hg2_comm⟩ := hg
         constructor
-        · intro x hx
-          exact hg_mtc (f x) (hf_mtc x hx)
-        · constructor
-          · rw [← Category.assoc, hf_comm, Category.assoc, hg_comm,
-              ← Category.assoc]
-          · rw [← Category.assoc, hf2_comm, Category.assoc, hg2_comm,
-              ← Category.assoc]
+        · rw [← Category.assoc, hf_comm, Category.assoc, hg_comm,
+            ← Category.assoc]
+        · rw [← Category.assoc, hf2_comm, Category.assoc, hg2_comm,
+            ← Category.assoc]
     ⟩
 ```
 
@@ -207,12 +195,9 @@ def m₁ : Gender ⟶ Gender := fun _ ↦ Gender.female
 def f₁ : Gender ⟶ Gender := fun _ ↦ Gender.male
 
 def G : SetWithTwoEndomaps := {
-  t := Gender
-  carrier := Set.univ
+  carrier := Gender
   toEnd := m₁
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   toEnd2 := f₁
-  toEnd2_mem := fun _ ↦ Set.mem_univ _
 }
 ```
 
@@ -229,12 +214,9 @@ def f₂ : Clan ⟶ Clan
   | Clan.bear => Clan.wolf
 
 def C : SetWithTwoEndomaps := {
-  t := Clan
-  carrier := Set.univ
+  carrier := Clan
   toEnd := m₂
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   toEnd2 := f₂
-  toEnd2_mem := fun _ ↦ Set.mem_univ _
 }
 ```
 
@@ -264,19 +246,16 @@ Now we can define the object $`\mathbf{P}`.
 
 ```savedLean
 def P₁ : SetWithTwoEndomaps := {
-  t := Person₁
-  carrier := Set.univ
+  carrier := Person₁
   toEnd := mother₁
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   toEnd2 := father₁
-  toEnd2_mem := fun _ ↦ Set.mem_univ _
 }
 ```
 
 Lastly, we define the map `gender`, which sends each `Person` to their corresponding `Gender`.
 
 ```savedLean
-def gender : P₁.t ⟶ G.t
+def gender : P₁.carrier ⟶ G.carrier
   | ⟨ParentType.isMother⟩ => Gender.female
   | ⟨ParentType.isFather⟩ => Gender.male
 ```
@@ -287,9 +266,7 @@ Since we can form a valid morphism using our categorical framework, it follows t
 def gender' : P₁ ⟶ G := ⟨
   gender,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · constructor <;> rfl
+    constructor <;> rfl
 ⟩
 ```
 
@@ -317,15 +294,12 @@ def father₂ : Person₂ ⟶ Person₂
   | ⟨ParentClan.isBear⟩ => ⟨ParentClan.isWolf⟩
 
 def P₂ : SetWithTwoEndomaps := {
-  t := Person₂
-  carrier := Set.univ
+  carrier := Person₂
   toEnd := mother₂
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   toEnd2 := father₂
-  toEnd2_mem := fun _ ↦ Set.mem_univ _
 }
 
-def clan : P₂.t ⟶ C.t
+def clan : P₂.carrier ⟶ C.carrier
   | ⟨ParentClan.isWolf⟩ => Clan.wolf
   | ⟨ParentClan.isBear⟩ => Clan.bear
 
@@ -333,13 +307,11 @@ def clan' : P₂ ⟶ C := ⟨
   clan,
   by
     constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · constructor
-      all_goals
-        funext p
-        match p with
-        | ⟨ParentClan.isWolf⟩ => rfl
-        | ⟨ParentClan.isBear⟩ => rfl
+    all_goals
+      funext p
+      match p with
+      | ⟨ParentClan.isWolf⟩ => rfl
+      | ⟨ParentClan.isBear⟩ => rfl
 ⟩
 ```
 
@@ -358,12 +330,9 @@ def father₃ : Person₃ ⟶ Person₃
   | ⟨_, ParentClan.isBear⟩ => ⟨ParentType.isFather, ParentClan.isWolf⟩
 
 def P₃ : SetWithTwoEndomaps := {
-  t := Person₃
-  carrier := Set.univ
+  carrier := Person₃
   toEnd := mother₃
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   toEnd2 := father₃
-  toEnd2_mem := fun _ ↦ Set.mem_univ _
 }
 ```
 
@@ -378,15 +347,12 @@ def f₃ : (Gender × Clan) ⟶ (Gender × Clan)
   | (_, Clan.bear) => (Gender.male, Clan.wolf)
 
 def GC : SetWithTwoEndomaps := {
-  t := Gender × Clan
-  carrier := Set.univ
+  carrier := Gender × Clan
   toEnd := m₃
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   toEnd2 := f₃
-  toEnd2_mem := fun _ ↦ Set.mem_univ _
 }
 
-def gender_and_clan : P₃.t ⟶ GC.t
+def gender_and_clan : P₃.carrier ⟶ GC.carrier
   | ⟨ParentType.isMother, ParentClan.isWolf⟩ =>
         ⟨Gender.female, Clan.wolf⟩
   | ⟨ParentType.isMother, ParentClan.isBear⟩ =>
@@ -400,15 +366,13 @@ def gender_and_clan' : P₃ ⟶ GC := ⟨
   gender_and_clan,
   by
     constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · constructor
-      all_goals
-        funext p
-        match p with
-        | ⟨ParentType.isMother, ParentClan.isWolf⟩ => rfl
-        | ⟨ParentType.isMother, ParentClan.isBear⟩ => rfl
-        | ⟨ParentType.isFather, ParentClan.isWolf⟩ => rfl
-        | ⟨ParentType.isFather, ParentClan.isBear⟩ => rfl
+    all_goals
+      funext p
+      match p with
+      | ⟨ParentType.isMother, ParentClan.isWolf⟩ => rfl
+      | ⟨ParentType.isMother, ParentClan.isBear⟩ => rfl
+      | ⟨ParentType.isFather, ParentClan.isWolf⟩ => rfl
+      | ⟨ParentType.isFather, ParentClan.isBear⟩ => rfl
 ⟩
 ```
 

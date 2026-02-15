@@ -30,7 +30,7 @@ local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 
 # 1. The category 𝑺↻ of endomaps of sets
 
-*The category 𝑺↻ of endomaps of sets* is described on pp. 136–137. We implement this category in Lean in a similar way to the category of algebraic objects that we developed in the solution to Session 4, Exercise 1. Our Lean implementation follows closely the definition of _category_ given on p. 21, so we reproduce that definition here, interspersed with our comments (italicised) and the corresponding Lean code.
+*The category 𝑺↻ of endomaps of sets* is described on pp. 136–137. We implement this category in Lean in a similar way to the category of algebraic objects that we developed in the solution to Session 4, Exercise 1, except we use types instead of sets for clarity of presentation going forward. Our Lean implementation follows closely the definition of _category_ given on p. 21, so we reproduce that definition here, interspersed with our comments (italicised) and the corresponding Lean code.
 
 ```savedComment
 The (concrete) category 𝑺↻ of endomaps of sets (pp. 136–137)
@@ -41,14 +41,12 @@ A _category_ consists of the DATA:
 
 \(1\) OBJECTS
 
-_An object in the category 𝑺↻ is a set equipped with an endomap._
+_An object in the category 𝑺↻ is a type equipped with an endomap._
 
 ```savedLean
 structure SetWithEndomap where
-  t : Type
-  carrier : Set t
-  toEnd : t ⟶ t
-  toEnd_mem {a} : a ∈ carrier → toEnd a ∈ carrier
+  carrier : Type
+  toEnd : carrier ⟶ carrier
 ```
 
 \(2\) MAPS
@@ -57,9 +55,8 @@ _A map in the category 𝑺↻ is one which respects the given structure — i.e
 
 ```savedLean
 def SetWithEndomapHom (X Y : SetWithEndomap) := {
-  f : X.t ⟶ Y.t //
-      (∀ x ∈ X.carrier, f x ∈ Y.carrier) -- maps to codomain
-      ∧ f ⊚ X.toEnd = Y.toEnd ⊚ f -- commutes
+  f : X.carrier ⟶ Y.carrier //
+      f ⊚ X.toEnd = Y.toEnd ⊚ f -- commutes
 }
 ```
 
@@ -73,14 +70,7 @@ _We define the identity map within the `SetWithEndomapHom` namespace to facilita
 
 ```savedLean
 def SetWithEndomapHom.id (X : SetWithEndomap)
-    : SetWithEndomapHom X X := ⟨
-  𝟙 X.t,
-  by
-    constructor
-    · intro _ hx
-      exact hx
-    · rfl
-⟩
+    : SetWithEndomapHom X X := ⟨𝟙 X.carrier, rfl⟩
 ```
 
 \(5\) For each pair of maps $`{A \xrightarrow{f} B \xrightarrow{g} C}`, a COMPOSITE MAP map $`{A \xrightarrow{g \;\mathrm{following}\; f} C}`
@@ -93,13 +83,10 @@ def SetWithEndomapHom.comp {X Y Z : SetWithEndomap}
     : SetWithEndomapHom X Z := ⟨
   g.val ⊚ f.val,
   by
-    obtain ⟨hf_mtc, hf_comm⟩ := f.property
-    obtain ⟨hg_mtc, hg_comm⟩ := g.property
-    constructor
-    · intro x hx
-      exact hg_mtc (f.val x) (hf_mtc x hx)
-    · rw [← Category.assoc, hf_comm, Category.assoc, hg_comm,
-          ← Category.assoc]
+    have hf_comm := f.property
+    have hg_comm := g.property
+    rw [← Category.assoc, hf_comm, Category.assoc, hg_comm,
+        ← Category.assoc]
 ⟩
 ```
 
@@ -127,7 +114,8 @@ For good measure, we make the category 𝑺↻ a concrete category.
 
 ```savedLean
 instance {X Y : SetWithEndomap}
-    : FunLike (instCatSetWithEndomap.Hom X Y) X.t Y.t where
+    : FunLike (instCatSetWithEndomap.Hom X Y) X.carrier
+                                              Y.carrier where
   coe f := f.val
   coe_injective' := fun _ _ h ↦ Subtype.ext h
 
@@ -173,7 +161,8 @@ example {X Y Z : SetWithEndomap} (f : X ⟶ Y) (g : Y ⟶ Z) : X ⟶ Z :=
 
 # 3. Two subcategories of 𝑺↻
 
-:::htmlDetails (classDetails := "") (classSummary := "") (summary := "We implement the category 𝑺ᵉ of idempotent endomaps of sets, described on p. 138. We re-use code from our earlier implementation of the category 𝑺↻.")
+We implement *the category 𝑺ᵉ of idempotent endomaps of sets*, described on p. 138. We re-use code from our earlier implementation of the category 𝑺↻.
+
 ```savedComment
 The (concrete) category 𝑺ᵉ of idempotent endomaps of sets (p. 138)
 ```
@@ -188,7 +177,8 @@ instance instCatSetWithIdemEndomap : Category SetWithIdemEndomap where
   comp := SetWithEndomapHom.comp
 
 instance {X Y : SetWithIdemEndomap}
-    : FunLike (instCatSetWithIdemEndomap.Hom X Y) X.t Y.t where
+    : FunLike (instCatSetWithIdemEndomap.Hom X Y) X.carrier
+                                                  Y.carrier where
   coe f := f.val
   coe_injective' := fun _ _ h ↦ Subtype.ext h
 
@@ -198,16 +188,16 @@ instance
   hom f := f
   ofHom f := f
 ```
-:::
 
-:::htmlDetails (classDetails := "") (classSummary := "") (summary := "We implement the category 𝑺◯ of invertible endomaps of sets (automorphisms of sets, permutations), described on p. 138.")
+We implement *the category 𝑺◯ of invertible endomaps of sets (automorphisms of sets, permutations)*, described on p. 138.
+
 ```savedComment
 The (concrete) category 𝑺◯ of invertible endomaps of sets (p. 138)
 ```
 
 ```savedLean
 structure SetWithInvEndomap extends SetWithEndomap where
-  inv : ∃ inv, inv ⊚ toEnd = 𝟙 t ∧ toEnd ⊚ inv = 𝟙 t
+  inv : ∃ inv, inv ⊚ toEnd = 𝟙 carrier ∧ toEnd ⊚ inv = 𝟙 carrier
 
 instance instCatSetWithInvEndomap : Category SetWithInvEndomap where
   Hom X Y := SetWithEndomapHom X.toSetWithEndomap Y.toSetWithEndomap
@@ -215,7 +205,8 @@ instance instCatSetWithInvEndomap : Category SetWithInvEndomap where
   comp := SetWithEndomapHom.comp
 
 instance {X Y : SetWithInvEndomap}
-    : FunLike (instCatSetWithInvEndomap.Hom X Y) X.t Y.t where
+    : FunLike (instCatSetWithInvEndomap.Hom X Y) X.carrier
+                                                 Y.carrier where
   coe f := f.val
   coe_injective' := fun _ _ h ↦ Subtype.ext h
 
@@ -225,142 +216,53 @@ instance
   hom f := f
   ofHom f := f
 ```
-:::
 
 # 4. Categories of endomaps
 
-*The category 𝑪↻ of endomaps* is described on pp. 138–139. We implement the category 𝑪↻ below (cf. the category 𝑺↻).
+*The category 𝑪↻ of endomaps* is described on pp. 138–139. Since we have implemented 𝑺↻ using types instead of sets, 𝑪↻ and 𝑺↻ are equivalent.
 
 ```savedComment
 The (concrete) category 𝑪↻ of endomaps (pp. 138–139)
 ```
 
-Define the objects.
-
 ```savedLean
-structure Endomap where
-  carrier : Type
-  toEnd : carrier ⟶ carrier
+abbrev Endomap := SetWithEndomap
 ```
 
-Define the maps.
+*The category 𝑪ᵉ of idempotents*, described on pp. 138–139, is likewise equivalent to 𝑺ᵉ.
 
-```savedLean
-def EndomapHom (X Y : Endomap) := {
-  f : X.carrier ⟶ Y.carrier //
-      f ⊚ X.toEnd = Y.toEnd ⊚ f -- commutes
-}
-```
-
-Define the identity maps and the composite maps.
-
-```savedLean
-namespace EndomapHom
-
-def id (X : Endomap) : EndomapHom X X := ⟨
-  𝟙 X.carrier,
-  rfl
-⟩
-
-def comp {X Y Z : Endomap}
-    (f : EndomapHom X Y) (g : EndomapHom Y Z)
-    : EndomapHom X Z := ⟨
-  g.val ⊚ f.val,
-  by
-    obtain hf_comm := f.property
-    obtain hg_comm := g.property
-    rw [← Category.assoc, hf_comm, Category.assoc, hg_comm,
-        ← Category.assoc]
-⟩
-
-end EndomapHom
-```
-
-Instantiate the category 𝑪↻.
-
-```savedLean
-instance instCatEndomap : Category Endomap where
-  Hom := EndomapHom
-  id := EndomapHom.id
-  comp := EndomapHom.comp
-```
-
-Make the category 𝑪↻ a concrete category.
-
-```savedLean
-instance {X Y : Endomap}
-    : FunLike (instCatEndomap.Hom X Y) X.carrier Y.carrier where
-  coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.ext h
-
-instance : ConcreteCategory Endomap instCatEndomap.Hom where
-  hom f := f
-  ofHom f := f
-```
-
-:::htmlDetails (classDetails := "") (classSummary := "") (summary := "We implement the category 𝑪ᵉ of idempotents, described on pp. 138–139.")
 ```savedComment
 The (concrete) category 𝑪ᵉ of idempotents (pp. 138–139)
 ```
 
 ```savedLean
-structure IdemEndomap extends Endomap where
-  idem : toEnd ⊚ toEnd = toEnd
-
-instance instCatIdemEndomap : Category IdemEndomap where
-  Hom X Y := EndomapHom X.toEndomap Y.toEndomap
-  id X := EndomapHom.id X.toEndomap
-  comp := EndomapHom.comp
-
-instance {X Y : IdemEndomap}
-    : FunLike (instCatIdemEndomap.Hom X Y) X.carrier Y.carrier where
-  coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.ext h
-
-instance : ConcreteCategory IdemEndomap instCatIdemEndomap.Hom where
-  hom f := f
-  ofHom f := f
+abbrev IdemEndomap := SetWithIdemEndomap
 ```
-:::
 
-:::htmlDetails (classDetails := "") (classSummary := "") (summary := "We implement the category 𝑪◯ of isomorphic endomaps (automorphisms), described on pp. 138–139.")
+*The category 𝑪◯ of isomorphic endomaps (automorphisms)*, described on pp. 138–139, is equivalent to 𝑺◯.
+
 ```savedComment
 The (concrete) category 𝑪◯ of isomorphic endomaps (pp. 138–139)
 ```
 
 ```savedLean
-structure InvEndomap extends Endomap where
-  inv : ∃ inv, inv ⊚ toEnd = 𝟙 carrier ∧ toEnd ⊚ inv = 𝟙 carrier
-
-instance instCatInvEndomap : Category InvEndomap where
-  Hom X Y := EndomapHom X.toEndomap Y.toEndomap
-  id X := EndomapHom.id X.toEndomap
-  comp := EndomapHom.comp
-
-instance {X Y : InvEndomap}
-    : FunLike (instCatInvEndomap.Hom X Y) X.carrier Y.carrier where
-  coe f := f.val
-  coe_injective' := fun _ _ h ↦ Subtype.ext h
-
-instance : ConcreteCategory InvEndomap instCatInvEndomap.Hom where
-  hom f := f
-  ofHom f := f
+abbrev InvEndomap := SetWithInvEndomap
 ```
-:::
 
-:::htmlDetails (classDetails := "") (classSummary := "") (summary := "We implement the category 𝑪ᶿ of involutions, described on pp. 138–139.")
+We implement *the category 𝑪ᶿ of involutions*, described on pp. 138–139.
+
 ```savedComment
 The (concrete) category 𝑪ᶿ of involutions (pp. 138–139)
 ```
 
 ```savedLean
-structure InvolEndomap extends InvEndomap where
+structure InvolEndomap extends SetWithInvEndomap where
   invol : toEnd ⊚ toEnd = 𝟙 carrier
 
 instance instCatInvolEndomap : Category InvolEndomap where
-  Hom X Y := EndomapHom X.toEndomap Y.toEndomap
-  id X := EndomapHom.id X.toEndomap
-  comp := EndomapHom.comp
+  Hom X Y := SetWithEndomapHom X.toSetWithEndomap Y.toSetWithEndomap
+  id X := SetWithEndomapHom.id X.toSetWithEndomap
+  comp := SetWithEndomapHom.comp
 
 instance {X Y : InvolEndomap}
     : FunLike (instCatInvolEndomap.Hom X Y) X.carrier Y.carrier where
@@ -371,7 +273,6 @@ instance : ConcreteCategory InvolEndomap instCatInvolEndomap.Hom where
   hom f := f
   ofHom f := f
 ```
-:::
 
 :::question (questionTitle := "Exercise 2") (questionPage := "139")
 What can you prove about an idempotent which has a retraction?
@@ -802,7 +703,7 @@ end ExIII_10
 ```
 :::
 
-*The category 𝑺⇊ of (irreflexive directed multi-) graphs* is described on pp. 141–142. We implement the category 𝑺⇊ below.
+*The category 𝑺⇊ of (irreflexive directed multi-) graphs* is described on pp. 141–142. We implement the category 𝑺⇊ below (again using types instead of sets).
 
 ```savedComment
 The category 𝑺⇊ of (irreflexive directed multi-) graphs (pp. 141–142)
@@ -810,40 +711,26 @@ The category 𝑺⇊ of (irreflexive directed multi-) graphs (pp. 141–142)
 
 ```savedLean
 structure IrreflexiveGraph where
-  tA : Type
-  carrierA : Set tA
-  tD : Type
-  carrierD : Set tD
-  toSrc : tA ⟶ tD
-  toSrc_mem {a} : a ∈ carrierA → toSrc a ∈ carrierD
-  toTgt : tA ⟶ tD
-  toTgt_mem {a} : a ∈ carrierA → toTgt a ∈ carrierD
+  carrierA : Type
+  carrierD : Type
+  toSrc : carrierA ⟶ carrierD
+  toTgt : carrierA ⟶ carrierD
 
 instance instCategoryIrreflexiveGraph : Category IrreflexiveGraph where
   Hom X Y := {
-    f : (X.tA ⟶ Y.tA) × (X.tD ⟶ Y.tD) //
-        (∀ x ∈ X.carrierA, f.1 x ∈ Y.carrierA) -- fA maps to codomain
-        ∧ (∀ x ∈ X.carrierD, f.2 x ∈ Y.carrierD) -- fD maps to codomain
-        ∧ f.2 ⊚ X.toSrc = Y.toSrc ⊚ f.1 -- source commutes
+    f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
+        f.2 ⊚ X.toSrc = Y.toSrc ⊚ f.1 -- source commutes
         ∧ f.2 ⊚ X.toTgt = Y.toTgt ⊚ f.1 -- target commutes
   }
-  id X := ⟨
-    (𝟙 X.tA, 𝟙 X.tD),
-    by
-      split_ands <;> first | exact fun _ hx ↦ hx | rfl
-  ⟩
+  id X := ⟨(𝟙 X.carrierA, 𝟙 X.carrierD), ⟨rfl, rfl⟩⟩
   comp := by
     rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
     exact ⟨
       (g.1 ⊚ f.1, g.2 ⊚ f.2),
       by
-        obtain ⟨hfA_mtc, hfD_mtc, hfSrc_comm, hfTgt_comm⟩ := hf
-        obtain ⟨hgA_mtc, hgD_mtc, hgSrc_comm, hgTgt_comm⟩ := hg
-        split_ands
-        · intro x hx
-          exact hgA_mtc (f.1 x) (hfA_mtc x hx)
-        · intro x hx
-          exact hgD_mtc (f.2 x) (hfD_mtc x hx)
+        obtain ⟨hfSrc_comm, hfTgt_comm⟩ := hf
+        obtain ⟨hgSrc_comm, hgTgt_comm⟩ := hg
+        constructor
         · rw [← Category.assoc, hfSrc_comm, Category.assoc, hgSrc_comm,
               ← Category.assoc]
         · rw [← Category.assoc, hfTgt_comm, Category.assoc, hgTgt_comm,
@@ -898,14 +785,10 @@ Equivalently, we can use our implementation of the category 𝑺⇊ of graphs.
 
 ```savedLean
 def graph (A D : Type) (src tgt : A ⟶ D) : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := src
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := tgt
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 example (f : graph X P s t ⟶ graph Y Q s' t')
@@ -935,23 +818,19 @@ The insertion $`I` maps endomaps of sets to irreflexive graphs and maps morphism
 def functorSetWithEndomapToIrreflexiveGraph
     : Functor SetWithEndomap IrreflexiveGraph := {
   obj (X : SetWithEndomap) := {
-    tA := X.t
-    carrierA := Set.univ
-    tD := X.t
-    carrierD := Set.univ
-    toSrc := 𝟙 X.t
-    toSrc_mem := fun _ ↦ Set.mem_univ _
+    carrierA := X.carrier
+    carrierD := X.carrier
+    toSrc := 𝟙 X.carrier
     toTgt := X.toEnd
-    toTgt_mem := fun _ ↦ Set.mem_univ _
   }
   map {X Y : SetWithEndomap} (f : X ⟶ Y) := {
     val := (f, f)
     property := by
-      obtain ⟨tX, carrierX, toEndX⟩ := X
-      obtain ⟨tY, carrierY, toEndY⟩ := Y
-      obtain ⟨f, hf_mtc, hf_comm⟩ := f
-      dsimp at f hf_mtc hf_comm
-      split_ands <;> (dsimp; intros; trivial)
+      obtain ⟨carrierX, toEndX⟩ := X
+      obtain ⟨carrierY, toEndY⟩ := Y
+      obtain ⟨f, hf_comm⟩ := f
+      dsimp at f hf_comm
+      constructor <;> (dsimp; intros; trivial)
   }
 }
 
@@ -987,14 +866,10 @@ Using `Category IrreflexiveGraph`, we have
 
 ```savedLean
 def graph₁ (S : SetWithEndomap) : IrreflexiveGraph := {
-  tA := S.t
-  carrierA := Set.univ
-  tD := S.t
-  carrierD := Set.univ
-  toSrc := 𝟙 S.t
-  toSrc_mem := fun _ ↦ Set.mem_univ _
+  carrierA := S.carrier
+  carrierD := S.carrier
+  toSrc := 𝟙 S.carrier
   toTgt := S.toEnd
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 variable (f₁ : graph₁ X' ⟶ graph₁ Y')
@@ -1006,7 +881,7 @@ local notation "fD₁" => f₁.val.2
 set_option quotPrecheck true
 
 example : fA₁ = fD₁ := by
-  obtain ⟨_, _ , hfSrc_comm, _⟩ := f₁.property
+  obtain ⟨hfSrc_comm, _⟩ := f₁.property
   dsimp [graph₁] at hfSrc_comm
   exact hfSrc_comm.symm
 ```
@@ -1025,7 +900,7 @@ local notation "fD₂" => f₂.val.2
 set_option quotPrecheck true
 
 example : fA₂ = fD₂ := by
-  obtain ⟨_, _ , hfSrc_comm, _⟩ := f₂.property
+  obtain ⟨hfSrc_comm, _⟩ := f₂.property
   dsimp [graph₂, functorSetWithEndomapToIrreflexiveGraph]
       at hfSrc_comm
   exact hfSrc_comm.symm
@@ -1038,7 +913,7 @@ end ExIII_13
 
 # 7. The simpler category 𝑺↓: Objects are just maps of sets
 
-*The category 𝑺↓ of simple directed graphs* is described on pp. 144–145. We implement the category 𝑺↓ below.
+*The category 𝑺↓ of simple directed graphs* is described on pp. 144–145. We implement the category 𝑺↓ below (using types instead of sets).
 
 ```savedComment
 The category 𝑺↓ of simple directed graphs (pp. 144–145)
@@ -1046,39 +921,29 @@ The category 𝑺↓ of simple directed graphs (pp. 144–145)
 
 ```savedLean
 structure SimpleGraph where
-  tA : Type
-  carrierA : Set tA
-  tD : Type
-  carrierD : Set tD
-  toFun : tA ⟶ tD
-  toFun_mem {a} : a ∈ carrierA → toFun a ∈ carrierD
+  carrierA : Type
+  carrierD : Type
+  toFun : carrierA ⟶ carrierD
 
 instance : Category SimpleGraph where
   Hom X Y := {
-    f : (X.tA ⟶ Y.tA) × (X.tD ⟶ Y.tD) //
-        (∀ x ∈ X.carrierA, f.1 x ∈ Y.carrierA) -- fA maps to codomain
-        ∧ (∀ x ∈ X.carrierD, f.2 x ∈ Y.carrierD) -- fD maps to codomain
-        ∧ f.2 ⊚ X.toFun = Y.toFun ⊚ f.1 -- commutes
+    f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
+        f.2 ⊚ X.toFun = Y.toFun ⊚ f.1 -- commutes
   }
   id X := ⟨
-    (𝟙 X.tA, 𝟙 X.tD),
+    (𝟙 X.carrierA, 𝟙 X.carrierD),
     by
-      split_ands <;> first | exact fun _ hx ↦ hx | rfl
+      constructor <;> first | exact fun _ hx ↦ hx | rfl
   ⟩
   comp := by
     rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
     exact ⟨
       (g.1 ⊚ f.1, g.2 ⊚ f.2),
       by
-        obtain ⟨hfA_mtc, hfD_mtc, hfSrc_comm⟩ := hf
-        obtain ⟨hgA_mtc, hgD_mtc, hgSrc_comm⟩ := hg
-        split_ands
-        · intro x hx
-          exact hgA_mtc (f.1 x) (hfA_mtc x hx)
-        · intro x hx
-          exact hgD_mtc (f.2 x) (hfD_mtc x hx)
-        · rw [← Category.assoc, hfSrc_comm, Category.assoc, hgSrc_comm,
-              ← Category.assoc]
+        have hfSrc_comm := hf
+        have hgSrc_comm := hg
+        rw [← Category.assoc, hfSrc_comm, Category.assoc, hgSrc_comm,
+            ← Category.assoc]
     ⟩
 
 @[ext]
@@ -1094,20 +959,17 @@ The insertion $`J` is a functor from 𝑺↻ to 𝑺↓.
 def functorSetWithEndomapToSimpleGraph
     : Functor SetWithEndomap SimpleGraph := {
   obj (X : SetWithEndomap) := {
-    tA := X.t
-    carrierA := Set.univ
-    tD := X.t
-    carrierD := Set.univ
+    carrierA := X.carrier
+    carrierD := X.carrier
     toFun := X.toEnd
-    toFun_mem := fun _ ↦ Set.mem_univ _
   }
   map {X Y : SetWithEndomap} (f : X ⟶ Y) := {
     val := (f, f)
     property := by
-      obtain ⟨tX, carrierX, toEndX⟩ := X
-      obtain ⟨tY, carrierY, toEndY⟩ := Y
-      obtain ⟨f, hf_mtc, hf_comm⟩ := f
-      dsimp at f hf_mtc hf_comm
+      obtain ⟨carrierX, toEndX⟩ := X
+      obtain ⟨carrierY, toEndY⟩ := Y
+      obtain ⟨f, hf_comm⟩ := f
+      dsimp at f hf_comm
       split_ands <;> (dsimp; intros; trivial)
   }
 }
@@ -1181,7 +1043,7 @@ end ExIII_14
 
 # 8. Reflexive graphs
 
-*The category of reflexive graphs* is described on p. 145. We implement this category below.
+*The category of reflexive graphs* is described on p. 145. We implement this category below (using types instead of sets).
 
 ```savedComment
 The category of reflexive graphs (p. 145)
@@ -1189,22 +1051,19 @@ The category of reflexive graphs (p. 145)
 
 ```savedLean
 structure ReflexiveGraph extends IrreflexiveGraph where
-  toCommonSection : tD ⟶ tA
-  toCommonSection_mem {d} : d ∈ carrierD → toCommonSection d ∈ carrierA
-  section_src : toSrc ⊚ toCommonSection = 𝟙 tD
-  section_tgt : toTgt ⊚ toCommonSection = 𝟙 tD
+  toCommonSection : carrierD ⟶ carrierA
+  section_src : toSrc ⊚ toCommonSection = 𝟙 carrierD
+  section_tgt : toTgt ⊚ toCommonSection = 𝟙 carrierD
 
 instance : Category ReflexiveGraph where
   Hom X Y := {
-    f : (X.tA ⟶ Y.tA) × (X.tD ⟶ Y.tD) //
-        (∀ x ∈ X.carrierA, f.1 x ∈ Y.carrierA) -- fA maps to codomain
-        ∧ (∀ x ∈ X.carrierD, f.2 x ∈ Y.carrierD) -- fD maps to codomain
-        ∧ f.2 ⊚ X.toSrc = Y.toSrc ⊚ f.1 -- source commutes
+    f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
+        f.2 ⊚ X.toSrc = Y.toSrc ⊚ f.1 -- source commutes
         ∧ f.2 ⊚ X.toTgt = Y.toTgt ⊚ f.1 -- target commutes
         ∧ f.1 ⊚ X.toCommonSection = Y.toCommonSection ⊚ f.2
   }
   id X := ⟨
-    (𝟙 X.tA, 𝟙 X.tD),
+    (𝟙 X.carrierA, 𝟙 X.carrierD),
     by
       split_ands <;> first | exact fun _ hx ↦ hx | rfl
   ⟩
@@ -1213,15 +1072,9 @@ instance : Category ReflexiveGraph where
     exact ⟨
       (g.1 ⊚ f.1, g.2 ⊚ f.2),
       by
-        obtain ⟨hfA_mtc, hfD_mtc, hfSrc_comm, hfTgt_comm,
-            hfCommonSection_comm⟩ := hf
-        obtain ⟨hgA_mtc, hgD_mtc, hgSrc_comm, hgTgt_comm,
-            hgCommonSection_comm⟩ := hg
+        obtain ⟨hfSrc_comm, hfTgt_comm, hfCommonSection_comm⟩ := hf
+        obtain ⟨hgSrc_comm, hgTgt_comm, hgCommonSection_comm⟩ := hg
         split_ands
-        · intro x hx
-          exact hgA_mtc (f.1 x) (hfA_mtc x hx)
-        · intro x hx
-          exact hgD_mtc (f.2 x) (hfD_mtc x hx)
         · rw [← Category.assoc, hfSrc_comm, Category.assoc, hgSrc_comm,
               ← Category.assoc]
         · rw [← Category.assoc, hfTgt_comm, Category.assoc, hgTgt_comm,
@@ -1260,7 +1113,7 @@ variable (X : ReflexiveGraph)
 Define the two endomaps $`{e_1 = is}`, $`{e_0 = it}`.
 
 ```savedLean
-variable (e₁ e₀ : X.tA ⟶ X.tA)
+variable (e₁ e₀ : X.carrierA ⟶ X.carrierA)
          (h₁ : e₁ = X.toCommonSection ⊚ X.toSrc)
          (h₀ : e₀ = X.toCommonSection ⊚ X.toTgt)
 ```
@@ -1341,7 +1194,7 @@ example : fD = s' ⊚ fA ⊚ i := by
   rw [← Category.id_comp fD, ← X.section_src]
   repeat rw [Category.assoc]
   congrm ?_ ⊚ X.toCommonSection
-  exact f.property.2.2.1
+  exact f.property.1
 ```
 
 Or, alternatively,
@@ -1351,7 +1204,7 @@ example : fD = t' ⊚ fA ⊚ i := by
   rw [← Category.id_comp fD, ← X.section_tgt]
   repeat rw [Category.assoc]
   congrm ?_ ⊚ X.toCommonSection
-  exact f.property.2.2.2.1
+  exact f.property.2.1
 ```
 
 ```savedLean -show
@@ -1378,28 +1231,20 @@ Define the structure.
 
 ```savedLean
 structure ParentLike where
-  tM : Type
-  carrierM : Set tM
-  tF : Type
-  carrierF : Set tF
-  φ : tM ⟶ tM
-  φ_mem {m} : m ∈ carrierM → φ m ∈ carrierM
-  φ' : tF ⟶ tM
-  φ'_mem {f} : f ∈ carrierF → φ' f ∈ carrierM
-  μ : tF ⟶ tF
-  μ_mem {f} : f ∈ carrierF → μ f ∈ carrierF
-  μ' : tM ⟶ tF
-  μ'_mem {m} : m ∈ carrierM → μ' m ∈ carrierF
+  carrierM : Type
+  carrierF : Type
+  φ : carrierM ⟶ carrierM
+  φ' : carrierF ⟶ carrierM
+  μ : carrierF ⟶ carrierF
+  μ' : carrierM ⟶ carrierF
 ```
 
 Define a map between such structures.
 
 ```savedLean
 def ParentLikeHom (X Y : ParentLike) := {
-  f : (X.tM ⟶ Y.tM) × (X.tF ⟶ Y.tF) //
-      (∀ x ∈ X.carrierM, f.1 x ∈ Y.carrierM) -- f.1 maps to codomain
-      ∧ (∀ x ∈ X.carrierF, f.2 x ∈ Y.carrierF) -- f.2 maps to codomain
-      ∧ f.1 ⊚ X.φ = Y.φ ⊚ f.1 -- φ commutes
+  f : (X.carrierM ⟶ Y.carrierM) × (X.carrierF ⟶ Y.carrierF) //
+      f.1 ⊚ X.φ = Y.φ ⊚ f.1 -- φ commutes
       ∧ f.1 ⊚ X.φ' = Y.φ' ⊚ f.2 -- φ' commutes
       ∧ f.2 ⊚ X.μ = Y.μ ⊚ f.2 -- μ commutes
       ∧ f.2 ⊚ X.μ' = Y.μ' ⊚ f.1 -- μ' commutes
@@ -1412,7 +1257,7 @@ This map between structures makes them into a category.
 instance : Category ParentLike where
   Hom := ParentLikeHom -- our map between ParentLike structures
   id X := ⟨
-    (𝟙 X.tM, 𝟙 X.tF),
+    (𝟙 X.carrierM, 𝟙 X.carrierF),
     by
       split_ands <;> first | exact fun _ hx ↦ hx | rfl
   ⟩
@@ -1421,15 +1266,9 @@ instance : Category ParentLike where
     exact ⟨
       (g.1 ⊚ f.1, g.2 ⊚ f.2),
       by
-        obtain ⟨hfM_mtc, hfF_mtc, hfφ_comm, hfφ'_comm, hfμ_comm,
-            hfμ'_comm⟩ := hf
-        obtain ⟨hgM_mtc, hgF_mtc, hgφ_comm, hgφ'_comm, hgμ_comm,
-            hgμ'_comm⟩ := hg
+        obtain ⟨hfφ_comm, hfφ'_comm, hfμ_comm, hfμ'_comm⟩ := hf
+        obtain ⟨hgφ_comm, hgφ'_comm, hgμ_comm, hgμ'_comm⟩ := hg
         split_ands
-        · intro x hx
-          exact hgM_mtc (f.1 x) (hfM_mtc x hx)
-        · intro x hx
-          exact hgF_mtc (f.2 x) (hfF_mtc x hx)
         · rw [← Category.assoc, hfφ_comm, Category.assoc, hgφ_comm,
               ← Category.assoc]
         · rw [← Category.assoc, hfφ'_comm, Category.assoc, hgφ'_comm,
@@ -1531,26 +1370,20 @@ Or, alternatively, using the categorical framework we defined earlier, $`a` is a
 
 ```savedLean
 def Xα : SetWithEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def Yβ : SetWithEndomap := {
-  t := Y
-  carrier := Set.univ
+  carrier := Y
   toEnd := β
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def a' : Xα ⟶ Yβ := ⟨
   a,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 ```
 :::
@@ -1793,31 +1626,22 @@ Emulating the insertion $`J`,
 
 ```savedLean
 def X' : SimpleGraph := {
-  tA := X
-  carrierA := Set.univ
-  tD := X
-  carrierD := Set.univ
+  carrierA := X
+  carrierD := X
   toFun := α
-  toFun_mem := fun _ ↦ Set.mem_univ _
 }
 
 def Y' : SimpleGraph := {
-  tA := Y
-  carrierA := Set.univ
-  tD := Y
-  carrierD := Set.univ
+  carrierA := Y
+  carrierD := Y
   toFun := β
-  toFun_mem := fun _ ↦ Set.mem_univ _
 }
 
 def a'' : X' ⟶ Y' := ⟨
   (a, a),
   by
-    split_ands
-    · exact fun _ _ ↦ Set.mem_univ _
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 ```
 
@@ -1827,7 +1651,7 @@ we can show that $`a` has no retractions.
 example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') := by
   push_neg
   intro p
-  obtain ⟨p, _, _, hp_comm⟩ := p
+  obtain ⟨p, hp_comm⟩ := p
   dsimp [X', Y'] at hp_comm
   have hpβ₀ : ∀ y, (α ⊚ p.1) y = X.x₀ := by
     intro y
@@ -1857,7 +1681,7 @@ Or, alternatively, using our functor `J` defined earlier,
 example : ¬(∃ p : Yβ ⟶ Xα, J p ⊚ J a' = J (𝟙 Xα)) := by
   push_neg
   intro p
-  obtain ⟨p, _, hp_comm⟩ := p
+  obtain ⟨p, hp_comm⟩ := p
   dsimp [Xα, Yβ] at hp_comm
   have hpβ₀ : ∀ y, (α ⊚ p) y = X.x₀ := by
     intro y
@@ -1937,7 +1761,7 @@ local notation "t" => XP.toTgt
 local notation "t'" => YQ.toTgt
 
 example : (fD ⊚ s = fD ⊚ t) ↔ (∀ x, s' (fA x) = t' (fA x)) := by
-  obtain ⟨f, _, _, hfSrc_comm, hfTgt_comm⟩ := f
+  obtain ⟨f, hfSrc_comm, hfTgt_comm⟩ := f
   dsimp
   constructor
   · intro h x
@@ -1984,27 +1808,21 @@ def f : ℤ ⟶ ℚ := fun x ↦ (x : ℚ)
 
 ```savedLean
 def Z : SetWithEndomap := {
-  t := ℤ
-  carrier := Set.univ
+  carrier := ℤ
   toEnd := fun x ↦ 5 * x
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def Q : SetWithEndomap := {
-  t := ℚ
-  carrier := Set.univ
+  carrier := ℚ
   toEnd := fun x ↦ 5 * x
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 example : Z ⟶ Q := ⟨
   f,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext (x : ℤ)
-      dsimp [Z, Q, f]
-      norm_cast
+    funext (x : ℤ)
+    dsimp [Z, Q, f]
+    norm_cast
 ⟩
 ```
 
@@ -2012,10 +1830,8 @@ example : Z ⟶ Q := ⟨
 
 ```savedLean
 example : SetWithInvEndomap := {
-  t := Q.t
   carrier := Q.carrier
   toEnd := Q.toEnd
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   inv := by
     let finv : ℚ ⟶ ℚ := fun x ↦ x / 5
     use finv
@@ -2069,10 +1885,8 @@ def α : X ⟶ X
     | X.x₁ => X.x₀
 
 def Xα : SetWithIdemEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
   idem := by
     funext x
     cases x <;> rfl
@@ -2090,7 +1904,7 @@ example (Yβ : SetWithInvEndomap)
     (f : Xα.toSetWithEndomap ⟶ Yβ.toSetWithEndomap)
     : f X.x₀ = f X.x₁ := by
   obtain ⟨βinv, hβ_inv, _⟩ := Yβ.inv
-  obtain ⟨f, _, hf_comm⟩ := f
+  obtain ⟨f, hf_comm⟩ := f
   have hf_comm_x₀ : (f ⊚ Xα.toEnd) X.x₀ = (Yβ.toEnd ⊚ f) X.x₀ :=
     congrFun hf_comm X.x₀
   have hf_comm_x₁ : (f ⊚ Xα.toEnd) X.x₁ = (Yβ.toEnd ⊚ f) X.x₁ :=
@@ -2123,15 +1937,15 @@ cf. `Mono f.val`, `Mono Xα.toEnd.val`.
 ```savedLean
 example (Xα : SetWithEndomap) (Yβ : SetWithInvEndomap)
     (f : Xα ⟶ Yβ.toSetWithEndomap)
-    (hf_inj : ∀ {U : Type} (y₁ y₂ : U ⟶ Xα.t),
+    (hf_inj : ∀ {U : Type} (y₁ y₂ : U ⟶ Xα.carrier),
         f.val ⊚ y₁ = f.val ⊚ y₂ → y₁ = y₂)
-    : ∀ {T : Type} (x₁ x₂ : T ⟶ Xα.t),
+    : ∀ {T : Type} (x₁ x₂ : T ⟶ Xα.carrier),
         Xα.toEnd ⊚ x₁ = Xα.toEnd ⊚ x₂ → x₁ = x₂ := by
   intro _ x₁ x₂ h₁
   have h₂ : f.val ⊚ Xα.toEnd ⊚ x₁ = f.val ⊚ Xα.toEnd ⊚ x₂ := by
     congrm f.val ⊚ ?_
     exact h₁
-  repeat rw [Category.assoc, f.property.2] at h₂
+  repeat rw [Category.assoc, f.property] at h₂
   obtain ⟨βinv, hβ_inv⟩ := Yβ.inv
   have h₃ : βinv ⊚ Yβ.toEnd ⊚ f.val ⊚ x₁ =
       βinv ⊚ Yβ.toEnd ⊚ f.val ⊚ x₂ := by

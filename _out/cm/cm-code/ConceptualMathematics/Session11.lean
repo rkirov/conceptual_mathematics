@@ -16,24 +16,20 @@ inductive X
   | x₁ | x₂ | x₃ | x₄
 
 def A' : SetWithEndomap := {
-  t := A
-  carrier := Set.univ
+  carrier := A
   toEnd := fun
     | A.a₁ => A.a₂
     | A.a₂ => A.a₃
     | A.a₃ => A.a₁
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def X' : SetWithEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := fun -- a restriction of α to the subset {x₁, x₂, x₃, x₄}
     | X.x₁ => X.x₁
     | X.x₂ => X.x₃
     | X.x₃ => X.x₄
     | X.x₄ => X.x₂
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def f₁ : A ⟶ X
@@ -45,10 +41,8 @@ def f₁ : A ⟶ X
 example : A' ⟶ X' := ⟨
   f₁,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext a
-      cases a <;> rfl
+    funext a
+    cases a <;> rfl
 ⟩
 
 def f₂ : A ⟶ X
@@ -60,10 +54,8 @@ def f₂ : A ⟶ X
 example : A' ⟶ X' := ⟨
   f₂,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext a
-      cases a <;> rfl
+    funext a
+    cases a <;> rfl
 ⟩
 
 def f₃ : A ⟶ X
@@ -75,10 +67,8 @@ def f₃ : A ⟶ X
 example : A' ⟶ X' := ⟨
   f₃,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext a
-      cases a <;> rfl
+    funext a
+    cases a <;> rfl
 ⟩
 
 def f₄ : A ⟶ X
@@ -90,10 +80,8 @@ def f₄ : A ⟶ X
 example : A' ⟶ X' := ⟨
   f₄,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext a
-      cases a <;> rfl
+    funext a
+    cases a <;> rfl
 ⟩
 
 end Ex11_1
@@ -112,10 +100,8 @@ def α : X ⟶ X
   | X.c => X.b
 
 def Xα : SetWithEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 inductive Y
@@ -127,10 +113,8 @@ def β : Y ⟶ Y
   | Y.r => Y.p
 
 def Yβ : SetWithEndomap := {
-  t := Y
-  carrier := Set.univ
+  carrier := Y
   toEnd := β
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def f₁ : X ⟶ Y
@@ -143,11 +127,9 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
   let f : Xα ⟶ Yβ := ⟨
     f₁,
     by
-      constructor
-      · exact fun _ _ ↦ Set.mem_univ _
-      · -- fα = βf
-        funext x
-        cases x <;> rfl
+      -- fα = βf
+      funext x
+      cases x <;> rfl
   ⟩
   let finv : Yβ ⟶ Xα := ⟨
     fun
@@ -155,11 +137,9 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
       | Y.q => X.b
       | Y.r => X.a,
     by
-      constructor
-      · exact fun _ _ ↦ Set.mem_univ _
-      · -- f⁻¹β = αf⁻¹
-        funext y
-        cases y <;> rfl
+      -- f⁻¹β = αf⁻¹
+      funext y
+      cases y <;> rfl
   ⟩
   use f
   use finv
@@ -185,11 +165,9 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
   let f : Xα ⟶ Yβ := ⟨
     f₂,
     by
-      constructor
-      · exact fun _ _ ↦ Set.mem_univ _
-      · -- fα = βf
-        funext x
-        cases x <;> rfl
+      -- fα = βf
+      funext x
+      cases x <;> rfl
   ⟩
   let finv : Yβ ⟶ Xα := ⟨
     fun
@@ -197,11 +175,9 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
       | Y.q => X.a
       | Y.r => X.c,
     by
-      constructor
-      · exact fun _ _ ↦ Set.mem_univ _
-      · -- f⁻¹β = αf⁻¹
-        funext y
-        cases y <;> rfl
+      -- f⁻¹β = αf⁻¹
+      funext y
+      cases y <;> rfl
   ⟩
   use f
   use finv
@@ -227,11 +203,9 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
   let f : Xα ⟶ Yβ := ⟨
     f₃,
     by
-      constructor
-      · exact fun _ _ ↦ Set.mem_univ _
-      · -- fα = βf
-        funext x
-        cases x <;> rfl
+      -- fα = βf
+      funext x
+      cases x <;> rfl
   ⟩
   let finv : Yβ ⟶ Xα := ⟨
     fun
@@ -239,11 +213,9 @@ example : ∃ f : Xα ⟶ Yβ, IsIso f := by
       | Y.q => X.c
       | Y.r => X.b,
     by
-      constructor
-      · exact fun _ _ ↦ Set.mem_univ _
-      · -- f⁻¹β = αf⁻¹
-        funext y
-        cases y <;> rfl
+      -- f⁻¹β = αf⁻¹
+      funext y
+      cases y <;> rfl
   ⟩
   use f
   use finv
@@ -276,10 +248,8 @@ def α : X ⟶ X
   | X.x₄ => X.x₂
 
 def Xα : SetWithEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 inductive Y
@@ -292,10 +262,8 @@ def β : Y ⟶ Y
   | Y.y₄ => Y.y₁
 
 def Yβ : SetWithEndomap := {
-  t := Y
-  carrier := Set.univ
+  carrier := Y
   toEnd := β
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 example : ¬(∃ f : Xα ⟶ Yβ, IsIso f) := by
@@ -311,10 +279,10 @@ example : ¬(∃ f : Xα ⟶ Yβ, IsIso f) := by
   have h_contra : f.val ((Xα.toEnd ⊚ Xα.toEnd ⊚ Xα.toEnd) X.x₂) =
       (Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd) (f.val X.x₂) := by
     rw [← types_comp_apply f.val (Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd),
-        ← Category.assoc, ← Category.assoc, ← f.property.2]
-    rw [Category.assoc Xα.toEnd f.val, ← f.property.2]
+        ← Category.assoc, ← Category.assoc, ← f.property]
+    rw [Category.assoc Xα.toEnd f.val, ← f.property]
     rw [Category.assoc Xα.toEnd (f.val ⊚ Xα.toEnd),
-        Category.assoc Xα.toEnd f.val, ← f.property.2]
+        Category.assoc Xα.toEnd f.val, ← f.property]
     rw [← Category.assoc, ← Category.assoc,
         types_comp_apply (Xα.toEnd ⊚ Xα.toEnd ⊚ Xα.toEnd)]
   have : (Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd) (f.val X.x₂) =
@@ -329,26 +297,24 @@ end Ex11_3
 /-!
 Exercise 11.4 (p. 159)
 -/
-example {Aα Bβ : SetWithEndomap} (f : Aα ⟶ Bβ)
-    (g : Bβ.t ⟶ Aα.t) (hg_mtc : ∀ b ∈ Bβ.carrier, g b ∈ Aα.carrier)
-    (h : g ⊚ f.val = 𝟙 Aα.t ∧ f.val ⊚ g = 𝟙 Bβ.t)
+example {Aα Bβ : SetWithEndomap}
+    (f : Aα ⟶ Bβ) (g : Bβ.carrier ⟶ Aα.carrier)
+    (h : g ⊚ f.val = 𝟙 Aα.carrier ∧ f.val ⊚ g = 𝟙 Bβ.carrier)
     : ∃ finv : Bβ ⟶ Aα, finv.val = g := by
-  obtain ⟨f, _, hf_comm⟩ := f
+  obtain ⟨f, hf_comm⟩ := f
   use ⟨
     g,
     by
-      constructor
-      · exact hg_mtc
-      · funext b
-        apply_fun f
-        · rw [← types_comp_apply (g ⊚ Bβ.toEnd) f, Category.assoc,
-              h.2, Category.comp_id]
-          rw [← types_comp_apply (Aα.toEnd ⊚ g) f, Category.assoc,
-              hf_comm, ← Category.assoc, h.2, Category.id_comp]
-        · intro a₁ a₂ hf
-          have hgf := congrArg g hf
-          repeat rw [← types_comp_apply f g, h.1] at hgf
-          exact hgf
+      funext b
+      apply_fun f
+      · rw [← types_comp_apply (g ⊚ Bβ.toEnd) f, Category.assoc,
+            h.2, Category.comp_id]
+        rw [← types_comp_apply (Aα.toEnd ⊚ g) f, Category.assoc,
+            hf_comm, ← Category.assoc, h.2, Category.id_comp]
+      · intro a₁ a₂ hf
+        have hgf := congrArg g hf
+        repeat rw [← types_comp_apply f g, h.1] at hgf
+        exact hgf
   ⟩
 
 /-!
@@ -360,17 +326,13 @@ def α := (· + (2 : ℤ))
 def β := (· + (3 : ℤ))
 
 abbrev ℤα : SetWithEndomap := {
-  t := ℤ
-  carrier := Set.univ
+  carrier := ℤ
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 abbrev ℤβ : SetWithEndomap := {
-  t := ℤ
-  carrier := Set.univ
+  carrier := ℤ
   toEnd := β
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
@@ -380,7 +342,7 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
   have hf_comm
       : ∀ x : ℤ, (f.val ∘ ℤα.toEnd) x = (ℤβ.toEnd ∘ f.val) x := by
     intro x
-    exact congrFun f.property.2 x
+    exact congrFun f.property x
   -- and unfolding the definitions of α and β
   have hf_comm' : ∀ x : ℤ, f.val (x + 2) = f.val x + 3 := hf_comm
   -- The key observation: f.val(x + 2) and f.val(x) have the same
@@ -390,9 +352,10 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
     dsimp [Int.ModEq]
     rw [hf_comm' x]
     omega
-  -- Hence all even numbers map to values with the same remainder mod 3
-  -- as f.val(0),
-  have hf_even_congr : ∀ x : ℤ, f.val (2 * x) ≡ f.val 0 [ZMOD 3] := by
+  -- Hence all even numbers map to values with the same remainder
+  -- mod 3 as f.val(0),
+  have hf_even_congr :
+      ∀ x : ℤ, f.val (2 * x) ≡ f.val 0 [ZMOD 3] := by
     intro x
     dsimp [Int.ModEq]
     induction x with
@@ -400,8 +363,8 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
     | succ x' ih => rw [mul_add, mul_one, hf_mod_3_eq (2 * x'), ih]
     | pred x' ih => rw [mul_sub, ← hf_mod_3_eq (2 * (-x') - 2 * 1),
         mul_one, sub_add_cancel, ih]
-  -- and all odd numbers map to values with the same remainder mod 3 as
-  -- f.val(1)
+  -- and all odd numbers map to values with the same remainder mod 3
+  -- as f.val(1)
   have hf_odd_congr
       : ∀ x : ℤ, f.val (2 * x + 1) ≡ f.val 1 [ZMOD 3] := by
     intro x
@@ -414,7 +377,8 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
         rw [hf_mod_3_eq (2 * x' + 1), ih]
     | pred x' ih =>
         rw [mul_sub, ← hf_mod_3_eq (2 * (-x') - 2 * 1 + 1)]
-        have : 2 * (-x' : ℤ) - 2 * 1 + 1 + 2 = 2 * (-x') +1 := by ring
+        have : 2 * (-x' : ℤ) - 2 * 1 + 1 + 2 = 2 * (-x') +1 := by
+          ring
         rw [this]
         exact ih
   -- So the image of f.val can have at most two distinct remainders
@@ -440,8 +404,10 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
     ConcreteCategory.bijective_of_isIso f
   -- and hence surjective,
   have hf_surj : Function.Surjective f.val := hf_bij.right
-  -- but a surjective function on ℤ must hit all three remainders mod 3
-  have hf_img_set₂ : Set.range (fun x ↦ f.val x % 3) = {0, 1, 2} := by
+  -- but a surjective function on ℤ must hit all three remainders
+  -- mod 3
+  have hf_img_set₂ :
+      Set.range (fun x ↦ f.val x % 3) = {0, 1, 2} := by
     ext b
     constructor
     · rintro ⟨a, hfa⟩
@@ -459,8 +425,8 @@ example (f : ℤα ⟶ ℤβ) : ¬(IsIso f) := by
         dsimp
         rw [hfa, hb]
         norm_num1
-  -- Since we have found that the image of f.val can have at most two
-  -- distinct elements and must also have exactly three distinct
+  -- Since we have found that the image of f.val can have at most
+  -- two distinct elements and must also have exactly three distinct
   -- elements, we have a contradiction
   have h_card₁
       : Set.ncard ({f.val 0 % 3, f.val 1 % 3} : Set ℤ) ≤ 2 := by
@@ -487,105 +453,81 @@ inductive D
   | d₁ | d₂ | d₃
 
 def graph_a : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₁
     | A.a₃ => D.d₃
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₃
     | A.a₂ => D.d₂
     | A.a₃ => D.d₂
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def graph_b : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₂
     | A.a₃ => D.d₂,
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₃
     | A.a₃ => D.d₁
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def graph_c : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₁
     | A.a₃ => D.d₁
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₃
     | A.a₂ => D.d₂
     | A.a₃ => D.d₃
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def graph_d : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₃
     | A.a₂ => D.d₁
     | A.a₃ => D.d₂
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₂
     | A.a₃ => D.d₃
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def graph_e : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₁
     | A.a₃ => D.d₃
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₃
     | A.a₂ => D.d₂
     | A.a₃ => D.d₁
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def graph_f : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₁
     | A.a₃ => D.d₁
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₃
     | A.a₃ => D.d₃
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def f₁ : graph_a ⟶ graph_d := {
@@ -600,10 +542,9 @@ def f₁ : graph_a ⟶ graph_d := {
       | D.d₃ => D.d₃
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 def finv₁ : graph_d ⟶ graph_a := {
@@ -618,29 +559,28 @@ def finv₁ : graph_d ⟶ graph_a := {
       | D.d₃ => D.d₃
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 example : graph_a ≅ graph_d := {
   hom := f₁,
   inv := finv₁,
   hom_inv_id := by
-    have h₁ : (finv₁.val.1 ⊚ f₁.val.1 = 𝟙 graph_a.tA) ∧
-        (finv₁.val.2 ⊚ f₁.val.2 = 𝟙 graph_a.tD) := by
+    have h₁ : (finv₁.val.1 ⊚ f₁.val.1 = 𝟙 graph_a.carrierA) ∧
+        (finv₁.val.2 ⊚ f₁.val.2 = 𝟙 graph_a.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (finv₁.val.1 ⊚ f₁.val.1, finv₁.val.2 ⊚ f₁.val.2) =
-        (𝟙 graph_a.tA, 𝟙 graph_a.tD) := by
+        (𝟙 graph_a.carrierA, 𝟙 graph_a.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂,
   inv_hom_id := by
-    have h₁ : (f₁.val.1 ⊚ finv₁.val.1 = 𝟙 graph_d.tA) ∧
-        (f₁.val.2 ⊚ finv₁.val.2 = 𝟙 graph_d.tD) := by
+    have h₁ : (f₁.val.1 ⊚ finv₁.val.1 = 𝟙 graph_d.carrierA) ∧
+        (f₁.val.2 ⊚ finv₁.val.2 = 𝟙 graph_d.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (f₁.val.1 ⊚ finv₁.val.1, f₁.val.2 ⊚ finv₁.val.2) =
-        (𝟙 graph_d.tA, 𝟙 graph_d.tD) := by
+        (𝟙 graph_d.carrierA, 𝟙 graph_d.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂
 }
@@ -657,10 +597,9 @@ def f₂ : graph_b ⟶ graph_e := {
       | D.d₃ => D.d₂
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 def finv₂ : graph_e ⟶ graph_b := {
@@ -675,29 +614,28 @@ def finv₂ : graph_e ⟶ graph_b := {
       | D.d₃ => D.d₁
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 example : graph_b ≅ graph_e := {
   hom := f₂,
   inv := finv₂,
   hom_inv_id := by
-    have h₁ : (finv₂.val.1 ⊚ f₂.val.1 = 𝟙 graph_b.tA) ∧
-        (finv₂.val.2 ⊚ f₂.val.2 = 𝟙 graph_b.tD) := by
+    have h₁ : (finv₂.val.1 ⊚ f₂.val.1 = 𝟙 graph_b.carrierA) ∧
+        (finv₂.val.2 ⊚ f₂.val.2 = 𝟙 graph_b.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (finv₂.val.1 ⊚ f₂.val.1, finv₂.val.2 ⊚ f₂.val.2) =
-        (𝟙 graph_b.tA, 𝟙 graph_b.tD) := by
+        (𝟙 graph_b.carrierA, 𝟙 graph_b.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂,
   inv_hom_id := by
-    have h₁ : (f₂.val.1 ⊚ finv₂.val.1 = 𝟙 graph_e.tA) ∧
-        (f₂.val.2 ⊚ finv₂.val.2 = 𝟙 graph_e.tD) := by
+    have h₁ : (f₂.val.1 ⊚ finv₂.val.1 = 𝟙 graph_e.carrierA) ∧
+        (f₂.val.2 ⊚ finv₂.val.2 = 𝟙 graph_e.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (f₂.val.1 ⊚ finv₂.val.1, f₂.val.2 ⊚ finv₂.val.2) =
-        (𝟙 graph_e.tA, 𝟙 graph_e.tD) := by
+        (𝟙 graph_e.carrierA, 𝟙 graph_e.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂
 }
@@ -714,10 +652,9 @@ def f₃ : graph_c ⟶ graph_f := {
       | D.d₃ => D.d₃
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 def finv₃ : graph_f ⟶ graph_c := {
@@ -732,29 +669,28 @@ def finv₃ : graph_f ⟶ graph_c := {
       | D.d₃ => D.d₃
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 example : graph_c ≅ graph_f := {
   hom := f₃,
   inv := finv₃,
   hom_inv_id := by
-    have h₁ : (finv₃.val.1 ⊚ f₃.val.1 = 𝟙 graph_c.tA) ∧
-        (finv₃.val.2 ⊚ f₃.val.2 = 𝟙 graph_c.tD) := by
+    have h₁ : (finv₃.val.1 ⊚ f₃.val.1 = 𝟙 graph_c.carrierA) ∧
+        (finv₃.val.2 ⊚ f₃.val.2 = 𝟙 graph_c.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (finv₃.val.1 ⊚ f₃.val.1, finv₃.val.2 ⊚ f₃.val.2) =
-        (𝟙 graph_c.tA, 𝟙 graph_c.tD) := by
+        (𝟙 graph_c.carrierA, 𝟙 graph_c.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂,
   inv_hom_id := by
-    have h₁ : (f₃.val.1 ⊚ finv₃.val.1 = 𝟙 graph_f.tA) ∧
-        (f₃.val.2 ⊚ finv₃.val.2 = 𝟙 graph_f.tD) := by
+    have h₁ : (f₃.val.1 ⊚ finv₃.val.1 = 𝟙 graph_f.carrierA) ∧
+        (f₃.val.2 ⊚ finv₃.val.2 = 𝟙 graph_f.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (f₃.val.1 ⊚ finv₃.val.1, f₃.val.2 ⊚ finv₃.val.2) =
-        (𝟙 graph_f.tA, 𝟙 graph_f.tD) := by
+        (𝟙 graph_f.carrierA, 𝟙 graph_f.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂
 }
@@ -773,10 +709,8 @@ inductive D
   | d₁ | d₂ | d₃ | d₄ | d₅
 
 def graph_L : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₂
@@ -784,7 +718,6 @@ def graph_L : IrreflexiveGraph := {
     | A.a₄ => D.d₄
     | A.a₅ => D.d₁
     | A.a₆ => D.d₅
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₃
@@ -792,14 +725,11 @@ def graph_L : IrreflexiveGraph := {
     | A.a₄ => D.d₁
     | A.a₅ => D.d₅
     | A.a₆ => D.d₃
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def graph_R : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₃
@@ -807,7 +737,6 @@ def graph_R : IrreflexiveGraph := {
     | A.a₄ => D.d₄
     | A.a₅ => D.d₁
     | A.a₆ => D.d₅
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₂
@@ -815,7 +744,6 @@ def graph_R : IrreflexiveGraph := {
     | A.a₄ => D.d₁
     | A.a₅ => D.d₅
     | A.a₆ => D.d₃
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
 def f : graph_L ⟶ graph_R := {
@@ -836,10 +764,9 @@ def f : graph_L ⟶ graph_R := {
       | D.d₅ => D.d₂
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 def finv : graph_R ⟶ graph_L := {
@@ -859,29 +786,28 @@ def finv : graph_R ⟶ graph_L := {
       | D.d₅ => D.d₄
   )
   property := by
-    split_ands
+    constructor
     all_goals
-      first | exact fun _ _ ↦ Set.mem_univ _
-            | funext x; cases x <;> rfl
+      funext x; cases x <;> rfl
 }
 
 example : graph_L ≅ graph_R := {
   hom := f,
   inv := finv,
   hom_inv_id := by
-    have h₁ : (finv.val.1 ⊚ f.val.1 = 𝟙 graph_L.tA) ∧
-        (finv.val.2 ⊚ f.val.2 = 𝟙 graph_L.tD) := by
+    have h₁ : (finv.val.1 ⊚ f.val.1 = 𝟙 graph_L.carrierA) ∧
+        (finv.val.2 ⊚ f.val.2 = 𝟙 graph_L.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (finv.val.1 ⊚ f.val.1, finv.val.2 ⊚ f.val.2) =
-        (𝟙 graph_L.tA, 𝟙 graph_L.tD) := by
+        (𝟙 graph_L.carrierA, 𝟙 graph_L.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂,
   inv_hom_id := by
-    have h₁ : (f.val.1 ⊚ finv.val.1 = 𝟙 graph_R.tA) ∧
-        (f.val.2 ⊚ finv.val.2 = 𝟙 graph_R.tD) := by
+    have h₁ : (f.val.1 ⊚ finv.val.1 = 𝟙 graph_R.carrierA) ∧
+        (f.val.2 ⊚ finv.val.2 = 𝟙 graph_R.carrierD) := by
       constructor <;> (funext x; cases x <;> rfl)
     have h₂ : (f.val.1 ⊚ finv.val.1, f.val.2 ⊚ finv.val.2) =
-        (𝟙 graph_R.tA, 𝟙 graph_R.tD) := by
+        (𝟙 graph_R.carrierA, 𝟙 graph_R.carrierD) := by
       rw [h₁.1, h₁.2]
     exact Subtype.ext h₂
 }
@@ -899,24 +825,19 @@ inductive A
 abbrev D := Fin 2
 
 def J : IrreflexiveGraph := {
-  tA := A
-  carrierA := Set.univ
-  tD := D
-  carrierD := Set.univ
+  carrierA := A
+  carrierD := D
   toSrc := fun
     | A.a₁ => 0
     | A.a₂ => 1
     | A.a₃ => 1
-  toSrc_mem := fun _ ↦ Set.mem_univ _
   toTgt := fun
     | A.a₁ => 0
     | A.a₂ => 0
     | A.a₃ => 1
-  toTgt_mem := fun _ ↦ Set.mem_univ _
 }
 
-variable (G : IrreflexiveGraph)
-         (b e : G.tD) (hb : b ∈ G.carrierD) (he : e ∈ G.carrierD)
+variable (G : IrreflexiveGraph) (b e : G.carrierD)
 
 end Ex11_8
 

@@ -40,10 +40,8 @@ Successor map (p. 178)
 def σ : ℕ ⟶ ℕ := (· + 1)
 
 def ℕσ : SetWithEndomap := {
-  t := ℕ
-  carrier := Set.univ
+  carrier := ℕ
   toEnd := σ
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 /-!
@@ -54,62 +52,52 @@ namespace Ex15_2
 def ς : Fin 4 ⟶ Fin 4 := (· + 1)
 
 def C₄ : SetWithEndomap := {
-  t := Fin 4
-  carrier := Set.univ
+  carrier := Fin 4
   toEnd := ς
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
-def f₀ : ℕσ.t ⟶ C₄.t
+def f₀ : ℕσ.carrier ⟶ C₄.carrier
   | Nat.zero => (0 : Fin 4) -- f(0) = 0
   | n + 1 => ς (f₀ n)
 
 def f₀' : ℕσ ⟶ C₄ := ⟨
   f₀,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      dsimp [f₀, ℕσ, C₄, σ, ς]
+    funext x
+    dsimp [f₀, ℕσ, C₄, σ, ς]
 ⟩
 
-def f₁ : ℕσ.t ⟶ C₄.t
+def f₁ : ℕσ.carrier ⟶ C₄.carrier
   | Nat.zero => (1 : Fin 4) -- f(0) = 1
   | n + 1 => ς (f₁ n)
 
 def f₁' : ℕσ ⟶ C₄ := ⟨
   f₁,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      dsimp [f₁, ℕσ, C₄, σ, ς]
+    funext x
+    dsimp [f₁, ℕσ, C₄, σ, ς]
 ⟩
 
-def f₂ : ℕσ.t ⟶ C₄.t
+def f₂ : ℕσ.carrier ⟶ C₄.carrier
   | Nat.zero => (2 : Fin 4) -- f(0) = 2
   | n + 1 => ς (f₂ n)
 
 def f₂' : ℕσ ⟶ C₄ := ⟨
   f₂,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      dsimp [f₂, ℕσ, C₄, σ, ς]
+    funext x
+    dsimp [f₂, ℕσ, C₄, σ, ς]
 ⟩
 
-def f₃ : ℕσ.t ⟶ C₄.t
+def f₃ : ℕσ.carrier ⟶ C₄.carrier
   | Nat.zero => (3 : Fin 4) -- f(0) = 3
   | n + 1 => ς (f₃ n)
 
 def f₃' : ℕσ ⟶ C₄ := ⟨
   f₃,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      dsimp [f₃, ℕσ, C₄, σ, ς]
+    funext x
+    dsimp [f₃, ℕσ, C₄, σ, ς]
 ⟩
 
 end Ex15_2
@@ -125,10 +113,8 @@ namespace Ex15_4
 variable (X : Type) (α : X ⟶ X)
 
 def Xα : SetWithEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 example : α ⊚ (Xα X α).toEnd = (Xα X α).toEnd ⊚ α := rfl
@@ -138,10 +124,10 @@ end Ex15_4
 /-!
 Exercise 15.5 (p. 179)
 -/
-example (Yβ : SetWithEndomap) (f : ℕσ ⟶ Yβ) (y : Yβ.t)
+example (Yβ : SetWithEndomap) (f : ℕσ ⟶ Yβ) (y : Yβ.carrier)
     (hy : f.val (0 : ℕ) = y)
     : (f.val ⊚ σ) (0 : ℕ) = Yβ.toEnd y := by
-  obtain ⟨f, _, hf_comm⟩ := f
+  obtain ⟨f, hf_comm⟩ := f
   have h0 : ℕσ.toEnd (0 : ℕ) = (1 : ℕ) := rfl
   rw [← hy]
   dsimp [σ]
@@ -168,31 +154,21 @@ structure Person where
 def m : Person ⟶ Person := fun _ ↦ ⟨ParentType.isMother⟩
 
 def Xm : SetWithEndomap := {
-  t := Person
-  carrier := Set.univ
+  carrier := Person
   toEnd := m
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
-def g : Xm.t ⟶ B
+def g : Xm.carrier ⟶ B
   | ⟨ParentType.isMother⟩ => B.female
 
 example : g ⊚ Xm.toEnd = β ⊚ g := rfl
 
 def Bβ : SetWithEndomap := {
-  t := B
-  carrier := Set.univ
+  carrier := B
   toEnd := β
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
-def g' : Xm ⟶ Bβ := ⟨
-  g,
-  by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · rfl
-⟩
+def g' : Xm ⟶ Bβ := ⟨g, rfl⟩
 
 end Ex15_6
 
@@ -236,20 +212,16 @@ def β : Y ⟶ Y
   | Y.z => Y.y
 
 def Xα : SetWithEndomap := {
-  t := X
-  carrier := Set.univ
+  carrier := X
   toEnd := α
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
 def Yβ : SetWithEndomap := {
-  t := Y
-  carrier := Set.univ
+  carrier := Y
   toEnd := β
-  toEnd_mem := fun _ ↦ Set.mem_univ _
 }
 
-def f₁ : Xα.t ⟶ Yβ.t
+def f₁ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.w
   | X.a₁ => Y.x
   | X.a₂ => Y.y
@@ -263,13 +235,11 @@ def f₁ : Xα.t ⟶ Yβ.t
 def f₁' : Xα ⟶ Yβ := ⟨
   f₁,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₂ : Xα.t ⟶ Yβ.t
+def f₂ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.w
   | X.a₁ => Y.x
   | X.a₂ => Y.y
@@ -283,13 +253,11 @@ def f₂ : Xα.t ⟶ Yβ.t
 def f₂' : Xα ⟶ Yβ := ⟨
   f₂,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₃ : Xα.t ⟶ Yβ.t
+def f₃ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.w
   | X.a₁ => Y.x
   | X.a₂ => Y.y
@@ -303,13 +271,11 @@ def f₃ : Xα.t ⟶ Yβ.t
 def f₃' : Xα ⟶ Yβ := ⟨
   f₃,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₄ : Xα.t ⟶ Yβ.t
+def f₄ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.w
   | X.a₁ => Y.x
   | X.a₂ => Y.y
@@ -323,13 +289,11 @@ def f₄ : Xα.t ⟶ Yβ.t
 def f₄' : Xα ⟶ Yβ := ⟨
   f₄,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₅ : Xα.t ⟶ Yβ.t
+def f₅ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.x
   | X.a₁ => Y.y
   | X.a₂ => Y.w
@@ -343,13 +307,11 @@ def f₅ : Xα.t ⟶ Yβ.t
 def f₅' : Xα ⟶ Yβ := ⟨
   f₅,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₆ : Xα.t ⟶ Yβ.t
+def f₆ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.x
   | X.a₁ => Y.y
   | X.a₂ => Y.w
@@ -363,13 +325,11 @@ def f₆ : Xα.t ⟶ Yβ.t
 def f₆' : Xα ⟶ Yβ := ⟨
   f₆,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₇ : Xα.t ⟶ Yβ.t
+def f₇ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.y
   | X.a₁ => Y.w
   | X.a₂ => Y.x
@@ -383,13 +343,11 @@ def f₇ : Xα.t ⟶ Yβ.t
 def f₇' : Xα ⟶ Yβ := ⟨
   f₇,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₈ : Xα.t ⟶ Yβ.t
+def f₈ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.y
   | X.a₁ => Y.w
   | X.a₂ => Y.x
@@ -403,13 +361,11 @@ def f₈ : Xα.t ⟶ Yβ.t
 def f₈' : Xα ⟶ Yβ := ⟨
   f₈,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₉ : Xα.t ⟶ Yβ.t
+def f₉ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.y
   | X.a₁ => Y.w
   | X.a₂ => Y.x
@@ -423,13 +379,11 @@ def f₉ : Xα.t ⟶ Yβ.t
 def f₉' : Xα ⟶ Yβ := ⟨
   f₉,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₁₀ : Xα.t ⟶ Yβ.t
+def f₁₀ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.y
   | X.a₁ => Y.w
   | X.a₂ => Y.x
@@ -443,13 +397,11 @@ def f₁₀ : Xα.t ⟶ Yβ.t
 def f₁₀' : Xα ⟶ Yβ := ⟨
   f₁₀,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₁₁ : Xα.t ⟶ Yβ.t
+def f₁₁ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.z
   | X.a₁ => Y.y
   | X.a₂ => Y.w
@@ -463,13 +415,11 @@ def f₁₁ : Xα.t ⟶ Yβ.t
 def f₁₁' : Xα ⟶ Yβ := ⟨
   f₁₁,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
-def f₁₂ : Xα.t ⟶ Yβ.t
+def f₁₂ : Xα.carrier ⟶ Yβ.carrier
   | X.a => Y.z
   | X.a₁ => Y.y
   | X.a₂ => Y.w
@@ -483,10 +433,8 @@ def f₁₂ : Xα.t ⟶ Yβ.t
 def f₁₂' : Xα ⟶ Yβ := ⟨
   f₁₂,
   by
-    constructor
-    · exact fun _ _ ↦ Set.mem_univ _
-    · funext x
-      cases x <;> rfl
+    funext x
+    cases x <;> rfl
 ⟩
 
 end Ex15_7
