@@ -35,7 +35,7 @@ In the exercises that follow for this Session, we implement the free category �
 ```
 
 ```leanOutput out_Quiver_Path
-inductive Quiver.Path.{v, u} : {V : Type u} → [Quiver V] → V → V → Sort (max (u + 1) v)
+inductive Quiver.Path.{v, u} : {V : Type u} → [Quiver V] → V → V → Type (max u v)
 number of parameters: 3
 constructors:
 Quiver.Path.nil : {V : Type u} → [inst : Quiver V] → {a : V} → Quiver.Path a a

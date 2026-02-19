@@ -30,6 +30,10 @@ For the exercises in this Session, we use the category `Type` instead of the cat
 namespace Ex14_1_3
 ```
 
+```lean -show
+set_option linter.unusedVariables false
+```
+
 ```savedLean
 variable (X Y : Type) (α : End X) (β : End Y)
          (f : X ⟶ Y) (hf_comm : f ⊚ α = β ⊚ f)
@@ -205,6 +209,10 @@ namespace Ex14_4
 ```
 
 The solution below faithfully follows the one provided in the book on p. 174.
+
+```lean -show
+set_option linter.unusedVariables false
+```
 
 ```savedLean
 inductive X

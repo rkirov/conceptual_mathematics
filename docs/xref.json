@@ -1326,36 +1326,6 @@
         "Article III: Examples of categories",
         "4. Categories of endomaps"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.instCatInvEndomap":
-   [{"id": "CM___instCatInvEndomap",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___instCatInvEndomap":
-      {"display": "instCatInvEndomap",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.instCatIdemEndomap":
-   [{"id": "CM___instCatIdemEndomap",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___instCatIdemEndomap":
-      {"display": "instCatIdemEndomap",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.instCatEndomap":
-   [{"id": "CM___instCatEndomap",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___instCatEndomap":
-      {"display": "instCatEndomap",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.idempotentCount":
    [{"id": "CM___idempotentCount",
      "data":
@@ -1700,16 +1670,6 @@
         "Session 9: Retracts and idempotents",
         "2. Idempotents as records of retracts"]}},
      "address": "/Session-9___-Retracts-and-idempotents/"}],
-   "CM.SimpleGraph.toFun_mem":
-   [{"id": "CM___SimpleGraph___toFun_mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___SimpleGraph___toFun_mem":
-      {"display": "toFun_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "7. The simpler category 𝑺↓: Objects are just maps of sets"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.SimpleGraph.toFun":
    [{"id": "CM___SimpleGraph___toFun",
      "data":
@@ -1720,21 +1680,11 @@
         "Article III: Examples of categories",
         "7. The simpler category 𝑺↓: Objects are just maps of sets"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.SimpleGraph.tD":
-   [{"id": "CM___SimpleGraph___tD",
+   "CM.SimpleGraph.hom_ext":
+   [{"id": "CM___SimpleGraph___hom_ext",
      "data":
-     {"/Article-III___-Examples-of-categories/#CM___SimpleGraph___tD":
-      {"display": "tD",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "7. The simpler category 𝑺↓: Objects are just maps of sets"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.SimpleGraph.tA":
-   [{"id": "CM___SimpleGraph___tA",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___SimpleGraph___tA":
-      {"display": "tA",
+     {"/Article-III___-Examples-of-categories/#CM___SimpleGraph___hom_ext":
+      {"display": "SimpleGraph.hom_ext",
        "context":
        ["A Lean Companion to Conceptual Mathematics",
         "Article III: Examples of categories",
@@ -1770,16 +1720,6 @@
         "Article III: Examples of categories",
         "7. The simpler category 𝑺↓: Objects are just maps of sets"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.SetWithTwoEndomaps.toEnd2_mem":
-   [{"id": "CM___SetWithTwoEndomaps___toEnd2_mem",
-     "data":
-     {"/Session-12___-Categories-of-diagrams/#CM___SetWithTwoEndomaps___toEnd2_mem":
-      {"display": "toEnd2_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Session 12: Categories of diagrams",
-        "2. Family trees"]}},
-     "address": "/Session-12___-Categories-of-diagrams/"}],
    "CM.SetWithTwoEndomaps.toEnd2":
    [{"id": "CM___SetWithTwoEndomaps___toEnd2",
      "data":
@@ -1870,31 +1810,11 @@
         "Article III: Examples of categories",
         "1. The category 𝑺↻ of endomaps of sets"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.SetWithEndomap.toEnd_mem":
-   [{"id": "CM___SetWithEndomap___toEnd_mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___SetWithEndomap___toEnd_mem":
-      {"display": "toEnd_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "1. The category 𝑺↻ of endomaps of sets"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.SetWithEndomap.toEnd":
    [{"id": "CM___SetWithEndomap___toEnd",
      "data":
      {"/Article-III___-Examples-of-categories/#CM___SetWithEndomap___toEnd":
       {"display": "toEnd",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "1. The category 𝑺↻ of endomaps of sets"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.SetWithEndomap.t":
-   [{"id": "CM___SetWithEndomap___t",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___SetWithEndomap___t":
-      {"display": "t",
        "context":
        ["A Lean Companion to Conceptual Mathematics",
         "Article III: Examples of categories",
@@ -1940,16 +1860,6 @@
         "Article II: Isomorphisms",
         "3. Retractions, sections, and idempotents"]}},
      "address": "/Article-II___-Isomorphisms/"}],
-   "CM.ReflexiveGraph.toCommonSection_mem":
-   [{"id": "CM___ReflexiveGraph___toCommonSection_mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ReflexiveGraph___toCommonSection_mem":
-      {"display": "toCommonSection_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.ReflexiveGraph.toCommonSection":
    [{"id": "CM___ReflexiveGraph___toCommonSection",
      "data":
@@ -1975,6 +1885,16 @@
      "data":
      {"/Article-III___-Examples-of-categories/#CM___ReflexiveGraph___section_src":
       {"display": "section_src",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article III: Examples of categories",
+        "8. Reflexive graphs"]}},
+     "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.ReflexiveGraph.hom_ext":
+   [{"id": "CM___ReflexiveGraph___hom_ext",
+     "data":
+     {"/Article-III___-Examples-of-categories/#CM___ReflexiveGraph___hom_ext":
+      {"display": "ReflexiveGraph.hom_ext",
        "context":
        ["A Lean Companion to Conceptual Mathematics",
         "Article III: Examples of categories",
@@ -2143,31 +2063,11 @@
         "Session 5: Division of maps: Sections and retractions",
         "2. A special case: Constant maps"]}},
      "address": "/Session-5___-Division-of-maps___-Sections-and-retractions/"}],
-   "CM.IrreflexiveGraph.toTgt_mem":
-   [{"id": "CM___IrreflexiveGraph___toTgt_mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___IrreflexiveGraph___toTgt_mem":
-      {"display": "toTgt_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "5. Irreflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.IrreflexiveGraph.toTgt":
    [{"id": "CM___IrreflexiveGraph___toTgt",
      "data":
      {"/Article-III___-Examples-of-categories/#CM___IrreflexiveGraph___toTgt":
       {"display": "toTgt",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "5. Irreflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.IrreflexiveGraph.toSrc_mem":
-   [{"id": "CM___IrreflexiveGraph___toSrc_mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___IrreflexiveGraph___toSrc_mem":
-      {"display": "toSrc_mem",
        "context":
        ["A Lean Companion to Conceptual Mathematics",
         "Article III: Examples of categories",
@@ -2183,21 +2083,11 @@
         "Article III: Examples of categories",
         "5. Irreflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.IrreflexiveGraph.tD":
-   [{"id": "CM___IrreflexiveGraph___tD",
+   "CM.IrreflexiveGraph.hom_ext":
+   [{"id": "CM___IrreflexiveGraph___hom_ext",
      "data":
-     {"/Article-III___-Examples-of-categories/#CM___IrreflexiveGraph___tD":
-      {"display": "tD",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "5. Irreflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.IrreflexiveGraph.tA":
-   [{"id": "CM___IrreflexiveGraph___tA",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___IrreflexiveGraph___tA":
-      {"display": "tA",
+     {"/Article-III___-Examples-of-categories/#CM___IrreflexiveGraph___hom_ext":
+      {"display": "IrreflexiveGraph.hom_ext",
        "context":
        ["A Lean Companion to Conceptual Mathematics",
         "Article III: Examples of categories",
@@ -2277,16 +2167,6 @@
         "Article III: Examples of categories",
         "4. Categories of endomaps"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.InvEndomap.inv":
-   [{"id": "CM___InvEndomap___inv",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___InvEndomap___inv":
-      {"display": "inv",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.InvEndomap":
    [{"id": "CM___InvEndomap",
      "data":
@@ -2327,16 +2207,6 @@
         "Article II: Isomorphisms",
         "3. Retractions, sections, and idempotents"]}},
      "address": "/Article-II___-Isomorphisms/"}],
-   "CM.IdemEndomap.idem":
-   [{"id": "CM___IdemEndomap___idem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___IdemEndomap___idem":
-      {"display": "idem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.IdemEndomap":
    [{"id": "CM___IdemEndomap",
      "data":
@@ -3306,26 +3176,6 @@
         "Article III: Examples of categories",
         "8. Reflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.ExIII_17.ParentLike.φ_mem":
-   [{"id": "CM___ExIII_17___ParentLike_______mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike_______mem":
-      {"display": "φ_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.ExIII_17.ParentLike.φ'_mem":
-   [{"id": "CM___ExIII_17___ParentLike__________mem",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike__________mem":
-      {"display": "φ'_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.ExIII_17.ParentLike.φ'":
    [{"id": "CM___ExIII_17___ParentLike_________",
      "data":
@@ -3346,26 +3196,6 @@
         "Article III: Examples of categories",
         "8. Reflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.ExIII_17.ParentLike.μ_mem":
-   [{"id": "CM___ExIII_17___ParentLike_______mem-next",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike_______mem-next":
-      {"display": "μ_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.ExIII_17.ParentLike.μ'_mem":
-   [{"id": "CM___ExIII_17___ParentLike__________mem-next",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike__________mem-next":
-      {"display": "μ'_mem",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.ExIII_17.ParentLike.μ'":
    [{"id": "CM___ExIII_17___ParentLike_________-next",
      "data":
@@ -3381,26 +3211,6 @@
      "data":
      {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike______-next":
       {"display": "μ",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.ExIII_17.ParentLike.tM":
-   [{"id": "CM___ExIII_17___ParentLike___tM",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike___tM":
-      {"display": "tM",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "8. Reflexive graphs"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.ExIII_17.ParentLike.tF":
-   [{"id": "CM___ExIII_17___ParentLike___tF",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___ExIII_17___ParentLike___tF":
-      {"display": "tF",
        "context":
        ["A Lean Companion to Conceptual Mathematics",
         "Article III: Examples of categories",
@@ -7567,56 +7377,6 @@
         "1. A category of richer structures: Endomaps of sets"]}},
      "address":
      "/Session-11___-Ascending-to-categories-of-richer-structures/"}],
-   "CM.EndomapHom.id":
-   [{"id": "CM___EndomapHom___id",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___EndomapHom___id":
-      {"display": "id",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.EndomapHom.comp":
-   [{"id": "CM___EndomapHom___comp",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___EndomapHom___comp":
-      {"display": "comp",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.EndomapHom":
-   [{"id": "CM___EndomapHom",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___EndomapHom":
-      {"display": "EndomapHom",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.Endomap.toEnd":
-   [{"id": "CM___Endomap___toEnd",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___Endomap___toEnd":
-      {"display": "toEnd",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
-   "CM.Endomap.carrier":
-   [{"id": "CM___Endomap___carrier",
-     "data":
-     {"/Article-III___-Examples-of-categories/#CM___Endomap___carrier":
-      {"display": "carrier",
-       "context":
-       ["A Lean Companion to Conceptual Mathematics",
-        "Article III: Examples of categories",
-        "4. Categories of endomaps"]}},
-     "address": "/Article-III___-Examples-of-categories/"}],
    "CM.Endomap":
    [{"id": "CM___Endomap",
      "data":

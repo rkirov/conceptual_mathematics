@@ -830,7 +830,7 @@ def functorSetWithEndomapToIrreflexiveGraph
       obtain ⟨carrierY, toEndY⟩ := Y
       obtain ⟨f, hf_comm⟩ := f
       dsimp at f hf_comm
-      constructor <;> (dsimp; intros; trivial)
+      constructor <;> (dsimp; trivial)
   }
 }
 
@@ -930,11 +930,7 @@ instance : Category SimpleGraph where
     f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
         f.2 ⊚ X.toFun = Y.toFun ⊚ f.1 -- commutes
   }
-  id X := ⟨
-    (𝟙 X.carrierA, 𝟙 X.carrierD),
-    by
-      constructor <;> first | exact fun _ hx ↦ hx | rfl
-  ⟩
+  id X := ⟨(𝟙 X.carrierA, 𝟙 X.carrierD), rfl⟩
   comp := by
     rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
     exact ⟨
@@ -966,11 +962,8 @@ def functorSetWithEndomapToSimpleGraph
   map {X Y : SetWithEndomap} (f : X ⟶ Y) := {
     val := (f, f)
     property := by
-      obtain ⟨carrierX, toEndX⟩ := X
-      obtain ⟨carrierY, toEndY⟩ := Y
       obtain ⟨f, hf_comm⟩ := f
-      dsimp at f hf_comm
-      split_ands <;> (dsimp; intros; trivial)
+      trivial
   }
 }
 

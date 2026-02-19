@@ -1028,6 +1028,10 @@ def J : IrreflexiveGraph := {
 
 $`G` is any graph, and $`b` and $`e` are dots of $`G`.
 
+```lean -show
+set_option linter.unusedVariables false
+```
+
 ```savedLean
 variable (G : IrreflexiveGraph) (b e : G.carrierD)
 ```

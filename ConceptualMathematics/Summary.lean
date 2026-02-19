@@ -41,6 +41,10 @@ In _any_ category
 namespace AnyCategory
 ```
 
+```lean -show
+set_option linter.unusedVariables false
+```
+
 ```savedLean
 variable {𝒞 : Type u} [Category.{v, u} 𝒞] {A X : 𝒞}
          {j : A ⟶ X} {p : X ⟶ A}
@@ -74,6 +78,10 @@ namespace CM_Fintype
 ```
 
 We use `Fintype`s instead of finite sets.
+
+```lean -show
+set_option linter.unusedVariables false
+```
 
 ```savedLean
 variable {A X : Type u} [Fintype A] [Fintype X] {j : A ⟶ X} {p : X ⟶ A}
