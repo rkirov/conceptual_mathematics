@@ -1061,142 +1061,1308 @@
  "318": "<code>ℝ → ℝ</code>",
  "317": "<code>1 = 0</code>",
  "316": "<code>k 0 = 0</code>",
+ "3152":
+ "<code>(BinaryFan.mk t s).pt ⟶ (pair A A).obj { as := WalkingPair.right }</code>",
+ "3151":
+ "<code>(BinaryFan.mk t s).pt ⟶ (pair A A).obj { as := WalkingPair.left }</code>",
+ "3150":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 2 } ⟶\n  coconeAA.pt</code>",
  "315": "<code>h 0 = 1</code>",
+ "3149": "<code>(↑(p₂ ⊚ finv ⊚ j₃)).2 x = d₀</code>",
+ "3148": "<code>(↑(p₁ ⊚ finv ⊚ j₃)).2 x = d₁</code>",
+ "3147":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨2, ⋯⟩ }).carrierD</code>",
+ "3146":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨2, ⋯⟩ }).carrierA</code>",
+ "3145":
+ "<code>(BinaryFan.mk s t).pt ⟶ (pair A A).obj { as := WalkingPair.right }</code>",
+ "3144":
+ "<code>(BinaryFan.mk s t).pt ⟶ (pair A A).obj { as := WalkingPair.left }</code>",
+ "3143":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 1 } ⟶\n  coconeAA.pt</code>",
+ "3142": "<code>(↑(p₂ ⊚ finv ⊚ j₂)).2 x = d₁</code>",
+ "3141": "<code>(↑(p₁ ⊚ finv ⊚ j₂)).2 x = d₀</code>",
+ "3140":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierD</code>",
  "314":
  "<code class=\"docstring\">`by_contra h` proves `⊢ p` by contradiction,\nintroducing a hypothesis `h : ¬p` and proving `False`.\n* If `p` is a negation `¬q`, `h : q` will be introduced instead of `¬¬q`.\n* If `p` is decidable, it uses `Decidable.byContradiction` instead of `Classical.byContradiction`.\n* If `h` is omitted, the introduced variable will be called `this`.\n</code>",
+ "3139":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierA</code>",
+ "3138":
+ "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨1, ⋯⟩) = (fun i ↦ i) ⟨1, ⋯⟩</code>",
+ "3137":
+ "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨1, ⋯⟩) = (fun i ↦ i) ⟨1, ⋯⟩</code>",
+ "3136":
+ "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨0, ⋯⟩) = (fun i ↦ i) ⟨0, ⋯⟩</code>",
+ "3135":
+ "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨0, ⋯⟩) = (fun i ↦ i) ⟨0, ⋯⟩</code>",
+ "3134":
+ "<code>(BinaryFan.mk (𝟙 A) (𝟙 A)).pt ⟶ (pair A A).obj { as := WalkingPair.right }</code>",
+ "3133":
+ "<code>(BinaryFan.mk (𝟙 A) (𝟙 A)).pt ⟶ (pair A A).obj { as := WalkingPair.left }</code>",
+ "3132":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 0 } ⟶\n  coconeAA.pt</code>",
+ "3131": "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 x = x</code>",
+ "3130": "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 x = x</code>",
  "313": "<code>CM.ExII_3.k : Fin 2 ⟶ Fin 2</code>",
+ "3129":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨0, ⋯⟩ }).carrierD</code>",
+ "3128":
+ "<code>CategoryTheory.Limits.IsColimit.hom_ext.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (h : IsColimit t) {W : C} {f f' : t.pt ⟶ W}\n  (w : ∀ (j : J), f ⊚ t.ι.app j = f' ⊚ t.ι.app j) : f = f'</code><span class=\"sep\"></span><code class=\"docstring\">Two morphisms out of a colimit are equal if their compositions with\neach cocone morphism are equal. </code>",
+ "3127":
+ "<code>f ⊚ finv = 𝟙 ADD</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "3126":
+ "<code class=\"docstring\">`erw [rules]` is a shorthand for `rw (transparency := .default) [rules]`.\nThis does rewriting up to unfolding of regular definitions (by comparison to regular `rw`\nwhich only unfolds `@[reducible]` definitions). </code>",
+ "3125": "<code>A.carrierD</code>",
+ "3124":
+ "<code>CategoryTheory.Limits.BinaryFan.IsLimit.hom_ext.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} {s : BinaryFan X Y}\n  (h : IsLimit s) {f g : W ⟶ s.pt} (h₁ : s.fst ⊚ f = s.fst ⊚ g) (h₂ : s.snd ⊚ f = s.snd ⊚ g) : f = g</code>",
+ "3123":
+ "<code>finv ⊚ f = 𝟙 AA</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3122":
+ "<code>ADD ⟶ AA</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3121":
+ "<code>AA ⟶ ADD</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3120": "<code>ADD ⟶ AA</code>",
  "312": "<code>CM.ExII_3.h : Fin 2 ⟶ Fin 2</code>",
+ "3119":
+ "<code>CategoryTheory.Limits.Cofan.mk.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] {f : β → C} (P : C)\n  (p : (b : β) → f b ⟶ P) : Cofan f</code><span class=\"sep\"></span><code class=\"docstring\">A cofan over `f : β → C` consists of a collection of maps from every `f b` to an object `P`. </code>",
+ "3118": "<code>D ⟶ A</code>",
+ "3117": "<code>(↑j₁).2 d₁ = ADD.toTgt ((↑j₁).1 ())</code>",
+ "3116": "<code>(↑p₂).2 (AA.toTgt x) = d₁</code>",
+ "3115": "<code>(↑p₁).2 (AA.toTgt x) = d₁</code>",
+ "3114": "<code>(↑j₁).2 d₀ = ADD.toSrc ((↑j₁).1 ())</code>",
+ "3113": "<code>(↑p₂).2 (AA.toSrc x) = d₀</code>",
+ "3112": "<code>(↑p₁).2 (AA.toSrc x) = d₀</code>",
+ "3111": "<code>AA.carrierA</code>",
+ "3110": "<code>AA.carrierD</code>",
  "311":
  "<code>Fin.mk {n : ℕ} (val : ℕ) (isLt : val &lt; n) : Fin n</code><span class=\"sep\"></span><code class=\"docstring\">Creates a `Fin n` from `i : Nat` and a proof that `i &lt; n`. </code>",
+ "3109": "<code>AA.carrierD ⟶ ADD.carrierD</code>",
+ "3108": "<code>AA.carrierA ⟶ ADD.carrierA</code>",
+ "3107": "<code>AA ⟶ ADD</code>",
+ "3106": "<code>D ⟶ coconeADD.pt</code>",
+ "3105": "<code>A ⟶ coconeADD.pt</code>",
+ "3104": "<code>coneAA.pt ⟶ A</code>",
+ "3103": "<code>j₃ = coconeADD.ι.app { as := 2 }</code>",
+ "3102":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 2 } ⟶\n  ((Functor.const (Discrete (Fin 3))).obj coconeADD.pt).obj { as := 2 }</code>",
+ "3101": "<code>j₂ = coconeADD.ι.app { as := 1 }</code>",
+ "3100":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 1 } ⟶\n  ((Functor.const (Discrete (Fin 3))).obj coconeADD.pt).obj { as := 1 }</code>",
  "310":
  "<code class=\"docstring\">`fin_cases h` performs case analysis on a hypothesis of the form\n`h : A`, where `[Fintype A]` is available, or\n`h : a ∈ A`, where `A : Finset X`, `A : Multiset X` or `A : List X`.\n\nAs an example, in\n```\nexample (f : ℕ → Prop) (p : Fin 3) (h0 : f 0) (h1 : f 1) (h2 : f 2) : f p.val := by\n  fin_cases p; simp\n  all_goals assumption\n```\nafter `fin_cases p; simp`, there are three goals, `f 0`, `f 1`, and `f 2`.\n</code>",
  "31":
  "<code>Eq.{u_1} {α : Sort u_1} : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The equality relation. It has one introduction rule, `Eq.refl`.\nWe use `a = b` as notation for `Eq a b`.\nA fundamental property of equality is that it is an equivalence relation.\n```\nvariable (α : Type) (a b c d : α)\nvariable (hab : a = b) (hcb : c = b) (hcd : c = d)\n\nexample : a = d :=\n  Eq.trans (Eq.trans hab (Eq.symm hcb)) hcd\n```\nEquality is much more than an equivalence relation, however. It has the important property that every assertion\nrespects the equivalence, in the sense that we can substitute equal expressions without changing the truth value.\nThat is, given `h1 : a = b` and `h2 : p a`, we can construct a proof for `p b` using substitution: `Eq.subst h1 h2`.\nExample:\n```\nexample (α : Type) (a b : α) (p : α → Prop)\n        (h1 : a = b) (h2 : p a) : p b :=\n  Eq.subst h1 h2\n\nexample (α : Type) (a b : α) (p : α → Prop)\n    (h1 : a = b) (h2 : p a) : p b :=\n  h1 ▸ h2\n```\nThe triangle in the second presentation is a macro built on top of `Eq.subst` and `Eq.symm`, and you can enter it by typing `\\t`.\nFor more information: [Equality](https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#equality)\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `=` in identifiers is `eq`.</code>",
+ "3099": "<code>j₁ = coconeADD.ι.app { as := 0 }</code>",
+ "3098":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 0 } ⟶\n  ((Functor.const (Discrete (Fin 3))).obj coconeADD.pt).obj { as := 0 }</code>",
+ "3097": "<code>p₂ = coneAA.π.app { as := WalkingPair.right }</code>",
+ "3096":
+ "<code>((Functor.const (Discrete WalkingPair)).obj coneAA.pt).obj { as := WalkingPair.right } ⟶\n  (pair A A).obj { as := WalkingPair.right }</code>",
+ "3095":
+ "<code>CategoryTheory.Functor.const.{v₁, v₂, u₁, u₂} (J : Type u₁) [Category.{v₁, u₁} J] {C : Type u₂} [Category.{v₂, u₂} C] :\n  C ⥤ J ⥤ C</code><span class=\"sep\"></span><code class=\"docstring\">The functor sending `X : C` to the constant functor `J ⥤ C` sending everything to `X`.\n</code>",
+ "3094": "<code>p₁ = coneAA.π.app { as := WalkingPair.left }</code>",
+ "3093":
+ "<code>((Functor.const (Discrete WalkingPair)).obj coneAA.pt).obj { as := WalkingPair.left } ⟶\n  (pair A A).obj { as := WalkingPair.left }</code>",
+ "3092": "<code>ADD = coconeADD.pt</code>",
+ "3091": "<code>AA = coneAA.pt</code>",
+ "3090": "<code>IsColimit coconeADD</code>",
  "309": "<code>Fin 2</code>",
+ "3089":
+ "<code>CategoryTheory.Limits.Cofan.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] (f : β → C) : Type (max (max w u) v)</code><span class=\"sep\"></span><code class=\"docstring\">A cofan over `f : β → C` consists of a collection of maps from every `f b` to an object `P`. </code>",
+ "3088":
+ "<code>Cofan fun x ↦\n  match x with\n  | 0 =&gt; A\n  | 1 =&gt; D\n  | 2 =&gt; D</code>",
+ "3087": "<code>IsLimit coneAA</code>",
+ "3086": "<code>BinaryFan A A</code>",
+ "3085":
+ "<code>Fintype.card_congr.{u_4, u_5} {α : Type u_4} {β : Type u_5} [Fintype α] [Fintype β] (f : α ≃ β) :\n  Fintype.card α = Fintype.card β</code>",
+ "3084":
+ "<code>absurd.{v} {a : Prop} {b : Sort v} (h₁ : a) (h₂ : ¬a) : b</code><span class=\"sep\"></span><code class=\"docstring\">Anything follows from two contradictory hypotheses. Example:\n```\nexample (hp : p) (hnp : ¬p) : q := absurd hp hnp\n```\nFor more information: [Propositional Logic](https://lean-lang.org/theorem_proving_in_lean4/propositions_and_proofs.html#propositional-logic)\n</code>",
+ "3083":
+ "<code>Equiv.mk.{u_1, u_2} {α : Sort u_1} {β : Sort u_2} (toFun : α → β) (invFun : β → α)\n  (left_inv : Function.LeftInverse invFun toFun := by intro;\n    first\n    | rfl\n    | ext &lt;;&gt; rfl)\n  (right_inv : Function.RightInverse invFun toFun := by intro;\n    first\n    | rfl\n    | ext &lt;;&gt; rfl) :\n  α ≃ β</code>",
+ "3082":
+ "<code>Equiv.{u_1, u_2} (α : Sort u_1) (β : Sort u_2) : Sort (max (max 1 u_1) u_2)</code><span class=\"sep\"></span><code class=\"docstring\">`α ≃ β` is the type of functions from `α → β` with a two-sided inverse. </code>",
+ "3081": "<code>∀ (a : AxB_C.carrier), ↑iso.hom (↑iso.inv a) = a</code>",
+ "3080": "<code>∀ (a : AxB_AxC.carrier), ↑iso.inv (↑iso.hom a) = a</code>",
  "308":
  "<code>Fin (n : ℕ) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Natural numbers less than some upper bound.\n\nIn particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the\ncanonical type with `n` elements.\n</code>",
+ "3079":
+ "<code>AxB_C.carrier ⟶ AxB_AxC.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The backward map of an equivalence.\n\nDo NOT use `e.invFun` directly. Use the coercion of `e.symm` instead. </code>",
+ "3078":
+ "<code>AxB_AxC.carrier ⟶ AxB_C.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The forward map of an equivalence.\n\nDo NOT use directly. Use the coercion instead. </code>",
+ "3077": "<code>AxB_AxC.carrier ≃ AxB_C.carrier</code>",
+ "3076": "<code>AxB_AxC ≅ AxB_C</code>",
+ "3075": "<code>g ⊚ j₄ = g₂</code>",
+ "3074": "<code>g ⊚ j₃ = g₁</code>",
+ "3073": "<code>C.carrier</code>",
+ "3072": "<code>B_C.carrier</code>",
+ "3071":
+ "<code>PUnit.unit.{u} : PUnit.{u}</code><span class=\"sep\"></span><code class=\"docstring\">The only element of the universe-polymorphic unit type. </code>",
+ "3070": "<code>AxB_AxC.carrier</code>",
  "307": "<code>CM.ExII_3.f : Fin 2 ⟶ Fin 2</code>",
+ "3069": "<code>p₁ ⊚ f = f₁ ∧ p₂ ⊚ f = f₂</code>",
+ "3068": "<code>PUnit.ext.{u_1} (a b : PUnit.{u_1}) : a = b</code>",
+ "3067": "<code>One ⟶ A.carrier</code>",
+ "3066": "<code>A.carrier</code>",
+ "3065": "<code>Fin.ext {n : ℕ} {a b : Fin n} (h : ↑a = ↑b) : a = b</code>",
+ "3064":
+ "<code>CategoryTheory.types_ext.{u} {α β : Type u} (f g : α ⟶ β) (h : ∀ (a : α), f a = g a) : f = g</code>",
+ "3063": "<code>Nonempty (AxB_AxC ≅ AxB_C)</code>",
+ "3062": "<code>p₂ ⊚ f = f₂</code>",
+ "3061": "<code>p₁ ⊚ f = f₁</code>",
+ "3060":
+ "<code>∀ (X : PointedSet) (f₁ : X ⟶ A) (f₂ : X ⟶ B), ∃! f, p₁ ⊚ f = f₁ ∧ p₂ ⊚ f = f₂</code>",
  "306": "<code>h ⊚ 𝟙 B = k ⊚ 𝟙 B</code>",
+ "3059": "<code>DistributiveLaw PointedSet</code>",
+ "3058": "<code>CM.ExIV_20.p₆ : AxB_C ⟶ B_C</code>",
+ "3057": "<code>AxB_C.carrier</code>",
+ "3056": "<code>CM.ExIV_20.p₅ : AxB_C ⟶ A</code>",
+ "3055": "<code>CM.ExIV_20.j₄ : C ⟶ B_C</code>",
+ "3054": "<code>CM.ExIV_20.j₃ : B ⟶ B_C</code>",
+ "3053": "<code>CM.ExIV_20.j₂ : AxC ⟶ AxB_AxC</code>",
+ "3052": "<code>CM.ExIV_20.j₁ : AxB ⟶ AxB_AxC</code>",
+ "3051": "<code>CM.ExIV_20.p₄ : AxC ⟶ C</code>",
+ "3050": "<code>AxC.carrier</code>",
  "305": "<code>h ⊚ f ⊚ finv = k ⊚ f ⊚ finv</code>",
+ "3049": "<code>CM.ExIV_20.p₃ : AxC ⟶ A</code>",
+ "3048": "<code>CM.ExIV_20.p₂ : AxB ⟶ B</code>",
+ "3047": "<code>AxB.carrier</code>",
+ "3046": "<code>CM.ExIV_20.p₁ : AxB ⟶ A</code>",
+ "3045": "<code>CM.ExIV_20.AxB_C : PointedSet</code>",
+ "3044": "<code>CM.ExIV_20.B_C : PointedSet</code>",
+ "3043": "<code>One → Fin 2 × Unit ⊕ Unit</code>",
+ "3042": "<code>CM.ExIV_20.AxB_AxC : PointedSet</code>",
+ "3041": "<code>CM.ExIV_20.AxC : PointedSet</code>",
+ "3040": "<code>One → Fin 2 × Unit</code>",
  "304": "<code>(h ⊚ f) ⊚ finv = (k ⊚ f) ⊚ finv</code>",
+ "3039": "<code>CM.ExIV_20.AxB : PointedSet</code>",
+ "3038": "<code>CM.ExIV_20.C : PointedSet</code>",
+ "3037": "<code>One → One</code>",
+ "3036": "<code>CM.ExIV_20.B : PointedSet</code>",
+ "3035": "<code>CM.ExIV_20.A : PointedSet</code>",
+ "3034": "<code>X ⟶ AxB_C</code>",
+ "3033": "<code>X ⟶ B_C</code>",
+ "3032": "<code>B_C ⟶ Y</code>",
+ "3031": "<code>AxB_AxC ⟶ Y</code>",
+ "3030": "<code>AxC ⟶ Y</code>",
  "303": "<code>h ⊚ f = k ⊚ f</code>",
+ "3029": "<code>AxB ⟶ Y</code>",
+ "3028": "<code>X ⟶ AxC</code>",
+ "3027": "<code>X ⟶ C</code>",
+ "3026": "<code>X ⟶ AxB</code>",
+ "3025": "<code>X ⟶ B</code>",
+ "3024": "<code>AxB_C ⟶ B_C</code>",
+ "3023": "<code>AxB_C ⟶ A</code>",
+ "3022": "<code>C ⟶ B_C</code>",
+ "3021": "<code>B ⟶ B_C</code>",
+ "3020": "<code>AxC ⟶ AxB_AxC</code>",
  "302": "<code>h = k</code>",
+ "3019": "<code>AxB ⟶ AxB_AxC</code>",
+ "3018": "<code>AxC ⟶ C</code>",
+ "3017": "<code>AxC ⟶ A</code>",
+ "3016": "<code>AxB ⟶ B</code>",
+ "3015": "<code>AxB ⟶ A</code>",
+ "3014": "<code>T</code>",
+ "3013":
+ "<code>CM.DistributiveLaw.{u, v} (T : Type u) [Category.{v, u} T] : Prop</code>",
+ "3012":
+ "<code>CategoryTheory.Limits.coprod.associator.{v, u} {C : Type u} [Category.{v, u} C] [HasBinaryCoproducts C] (P Q R : C) :\n  (P ⨿ Q) ⨿ R ≅ P ⨿ Q ⨿ R</code><span class=\"sep\"></span><code class=\"docstring\">The associator isomorphism for binary coproducts. </code>",
+ "3011":
+ "<code>CategoryTheory.Limits.HasBinaryCoproducts.{v, u} (C : Type u) [Category.{v, u} C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">A category `HasBinaryCoproducts` if it has all colimit of shape `Discrete WalkingPair`,\ni.e. if it has a coproduct for every pair of objects. </code>",
+ "3010":
+ "<code>f ⊚ g = 𝟙 A_BC</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
  "301": "<code>𝟙 A ⊚ h = 𝟙 A ⊚ k</code>",
+ "3009":
+ "<code>g ⊚ f = 𝟙 AB_C</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3008":
+ "<code>A_BC ⟶ AB_C</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3007":
+ "<code>AB_C ⟶ A_BC</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3006": "<code>C ⟶ A_BC</code>",
+ "3005": "<code>B ⟶ A_BC</code>",
+ "3004": "<code>B ⟶ AB_C</code>",
+ "3003": "<code>A ⟶ AB_C</code>",
+ "3002": "<code>f ⊚ g = 𝟙 A_BC</code>",
+ "3001":
+ "<code>ExistsUnique.unique.{u_1} {α : Sort u_1} {p : α → Prop} (h : ∃! x, p x) {y₁ y₂ : α} (py₁ : p y₁) (py₂ : p y₂) : y₁ = y₂</code>",
+ "3000": "<code>g ⊚ f = 𝟙 AB_C</code>",
  "300": "<code>(finv ⊚ f) ⊚ h = (finv ⊚ f) ⊚ k</code>",
  "30":
  "<code class=\"docstring\">`by tac` constructs a term of the expected type by running the tactic(s) `tac`. </code>",
  "3":
  "<code class=\"docstring\">In Lean, every concrete type other than the universes\nand every type constructor other than dependent arrows\nis an instance of a general family of type constructions known as inductive types.\nIt is remarkable that it is possible to construct a substantial edifice of mathematics\nbased on nothing more than the type universes, dependent arrow types, and inductive types;\neverything else follows from those.\nIntuitively, an inductive type is built up from a specified list of constructors.\nFor example, `List α` is the list of elements of type `α`, and is defined as follows:\n```\ninductive List (α : Type u) where\n| nil\n| cons (head : α) (tail : List α)\n```\nA list of elements of type `α` is either the empty list, `nil`,\nor an element `head : α` followed by a list `tail : List α`.\nSee [Inductive types](https://lean-lang.org/theorem_proving_in_lean4/inductive_types.html)\nfor more information.\n</code>",
+ "2999": "<code>g ⊚ k₄ = q</code>",
+ "2998": "<code>g ⊚ k₃ = j₃ ⊚ j₁</code>",
+ "2997":
+ "<code>∀ (y : A_BC ⟶ AB_C), (fun g ↦ g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q) y → y = g</code>",
+ "2996":
+ "<code>∀ (y : A_BC ⟶ AB_C), (fun g ↦ g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q) y → y = Exists.choose hg</code>",
+ "2995": "<code>Exists.choose hg ⊚ k₄ = q</code>",
+ "2994": "<code>Exists.choose hg ⊚ k₃ = j₃ ⊚ j₁</code>",
+ "2993": "<code>A_BC ⟶ AB_C</code>",
+ "2992": "<code>∃! g, g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q</code>",
+ "2991": "<code>f ⊚ j₄ = k₄ ⊚ k₂</code>",
+ "2990": "<code>f ⊚ j₃ = p</code>",
  "299": "<code>finv ⊚ f ⊚ h = finv ⊚ f ⊚ k</code>",
+ "2989":
+ "<code>∀ (y : AB_C ⟶ A_BC), (fun g ↦ g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂) y → y = f</code>",
+ "2988":
+ "<code>∀ (y : AB_C ⟶ A_BC), (fun g ↦ g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂) y → y = Exists.choose hf</code>",
+ "2987": "<code>Exists.choose hf ⊚ j₄ = k₄ ⊚ k₂</code>",
+ "2986": "<code>Exists.choose hf ⊚ j₃ = p</code>",
+ "2985": "<code>AB_C ⟶ A_BC</code>",
+ "2984": "<code>∃! g, g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂</code>",
+ "2983": "<code>q ⊚ k₂ = j₄</code>",
+ "2982": "<code>q ⊚ k₁ = j₃ ⊚ j₂</code>",
+ "2981":
+ "<code>∀ (y : BC ⟶ AB_C), (fun g ↦ g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄) y → y = q</code>",
+ "2980":
+ "<code>∀ (y : BC ⟶ AB_C), (fun g ↦ g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄) y → y = Exists.choose hq</code>",
  "298": "<code>f ⊚ h = f ⊚ k</code>",
+ "2979": "<code>Exists.choose hq ⊚ k₂ = j₄</code>",
+ "2978": "<code>Exists.choose hq ⊚ k₁ = j₃ ⊚ j₂</code>",
+ "2977": "<code>BC ⟶ AB_C</code>",
+ "2976": "<code>∃! g, g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄</code>",
+ "2975": "<code>p ⊚ j₂ = k₄ ⊚ k₁</code>",
+ "2974": "<code>p ⊚ j₁ = k₃</code>",
+ "2973":
+ "<code>∀ (y : AB ⟶ A_BC), (fun g ↦ g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁) y → y = p</code>",
+ "2972":
+ "<code>∀ (y : AB ⟶ A_BC), (fun g ↦ g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁) y → y = Exists.choose hp</code>",
+ "2971": "<code>Exists.choose hp ⊚ j₂ = k₄ ⊚ k₁</code>",
+ "2970": "<code>Exists.choose hp ⊚ j₁ = k₃</code>",
  "297": "<code>f ⊚ finv = 𝟙 B</code>",
+ "2969": "<code>AB ⟶ A_BC</code>",
+ "2968": "<code>∃! g, g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁</code>",
+ "2967": "<code>A_BC ⟶ Y</code>",
+ "2966":
+ "<code>∀ (Y : 𝒞) (g₁ : A ⟶ Y) (g₂ : BC ⟶ Y), ∃! g, g ⊚ k₃ = g₁ ∧ g ⊚ k₄ = g₂</code>",
+ "2965": "<code>BC ⟶ Y</code>",
+ "2964":
+ "<code>∀ (Y : 𝒞) (g₁ : B ⟶ Y) (g₂ : C ⟶ Y), ∃! g, g ⊚ k₁ = g₁ ∧ g ⊚ k₂ = g₂</code>",
+ "2963": "<code>BC ⟶ A_BC</code>",
+ "2962": "<code>A ⟶ A_BC</code>",
+ "2961": "<code>C ⟶ BC</code>",
+ "2960": "<code>B ⟶ BC</code>",
  "296": "<code>finv ⊚ f = 𝟙 A</code>",
+ "2959": "<code>AB_C ⟶ Y</code>",
+ "2958": "<code>C ⟶ Y</code>",
+ "2957":
+ "<code>∀ (Y : 𝒞) (g₁ : AB ⟶ Y) (g₂ : C ⟶ Y), ∃! g, g ⊚ j₃ = g₁ ∧ g ⊚ j₄ = g₂</code>",
+ "2956": "<code>AB ⟶ Y</code>",
+ "2955": "<code>B ⟶ Y</code>",
+ "2954":
+ "<code>∀ (Y : 𝒞) (g₁ : A ⟶ Y) (g₂ : B ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
+ "2953": "<code>C ⟶ AB_C</code>",
+ "2952": "<code>AB ⟶ AB_C</code>",
+ "2951": "<code>B ⟶ AB</code>",
+ "2950": "<code>A ⟶ AB</code>",
  "295": "<code>∃ finv, finv ⊚ f = 𝟙 A ∧ f ⊚ finv = 𝟙 B</code>",
+ "2949": "<code>Sum.inl () = Sum.inr ()</code>",
+ "2948": "<code>f = j₂ ⊚ f₂</code>",
+ "2947": "<code>Sum.inr () = Sum.inl ()</code>",
+ "2946": "<code>f = j₁ ⊚ f₁</code>",
+ "2945": "<code>X ⟶ Unit ⊕ Unit</code>",
+ "2944": "<code>CM.ExIV_18.f : X ⟶ Unit ⊕ Unit</code>",
+ "2943": "<code>CM.ExIV_18.j₂ : Unit ⟶ Unit ⊕ Unit</code>",
+ "2942": "<code>CM.ExIV_18.f₂ : X ⟶ Unit</code>",
+ "2941": "<code>CM.ExIV_18.j₁ : Unit ⟶ Unit ⊕ Unit</code>",
+ "2940": "<code>CM.ExIV_18.f₁ : X ⟶ Unit</code>",
  "294":
  "<code class=\"docstring\">Step-wise reasoning over transitive relations.\n```\ncalc\n  a = b := pab\n  b = c := pbc\n  ...\n  y = z := pyz\n```\nproves `a = z` from the given step-wise proofs. `=` can be replaced with any\nrelation implementing the typeclass `Trans`. Instead of repeating the right-\nhand sides, subsequent left-hand sides can be replaced with `_`.\n```\ncalc\n  a = b := pab\n  _ = c := pbc\n  ...\n  _ = z := pyz\n```\nIt is also possible to write the *first* relation as `&lt;lhs&gt;\\n  _ = &lt;rhs&gt; :=\n&lt;proof&gt;`. This is useful for aligning relation symbols, especially on longer\nidentifiers:\n```\ncalc abc\n  _ = bce := pabce\n  _ = cef := pbcef\n  ...\n  _ = xyz := pwxyz\n```\n\n`calc` works as a term, as a tactic or as a `conv` tactic.\n\nSee [Theorem Proving in Lean 4][tpil4] for more information.\n\n[tpil4]: https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#calculational-proofs\n</code>",
+ "2939": "<code>CM.ExIV_18.X : Type</code>",
+ "2938": "<code>Sum.inl xD = Y.toSrc (Sum.inr xA)</code>",
+ "2937": "<code>(↑(g ⊚ s)).2 () = Sum.inl xD</code>",
+ "2936": "<code>(↑(g ⊚ s)).1 () = Sum.inr xA</code>",
+ "2935": "<code>Sum.inr xD = Y.toSrc (Sum.inl xA)</code>",
+ "2934": "<code>(↑(g ⊚ s)).2 () = Sum.inr xD</code>",
+ "2933": "<code>(↑(g ⊚ s)).1 () = Sum.inl xA</code>",
+ "2932": "<code>Sum.inl ((↑b₁).1 ()) = Sum.inr x₂A</code>",
+ "2931": "<code>Sum.inr x₂D = Y.toTgt (Sum.inr x₂A)</code>",
+ "2930": "<code>Sum.inr x₂D = Y.toSrc (Sum.inr x₂A)</code>",
  "293": "<code>k ⊚ f = 𝟙 A ∧ f ⊚ k = 𝟙 B</code>",
+ "2929": "<code>(↑(g ⊚ s)).2 () = Sum.inr x₂D</code>",
+ "2928": "<code>(↑(g ⊚ s)).1 () = Sum.inr x₂A</code>",
+ "2927": "<code>Sum.inr ((↑b₂).1 ()) = Sum.inl x₁A</code>",
+ "2926": "<code>Sum.inl x₁D = Y.toTgt (Sum.inl x₁A)</code>",
+ "2925": "<code>(↑(g ⊚ s)).2 () = Y.toTgt ((↑(g ⊚ s)).1 ())</code>",
+ "2924":
+ "<code>((↑(g ⊚ s)).2 ⊚ termIG.toTgt) () = (Y.toTgt ⊚ (↑(g ⊚ s)).1) ()</code>",
+ "2923": "<code>Sum.inl x₁D = Y.toSrc (Sum.inl x₁A)</code>",
+ "2922": "<code>(↑(g ⊚ s)).2 () = Y.toSrc ((↑(g ⊚ s)).1 ())</code>",
+ "2921":
+ "<code>((↑(g ⊚ s)).2 ⊚ termIG.toSrc) () = (Y.toSrc ⊚ (↑(g ⊚ s)).1) ()</code>",
+ "2920": "<code>(↑(g ⊚ s)).2 () = Sum.inl x₁D</code>",
  "292": "<code>kinv ⊚ k = 𝟙 B ∧ k ⊚ kinv = 𝟙 C</code>",
+ "2919": "<code>(↑(g ⊚ s)).1 () = Sum.inl x₁A</code>",
+ "2918": "<code>(↑(f ⊚ g ⊚ s)).2 () = (↑s).2 ()</code>",
+ "2917": "<code>(↑(f ⊚ g ⊚ s)).1 () = (↑s).1 ()</code>",
+ "2916": "<code>B₂.carrierD</code>",
+ "2915": "<code>B₁.carrierD</code>",
+ "2914": "<code>B₁.carrierA ⊕ B₂.carrierA</code>",
+ "2913": "<code>B₂.carrierA</code>",
+ "2912": "<code>B₁.carrierA</code>",
+ "2911": "<code>B₁.carrierA ⊕ B₂.carrierA → B₁.carrierD ⊕ B₂.carrierD</code>",
+ "2910": "<code>termIG ⟶ B₂</code>",
  "291": "<code>finv ⊚ f = 𝟙 A ∧ f ⊚ finv = 𝟙 B</code>",
+ "2909": "<code>termIG ⟶ B₁</code>",
+ "2908": "<code>termIG ⟶ S</code>",
+ "2907":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
+ "2906": "<code>Sum.inl (↑b₁ ()) = Sum.inr x₂</code>",
+ "2905":
+ "<code>Sum.inr.inj.{u, v} {α : Type u} {β : Type v} {val val✝ : β} : Sum.inr val = Sum.inr val✝ → val = val✝</code>",
+ "2904": "<code>Sum.inr x₂ = Y.toEnd (Sum.inr x₂)</code>",
+ "2903": "<code>↑(g ⊚ s) () = Sum.inr x₂</code>",
+ "2902": "<code>Sum.inr (↑b₂ ()) = Sum.inl x₁</code>",
+ "2901":
+ "<code>Sum.inl.inj.{u, v} {α : Type u} {β : Type v} {val val✝ : α} : Sum.inl val = Sum.inl val✝ → val = val✝</code>",
+ "2900": "<code>Sum.inl x₁ = Y.toEnd (Sum.inl x₁)</code>",
  "290": "<code>IsIso k</code>",
  "29": "<code>CM.ExI_1.hg : B → D</code>",
+ "2899": "<code>↑(g ⊚ s) () = Y.toEnd (↑(g ⊚ s) ())</code>",
+ "2898": "<code>(↑(g ⊚ s) ⊚ termSWE.toEnd) () = (Y.toEnd ⊚ ↑(g ⊚ s)) ()</code>",
+ "2897": "<code>↑(g ⊚ s) () = Sum.inl x₁</code>",
+ "2896": "<code>↑(f ⊚ g ⊚ s) () = ↑s ()</code>",
+ "2895": "<code>B₁.carrier ⊕ B₂.carrier</code>",
+ "2894": "<code>B₂.carrier</code>",
+ "2893":
+ "<code>Sum.inr.{u, v} {α : Type u} {β : Type v} (val : β) : α ⊕ β</code><span class=\"sep\"></span><code class=\"docstring\">Right injection into the sum type `α ⊕ β`. </code>",
+ "2892": "<code>B₁.carrier</code>",
+ "2891":
+ "<code>Sum.inl.{u, v} {α : Type u} {β : Type v} (val : α) : α ⊕ β</code><span class=\"sep\"></span><code class=\"docstring\">Left injection into the sum type `α ⊕ β`. </code>",
+ "2890": "<code>B₁.carrier ⊕ B₂.carrier → B₁.carrier ⊕ B₂.carrier</code>",
  "289": "<code>B ⟶ C</code>",
+ "2889":
+ "<code>Sum.{u, v} (α : Type u) (β : Type v) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">The disjoint union of types `α` and `β`, ordinarily written `α ⊕ β`.\n\nAn element of `α ⊕ β` is either an `a : α` wrapped in `Sum.inl` or a `b : β` wrapped in `Sum.inr`.\n`α ⊕ β` is not equivalent to the set-theoretic union of `α` and `β` because its values include an\nindication of which of the two types was chosen. The union of a singleton set with itself contains\none element, while `Unit ⊕ Unit` contains distinct values `inl ()` and `inr ()`.\n</code>",
+ "2888": "<code>termSWE ⟶ B₂</code>",
+ "2887": "<code>termSWE ⟶ B₁</code>",
+ "2886": "<code>termSWE ⟶ S</code>",
+ "2885":
+ "<code>∀ (Y : SetWithEndomap) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
+ "2884": "<code>true = false</code>",
+ "2883": "<code>⟨true, b₁ ()⟩ = ⟨false, x₂⟩</code>",
+ "2882": "<code>j₁ ⊚ b₁ = s</code>",
+ "2881": "<code>(g ⊚ s) () = ⟨false, x₂⟩</code>",
+ "2880": "<code>false = true</code>",
  "288":
  "<code>And.intro {a b : Prop} (left : a) (right : b) : a ∧ b</code><span class=\"sep\"></span><code class=\"docstring\">`And.intro : a → b → a ∧ b` is the constructor for the And operation. </code>",
+ "2879": "<code>Unit ⟶ Y</code>",
+ "2878":
+ "<code>Sigma.fst.{u, v} {α : Type u} {β : α → Type v} (self : Sigma β) : α</code><span class=\"sep\"></span><code class=\"docstring\">The first component of a dependent pair.\n</code>",
+ "2877": "<code>⟨false, b₂ ()⟩ = ⟨true, x₁⟩</code>",
+ "2876": "<code>j₂ ⊚ b₂ = s</code>",
+ "2875": "<code>(g ⊚ s) () = ⟨true, x₁⟩</code>",
+ "2874": "<code>f ⊚ g ⊚ s = s</code>",
+ "2873": "<code>f ⊚ g = 𝟙 S</code>",
+ "2872": "<code>𝟙 S = e</code>",
+ "2871": "<code>f ⊚ g = e</code>",
+ "2870": "<code>e ⊚ j₁ = j₁ ∧ e ⊚ j₂ = j₂</code>",
  "287": "<code>IsIso f</code>",
+ "2869":
+ "<code>∀ (y : S ⟶ S), (fun g ↦ g ⊚ j₁ = j₁ ∧ g ⊚ j₂ = j₂) y → y = e</code>",
+ "2868": "<code>S ⟶ S</code>",
+ "2867": "<code>match false with\n| true =&gt; B₁\n| false =&gt; B₂</code>",
+ "2866": "<code>match true with\n| true =&gt; B₁\n| false =&gt; B₂</code>",
+ "2865":
+ "<code>(fun x ↦\n    match x with\n    | true =&gt; B₁\n    | false =&gt; B₂)\n  false</code>",
+ "2864":
+ "<code>(fun x ↦\n    match x with\n    | true =&gt; B₁\n    | false =&gt; B₂)\n  true</code>",
+ "2863": "<code>Y ⟶ S</code>",
+ "2862":
+ "<code>∀ (y : S ⟶ Y), (fun g ↦ g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂) y → y = g</code>",
+ "2861": "<code>g ⊚ j₂ = g₂</code>",
+ "2860": "<code>g ⊚ j₁ = g₁</code>",
  "286": "<code>g ⊚ f = 𝟙 A ∧ f ⊚ g = 𝟙 B</code>",
+ "2859": "<code>B₂</code>",
+ "2858":
+ "<code>Sigma.mk.{u, v} {α : Type u} {β : α → Type v} (fst : α) (snd : β fst) : Sigma β</code><span class=\"sep\"></span><code class=\"docstring\">Constructs a dependent pair.\n\nUsing this constructor in a context in which the type is not known usually requires a type\nascription to determine `β`. This is because the desired relationship between the two values can't\ngenerally be determined automatically.\n</code>",
+ "2857": "<code>B₁</code>",
+ "2856":
+ "<code>Bool : Type</code><span class=\"sep\"></span><code class=\"docstring\">The Boolean values, `true` and `false`.\n\nLogically speaking, this is equivalent to `Prop` (the type of propositions). The distinction is\npublic important for programming: both propositions and their proofs are erased in the code generator,\nwhile `Bool` corresponds to the Boolean type in most programming languages and carries precisely one\nbit of run-time information.\n</code>",
+ "2855": "<code>Bool</code>",
+ "2854": "<code>Unit ⟶ B₂</code>",
+ "2853": "<code>Unit ⟶ B₁</code>",
+ "2852":
+ "<code>Xor' (a b : Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Xor' a b` is the exclusive-or of propositions. </code>",
+ "2851": "<code>Unit ⟶ S</code>",
+ "2850":
+ "<code>∀ (Y : Type) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
  "285":
  "<code class=\"docstring\">If the main goal's target type is an inductive type, `constructor` solves it with\nthe first matching constructor, or else fails.\n</code>",
+ "2849":
+ "<code>∀ (j : Discrete WalkingPair), m ⊚ (BinaryCofan.mk j₁ j₂).ι.app j = s.ι.app j</code>",
+ "2848": "<code>(BinaryCofan.mk j₁ j₂).pt ⟶ s.pt</code>",
+ "2847": "<code>Cocone (pair B₁ B₂)</code>",
+ "2846": "<code>S ⟶ s.pt</code>",
+ "2845": "<code>B₂ ⟶ s.pt</code>",
+ "2844": "<code>B₁ ⟶ s.pt</code>",
+ "2843":
+ "<code>∀ (s : BinaryCofan B₁ B₂),\n  ∃! g, g ⊚ j₁ = s.ι.app { as := WalkingPair.left } ∧ g ⊚ j₂ = s.ι.app { as := WalkingPair.right }</code>",
+ "2842":
+ "<code>∀ (Y : 𝒞) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
+ "2841": "<code>m ⊚ j₂ = g₂</code>",
+ "2840": "<code>m ⊚ j₁ = g₁</code>",
  "284":
  "<code class=\"docstring\">`use e₁, e₂, ⋯` is similar to `exists`, but unlike `exists` it is equivalent to applying the tactic\n`refine ⟨e₁, e₂, ⋯, ?_, ⋯, ?_⟩` with any number of placeholders (rather than just one) and\nthen trying to close goals associated to the placeholders with a configurable discharger (rather\nthan just `try trivial`).\n\nExamples:\n\n```lean\nexample : ∃ x : Nat, x = x := by use 42\n\nexample : ∃ x : Nat, ∃ y : Nat, x = y := by use 42, 42\n\nexample : Nonempty Nat := by use 5\n\nexample : Nonempty (PNat ≃ Nat) := by\n  use PNat.natPred, Nat.succPNat\n  · exact PNat.succPNat_natPred\n  · intro; rfl\n```\n\n`use! e₁, e₂, ⋯` is similar but it applies constructors everywhere rather than just for\ngoals that correspond to the last argument of a constructor. This gives the effect that\nnested constructors are being flattened out, with the supplied values being used along the\nleaves and nodes of the tree of constructors.\nWith `use!` one can feed in each `42` one at a time:\n\n```lean\nexample : ∃ n : {n : Nat // n % 2 = 0}, n.val &gt; 10 := by use! 20; simp\n\nexample : ∃ p : Nat × Nat, p.1 = p.2 := by use! (42, 42)\n```\n\nThe second line makes use of the fact that `use!` tries refining with the argument before\napplying a constructor. Also note that `use`/`use!` by default uses a tactic\ncalled `use_discharger` to discharge goals, so `use! 42` will close the goal in this example since\n`use_discharger` applies `rfl`, which as a consequence solves for the other `Nat` metavariable.\n\nThese tactics take an optional discharger to handle remaining explicit `Prop` constructor arguments.\nBy default it is `use (discharger := try with_reducible use_discharger) e₁, e₂, ⋯`.\nTo turn off the discharger and keep all goals, use `(discharger := skip)`.\nTo allow \"heavy refls\", use `(discharger := try use_discharger)`.\n</code>",
+ "2839": "<code>BinaryCofan B₁ B₂</code>",
+ "2838": "<code>IsColimit (BinaryCofan.mk j₁ j₂)</code>",
+ "2837": "<code>S ⟶ Y</code>",
+ "2836": "<code>B₂ ⟶ Y</code>",
+ "2835": "<code>B₁ ⟶ Y</code>",
+ "2834":
+ "<code>CategoryTheory.Limits.BinaryCofan.mk.{v, u} {C : Type u} [Category.{v, u} C] {X Y P : C} (ι₁ : X ⟶ P) (ι₂ : Y ⟶ P) :\n  BinaryCofan X Y</code><span class=\"sep\"></span><code class=\"docstring\">A binary cofan with vertex `P` consists of the two inclusions `ι₁ : X ⟶ P` and `ι₂ : Y ⟶ P`. </code>",
+ "2833": "<code>B₂ ⟶ S</code>",
+ "2832": "<code>B₁ ⟶ S</code>",
+ "2831":
+ "<code>autoParam (∀ (s : Cocone F) (m : t.pt ⟶ s.pt), (∀ (j : J), m ⊚ t.ι.app j = s.ι.app j) → m = desc s)\n  IsColimit.uniq._autoParam</code>",
+ "2830":
+ "<code>autoParam (∀ (s : Cocone F) (j : J), desc s ⊚ t.ι.app j = s.ι.app j) IsColimit.fac._autoParam</code>",
  "283": "<code>Category.{v, u} 𝒞</code>",
+ "2829": "<code>(s : Cocone F) → t.pt ⟶ s.pt</code>",
+ "2828":
+ "<code>CategoryTheory.Limits.IsColimit.mk.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (desc : (s : Cocone F) → t.pt ⟶ s.pt)\n  (fac : ∀ (s : Cocone F) (j : J), desc s ⊚ t.ι.app j = s.ι.app j := by cat_disch)\n  (uniq : ∀ (s : Cocone F) (m : t.pt ⟶ s.pt), (∀ (j : J), m ⊚ t.ι.app j = s.ι.app j) → m = desc s := by cat_disch) :\n  IsColimit t</code>",
+ "2827": "<code>t.pt ⟶ s.pt</code>",
+ "2826":
+ "<code>CategoryTheory.Limits.IsColimit.uniq.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (self : IsColimit t) (s : Cocone F) (m : t.pt ⟶ s.pt) :\n  (∀ (j : J), m ⊚ t.ι.app j = s.ι.app j) → m = self.desc s</code><span class=\"sep\"></span><code class=\"docstring\">`desc` is the unique such map </code>",
+ "2825":
+ "<code>CategoryTheory.Limits.Cocone.ι.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (self : Cocone F) : F ⟶ (Functor.const J).obj self.pt</code><span class=\"sep\"></span><code class=\"docstring\">A natural transformation from `F` to the constant functor at `pt` </code>",
+ "2824": "<code>IsColimit t</code>",
+ "2823":
+ "<code>CategoryTheory.Limits.IsColimit.fac.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (self : IsColimit t) (s : Cocone F) (j : J) :\n  self.desc s ⊚ t.ι.app j = s.ι.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map `desc` makes the diagram with the natural transformations commute </code>",
+ "2822":
+ "<code>CategoryTheory.Limits.Cocone.pt.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (self : Cocone F) : C</code><span class=\"sep\"></span><code class=\"docstring\">An object of `C` </code>",
+ "2821":
+ "<code>CategoryTheory.Limits.IsColimit.desc.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (self : IsColimit t) (s : Cocone F) : t.pt ⟶ s.pt</code><span class=\"sep\"></span><code class=\"docstring\">`t.pt` maps to all other cocone covertices </code>",
+ "2820": "<code>Cocone F</code>",
  "282":
  "<code>CategoryTheory.Iso.trans.{v, u} {C : Type u} [Category.{v, u} C] {X Y Z : C} (α : X ≅ Y) (β : Y ≅ Z) : X ≅ Z</code><span class=\"sep\"></span><code class=\"docstring\">Composition of two isomorphisms </code>",
+ "2819":
+ "<code>CategoryTheory.Limits.BinaryCofan.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">A binary cofan is just a cocone on a diagram indexing a coproduct. </code>",
+ "2818":
+ "<code>CategoryTheory.Limits.Cocone.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  (F : J ⥤ C) : Type (max (max u₁ u₃) v₃)</code><span class=\"sep\"></span><code class=\"docstring\">A `c : Cocone F` is\n* an object `c.pt` and\n* a natural transformation `c.ι : F ⟶ c.pt` from `F` to the constant `c.pt` functor.\n\nFor example, if the source `J` of `F` is a partially ordered set, then to give\n`c : Cocone F` is to give a collection of morphisms `ιⱼ : F j ⟶ c.pt` and, for\nall `j ≤ k` in `J`, morphisms `ιⱼₖ : F j ⟶ F k` such that `Fⱼₖ ≫ Fₖ = Fⱼ` for all `j ≤ k`.\n\n`Cocone F` is equivalent, via `Cone.equiv` below, to `Σ X, F.cocones.obj X`.\n</code>",
+ "2817":
+ "<code>Fin 2 → Discrete (Fin 2)</code><span class=\"sep\"></span><code class=\"docstring\">An embedding as a function. Use coercion instead. </code>",
+ "2816": "<code>Discrete (Fin 2)</code>",
+ "2815":
+ "<code>∀ (j : Discrete (Fin 3)),\n  (Fan.mk coneQ.pt fun i ↦\n              match i with\n              | 0 =&gt; coneP.π.app { as := 0 } ⊚ coneQ.π.app { as := 0 }\n              | 1 =&gt; coneP.π.app { as := 1 } ⊚ coneQ.π.app { as := 0 }\n              | 2 =&gt; coneQ.π.app { as := 1 }).π.app\n        j ⊚\n      m =\n    coneX.π.app j</code>",
+ "2814":
+ "<code>coneX.pt ⟶\n  (Fan.mk coneQ.pt fun i ↦\n      match i with\n      | 0 =&gt; coneP.π.app { as := 0 } ⊚ coneQ.π.app { as := 0 }\n      | 1 =&gt; coneP.π.app { as := 1 } ⊚ coneQ.π.app { as := 0 }\n      | 2 =&gt; coneQ.π.app { as := 1 }).pt</code>",
+ "2813":
+ "<code>Function.Injective ⇑discreteEquiv.symm</code><span class=\"sep\"></span><code class=\"docstring\">An embedding is an injective function. Use `Function.Embedding.injective` instead. </code>",
+ "2812":
+ "<code>Equiv.symm.{u, v} {α : Sort u} {β : Sort v} (e : α ≃ β) : β ≃ α</code><span class=\"sep\"></span><code class=\"docstring\">Inverse of an equivalence `e : α ≃ β`. </code>",
+ "2811":
+ "<code>CategoryTheory.discreteEquiv.{u₁} {α : Type u₁} : Discrete α ≃ α</code><span class=\"sep\"></span><code class=\"docstring\">`Discrete α` is equivalent to the original type `α`. </code>",
+ "2810":
+ "<code>Fin 3 → Discrete (Fin 3)</code><span class=\"sep\"></span><code class=\"docstring\">An embedding as a function. Use coercion instead. </code>",
  "281":
  "<code>(β.hom ⊚ α.hom) ⊚ α.inv ⊚ β.inv = 𝟙 Z</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "2809":
+ "<code>Function.Embedding.mk.{u_1, u_2} {α : Sort u_1} {β : Sort u_2} (toFun : α → β) (inj' : Function.Injective toFun) : α ↪ β</code>",
+ "2808":
+ "<code>Fin 3</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
+ "2807":
+ "<code>s.pt ⟶\n  (Fan.mk coneQ.pt fun i ↦\n      match i with\n      | 0 =&gt; coneP.π.app { as := 0 } ⊚ coneQ.π.app { as := 0 }\n      | 1 =&gt; coneP.π.app { as := 1 } ⊚ coneQ.π.app { as := 0 }\n      | 2 =&gt; coneQ.π.app { as := 1 }).pt</code>",
+ "2806": "<code>Discrete (Fin 3)</code>",
+ "2805":
+ "<code>Cone\n  (Discrete.functor fun x ↦\n    match x with\n    | 0 =&gt; C_a\n    | 1 =&gt; C_b\n    | 2 =&gt; C_c)</code>",
+ "2804":
+ "<code>Fin 2</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
+ "2803":
+ "<code>Fan fun x ↦\n  match x with\n  | 0 =&gt; coneP.pt\n  | 1 =&gt; C_c</code>",
+ "2802":
+ "<code>Fan fun x ↦\n  match x with\n  | 0 =&gt; C_a\n  | 1 =&gt; C_b</code>",
+ "2801": "<code>q_c ⊚ m = f_c</code>",
+ "2800": "<code>p_b ⊚ q ⊚ m = f_b</code>",
  "280":
  "<code>(α.inv ⊚ β.inv) ⊚ β.hom ⊚ α.hom = 𝟙 X</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
  "28": "<code>CM.ExI_1.h : C → D</code>",
+ "2799": "<code>p_a ⊚ q ⊚ m = f_a</code>",
+ "2798":
+ "<code>∀ (y : X ⟶ Q), (fun f ↦ q ⊚ f = f_p ∧ q_c ⊚ f = f_c) y → y = f</code>",
+ "2797": "<code>q_c ⊚ f = f_c</code>",
+ "2796": "<code>q ⊚ f = f_p</code>",
+ "2795":
+ "<code>∀ (y : X ⟶ P), (fun f ↦ p_a ⊚ f = f_a ∧ p_b ⊚ f = f_b) y → y = f_p</code>",
+ "2794": "<code>p_b ⊚ f_p = f_b</code>",
+ "2793": "<code>p_a ⊚ f_p = f_a</code>",
+ "2792": "<code>X ⟶ Q</code>",
+ "2791": "<code>X ⟶ C_c</code>",
+ "2790":
+ "<code>∀ (X : 𝒞) (f₁ : X ⟶ P) (f₂ : X ⟶ C_c), ∃! f, q ⊚ f = f₁ ∧ q_c ⊚ f = f₂</code>",
  "279":
  "<code>Z ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "2789": "<code>Q ⟶ C_c</code>",
+ "2788": "<code>Q ⟶ P</code>",
+ "2787": "<code>X ⟶ C_b</code>",
+ "2786": "<code>X ⟶ C_a</code>",
+ "2785":
+ "<code>∀ (X : 𝒞) (f₁ : X ⟶ C_a) (f₂ : X ⟶ C_b), ∃! f, p_a ⊚ f = f₁ ∧ p_b ⊚ f = f₂</code>",
+ "2784": "<code>P ⟶ C_b</code>",
+ "2783": "<code>P ⟶ C_a</code>",
+ "2782": "<code>∀ (i : I), coneQ.proj i ⊚ f = coneP.proj i</code>",
+ "2781":
+ "<code>CategoryTheory.Limits.Fan.proj.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] {f : β → C} (p : Fan f) (j : β) :\n  p.pt ⟶ f j</code><span class=\"sep\"></span><code class=\"docstring\">Get the `j`th \"projection\" in the fan.\n(Note that the initial letter of `proj` matches the greek letter in `Cone.π`.) </code>",
+ "2780":
+ "<code>∀ (j : Discrete I), (Fan.mk P pᵢ).π.app j ⊚ m = s.π.app j</code>",
  "278":
  "<code>X ⟶ Z</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "2779": "<code>s.pt ⟶ (Fan.mk P pᵢ).pt</code>",
+ "2778": "<code>Cone (Discrete.functor Cᵢ)</code>",
+ "2777":
+ "<code>I</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
+ "2776": "<code>(i : I) → s.pt ⟶ Cᵢ i</code>",
+ "2775":
+ "<code>∀ (s : Fan Cᵢ), ∃! f, ∀ (i : I), pᵢ i ⊚ f = (fun i ↦ s.π.app { as := i }) i</code>",
+ "2774":
+ "<code>∀ (X : 𝒞) (fᵢ : (i : I) → X ⟶ Cᵢ i), ∃! f, ∀ (i : I), pᵢ i ⊚ f = fᵢ i</code>",
+ "2773": "<code>Discrete I</code>",
+ "2772": "<code>∀ (i : I), pᵢ i ⊚ m = fᵢ i</code>",
+ "2771": "<code>Fan Cᵢ</code>",
+ "2770": "<code>IsLimit (Fan.mk P pᵢ)</code>",
  "277": "<code>Y ≅ Z</code>",
+ "2769": "<code>(i : I) → X ⟶ Cᵢ i</code>",
+ "2768":
+ "<code>CategoryTheory.Limits.Fan.mk.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] {f : β → C} (P : C)\n  (p : (b : β) → P ⟶ f b) : Fan f</code><span class=\"sep\"></span><code class=\"docstring\">A fan over `f : β → C` consists of a collection of maps from an object `P` to every `f b`. </code>",
+ "2767": "<code>I</code>",
+ "2766": "<code>(i : I) → P ⟶ Cᵢ i</code>",
+ "2765": "<code>I → 𝒞</code>",
+ "2764":
+ "<code>CategoryTheory.Limits.piObj.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] (f : β → C) [HasProduct f] : C</code><span class=\"sep\"></span><code class=\"docstring\">`piObj f` computes the product of a family of elements `f`.\n(It is defined as an abbreviation for `limit (Discrete.functor f)`,\nso for most facts about `piObj f`, you will just use general facts about limits.) </code>",
+ "2763":
+ "<code>CategoryTheory.Limits.limit.{v₁, u₁, v, u} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u} [Category.{v, u} C]\n  (F : J ⥤ C) [HasLimit F] : C</code><span class=\"sep\"></span><code class=\"docstring\">An arbitrary choice of limit object of a functor. </code>",
+ "2762":
+ "<code>CategoryTheory.Limits.HasProduct.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] (f : β → C) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">An abbreviation for `HasLimit (Discrete.functor f)`. </code>",
+ "2761":
+ "<code>CategoryTheory.Limits.Fan.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] (f : β → C) : Type (max (max w u) v)</code><span class=\"sep\"></span><code class=\"docstring\">A fan over `f : β → C` consists of a collection of maps from an object `P` to every `f b`. </code>",
+ "2760":
+ "<code>CategoryTheory.Discrete.functor.{v₂, u₁, u₂} {C : Type u₂} [Category.{v₂, u₂} C] {I : Type u₁} (F : I → C) :\n  Discrete I ⥤ C</code><span class=\"sep\"></span><code class=\"docstring\">Any function `I → C` gives a functor `Discrete I ⥤ C`. </code>",
  "276":
  "<code>CategoryTheory.Iso.symm.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (I : X ≅ Y) : Y ≅ X</code><span class=\"sep\"></span><code class=\"docstring\">Inverse isomorphism. </code>",
+ "2759": "<code>β → C</code>",
+ "2758": "<code>Type w</code>",
+ "2757": "<code>↑g ⊚ Y✝.action = Z✝.action ⊚ Prod.map (𝟙 carrierA) ↑g</code>",
+ "2756": "<code>↑f ⊚ X✝.action = Y✝.action ⊚ Prod.map (𝟙 carrierA) ↑f</code>",
+ "2755":
+ "<code>{ f // f ⊚ Y✝.action = Z✝.action ⊚ Prod.map (𝟙 carrierA) f }</code>",
+ "2754":
+ "<code>{ f // f ⊚ X✝.action = Y✝.action ⊚ Prod.map (𝟙 carrierA) f }</code>",
+ "2753":
+ "<code>{X Y Z : SetA carrierA} →\n  { f // f ⊚ X.action = Y.action ⊚ Prod.map (𝟙 carrierA) f } →\n    { f // f ⊚ Y.action = Z.action ⊚ Prod.map (𝟙 carrierA) f } →\n      { f // f ⊚ X.action = Z.action ⊚ Prod.map (𝟙 carrierA) f }</code><span class=\"sep\"></span><code class=\"docstring\">Composition of morphisms in a category, written `f ≫ g`. </code>",
+ "2752":
+ "<code>(X : SetA carrierA) → { f // f ⊚ X.action = X.action ⊚ Prod.map (𝟙 carrierA) f }</code><span class=\"sep\"></span><code class=\"docstring\">The identity morphism on an object. </code>",
+ "2751":
+ "<code>Prod.map.{u₁, u₂, v₁, v₂} {α₁ : Type u₁} {α₂ : Type u₂} {β₁ : Type v₁} {β₂ : Type v₂} (f : α₁ → α₂) (g : β₁ → β₂) :\n  α₁ × β₁ → α₂ × β₂</code><span class=\"sep\"></span><code class=\"docstring\">Transforms a pair by applying functions to both elements.\n\nExamples:\n* `(1, 2).map (· + 1) (· * 3) = (2, 6)`\n* `(1, 2).map toString (· * 3) = (\"1\", 6)`\n</code>",
+ "2750": "<code>SetA carrierA</code>",
  "275":
  "<code>I.inv ⊚ I.hom = 𝟙 X</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "2749":
+ "<code>SetA carrierA → SetA carrierA → Type</code><span class=\"sep\"></span><code class=\"docstring\">The type of edges/arrows/morphisms between a given source and target. </code>",
+ "2748":
+ "<code>CM.SetA.action {carrierA : Type} (self : SetA carrierA) : carrierA × self.carrier ⟶ self.carrier</code>",
+ "2747":
+ "<code>CM.SetA.carrier {carrierA : Type} (self : SetA carrierA) : Type</code>",
+ "2746": "<code>CM.SetA (carrierA : Type) : Type 1</code>",
+ "2745": "<code>b₂ = prod.snd ⊚ p</code>",
+ "2744": "<code>b₁ = prod.fst ⊚ p</code>",
+ "2743":
+ "<code>Prod.mk.eta.{u_1, u_2} {α : Type u_1} {β : Type u_2} {p : α × β} : (p.1, p.2) = p</code>",
+ "2742": "<code>p = prod.lift b.1 b.2</code>",
+ "2741":
+ "<code>CategoryTheory.Limits.prod.lift_snd.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} [HasBinaryProduct X Y]\n  (f : W ⟶ X) (g : W ⟶ Y) : prod.snd ⊚ prod.lift f g = g</code>",
+ "2740":
+ "<code>CategoryTheory.Limits.prod.lift_fst.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} [HasBinaryProduct X Y]\n  (f : W ⟶ X) (g : W ⟶ Y) : prod.fst ⊚ prod.lift f g = f</code>",
  "274":
  "<code>I.hom ⊚ I.inv = 𝟙 Y</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "2739":
+ "<code>CategoryTheory.Limits.prod.hom_ext.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} [HasBinaryProduct X Y]\n  {f g : W ⟶ X ⨯ Y} (h₁ : prod.fst ⊚ f = prod.fst ⊚ g) (h₂ : prod.snd ⊚ f = prod.snd ⊚ g) : f = g</code>",
+ "2738":
+ "<code>CategoryTheory.Limits.prod.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) [HasBinaryProduct X Y] : C</code><span class=\"sep\"></span><code class=\"docstring\">If we have a product of `X` and `Y`, we can access it using `prod X Y` or `X ⨯ Y`. </code>",
+ "2737": "<code>HasTerminal 𝒞</code>",
+ "2736": "<code>HasBinaryProducts 𝒞</code>",
+ "2735":
+ "<code>CategoryTheory.Limits.prod.snd.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} [HasBinaryProduct X Y] : X ⨯ Y ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">The projection map to the second component of the product. </code>",
+ "2734":
+ "<code>CategoryTheory.Limits.prod.fst.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} [HasBinaryProduct X Y] : X ⨯ Y ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The projection map to the first component of the product. </code>",
+ "2733": "<code>Point' B₂</code>",
+ "2732": "<code>Point' B₁</code>",
+ "2731":
+ "<code>CategoryTheory.Limits.prod.lift.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} [HasBinaryProduct X Y] (f : W ⟶ X)\n  (g : W ⟶ Y) : W ⟶ X ⨯ Y</code><span class=\"sep\"></span><code class=\"docstring\">If the product of `X` and `Y` exists, then every pair of morphisms `f : W ⟶ X` and `g : W ⟶ Y`\ninduces a morphism `prod.lift f g : W ⟶ X ⨯ Y`. </code>",
+ "2730": "<code>Point' B₁ × Point' B₂</code>",
  "273":
  "<code>X ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "2729": "<code>Point' (B₁ ⨯ B₂)</code>",
+ "2728":
+ "<code>CM.ExIV_13.Point'.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] [HasTerminal 𝒞] (X : 𝒞) : Type v</code>",
+ "2727":
+ "<code>CategoryTheory.Limits.HasBinaryProducts.{v, u} (C : Type u) [Category.{v, u} C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">A category `HasBinaryProducts` if it has all limits of shape `Discrete WalkingPair`,\ni.e. if it has a product for every pair of objects. </code>",
+ "2726":
+ "<code>CategoryTheory.Limits.IsLimit.nonempty_isLimit_iff_isIso_lift.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J]\n  {C : Type u₃} [Category.{v₃, u₃} C] {F : J ⥤ C} {s t : Cone F} (hs : IsLimit s) :\n  Nonempty (IsLimit t) ↔ IsIso (hs.lift t)</code>",
+ "2725": "<code>coneQ.snd ⊚ f = coneP.snd</code>",
+ "2724": "<code>coneQ.fst ⊚ f = coneP.fst</code>",
+ "2723": "<code>coneQ.pt ⟶ coneP.pt</code>",
+ "2722":
+ "<code>CategoryTheory.Limits.BinaryFan.snd.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (s : BinaryFan X Y) :\n  ((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.right } ⟶\n    (pair X Y).obj { as := WalkingPair.right }</code><span class=\"sep\"></span><code class=\"docstring\">The second projection of a binary fan. </code>",
+ "2721":
+ "<code>CategoryTheory.Limits.BinaryFan.fst.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (s : BinaryFan X Y) :\n  ((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.left } ⟶\n    (pair X Y).obj { as := WalkingPair.left }</code><span class=\"sep\"></span><code class=\"docstring\">The first projection of a binary fan. </code>",
+ "2720": "<code>coneP.pt ⟶ coneQ.pt</code>",
  "272":
  "<code>Y ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "2719": "<code>IsLimit coneQ</code>",
+ "2718": "<code>IsLimit coneP</code>",
+ "2717":
+ "<code>∀ (j : Discrete WalkingPair), (BinaryFan.mk p₁ p₂).π.app j ⊚ m = s.π.app j</code>",
+ "2716":
+ "<code>Exists.choose_spec.{u_1} {α : Sort u_1} {p : α → Prop} (P : ∃ a, p a) : p P.choose</code><span class=\"sep\"></span><code class=\"docstring\">Show that an element extracted from `P : ∃ a, p a` using `P.choose` satisfies `p`. </code>",
+ "2715":
+ "<code>Exists.choose.{u_1} {α : Sort u_1} {p : α → Prop} (P : ∃ a, p a) : α</code><span class=\"sep\"></span><code class=\"docstring\">Extract an element from an existential statement, using `Classical.choose`. </code>",
+ "2714": "<code>s.pt ⟶ (BinaryFan.mk p₁ p₂).pt</code>",
+ "2713": "<code>Cone (pair B₁ B₂)</code>",
+ "2712": "<code>s.pt ⟶ P</code>",
+ "2711": "<code>s.pt ⟶ B₂</code>",
+ "2710": "<code>s.pt ⟶ B₁</code>",
  "271":
  "<code>CategoryTheory.Iso.refl.{v, u} {C : Type u} [Category.{v, u} C] (X : C) : X ≅ X</code><span class=\"sep\"></span><code class=\"docstring\">Identity isomorphism. </code>",
+ "2709":
+ "<code>∀ (s : BinaryFan B₁ B₂),\n  ∃! f, p₁ ⊚ f = s.π.app { as := WalkingPair.left } ∧ p₂ ⊚ f = s.π.app { as := WalkingPair.right }</code>",
+ "2708":
+ "<code>∀ (X : 𝒞) (f₁ : X ⟶ B₁) (f₂ : X ⟶ B₂), ∃! f, p₁ ⊚ f = f₁ ∧ p₂ ⊚ f = f₂</code>",
+ "2707":
+ "<code>WalkingPair</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
+ "2706": "<code>Discrete WalkingPair</code>",
+ "2705": "<code>p₂ ⊚ m = f₂</code>",
+ "2704": "<code>p₁ ⊚ m = f₁</code>",
+ "2703": "<code>CategoryTheory.Limits.WalkingPair.right : WalkingPair</code>",
+ "2702": "<code>CategoryTheory.Limits.WalkingPair.left : WalkingPair</code>",
+ "2701":
+ "<code>CategoryTheory.Discrete.mk.{u₁} {α : Type u₁} (as : α) : Discrete α</code>",
+ "2700": "<code>BinaryFan B₁ B₂</code>",
  "270":
  "<code>𝟙 X ⊚ 𝟙 X = 𝟙 X</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
  "27": "<code>CM.ExI_1.g : B → C</code>",
+ "2699": "<code>IsLimit (BinaryFan.mk p₁ p₂)</code>",
+ "2698": "<code>X ⟶ B₂</code>",
+ "2697": "<code>X ⟶ B₁</code>",
+ "2696":
+ "<code>CategoryTheory.Limits.BinaryFan.mk.{v, u} {C : Type u} [Category.{v, u} C] {X Y P : C} (π₁ : P ⟶ X) (π₂ : P ⟶ Y) :\n  BinaryFan X Y</code><span class=\"sep\"></span><code class=\"docstring\">A binary fan with vertex `P` consists of the two projections `π₁ : P ⟶ X` and `π₂ : P ⟶ Y`. </code>",
+ "2695": "<code>P ⟶ B₂</code>",
+ "2694": "<code>P ⟶ B₁</code>",
+ "2693":
+ "<code>autoParam (∀ (s : Cone F) (m : s.pt ⟶ t.pt), (∀ (j : J), t.π.app j ⊚ m = s.π.app j) → m = lift s)\n  IsLimit.uniq._autoParam</code>",
+ "2692":
+ "<code>autoParam (∀ (s : Cone F) (j : J), t.π.app j ⊚ lift s = s.π.app j) IsLimit.fac._autoParam</code>",
+ "2691": "<code>(s : Cone F) → s.pt ⟶ t.pt</code>",
+ "2690":
+ "<code>CategoryTheory.Limits.IsLimit.mk.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cone F} (lift : (s : Cone F) → s.pt ⟶ t.pt)\n  (fac : ∀ (s : Cone F) (j : J), t.π.app j ⊚ lift s = s.π.app j := by cat_disch)\n  (uniq : ∀ (s : Cone F) (m : s.pt ⟶ t.pt), (∀ (j : J), t.π.app j ⊚ m = s.π.app j) → m = lift s := by cat_disch) :\n  IsLimit t</code>",
  "269":
  "<code>𝟙 X ⊚ 𝟙 X = 𝟙 X</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "2689": "<code>s.pt ⟶ t.pt</code>",
+ "2688":
+ "<code>CategoryTheory.Limits.IsLimit.uniq.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cone F} (self : IsLimit t) (s : Cone F) (m : s.pt ⟶ t.pt) :\n  (∀ (j : J), t.π.app j ⊚ m = s.π.app j) → m = self.lift s</code><span class=\"sep\"></span><code class=\"docstring\">It is the unique such map to do this </code>",
+ "2687": "<code>IsLimit t</code>",
+ "2686":
+ "<code>CategoryTheory.NatTrans.app.{v₁, v₂, u₁, u₂} {C : Type u₁} [Category.{v₁, u₁} C] {D : Type u₂} [Category.{v₂, u₂} D]\n  {F G : C ⥤ D} (self : NatTrans F G) (X : C) : F.obj X ⟶ G.obj X</code><span class=\"sep\"></span><code class=\"docstring\">The component of a natural transformation. </code>",
+ "2685":
+ "<code>CategoryTheory.Limits.Cone.π.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (self : Cone F) : (Functor.const J).obj self.pt ⟶ F</code><span class=\"sep\"></span><code class=\"docstring\">A natural transformation from the constant functor at `X` to `F` </code>",
+ "2684": "<code>J</code>",
+ "2683":
+ "<code>CategoryTheory.Limits.IsLimit.fac.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cone F} (self : IsLimit t) (s : Cone F) (j : J) :\n  t.π.app j ⊚ self.lift s = s.π.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map makes the triangle with the two natural transformations commute </code>",
+ "2682":
+ "<code>CategoryTheory.Limits.IsLimit.lift.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cone F} (self : IsLimit t) (s : Cone F) : s.pt ⟶ t.pt</code><span class=\"sep\"></span><code class=\"docstring\">There is a morphism from any cone point to `t.pt` </code>",
+ "2681": "<code>Cone F</code>",
+ "2680": "<code>J ⥤ C</code>",
  "268":
  "<code>X ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "2679": "<code>Type u₃</code>",
+ "2678":
+ "<code>CategoryTheory.Limits.WalkingPair : Type</code><span class=\"sep\"></span><code class=\"docstring\">The type of objects for the diagram indexing a binary (co)product. </code>",
+ "2677":
+ "<code>CategoryTheory.Limits.BinaryFan.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">A binary fan is just a cone on a diagram indexing a product. </code>",
+ "2676":
+ "<code>CategoryTheory.Limits.pair.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Discrete WalkingPair ⥤ C</code><span class=\"sep\"></span><code class=\"docstring\">The diagram on the walking pair, sending the two points to `X` and `Y`. </code>",
+ "2675":
+ "<code>(fun i ↦ i) ⟨1, ⋯⟩ =\n  match (fun i ↦ i) ⟨0, ⋯⟩ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2674":
+ "<code>(fun i ↦ i) ⟨1, ⋯⟩ =\n  match (fun i ↦ i) ⟨0, ⋯⟩ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2673":
+ "<code>(fun i ↦ i) ⟨0, ⋯⟩ =\n  match (fun i ↦ i) ⟨0, ⋯⟩ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2672":
+ "<code>(fun i ↦ i) ⟨1, ⋯⟩ =\n  match (fun i ↦ i) ⟨1, ⋯⟩ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2671":
+ "<code>(fun i ↦ i) ⟨0, ⋯⟩ =\n  match (fun i ↦ i) ⟨1, ⋯⟩ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2670":
+ "<code>(fun i ↦ i) ⟨0, ⋯⟩ =\n  match (fun i ↦ i) ⟨1, ⋯⟩ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
  "267":
  "<code>X ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "2669":
+ "<code>x₂ =\n  match (fun i ↦ i) ⟨1, ⋯⟩ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2668":
+ "<code>x₂ =\n  match (fun i ↦ i) ⟨1, ⋯⟩ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2667":
+ "<code>x₂ =\n  match (fun i ↦ i) ⟨0, ⋯⟩ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2666":
+ "<code>x₂ =\n  match (fun i ↦ i) ⟨0, ⋯⟩ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2665": "<code>x₂ =\n  match x₁ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2664": "<code>x₂ =\n  match x₁ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2663":
+ "<code>(↑f).2 () =\n  match x₁ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2662":
+ "<code>(↑f).2 () =\n  match x₁ with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
+ "2661":
+ "<code>(↑f).2 () =\n  match (↑f).1 () with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2660":
+ "<code>(↑f).2 () =\n  match (↑f).1 () with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code>",
  "266": "<code>Category.{v, u} C</code>",
+ "2659": "<code>((↑f).2 ⊚ U.toTgt) () = (X.toTgt ⊚ (↑f).1) ()</code>",
+ "2658":
+ "<code>And.left {a b : Prop} (self : a ∧ b) : a</code><span class=\"sep\"></span><code class=\"docstring\">Extract the left conjunct from a conjunction. `h : a ∧ b` then\n`h.left`, also notated as `h.1`, is a proof of `a`. </code>",
+ "2657": "<code>((↑f).2 ⊚ U.toSrc) () = (X.toSrc ⊚ (↑f).1) ()</code>",
+ "2656": "<code>⊤_ IrreflexiveGraph ⟶ X</code>",
+ "2655": "<code>X ⟶ emptyIG</code>",
+ "2654":
+ "<code>∀ (x : Cone x✝)\n  (x_1 :\n    x.pt ⟶\n      { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n          π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt),\n  (∀ (j : Discrete PEmpty.{1}),\n      { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n                  π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.π.app\n            j ⊚\n          x_1 =\n        x.π.app j) →\n    x_1 = x_1</code><span class=\"sep\"></span><code class=\"docstring\">It is the unique such map to do this </code>",
+ "2653":
+ "<code>∀ (x : Cone x✝) (j : Discrete PEmpty.{1}),\n  { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n              π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.π.app\n        j ⊚\n      ⟨(fun x ↦ (), fun x ↦ ()), ⋯⟩ =\n    x.π.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map makes the triangle with the two natural transformations commute </code>",
+ "2652":
+ "<code>∀ ⦃X Y : Discrete PEmpty.{1}⦄ (f : X ⟶ Y),\n  Y.as.elim ⊚\n      ((Functor.const (Discrete PEmpty.{1})).obj\n            { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () }).map\n        f =\n    x✝¹.map f ⊚ X.as.elim</code><span class=\"sep\"></span><code class=\"docstring\">The naturality square for a given morphism. </code>",
+ "2651":
+ "<code>(j : Discrete PEmpty.{1}) →\n  ((Functor.const (Discrete PEmpty.{1})).obj\n          { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () }).obj\n      j ⟶\n    x✝¹.obj j</code><span class=\"sep\"></span><code class=\"docstring\">The component of a natural transformation. </code>",
+ "2650":
+ "<code>CategoryTheory.NatTrans.mk.{v₁, v₂, u₁, u₂} {C : Type u₁} [Category.{v₁, u₁} C] {D : Type u₂} [Category.{v₂, u₂} D]\n  {F G : C ⥤ D} (app : (X : C) → F.obj X ⟶ G.obj X)\n  (naturality : ∀ ⦃X Y : C⦄ (f : X ⟶ Y), app Y ⊚ F.map f = G.map f ⊚ app X := by cat_disch) : NatTrans F G</code>",
  "265": "<code>∃ inv, inv ⊚ f = 𝟙 X ∧ f ⊚ inv = 𝟙 Y</code>",
+ "2649":
+ "<code>NatTrans\n  ((Functor.const (Discrete PEmpty.{1})).obj\n    { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () })\n  x✝¹</code><span class=\"sep\"></span><code class=\"docstring\">A natural transformation from the constant functor at `X` to `F` </code>",
+ "2648":
+ "<code>CategoryTheory.Limits.Cone.mk.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (pt : C) (π : (Functor.const J).obj pt ⟶ F) : Cone F</code>",
+ "2647":
+ "<code>CategoryTheory.Limits.Cone.pt.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (self : Cone F) : C</code><span class=\"sep\"></span><code class=\"docstring\">An object of `C` </code>",
+ "2646": "<code>x✝.pt.carrierD</code>",
+ "2645": "<code>x✝.pt.carrierA</code>",
+ "2644":
+ "<code>CategoryTheory.Limits.Cone.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  (F : J ⥤ C) : Type (max (max u₁ u₃) v₃)</code><span class=\"sep\"></span><code class=\"docstring\">A `c : Cone F` is:\n* an object `c.pt` and\n* a natural transformation `c.π : c.pt ⟶ F` from the constant `c.pt` functor to `F`.\n\nExample: if `J` is a category coming from a poset then the data required to make\na term of type `Cone F` is morphisms `πⱼ : c.pt ⟶ F j` for all `j : J` and,\nfor all `i ≤ j` in `J`, morphisms `πᵢⱼ : F i ⟶ F j` such that `πᵢ ≫ πᵢⱼ = πⱼ`.\n\n`Cone F` is equivalent, via `cone.equiv` below, to `Σ X, F.cones.obj X`.\n</code>",
+ "2643": "<code>Cone x✝¹</code>",
+ "2642": "<code>Discrete PEmpty.{1} ⥤ IrreflexiveGraph</code>",
+ "2641":
+ "<code>(fun x ↦ (), fun x ↦ ()).2 ⊚ x✝.pt.toSrc =\n    { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n            π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.toSrc ⊚\n      (fun x ↦ (), fun x ↦ ()).1 ∧\n  (fun x ↦ (), fun x ↦ ()).2 ⊚ x✝.pt.toTgt =\n    { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n            π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.toTgt ⊚\n      (fun x ↦ (), fun x ↦ ()).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2640":
+ "<code>(x✝.pt.carrierA ⟶\n    { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n          π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.carrierA) ×\n  (x✝.pt.carrierD ⟶\n    { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n          π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
  "264":
  "<code>CategoryTheory.IsIso.mk.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} {f : X ⟶ Y}\n  (out : ∃ inv, inv ⊚ f = 𝟙 X ∧ f ⊚ inv = 𝟙 Y) : IsIso f</code>",
+ "2639":
+ "<code>(x : Cone x✝) →\n  { f //\n    f.2 ⊚ x.pt.toSrc =\n        { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n                π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.toSrc ⊚\n          f.1 ∧\n      f.2 ⊚ x.pt.toTgt =\n        { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n                π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.toTgt ⊚\n          f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">There is a morphism from any cone point to `t.pt` </code>",
+ "2638":
+ "<code>IsLimit\n  { pt := { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () },\n    π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }</code><span class=\"sep\"></span><code class=\"docstring\">The proof that is the limit cone </code>",
+ "2637":
+ "<code>(j : Discrete PEmpty.{1}) →\n  ((Functor.const (Discrete PEmpty.{1})).obj\n          { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () }).obj\n      j ⟶\n    x✝.obj j</code><span class=\"sep\"></span><code class=\"docstring\">The component of a natural transformation. </code>",
+ "2636":
+ "<code>NatTrans\n  ((Functor.const (Discrete PEmpty.{1})).obj\n    { carrierA := Unit, carrierD := Unit, toSrc := fun x ↦ (), toTgt := fun x ↦ () })\n  x✝</code><span class=\"sep\"></span><code class=\"docstring\">A natural transformation from the constant functor at `X` to `F` </code>",
+ "2635":
+ "<code>IrreflexiveGraph</code><span class=\"sep\"></span><code class=\"docstring\">An object of `C` </code>",
+ "2634":
+ "<code>∀ (x : Discrete PEmpty.{1} ⥤ IrreflexiveGraph), HasLimit x</code><span class=\"sep\"></span><code class=\"docstring\">All functors `F : J ⥤ C` from `J` have limits </code>",
+ "2633":
+ "<code>(fun i ↦ i) ⟨1, ⋯⟩ =\n  match (fun i ↦ i) ⟨1, ⋯⟩ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2632":
+ "<code>(fun i ↦ i) ⟨0, ⋯⟩ =\n  match (fun i ↦ i) ⟨0, ⋯⟩ with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2631": "<code>x =\n  match x with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2630":
+ "<code class=\"docstring\">* `generalize ([h :] e = x),+` replaces all occurrences `e`s in the main goal\n  with a fresh hypothesis `x`s. If `h` is given, `h : e = x` is introduced as well.\n* `generalize e = x at h₁ ... hₙ` also generalizes occurrences of `e`\n  inside `h₁`, ..., `hₙ`.\n* `generalize e = x at *` will generalize occurrences of `e` everywhere.\n</code>",
  "263":
  "<code>And (a b : Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`And a b`, or `a ∧ b`, is the conjunction of propositions. It can be\nconstructed and destructed like a pair: if `ha : a` and `hb : b` then\n`⟨ha, hb⟩ : a ∧ b`, and if `h : a ∧ b` then `h.left : a` and `h.right : b`.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `∧` in identifiers is `and`.\n\n * The recommended spelling of `/\\` in identifiers is `and` (prefer `∧` over `/\\`).</code>",
+ "2629":
+ "<code>↑f () =\n  match ↑f () with\n  | 0 =&gt; 1\n  | 1 =&gt; 0</code>",
+ "2628": "<code>(↑f ⊚ U.toEnd) () = (X.toEnd ⊚ ↑f) ()</code>",
+ "2627":
+ "<code>CategoryTheory.Limits.terminal.from.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] [HasTerminal C] (P : C) : P ⟶ ⊤_ C</code><span class=\"sep\"></span><code class=\"docstring\">The map from an object to the terminal object. </code>",
+ "2626": "<code>U ⟶ X</code>",
+ "2625": "<code>⊤_ SetWithEndomap ⟶ X</code>",
+ "2624": "<code>X ⟶ emptySWE</code>",
+ "2623": "<code>Fin 2 → Fin 2</code>",
+ "2622":
+ "<code>∀ (x : Cone x✝)\n  (x_1 : x.pt ⟶ { pt := { carrier := Unit, toEnd := id }, π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt),\n  (∀ (j : Discrete PEmpty.{1}),\n      { pt := { carrier := Unit, toEnd := id }, π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.π.app j ⊚ x_1 =\n        x.π.app j) →\n    x_1 = x_1</code><span class=\"sep\"></span><code class=\"docstring\">It is the unique such map to do this </code>",
+ "2621":
+ "<code>∀ (x : Cone x✝) (j : Discrete PEmpty.{1}),\n  { pt := { carrier := Unit, toEnd := id }, π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.π.app j ⊚\n      ⟨fun x ↦ (), ⋯⟩ =\n    x.π.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map makes the triangle with the two natural transformations commute </code>",
+ "2620":
+ "<code>(fun x ↦ ()) ⊚ x✝.pt.toEnd = (fun x ↦ ()) ⊚ x✝.pt.toEnd</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
  "262":
  "<code>CategoryTheory.IsIso.out.{v, u} {C : Type u} {inst✝ : Category.{v, u} C} {X Y : C} {f : X ⟶ Y} [self : IsIso f] :\n  ∃ inv, inv ⊚ f = 𝟙 X ∧ f ⊚ inv = 𝟙 Y</code><span class=\"sep\"></span><code class=\"docstring\">The existence of an inverse morphism. </code>",
+ "2619":
+ "<code>x✝.pt.carrier → Unit</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2618":
+ "<code>(x : Cone x✝) →\n  { f //\n    f ⊚ x.pt.toEnd =\n      { pt := { carrier := Unit, toEnd := id }, π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }.pt.toEnd ⊚ f }</code><span class=\"sep\"></span><code class=\"docstring\">There is a morphism from any cone point to `t.pt` </code>",
+ "2617":
+ "<code>IsLimit { pt := { carrier := Unit, toEnd := id }, π := { app := fun j ↦ j.as.elim, naturality := ⋯ } }</code><span class=\"sep\"></span><code class=\"docstring\">The proof that is the limit cone </code>",
+ "2616":
+ "<code>PEmpty.elim.{u_1, u_2} {C : Sort u_1} : PEmpty.{u_2} → C</code><span class=\"sep\"></span><code class=\"docstring\">`PEmpty.elim : Empty → C` says that a value of any type can be constructed from\n`PEmpty`. This can be thought of as a compiler-checked assertion that a code path is unreachable.\n</code>",
+ "2615":
+ "<code>CategoryTheory.Discrete.as.{u₁} {α : Type u₁} (self : Discrete α) : α</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
+ "2614": "<code>Discrete PEmpty.{1}</code>",
+ "2613":
+ "<code>(j : Discrete PEmpty.{1}) →\n  ((Functor.const (Discrete PEmpty.{1})).obj { carrier := Unit, toEnd := id }).obj j ⟶ x✝.obj j</code><span class=\"sep\"></span><code class=\"docstring\">The component of a natural transformation. </code>",
+ "2612":
+ "<code>NatTrans ((Functor.const (Discrete PEmpty.{1})).obj { carrier := Unit, toEnd := id }) x✝</code><span class=\"sep\"></span><code class=\"docstring\">A natural transformation from the constant functor at `X` to `F` </code>",
+ "2611":
+ "<code>SetWithEndomap</code><span class=\"sep\"></span><code class=\"docstring\">An object of `C` </code>",
+ "2610":
+ "<code>Cone x✝</code><span class=\"sep\"></span><code class=\"docstring\">The cone itself </code>",
  "261":
  "<code class=\"docstring\">The universe of propositions. `Prop ≡ Sort 0`.\n\nEvery proposition is propositionally equal to either `True` or `False`. </code>",
+ "2609":
+ "<code>CategoryTheory.Limits.HasLimit.mk'.{v₁, u₁, v, u} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u} [Category.{v, u} C]\n  {F : J ⥤ C} (exists_limit : Nonempty (LimitCone F)) : HasLimit F</code>",
+ "2608":
+ "<code>∀ (x : Discrete PEmpty.{1} ⥤ SetWithEndomap), HasLimit x</code><span class=\"sep\"></span><code class=\"docstring\">All functors `F : J ⥤ C` from `J` have limits </code>",
+ "2607":
+ "<code>Nonempty.map.{u_3, u_4} {α : Sort u_3} {β : Sort u_4} (f : α → β) : Nonempty α → Nonempty β</code><span class=\"sep\"></span><code class=\"docstring\">Given `f : α → β`, if `α` is nonempty then `β` is also nonempty.\n`Nonempty` cannot be a `functor`, because `Functor` is restricted to `Type`. </code>",
+ "2606":
+ "<code>∀ (a : X ⟶ Y), a = fun x ↦ ⋯.elim</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2605":
+ "<code>X → Y</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2604": "<code>¬Nonempty X</code>",
+ "2603": "<code>Nonempty X</code>",
+ "2602": "<code>IsEmpty (IsInitial X)</code>",
+ "2601": "<code>f.toFun = g.toFun</code>",
+ "2600":
+ "<code>Bipointed.Hom.ext_iff.{u} {X Y : Bipointed} {x y : X.Hom Y} : x = y ↔ x.toFun = y.toFun</code>",
  "260":
  "<code>CategoryTheory.IsIso.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (f : X ⟶ Y) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">The `IsIso` typeclass expresses that a morphism is invertible.\n\nGiven a morphism `f` with `IsIso f`, one can view `f` as an isomorphism via `asIso f` and get\nthe inverse using `inv f`. </code>",
  "26": "<code>CM.ExI_1.f : A → B</code>",
+ "2599": "<code>∀ (X : Bipointed) (f g : X ⟶ BSTwo), f = g</code>",
+ "2598":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 1)\n    X.toProd.2 =\n  (fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 1)\n    X.toProd.2</code>",
+ "2597":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 1)\n    X.toProd.1 =\n  (fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 1)\n    X.toProd.1</code>",
+ "2596":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 0)\n    X.toProd.2 =\n  (fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 0)\n    X.toProd.2</code>",
+ "2595":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 0)\n    X.toProd.1 =\n  (fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 0)\n    X.toProd.1</code>",
+ "2594":
+ "<code>Fin 3 → Fin 2</code><span class=\"sep\"></span><code class=\"docstring\">The underlying function of a morphism of bipointed types. </code>",
+ "2593":
+ "<code>Fin 3 × Fin 3</code><span class=\"sep\"></span><code class=\"docstring\">The two points of a bipointed type, bundled together as a pair. </code>",
+ "2592":
+ "<code>Type</code><span class=\"sep\"></span><code class=\"docstring\">The underlying type of a bipointed type. </code>",
+ "2591":
+ "<code>Bipointed.Hom.map_snd.{u} {X Y : Bipointed} (self : X.Hom Y) : self.toFun X.toProd.2 = Y.toProd.2</code>",
+ "2590":
+ "<code>Bipointed.Hom.map_fst.{u} {X Y : Bipointed} (self : X.Hom Y) : self.toFun X.toProd.1 = Y.toProd.1</code>",
  "259": "<code>autoParam (hom ⊚ inv = 𝟙 Y) Iso.inv_hom_id._autoParam</code>",
+ "2589": "<code>BSTwo.X</code>",
+ "2588":
+ "<code>Bipointed.Hom.toFun.{u} {X Y : Bipointed} (self : X.Hom Y) : X.X → Y.X</code><span class=\"sep\"></span><code class=\"docstring\">The underlying function of a morphism of bipointed types. </code>",
+ "2587":
+ "<code>Bipointed.Hom.ext.{u} {X Y : Bipointed} {x y : X.Hom Y} (toFun : x.toFun = y.toFun) : x = y</code>",
+ "2586":
+ "<code>(match BSTwo.toProd.2 with\n  | 0 =&gt; Y.toProd.1\n  | 1 =&gt; Y.toProd.2) =\n  match BSTwo.toProd.2 with\n  | 0 =&gt; Y.toProd.1\n  | 1 =&gt; Y.toProd.2</code>",
+ "2585":
+ "<code>(match BSTwo.toProd.1 with\n  | 0 =&gt; Y.toProd.1\n  | 1 =&gt; Y.toProd.2) =\n  match BSTwo.toProd.1 with\n  | 0 =&gt; Y.toProd.1\n  | 1 =&gt; Y.toProd.2</code>",
+ "2584":
+ "<code>Fin 2 → Y.X</code><span class=\"sep\"></span><code class=\"docstring\">The underlying function of a morphism of bipointed types. </code>",
+ "2583":
+ "<code>∀ (a : BSTwo ⟶ Y),\n  a =\n    {\n      toFun := fun x ↦\n        match x with\n        | 0 =&gt; Y.toProd.1\n        | 1 =&gt; Y.toProd.2,\n      map_fst := ⋯, map_snd := ⋯ }</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2582":
+ "<code>Bipointed.X.{u} (self : Bipointed) : Type u</code><span class=\"sep\"></span><code class=\"docstring\">The underlying type of a bipointed type. </code>",
+ "2581":
+ "<code>Bipointed.toProd.{u} (self : Bipointed) : self.X × self.X</code><span class=\"sep\"></span><code class=\"docstring\">The two points of a bipointed type, bundled together as a pair. </code>",
+ "2580":
+ "<code>Bipointed.Hom.mk.{u} {X Y : Bipointed} (toFun : X.X → Y.X) (map_fst : toFun X.toProd.1 = Y.toProd.1)\n  (map_snd : toFun X.toProd.2 = Y.toProd.2) : X.Hom Y</code>",
  "258": "<code>autoParam (inv ⊚ hom = 𝟙 X) Iso.hom_inv_id._autoParam</code>",
+ "2579": "<code>Bipointed</code>",
+ "2578":
+ "<code>Bipointed.mk.{u} (X : Type u) (toProd : X × X) : Bipointed</code>",
+ "2577":
+ "<code>Bipointed.{u} : Type (u + 1)</code><span class=\"sep\"></span><code class=\"docstring\">The category of bipointed types. </code>",
+ "2576": "<code>CM.ExIV_10c.BSTwo : Bipointed</code>",
+ "2575": "<code>f.right = g.right</code>",
+ "2574": "<code>Fin 3</code>",
+ "2573":
+ "<code>∀ (a : BSTwo ⟶ Y), a = Under.homMk Y.hom ⋯</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2572": "<code>Under (Fin 2)</code>",
+ "2571": "<code>CM.ExIV_10b.BSTwo : BipointedSet</code>",
+ "2570": "<code>CM.ExIV_10b.BipointedSet : Type 1</code>",
  "257": "<code>Y ⟶ X</code>",
+ "2569": "<code>↑f = ↑g</code>",
+ "2568": "<code>∀ (X : BipointedSet) (f g : X ⟶ BSTwo), f = g</code>",
+ "2567":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 1) ⊚\n    X.point =\n  BSTwo.point</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2566":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1\n      | 2 =&gt; 0) ⊚\n    X.point =\n  BSTwo.point</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2565":
+ "<code>X.carrier → Two</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2564":
+ "<code>CM.BipointedSet.mk (carrier : Type) (point : Two ⟶ carrier) : BipointedSet</code>",
+ "2563": "<code>Two</code>",
+ "2562": "<code>Two → Fin 3</code>",
+ "2561": "<code>BSTwo ⟶ Y</code>",
+ "2560":
+ "<code>∀ (a : BSTwo ⟶ Y), a = ⟨Y.point, ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
  "256":
  "<code>CategoryTheory.Iso.mk.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (hom : X ⟶ Y) (inv : Y ⟶ X)\n  (hom_inv_id : inv ⊚ hom = 𝟙 X := by cat_disch) (inv_hom_id : hom ⊚ inv = 𝟙 Y := by cat_disch) : X ≅ Y</code>",
+ "2559":
+ "<code>BSTwo ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2558": "<code>X ⟶ BSTwo</code>",
+ "2557": "<code>Two ⟶ Two</code>",
+ "2556": "<code>CM.ExIV_10a.BSTwo : BipointedSet</code>",
+ "2555":
+ "<code>{X Y Z : BipointedSet} →\n  { f // f ⊚ X.point = Y.point } → { f // f ⊚ Y.point = Z.point } → { f // f ⊚ X.point = Z.point }</code><span class=\"sep\"></span><code class=\"docstring\">Composition of morphisms in a category, written `f ≫ g`. </code>",
+ "2554":
+ "<code>(X : BipointedSet) → { f // f ⊚ X.point = X.point }</code><span class=\"sep\"></span><code class=\"docstring\">The identity morphism on an object. </code>",
+ "2553": "<code>BipointedSet</code>",
+ "2552":
+ "<code>BipointedSet → BipointedSet → Type</code><span class=\"sep\"></span><code class=\"docstring\">The type of edges/arrows/morphisms between a given source and target. </code>",
+ "2551":
+ "<code>CM.BipointedSet.point (self : BipointedSet) : Two ⟶ self.carrier</code>",
+ "2550": "<code>CM.BipointedSet.carrier (self : BipointedSet) : Type</code>",
  "255":
  "<code>CategoryTheory.Iso.inv_hom_id.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (self : X ≅ Y) :\n  self.hom ⊚ self.inv = 𝟙 Y</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "2549": "<code>CM.BipointedSet : Type 1</code>",
+ "2548": "<code>CM.Two : Type</code>",
+ "2547": "<code>f₁.toFun = f₂.toFun</code>",
+ "2546":
+ "<code>Pointed.Hom.ext_iff.{u} {X Y : Pointed} {x y : X.Hom Y} : x = y ↔ x.toFun = y.toFun</code>",
+ "2545": "<code>Nonempty (IsInitial X)</code>",
+ "2544": "<code>∀ (X : Pointed), Nonempty (IsInitial X)</code>",
+ "2543":
+ "<code>(match X.point with\n  | 0 =&gt; 0\n  | 1 =&gt; 1) =\n  match X.point with\n  | 0 =&gt; 0\n  | 1 =&gt; 1</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "2542":
+ "<code>(match X.point with\n  | 0 =&gt; 0\n  | 1 =&gt; 0) =\n  match X.point with\n  | 0 =&gt; 0\n  | 1 =&gt; 0</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "2541":
+ "<code>X.X → X.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "2540":
+ "<code>Fin 2</code><span class=\"sep\"></span><code class=\"docstring\">the distinguished element </code>",
  "254": "<code>X ≅ Y</code>",
+ "2539":
+ "<code>Pointed.Hom.map_point.{u} {X Y : Pointed} (self : X.Hom Y) : self.toFun X.point = Y.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "2538":
+ "<code>Pointed.X.{u} (self : Pointed) : Type u</code><span class=\"sep\"></span><code class=\"docstring\">the underlying type </code>",
+ "2537":
+ "<code>Pointed.Hom.toFun.{u} {X Y : Pointed} (self : X.Hom Y) : X.X → Y.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "2536":
+ "<code>Pointed.Hom.ext.{u} {X Y : Pointed} {x y : X.Hom Y} (toFun : x.toFun = y.toFun) : x = y</code>",
+ "2535":
+ "<code>(fun x ↦ Y.point) PSOne.point = (fun x ↦ Y.point) PSOne.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "2534": "<code>PSOne.X</code>",
+ "2533":
+ "<code>PSOne.X → Y.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "2532":
+ "<code>∀ (a : PSOne ⟶ Y), a = { toFun := fun x ↦ Y.point, map_point := ⋯ }</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2531":
+ "<code>Pointed.point.{u} (self : Pointed) : self.X</code><span class=\"sep\"></span><code class=\"docstring\">the distinguished element </code>",
+ "2530":
+ "<code>(fun x ↦ ()) X.point = (fun x ↦ ()) X.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
  "253":
  "<code>CategoryTheory.Iso.hom_inv_id.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (self : X ≅ Y) :\n  self.inv ⊚ self.hom = 𝟙 X</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "2529": "<code>X.X</code>",
+ "2528":
+ "<code>X.X → Unit</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "2527":
+ "<code>∀ (a : X ⟶ PSOne), a = { toFun := fun x ↦ (), map_point := ⋯ }</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2526":
+ "<code>Pointed.Hom.mk.{u} {X Y : Pointed} (toFun : X.X → Y.X) (map_point : toFun X.point = Y.point) : X.Hom Y</code>",
+ "2525": "<code>Pointed.mk.{u} (X : Type u) (point : X) : Pointed</code>",
+ "2524":
+ "<code>Unit</code><span class=\"sep\"></span><code class=\"docstring\">the distinguished element </code>",
+ "2523":
+ "<code>Type</code><span class=\"sep\"></span><code class=\"docstring\">the underlying type </code>",
+ "2522":
+ "<code>Pointed.{u} : Type (u + 1)</code><span class=\"sep\"></span><code class=\"docstring\">The category of pointed types. </code>",
+ "2521": "<code>Pointed</code>",
+ "2520": "<code>Fin.zero_ne_one {n : ℕ} : 0 ≠ 1</code>",
  "252":
  "<code>CategoryTheory.Iso.inv.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (self : X ≅ Y) : Y ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "2519": "<code>f₁.right = f₂.right</code>",
+ "2518":
+ "<code>CategoryTheory.Under.UnderMorphism.ext_iff.{v₁, u₁} {T : Type u₁} [Category.{v₁, u₁} T] {X : T} {U V : Under X}\n  {f g : U ⟶ V} : f = g ↔ f.right = g.right</code>",
+ "2517":
+ "<code>CategoryTheory.CommaMorphism.right.{v₁, v₂, v₃, u₁, u₂, u₃} {A : Type u₁} [Category.{v₁, u₁} A] {B : Type u₂}\n  [Category.{v₂, u₂} B] {T : Type u₃} [Category.{v₃, u₃} T] {L : A ⥤ T} {R : B ⥤ T} {X Y : Comma L R}\n  (self : CommaMorphism X Y) : X.right ⟶ Y.right</code><span class=\"sep\"></span><code class=\"docstring\">Morphism on right objects </code>",
+ "2516":
+ "<code>CategoryTheory.Under.w.{v₁, u₁} {T : Type u₁} [Category.{v₁, u₁} T] {X : T} {A B : Under X} (f : A ⟶ B) :\n  f.right ⊚ A.hom = B.hom</code>",
+ "2515":
+ "<code>CategoryTheory.Under.UnderMorphism.ext.{v₁, u₁} {T : Type u₁} [Category.{v₁, u₁} T] {X : T} {U V : Under X}\n  {f g : U ⟶ V} (h : f.right = g.right) : f = g</code>",
+ "2514":
+ "<code>∀ (a : PSOne ⟶ Y), a = Under.homMk Y.hom ⋯</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2513":
+ "<code>CategoryTheory.Comma.hom.{v₁, v₂, v₃, u₁, u₂, u₃} {A : Type u₁} [Category.{v₁, u₁} A] {B : Type u₂}\n  [Category.{v₂, u₂} B] {T : Type u₃} [Category.{v₃, u₃} T] {L : A ⥤ T} {R : B ⥤ T} (self : Comma L R) :\n  L.obj self.left ⟶ R.obj self.right</code><span class=\"sep\"></span><code class=\"docstring\">A morphism from `L.obj left` to `R.obj right` </code>",
+ "2512": "<code>X.right</code>",
+ "2511":
+ "<code>∀ (a : X ⟶ PSOne), a = Under.homMk (fun x ↦ ()) ⋯</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2510":
+ "<code>CategoryTheory.Under.homMk.{v₁, u₁} {T : Type u₁} [Category.{v₁, u₁} T] {X : T} {U V : Under X} (f : U.right ⟶ V.right)\n  (w : f ⊚ U.hom = V.hom := by cat_disch) : U ⟶ V</code><span class=\"sep\"></span><code class=\"docstring\">To give a morphism in the under category, it suffices to give a morphism fitting in a\ncommutative triangle. </code>",
  "251":
  "<code>CategoryTheory.Iso.hom.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (self : X ≅ Y) : X ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "2509": "<code>Under Unit</code>",
+ "2508":
+ "<code>CategoryTheory.Under.mk.{v₁, u₁} {T : Type u₁} [Category.{v₁, u₁} T] {X Y : T} (f : X ⟶ Y) : Under X</code><span class=\"sep\"></span><code class=\"docstring\">To give an object in the under category, it suffices to give an arrow with domain `X`. </code>",
+ "2507":
+ "<code>CategoryTheory.Under.{v₁, u₁} {T : Type u₁} [Category.{v₁, u₁} T] (X : T) : Type (max u₁ v₁)</code><span class=\"sep\"></span><code class=\"docstring\">The under category has as objects arrows with domain `X` and as morphisms commutative\ntriangles. </code>",
+ "2506": "<code>CM.ExIV_9.PointedSet : Type 1</code>",
+ "2505":
+ "<code>zero_ne_one.{u_2} {α : Type u_2} [Zero α] [_root_.One α] [NeZero 1] : 0 ≠ 1</code>",
+ "2504": "<code>↑f₁ = ↑f₂</code>",
+ "2503":
+ "<code>congr_arg.{u, v} {α : Sort u} {β : Sort v} {a₁ a₂ : α} (f : α → β) (h : a₁ = a₂) : f a₁ = f a₂</code><span class=\"sep\"></span><code class=\"docstring\">**Alias** of `congrArg`.</code>",
+ "2502": "<code>f₁ = f₂</code>",
+ "2501": "<code>IsInitial X</code>",
+ "2500": "<code>∀ (X : PointedSet), Nonempty (IsInitial X)</code>",
  "250": "<code>C</code>",
  "25": "<code>CM.ExI_1.D.d₆ : D</code>",
+ "2499":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1) ⊚\n    X.point =\n  (fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 1) ⊚\n    X.point</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2498":
+ "<code>(fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 0) ⊚\n    X.point =\n  (fun x ↦\n      match x with\n      | 0 =&gt; 0\n      | 1 =&gt; 0) ⊚\n    X.point</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2497":
+ "<code>X.carrier → X.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2496": "<code>One → Fin 2</code>",
+ "2495": "<code>PSOne ⟶ Y</code>",
+ "2494":
+ "<code>∀ (a : PSOne ⟶ Y), a = ⟨Y.point, ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2493":
+ "<code>PSOne ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2492":
+ "<code>CategoryTheory.Limits.IsInitial.ofIso.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} (hX : IsInitial X)\n  (i : X ≅ Y) : IsInitial Y</code><span class=\"sep\"></span><code class=\"docstring\">Transport a term of type `IsInitial` across an isomorphism. </code>",
+ "2491":
+ "<code>CategoryTheory.Limits.IsTerminal.uniqueUpToIso.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {T T' : C}\n  (hT : IsTerminal T) (hT' : IsTerminal T') : T ≅ T'</code><span class=\"sep\"></span><code class=\"docstring\">If `T` and `T'` are terminal, they are isomorphic. </code>",
+ "2490": "<code>PSOne ≅ T</code>",
  "249":
  "<code>CategoryTheory.Iso.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Type v</code><span class=\"sep\"></span><code class=\"docstring\">An isomorphism (a.k.a. an invertible morphism) between two objects of a category.\nThe inverse morphism is bundled.\n\nSee also `CategoryTheory.Core` for the category with the same objects and isomorphisms playing\nthe role of morphisms. </code>",
+ "2489": "<code>X ⟶ PSOne</code>",
+ "2488":
+ "<code>∀ (a : X ⟶ PSOne), a = ⟨fun x ↦ (), ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2487":
+ "<code>X ⟶ PSOne</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2486": "<code>IsTerminal PSOne</code>",
+ "2485":
+ "<code>CM.PointedSet.mk (carrier : Type) (point : One ⟶ carrier) : PointedSet</code>",
+ "2484": "<code>One ⟶ One</code>",
+ "2483": "<code>IsTerminal T</code>",
+ "2482": "<code>↑g ⊚ Y✝.point = Z✝.point</code>",
+ "2481": "<code>↑f ⊚ X✝.point = Y✝.point</code>",
+ "2480": "<code>{ f // f ⊚ Y✝.point = Z✝.point }</code>",
  "248": "<code>C ⟶ B</code>",
+ "2479": "<code>{ f // f ⊚ X✝.point = Y✝.point }</code>",
+ "2478":
+ "<code>{X Y Z : PointedSet} → { f // f ⊚ X.point = Y.point } → { f // f ⊚ Y.point = Z.point } → { f // f ⊚ X.point = Z.point }</code><span class=\"sep\"></span><code class=\"docstring\">Composition of morphisms in a category, written `f ≫ g`. </code>",
+ "2477":
+ "<code>(X : PointedSet) → { f // f ⊚ X.point = X.point }</code><span class=\"sep\"></span><code class=\"docstring\">The identity morphism on an object. </code>",
+ "2476": "<code>PointedSet</code>",
+ "2475":
+ "<code>PointedSet → PointedSet → Type</code><span class=\"sep\"></span><code class=\"docstring\">The type of edges/arrows/morphisms between a given source and target. </code>",
+ "2474":
+ "<code>CM.PointedSet.point (self : PointedSet) : One ⟶ self.carrier</code>",
+ "2473": "<code>CM.PointedSet.carrier (self : PointedSet) : Type</code>",
+ "2472": "<code>CM.PointedSet : Type 1</code>",
+ "2471": "<code>Zero ⟶ emptySWE</code>",
+ "2470": "<code>Zero ⟶ emptyIG</code>",
  "247": "<code>A ⟶ C</code>",
+ "2469": "<code>Empty → Empty</code>",
+ "2468":
+ "<code>∀ (a : X ⟶ Y), a = hZero.to Y ⊚ f</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2467":
+ "<code>X ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2466":
+ "<code>CategoryTheory.Limits.IsInitial.ofUnique.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] (X : C)\n  [h : (Y : C) → Unique (X ⟶ Y)] : IsInitial X</code><span class=\"sep\"></span><code class=\"docstring\">An object `X` is initial if for every `Y` there is a unique morphism `X ⟶ Y`\n(as an instance). </code>",
+ "2465":
+ "<code>CategoryTheory.Limits.IsInitial.strict_hom_ext.{v, u} {C : Type u} [Category.{v, u} C] [HasStrictInitialObjects C]\n  {I : C} (hI : IsInitial I) {A : C} (f g : A ⟶ I) : f = g</code>",
+ "2464": "<code>Zero ⟶ Empty</code>",
+ "2463": "<code>X ⟶ Zero</code>",
+ "2462": "<code>IsInitial Zero</code>",
+ "2461":
+ "<code>CategoryTheory.Limits.IsInitial.hom_ext.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} (t : IsInitial X)\n  (f g : X ⟶ Y) : f = g</code><span class=\"sep\"></span><code class=\"docstring\">Any two morphisms from an initial object are equal. </code>",
+ "2460":
+ "<code>CategoryTheory.Limits.IsInitial.to.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X : C} (t : IsInitial X) (Y : C) :\n  X ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">Give the morphism from an initial object to any other. </code>",
  "246": "<code>B ⟶ A</code>",
+ "2459": "<code>IsInitial S₂</code>",
+ "2458": "<code>IsInitial S₁</code>",
+ "2457":
+ "<code>CategoryTheory.Limits.IsInitial.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] (X : C) : Type (max u₁ v₁)</code><span class=\"sep\"></span><code class=\"docstring\">`X` is initial if the cocone it induces on the empty diagram is colimiting. </code>",
+ "2456":
+ "<code>CategoryTheory.Limits.asEmptyCocone.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] (X : C) : Cocone (Functor.empty C)</code><span class=\"sep\"></span><code class=\"docstring\">Construct a cocone for the empty diagram given an object. </code>",
+ "2455":
+ "<code>CategoryTheory.Limits.IsColimit.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (t : Cocone F) : Type (max (max u₁ u₃) v₃)</code><span class=\"sep\"></span><code class=\"docstring\">A cocone `t` on `F` is a colimit cocone if each cocone on `F` admits a unique\ncocone morphism from `t`. </code>",
+ "2454":
+ "<code>CategoryTheory.Limits.HasInitial.{v₁, u₁} (C : Type u₁) [Category.{v₁, u₁} C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">A category has an initial object if it has a colimit over the empty diagram.\nUse `hasInitial_of_unique` to construct instances.\n</code>",
+ "2453":
+ "<code>CategoryTheory.Limits.HasColimitsOfShape.{v₁, u₁, v, u} (J : Type u₁) [Category.{v₁, u₁} J] (C : Type u)\n  [Category.{v, u} C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`C` has colimits of shape `J` if there exists a colimit for every functor `F : J ⥤ C`. </code>",
+ "2452": "<code>↑(f ⊚ x) 0 = ↑(g ⊚ x) 0</code>",
+ "2451": "<code>ℕσ ⟶ Y</code>",
+ "2450":
+ "<code>(fun n ↦ Nat.recOn n x' fun x prev ↦ X.toEnd prev) ⊚ ℕσ.toEnd =\n  X.toEnd ⊚ fun n ↦ Nat.recOn n x' fun x prev ↦ X.toEnd prev</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
  "245": "<code>𝒞</code>",
+ "2449":
+ "<code>Nat.recOn.{u} {motive : ℕ → Sort u} (t : ℕ) (zero : motive Nat.zero) (succ : (n : ℕ) → motive n → motive n.succ) :\n  motive t</code>",
+ "2448":
+ "<code>ℕσ.carrier → X.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2447": "<code>∀ (x : ℕσ ⟶ X), f ⊚ x = g ⊚ x</code>",
+ "2446": "<code>ℕσ ⟶ X</code>",
+ "2445": "<code>N ⟶ X</code>",
+ "2444": "<code>(↑(f ⊚ x)).2 () = (↑(g ⊚ x)).2 ()</code>",
+ "2443": "<code>D ⟶ Y</code>",
+ "2442": "<code>D.carrierA</code>",
+ "2441": "<code>D.carrierD</code>",
+ "2440":
+ "<code>(Empty.elim, fun x ↦ d).2 ⊚ D.toSrc = X.toSrc ⊚ (Empty.elim, fun x ↦ d).1 ∧\n  (Empty.elim, fun x ↦ d).2 ⊚ D.toTgt = X.toTgt ⊚ (Empty.elim, fun x ↦ d).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
  "244": "<code class=\"docstring\">The universe parameter u</code>",
+ "2439":
+ "<code>(D.carrierA ⟶ X.carrierA) × (D.carrierD ⟶ X.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2438": "<code>(↑(f ⊚ x)).1 () = (↑(g ⊚ x)).1 ()</code>",
+ "2437": "<code>A ⟶ Y</code>",
+ "2436": "<code>f ⊚ x = g ⊚ x</code>",
+ "2435":
+ "<code>ite.{u} {α : Sort u} (c : Prop) [h : Decidable c] (t e : α) : α</code><span class=\"sep\"></span><code class=\"docstring\">`if c then t else e` is notation for `ite c t e`, \"if-then-else\", which decides to\nreturn `t` or `e` depending on whether `c` is true or false. The explicit argument\n`c : Prop` does not have any actual computational content, but there is an additional\n`[Decidable c]` argument synthesized by typeclass inference which actually\ndetermines how to evaluate `c` to true or false. Write `if h : c then t else e`\ninstead for a \"dependent if-then-else\" `dite`, which allows `t`/`e` to use the fact\nthat `c` is true/false.\n</code>",
+ "2434": "<code>A.carrierA</code>",
+ "2433":
+ "<code>(fun x ↦ a, fun i ↦ if i = 0 then X.toSrc a else X.toTgt a).2 ⊚ A.toSrc =\n    X.toSrc ⊚ (fun x ↦ a, fun i ↦ if i = 0 then X.toSrc a else X.toTgt a).1 ∧\n  (fun x ↦ a, fun i ↦ if i = 0 then X.toSrc a else X.toTgt a).2 ⊚ A.toTgt =\n    X.toTgt ⊚ (fun x ↦ a, fun i ↦ if i = 0 then X.toSrc a else X.toTgt a).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2432":
+ "<code>(A.carrierA ⟶ X.carrierA) × (A.carrierD ⟶ X.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2431": "<code>D ⟶ X</code>",
+ "2430": "<code>∀ (x : D ⟶ X), f ⊚ x = g ⊚ x</code>",
  "243":
  "<code class=\"docstring\">Declares one or more typed variables, or modifies whether already-declared variables are\n  implicit.\n\nIntroduces variables that can be used in definitions within the same `namespace` or `section` block.\nWhen a definition mentions a variable, Lean will add it as an argument of the definition. This is\nuseful in particular when writing many definitions that have parameters in common (see below for an\nexample).\n\nVariable declarations have the same flexibility as regular function parameters. In particular they\ncan be [explicit, implicit][binder docs], or [instance implicit][tpil classes] (in which case they\ncan be anonymous). This can be changed, for instance one can turn explicit variable `x` into an\nimplicit one with `variable {x}`. Note that currently, you should avoid changing how variables are\nbound and declare new variables at the same time; see [issue 2789] for more on this topic.\n\nIn *theorem bodies* (i.e. proofs), variables are not included based on usage in order to ensure that\nchanges to the proof cannot change the statement of the overall theorem. Instead, variables are only\navailable to the proof if they have been mentioned in the theorem header or in an `include` command\nor are instance implicit and depend only on such variables.\n\nSee [*Variables and Sections* from Theorem Proving in Lean][tpil vars] for a more detailed\ndiscussion.\n\n[tpil vars]:\nhttps://lean-lang.org/theorem_proving_in_lean4/dependent_type_theory.html#variables-and-sections\n(Variables and Sections on Theorem Proving in Lean) [tpil classes]:\nhttps://lean-lang.org/theorem_proving_in_lean4/type_classes.html (Type classes on Theorem Proving in\nLean) [binder docs]:\nhttps://leanprover-community.github.io/mathlib4_docs/Lean/Expr.html#Lean.BinderInfo (Documentation\nfor the BinderInfo type) [issue 2789]: https://github.com/leanprover/lean4/issues/2789 (Issue 2789\non github)\n\n## Examples\n\n```lean\nsection\n  variable\n    {α : Type u}      -- implicit\n    (a : α)           -- explicit\n    [instBEq : BEq α] -- instance implicit, named\n    [Hashable α]      -- instance implicit, anonymous\n\n  def isEqual (b : α) : Bool :=\n    a == b\n\n  #check isEqual\n  -- isEqual.{u} {α : Type u} (a : α) [instBEq : BEq α] (b : α) : Bool\n\n  variable\n    {a} -- `a` is implicit now\n\n  def eqComm {b : α} := a == b ↔ b == a\n\n  #check eqComm\n  -- eqComm.{u} {α : Type u} {a : α} [instBEq : BEq α] {b : α} : Prop\nend\n```\n\nThe following shows a typical use of `variable` to factor out definition arguments:\n\n```lean\nvariable (Src : Type)\n\nstructure Logger where\n  trace : List (Src × String)\n#check Logger\n-- Logger (Src : Type) : Type\n\nnamespace Logger\n  -- switch `Src : Type` to be implicit until the `end Logger`\n  variable {Src}\n\n  def empty : Logger Src where\n    trace := []\n  #check empty\n  -- Logger.empty {Src : Type} : Logger Src\n\n  variable (log : Logger Src)\n\n  def len :=\n    log.trace.length\n  #check len\n  -- Logger.len {Src : Type} (log : Logger Src) : Nat\n\n  variable (src : Src) [BEq Src]\n\n  -- at this point all of `log`, `src`, `Src` and the `BEq` instance can all become arguments\n\n  def filterSrc :=\n    log.trace.filterMap\n      fun (src', str') =&gt; if src' == src then some str' else none\n  #check filterSrc\n  -- Logger.filterSrc {Src : Type} (log : Logger Src) (src : Src) [inst✝ : BEq Src] : List String\n\n  def lenSrc :=\n    log.filterSrc src |&gt;.length\n  #check lenSrc\n  -- Logger.lenSrc {Src : Type} (log : Logger Src) (src : Src) [inst✝ : BEq Src] : Nat\nend Logger\n```\n\nThe following example demonstrates availability of variables in proofs:\n```lean\nvariable\n  {α : Type}    -- available in the proof as indirectly mentioned through `a`\n  [ToString α]  -- available in the proof as `α` is included\n  (a : α)       -- available in the proof as mentioned in the header\n  {β : Type}    -- not available in the proof\n  [ToString β]  -- not available in the proof\n\ntheorem ex : a = a := rfl\n```\nAfter elaboration of the proof, the following warning will be generated to highlight the unused\nhypothesis:\n```\nincluded section variable '[ToString α]' is not used in 'ex', consider excluding it\n```\nIn such cases, the offending variable declaration should be moved down or into a section so that\nonly theorems that do depend on it follow it until the end of the section.\n</code>",
+ "2429": "<code>∀ (x : A ⟶ X), f ⊚ x = g ⊚ x</code>",
+ "2428":
+ "<code>Empty.elim.{u} {C : Sort u} : Empty → C</code><span class=\"sep\"></span><code class=\"docstring\">`Empty.elim : Empty → C` says that a value of any type can be constructed from\n`Empty`. This can be thought of as a compiler-checked assertion that a code path is unreachable.\n</code>",
+ "2427": "<code>Empty → Unit</code>",
+ "2426":
+ "<code>Empty : Type</code><span class=\"sep\"></span><code class=\"docstring\">The empty type. It has no constructors.\n\nUse `Empty.elim` in contexts where a value of type `Empty` is in scope.\n</code>",
+ "2425": "<code>CM.IrreflexiveGraph.D : IrreflexiveGraph</code>",
+ "2424": "<code>Unit → Fin 2</code>",
+ "2423": "<code>CM.IrreflexiveGraph.A : IrreflexiveGraph</code>",
+ "2422": "<code>(↑g).1 XA.a₂ = YA.a₁</code>",
+ "2421": "<code>(↑g).1 XA.a₂ = YA.a₂</code>",
+ "2420": "<code>(↑f).1 XA.a₂ = YA.a₁</code>",
  "242":
  "<code>congrFun.{u, v} {α : Sort u} {β : α → Sort v} {f g : (x : α) → β x} (h : f = g) (a : α) : f a = g a</code><span class=\"sep\"></span><code class=\"docstring\">Congruence in the function part of an application: If `f = g` then `f a = g a`. </code>",
+ "2419": "<code>termIG.carrierD</code>",
+ "2418": "<code>termIG.carrierA</code>",
+ "2417": "<code>CM.ExIV_5b.g : X ⟶ Y</code>",
+ "2416": "<code>X.carrierD</code>",
+ "2415": "<code>X.carrierA</code>",
+ "2414": "<code>CM.ExIV_5b.f : X ⟶ Y</code>",
+ "2413": "<code>YA → YD</code>",
+ "2412": "<code>CM.ExIV_5b.Y : IrreflexiveGraph</code>",
+ "2411": "<code>CM.ExIV_5b.YD.d₂ : YD</code>",
+ "2410": "<code>CM.ExIV_5b.YD.d₁ : YD</code>",
  "241":
  "<code class=\"docstring\">Applies extensionality lemmas that are registered with the `@[ext]` attribute.\n* `ext pat*` applies extensionality theorems as much as possible,\n  using the patterns `pat*` to introduce the variables in extensionality theorems using `rintro`.\n  For example, the patterns are used to name the variables introduced by lemmas such as `funext`.\n* Without patterns,`ext` applies extensionality lemmas as much\n  as possible but introduces anonymous hypotheses whenever needed.\n* `ext pat* : n` applies ext theorems only up to depth `n`.\n\nThe `ext1 pat*` tactic is like `ext pat*` except that it only applies a single extensionality theorem.\n\nUnused patterns will generate warning.\nPatterns that don't match the variables will typically result in the introduction of anonymous hypotheses.\n</code>",
+ "2409": "<code>CM.ExIV_5b.YD : Type</code>",
+ "2408": "<code>CM.ExIV_5b.YA.a₂ : YA</code>",
+ "2407": "<code>CM.ExIV_5b.YA.a₁ : YA</code>",
+ "2406": "<code>CM.ExIV_5b.YA : Type</code>",
+ "2405": "<code>XA → XD</code>",
+ "2404": "<code>CM.ExIV_5b.X : IrreflexiveGraph</code>",
+ "2403": "<code>CM.ExIV_5b.XD.d₂ : XD</code>",
+ "2402": "<code>CM.ExIV_5b.XD.d₁ : XD</code>",
+ "2401": "<code>CM.ExIV_5b.XD : Type</code>",
+ "2400": "<code>CM.ExIV_5b.XA.a₂ : XA</code>",
  "240": "<code>∀ (a : Point A), f ⊚ a = g ⊚ a</code>",
  "24": "<code>CM.ExI_1.D.d₅ : D</code>",
+ "2399": "<code>CM.ExIV_5b.XA.a₁ : XA</code>",
+ "2398": "<code>CM.ExIV_5b.XA : Type</code>",
+ "2397": "<code>↑g X.x₂ = Y.y₁</code>",
+ "2396": "<code>↑g X.x₂ = Y.y₂</code>",
+ "2395": "<code>↑f X.x₂ = Y.y₁</code>",
+ "2394": "<code>f = g</code>",
+ "2393": "<code>termSWE.carrier</code>",
+ "2392": "<code>termSWE ⟶ Xα</code>",
+ "2391": "<code>CM.ExIV_5a.g : Xα ⟶ Yβ</code>",
+ "2390": "<code>CM.ExIV_5a.f : Xα ⟶ Yβ</code>",
  "239": "<code>Point A</code>",
+ "2389": "<code>CM.ExIV_5a.Yβ : SetWithEndomap</code>",
+ "2388": "<code>CM.ExIV_5a.β : Y ⟶ Y</code>",
+ "2387": "<code>CM.ExIV_5a.Y.y₂ : Y</code>",
+ "2386": "<code>CM.ExIV_5a.Y.y₁ : Y</code>",
+ "2385": "<code>CM.ExIV_5a.Y : Type</code>",
+ "2384": "<code>CM.ExIV_5a.Xα : SetWithEndomap</code>",
+ "2383": "<code>CM.ExIV_5a.α : X ⟶ X</code>",
+ "2382": "<code>CM.ExIV_5a.X.x₂ : X</code>",
+ "2381": "<code>CM.ExIV_5a.X.x₁ : X</code>",
+ "2380": "<code>CM.ExIV_5a.X : Type</code>",
  "238": "<code>A ⟶ B</code>",
+ "2379": "<code>(↑x).2 () = X.toTgt ((↑x).1 ())</code>",
+ "2378": "<code>(↑x).2 () = X.toSrc ((↑x).1 ())</code>",
+ "2377": "<code>((↑x).2 ⊚ termIG.toTgt) () = (X.toTgt ⊚ (↑x).1) ()</code>",
+ "2376": "<code>((↑x).2 ⊚ termIG.toSrc) () = (X.toSrc ⊚ (↑x).1) ()</code>",
+ "2375": "<code>(↑x).2 ⊚ termIG.toTgt = X.toTgt ⊚ (↑x).1</code>",
+ "2374": "<code>(↑x).2 ⊚ termIG.toSrc = X.toSrc ⊚ (↑x).1</code>",
+ "2373": "<code>termIG ⟶ X</code>",
+ "2372": "<code>Y ⟶ termIG</code>",
+ "2371":
+ "<code>∀ (a : Y ⟶ termIG), a = ⟨(fun x ↦ (), fun x ↦ ()), ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "2370": "<code>Y.carrierD</code>",
  "237":
  "<code>Quiver.{v, u} (V : Type u) : Type (max u (v + 1))</code><span class=\"sep\"></span><code class=\"docstring\">A quiver `G` on a type `V` of vertices assigns to every pair `a b : V` of vertices\na type `a ⟶ b` of arrows from `a` to `b`. This is hence a form of directed multigraphs.\n\nFor graphs with no repeated edges, one can either use `Quiver.IsThin` to demand\nthat the hom sets are subsingletons, or `Digraph V` (where the hom sets\nare Prop-valued).\n\nBecause `Category` will later extend this class, we call the field `Hom`.\nExcept when constructing instances, you should rarely see this, and use the `⟶` notation instead.\n</code>",
+ "2369": "<code>Y.carrierA</code>",
+ "2368":
+ "<code>(fun x ↦ (), fun x ↦ ()).2 ⊚ Y.toSrc = termIG.toSrc ⊚ (fun x ↦ (), fun x ↦ ()).1 ∧\n  (fun x ↦ (), fun x ↦ ()).2 ⊚ Y.toTgt = termIG.toTgt ⊚ (fun x ↦ (), fun x ↦ ()).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2367":
+ "<code>(Y.carrierA ⟶ termIG.carrierA) × (Y.carrierD ⟶ termIG.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2366":
+ "<code>{ f // f.2 ⊚ Y.toSrc = termIG.toSrc ⊚ f.1 ∧ f.2 ⊚ Y.toTgt = termIG.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2365": "<code>CM.termIG : IrreflexiveGraph</code>",
+ "2364":
+ "<code>congr_fun.{u, v} {α : Sort u} {β : α → Sort v} {f g : (x : α) → β x} (h : f = g) (a : α) : f a = g a</code><span class=\"sep\"></span><code class=\"docstring\">**Alias** of `congrFun`.</code>",
+ "2363": "<code>X.toEnd ⊚ ↑x = ↑x ⊚ termSWE.toEnd</code>",
+ "2362": "<code>termSWE ⟶ X</code>",
+ "2361": "<code>Y ⟶ termSWE</code>",
+ "2360":
+ "<code>∀ (a : Y ⟶ termSWE), a = ⟨fun x ↦ (), ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
  "236":
  "<code>autoParam (∀ {W X Y Z : obj} (f : W ⟶ X) (g : X ⟶ Y) (h : Y ⟶ Z), h ⊚ g ⊚ f = (h ⊚ g) ⊚ f) Category.assoc._autoParam</code>",
+ "2359":
+ "<code>(fun x ↦ ()) ⊚ Y.toEnd = (fun x ↦ ()) ⊚ Y.toEnd</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "2358":
+ "<code>Y.carrier → Unit</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "2357":
+ "<code>{ f // f ⊚ Y.toEnd = termSWE.toEnd ⊚ f }</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "2356":
+ "<code>CategoryTheory.Limits.IsTerminal.ofUnique.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] (Y : C)\n  [h : (X : C) → Unique (X ⟶ Y)] : IsTerminal Y</code><span class=\"sep\"></span><code class=\"docstring\">An object `Y` is terminal if for every `X` there is a unique morphism `X ⟶ Y`\n(as an instance). </code>",
+ "2355":
+ "<code class=\"docstring\">`refine e` behaves like `exact e`, except that named (`?x`) or unnamed (`?_`)\nholes in `e` that are not solved by unification with the main goal's target type\nare converted into new goals, using the hole's name, if any, as the goal case name.\n</code>",
+ "2354": "<code>Unit → Unit</code>",
+ "2353": "<code>CM.termSWE : SetWithEndomap</code>",
+ "2352": "<code>x () = x'</code>",
+ "2351":
+ "<code class=\"docstring\">`assumption` tries to solve the main goal using a hypothesis of compatible type, or else fails.\nNote also the `‹t›` term notation, which is a shorthand for `show t by assumption`.\n</code>",
+ "2350": "<code>y✝ = x ()</code>",
  "235":
  "<code>autoParam (∀ {X Y : obj} (f : X ⟶ Y), 𝟙 Y ⊚ f = f) Category.comp_id._autoParam</code>",
+ "2349": "<code>Point X</code>",
+ "2348": "<code>Unique (One ⟶ One)</code>",
+ "2347": "<code>IsTerminal One</code>",
+ "2346": "<code>One ⟶ Y</code>",
+ "2345": "<code>One ⟶ X</code>",
+ "2344": "<code>IsIso y✝</code>",
+ "2343":
+ "<code>∃ inv, inv ⊚ f = 𝟙 S₁ ∧ f ⊚ inv = 𝟙 S₂</code><span class=\"sep\"></span><code class=\"docstring\">The existence of an inverse morphism. </code>",
+ "2342": "<code>f ⊚ g = 𝟙 S₂</code>",
+ "2341":
+ "<code>CategoryTheory.Limits.IsTerminal.hom_ext.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} (t : IsTerminal X)\n  (f g : Y ⟶ X) : f = g</code><span class=\"sep\"></span><code class=\"docstring\">Any two morphisms to a terminal object are equal. </code>",
+ "2340": "<code>g ⊚ f = 𝟙 S₁</code>",
  "234":
  "<code>autoParam (∀ {X Y : obj} (f : X ⟶ Y), f ⊚ 𝟙 X = f) Category.id_comp._autoParam</code>",
+ "2339": "<code>S₂ ⟶ S₁</code>",
+ "2338":
+ "<code>CategoryTheory.Limits.IsTerminal.from.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X : C} (t : IsTerminal X) (Y : C) :\n  Y ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">Give the morphism to a terminal object from any other. </code>",
+ "2337":
+ "<code>ExistsUnique.{u_1} {α : Sort u_1} (p : α → Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">For `p : α → Prop`, `ExistsUnique p` means that there exists a unique `x : α` with `p x`. </code>",
+ "2336": "<code>S₁ ⟶ S₂</code>",
+ "2335": "<code>IsTerminal S₂</code>",
+ "2334": "<code>IsTerminal S₁</code>",
+ "2333":
+ "<code>CM.uniqueness_of_terminal_objects.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {S₁ S₂ : 𝒞} (hS₁ : IsTerminal S₁)\n  (hS₂ : IsTerminal S₂) : ∃! s, IsIso s</code>",
+ "2332":
+ "<code>CategoryTheory.Limits.IsTerminal.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] (X : C) : Type (max u₁ v₁)</code><span class=\"sep\"></span><code class=\"docstring\">`X` is terminal if the cone it induces on the empty diagram is limiting. </code>",
+ "2331":
+ "<code>CategoryTheory.Limits.asEmptyCone.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] (X : C) : Cone (Functor.empty C)</code><span class=\"sep\"></span><code class=\"docstring\">Construct a cone for the empty diagram given an object. </code>",
+ "2330":
+ "<code>CategoryTheory.Limits.IsLimit.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (t : Cone F) : Type (max (max u₁ u₃) v₃)</code><span class=\"sep\"></span><code class=\"docstring\">A cone `t` on `F` is a limit cone if each cone on `F` admits a unique\ncone morphism to `t`. </code>",
  "233": "<code>CategoryStruct.{v, u} obj</code>",
+ "2329":
+ "<code>PEmpty.{u} : Sort u</code><span class=\"sep\"></span><code class=\"docstring\">The universe-polymorphic empty type, with no constructors.\n\n`PEmpty` can be used in any universe, but this flexibility can lead to worse error messages and more\nchallenges with universe level unification. Prefer the type `Empty` or the proposition `False` when\npossible.\n</code>",
+ "2328":
+ "<code>CategoryTheory.Discrete.{u₁} (α : Type u₁) : Type u₁</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities.\n</code>",
+ "2327":
+ "<code>CategoryTheory.Limits.HasLimitsOfShape.{v₁, u₁, v, u} (J : Type u₁) [Category.{v₁, u₁} J] (C : Type u)\n  [Category.{v, u} C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`C` has limits of shape `J` if there exists a limit for every functor `F : J ⥤ C`. </code>",
  "2326": "<code>X.x₂ = X.x₃</code>",
  "2325": "<code>(α ^ 2) X.x₁ = X.x₃</code>",
  "2324": "<code>α X.x₁ = X.x₂</code>",

@@ -689,201 +689,6 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
 }
 
 </style><script>
-      
-window.onload = () => {
-
-    // Don't show hovers inside of closed tactic states
-    function blockedByTactic(elem) {
-      let parent = elem.parentNode;
-      while (parent && "classList" in parent) {
-        if (parent.classList.contains("tactic")) {
-          const toggle = parent.querySelector("input.tactic-toggle");
-          if (toggle) {
-            return !toggle.checked;
-          }
-        }
-        parent = parent.parentNode;
-      }
-      return false;
-    }
-
-    function blockedByTippy(elem) {
-      // Don't show a new hover until the old ones are all closed.
-      // Scoped to the nearest "top-level block" to avoid being O(n) in the size of the document.
-      var block = elem;
-      const topLevel = new Set(["section", "body", "html", "nav", "header"]);
-      while (block.parentNode && !topLevel.has(block.parentNode.nodeName.toLowerCase())) {
-        block = block.parentNode;
-      }
-      for (const child of block.querySelectorAll(".token, .has-info")) {
-        if (child._tippy && child._tippy.state.isVisible) { return true };
-      }
-      return false;
-    }
-
-    for (const c of document.querySelectorAll(".hl.lean .token")) {
-        if (c.dataset.binding != "") {
-            c.addEventListener("mouseover", (event) => {
-                if (blockedByTactic(c)) {return;}
-                const context = c.closest(".hl.lean").dataset.leanContext;
-                for (const example of document.querySelectorAll(".hl.lean")) {
-                    if (example.dataset.leanContext == context) {
-                        for (const tok of example.querySelectorAll(".token")) {
-                            if (c.dataset.binding == tok.dataset.binding) {
-                                tok.classList.add("binding-hl");
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        c.addEventListener("mouseout", (event) => {
-            for (const tok of document.querySelectorAll(".hl.lean .token")) {
-                tok.classList.remove("binding-hl");
-            }
-        });
-    }
-    /* Render docstrings */
-    if ('undefined' !== typeof marked) {
-        for (const d of document.querySelectorAll("code.docstring, pre.docstring")) {
-            const str = d.innerText;
-            const html = marked.parse(str);
-            const rendered = document.createElement("div");
-            rendered.classList.add("docstring");
-            rendered.innerHTML = html;
-            d.parentNode.replaceChild(rendered, d);
-        }
-    }
-    // Add hovers
-    let docsJson = "-verso-docs.json";
-    fetch(docsJson).then((resp) => resp.json()).then((versoDocData) => {
-
-      function hideParentTooltips(element) {
-        let parent = element.parentElement;
-        while (parent) {
-          const tippyInstance = parent._tippy;
-          if (tippyInstance) {
-            tippyInstance.hide();
-          }
-          parent = parent.parentElement;
-        }
-      }
-
-
-
-      const defaultTippyProps = {
-        /* DEBUG -- remove the space: * /
-        onHide(any) { return false; },
-        trigger: "click",
-        // */
-        /* theme: "lean", */
-        maxWidth: "none",
-        appendTo: () => document.body,
-        interactive: true,
-        delay: [100, null],
-        /* ignoreAttributes: true, */
-        followCursor: 'initial',
-        onShow(inst) {
-          if (inst.reference.className == 'tactic') {
-
-            const toggle = inst.reference.querySelector("input.tactic-toggle");
-            if (toggle && toggle.checked) {
-              return false;
-            }
-            hideParentTooltips(inst.reference);
-            //if (blockedByTippy(inst.reference)) { return false; }
-
-          } else if (inst.reference.querySelector(".hover-info") || "versoHover" in inst.reference.dataset) {
-            if (blockedByTactic(inst.reference)) { return false };
-            if (blockedByTippy(inst.reference)) { return false; }
-          } else { // Nothing to show here!
-            return false;
-          }
-        },
-        content (tgt) {
-          const content = document.createElement("span");
-          if (tgt.className == 'tactic') {
-            const state = tgt.querySelector(".tactic-state").cloneNode(true);
-            state.style.display = "block";
-            content.appendChild(state);
-            content.style.display = "block";
-            content.className = "hl lean popup";
-          } else {
-            content.className = "hl lean";
-            content.style.display = "block";
-            content.style.maxHeight = "300px";
-            content.style.overflowY = "auto";
-            content.style.overflowX = "hidden";
-            const hoverId = tgt.dataset.versoHover;
-            const hoverInfo = tgt.querySelector(".hover-info");
-            if (hoverId) { // Docstrings from the table
-              // TODO stop doing an implicit conversion from string to number here
-              let data = versoDocData[hoverId];
-              if (data) {
-                const info = document.createElement("span");
-                info.className = "hover-info";
-                info.style.display = "block";
-                info.innerHTML = data;
-                content.appendChild(info);
-                /* Render docstrings - TODO server-side */
-                if ('undefined' !== typeof marked) {
-                    for (const d of content.querySelectorAll("code.docstring, pre.docstring")) {
-                        const str = d.innerText;
-                        const html = marked.parse(str);
-                        const rendered = document.createElement("div");
-                        rendered.classList.add("docstring");
-                        rendered.innerHTML = html;
-                        d.parentNode.replaceChild(rendered, d);
-                    }
-                }
-              } else {
-                content.innerHTML = "Failed to load doc ID: " + hoverId;
-              }
-            } else if (hoverInfo) { // The inline info, still used for compiler messages
-              content.appendChild(hoverInfo.cloneNode(true));
-            }
-            const extraLinks = tgt.parentElement.dataset['versoLinks'];
-            if (extraLinks) {
-              try {
-                const extras = JSON.parse(extraLinks);
-                const links = document.createElement('ul');
-                links.className = 'extra-doc-links';
-                extras.forEach((l) => {
-                  const li = document.createElement('li');
-                  li.innerHTML = "<a href=\"" + l['href'] + "\" title=\"" + l.long + "\">" + l.short + "</a>";
-                  links.appendChild(li);
-                });
-                content.appendChild(links);
-              } catch (error) {
-                console.error(error);
-              }
-            }
-          }
-          return content;
-        }
-      };
-
-
-      document.querySelectorAll('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'lean');
-      });
-      document.querySelectorAll('.hl.lean .has-info.warning').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'warning message');
-      });
-      document.querySelectorAll('.hl.lean .has-info.information').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'info message');
-      });
-      document.querySelectorAll('.hl.lean .has-info.error').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'error message');
-      });
-      document.querySelectorAll('.hl.lean .tactic').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'tactic');
-      });
-      let insts = tippy('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .has-info, .hl.lean .tactic, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort', defaultTippyProps);
-  });
-}
-</script>
-    <script>
       window.xref = {"Verso.Genre.Manual.section":
  {"title": "Sections or chapters of the manual",
   "description": null,
@@ -1677,6 +1482,137 @@ window.onload = () => {
         "shortTitle": null,
         "number": null}]},
      "address": "/Article-I___-Sets___-maps___-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--7___-Distributive-laws":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--7___-Distributive-laws",
+     "data":
+     {"title": "7. Distributive laws",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "7. Distributive laws", "shortTitle": null, "number": "7"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--6___-Sums":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--6___-Sums",
+     "data":
+     {"title": "6. Sums",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "6. Sums", "shortTitle": null, "number": "6"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--5___-Commutative___-associative___-and-identity-laws-for-multiplication-of-objects":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--5___-Commutative___-associative___-and-identity-laws-for-multiplication-of-objects",
+     "data":
+     {"title":
+      "5. Commutative, associative, and identity laws for multiplication of objects",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "5. Commutative, associative, and identity laws for multiplication of objects",
+        "shortTitle": null,
+        "number": "5"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--4___-Products":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--4___-Products",
+     "data":
+     {"title": "4. Products",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "4. Products", "shortTitle": null, "number": "4"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--3___-Initial-object":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--3___-Initial-object",
+     "data":
+     {"title": "3. Initial object",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "3. Initial object", "shortTitle": null, "number": "3"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--2___-Separating":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--2___-Separating",
+     "data":
+     {"title": "2. Separating",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "2. Separating", "shortTitle": null, "number": "2"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--1___-Terminal-objects":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties--1___-Terminal-objects",
+     "data":
+     {"title": "1. Terminal objects",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "1. Terminal objects", "shortTitle": null, "number": "1"}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties",
+     "data":
+     {"title": "Article IV: Universal mapping properties",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Article IV: Universal mapping properties",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Article-II___-Isomorphisms--4___-Isomorphisms-and-automorphisms":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Article-II___-Isomorphisms--4___-Isomorphisms-and-automorphisms",
@@ -2070,6 +2006,16 @@ window.onload = () => {
         "Quiz",
         "Optional questions"]}},
      "address": "/Quiz/"}],
+   "CM.uniqueness_of_terminal_objects":
+   [{"id": "CM___uniqueness_of_terminal_objects",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___uniqueness_of_terminal_objects":
+      {"display": "uniqueness_of_terminal_objects",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.uniqueness_of_inverses":
    [{"id": "CM___uniqueness_of_inverses",
      "data":
@@ -2080,6 +2026,26 @@ window.onload = () => {
         "Article II: Isomorphisms",
         "3. Retractions, sections, and idempotents"]}},
      "address": "/Article-II___-Isomorphisms/"}],
+   "CM.termSWE":
+   [{"id": "CM___termSWE",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___termSWE":
+      {"display": "termSWE",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.termIG":
+   [{"id": "CM___termIG",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___termIG":
+      {"display": "termIG",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.prop3":
    [{"id": "CM___prop3",
      "data":
@@ -2251,6 +2217,16 @@ window.onload = () => {
         "Article II: Isomorphisms",
         "4. Isomorphisms and automorphisms"]}},
      "address": "/Article-II___-Isomorphisms/"}],
+   "CM.Two":
+   [{"id": "CM___Two",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___Two":
+      {"display": "Two",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.Test2_3.α":
    [{"id": "CM___Test2_3______",
      "data":
@@ -2726,6 +2702,36 @@ window.onload = () => {
         "Article III: Examples of categories",
         "1. The category 𝑺↻ of endomaps of sets"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.SetA.carrier":
+   [{"id": "CM___SetA___carrier",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___SetA___carrier":
+      {"display": "carrier",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "4. Products"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.SetA.action":
+   [{"id": "CM___SetA___action",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___SetA___action":
+      {"display": "action",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "4. Products"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.SetA":
+   [{"id": "CM___SetA",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___SetA":
+      {"display": "SetA",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "4. Products"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.Section":
    [{"id": "CM___Section",
      "data":
@@ -2855,6 +2861,36 @@ window.onload = () => {
       {"display": "A",
        "context": ["A Lean Companion to Conceptual Mathematics", "Quiz"]}},
      "address": "/Quiz/"}],
+   "CM.PointedSet.point":
+   [{"id": "CM___PointedSet___point",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___PointedSet___point":
+      {"display": "point",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.PointedSet.carrier":
+   [{"id": "CM___PointedSet___carrier",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___PointedSet___carrier":
+      {"display": "carrier",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.PointedSet":
+   [{"id": "CM___PointedSet",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___PointedSet":
+      {"display": "PointedSet",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.Point":
    [{"id": "CM___Point",
      "data":
@@ -2999,6 +3035,26 @@ window.onload = () => {
         "Article III: Examples of categories",
         "5. Irreflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.IrreflexiveGraph.D":
+   [{"id": "CM___IrreflexiveGraph___D",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___IrreflexiveGraph___D":
+      {"display": "IrreflexiveGraph.D",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "2. Separating"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.IrreflexiveGraph.A":
+   [{"id": "CM___IrreflexiveGraph___A",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___IrreflexiveGraph___A":
+      {"display": "IrreflexiveGraph.A",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "2. Separating"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.IrreflexiveGraph":
    [{"id": "CM___IrreflexiveGraph",
      "data":
@@ -3392,6 +3448,586 @@ window.onload = () => {
        ["A Lean Companion to Conceptual Mathematics",
         "Article I: Sets, maps, composition"]}},
      "address": "/Article-I___-Sets___-maps___-composition/"}],
+   "CM.ExIV_9.PointedSet":
+   [{"id": "CM___ExIV_9___PointedSet",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_9___PointedSet":
+      {"display": "PointedSet",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.g":
+   [{"id": "CM___ExIV_5b___g",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___g":
+      {"display": "g",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.f":
+   [{"id": "CM___ExIV_5b___f",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___f":
+      {"display": "f",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.YD.d₂":
+   [{"id": "CM___ExIV_5b___YD___d___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___YD___d___-next":
+      {"display": "d₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.YD.d₁":
+   [{"id": "CM___ExIV_5b___YD___d___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___YD___d___":
+      {"display": "d₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.YD":
+   [{"id": "CM___ExIV_5b___YD",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___YD":
+      {"display": "YD",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.YA.a₂":
+   [{"id": "CM___ExIV_5b___YA___a___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___YA___a___-next":
+      {"display": "a₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.YA.a₁":
+   [{"id": "CM___ExIV_5b___YA___a___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___YA___a___":
+      {"display": "a₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.YA":
+   [{"id": "CM___ExIV_5b___YA",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___YA":
+      {"display": "YA",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.Y":
+   [{"id": "CM___ExIV_5b___Y",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___Y":
+      {"display": "Y",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.XD.d₂":
+   [{"id": "CM___ExIV_5b___XD___d___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___XD___d___-next":
+      {"display": "d₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.XD.d₁":
+   [{"id": "CM___ExIV_5b___XD___d___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___XD___d___":
+      {"display": "d₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.XD":
+   [{"id": "CM___ExIV_5b___XD",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___XD":
+      {"display": "XD",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.XA.a₂":
+   [{"id": "CM___ExIV_5b___XA___a___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___XA___a___-next":
+      {"display": "a₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.XA.a₁":
+   [{"id": "CM___ExIV_5b___XA___a___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___XA___a___":
+      {"display": "a₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.XA":
+   [{"id": "CM___ExIV_5b___XA",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___XA":
+      {"display": "XA",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5b.X":
+   [{"id": "CM___ExIV_5b___X",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5b___X":
+      {"display": "X",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.β":
+   [{"id": "CM___ExIV_5a______-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a______-next":
+      {"display": "β",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.α":
+   [{"id": "CM___ExIV_5a______",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a______":
+      {"display": "α",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.g":
+   [{"id": "CM___ExIV_5a___g",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___g":
+      {"display": "g",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.f":
+   [{"id": "CM___ExIV_5a___f",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___f":
+      {"display": "f",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.Yβ":
+   [{"id": "CM___ExIV_5a___Y___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___Y___":
+      {"display": "Yβ",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.Y.y₂":
+   [{"id": "CM___ExIV_5a___Y___y___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___Y___y___-next":
+      {"display": "y₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.Y.y₁":
+   [{"id": "CM___ExIV_5a___Y___y___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___Y___y___":
+      {"display": "y₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.Y":
+   [{"id": "CM___ExIV_5a___Y",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___Y":
+      {"display": "Y",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.Xα":
+   [{"id": "CM___ExIV_5a___X___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___X___":
+      {"display": "Xα",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.X.x₂":
+   [{"id": "CM___ExIV_5a___X___x___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___X___x___-next":
+      {"display": "x₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.X.x₁":
+   [{"id": "CM___ExIV_5a___X___x___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___X___x___":
+      {"display": "x₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_5a.X":
+   [{"id": "CM___ExIV_5a___X",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_5a___X":
+      {"display": "X",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.p₆":
+   [{"id": "CM___ExIV_20___p___-next-next-next-next-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___p___-next-next-next-next-next":
+      {"display": "p₆",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.p₅":
+   [{"id": "CM___ExIV_20___p___-next-next-next-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___p___-next-next-next-next":
+      {"display": "p₅",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.p₄":
+   [{"id": "CM___ExIV_20___p___-next-next-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___p___-next-next-next":
+      {"display": "p₄",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.p₃":
+   [{"id": "CM___ExIV_20___p___-next-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___p___-next-next":
+      {"display": "p₃",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.p₂":
+   [{"id": "CM___ExIV_20___p___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___p___-next":
+      {"display": "p₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.p₁":
+   [{"id": "CM___ExIV_20___p___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___p___":
+      {"display": "p₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.j₄":
+   [{"id": "CM___ExIV_20___j___-next-next-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___j___-next-next-next":
+      {"display": "j₄",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.j₃":
+   [{"id": "CM___ExIV_20___j___-next-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___j___-next-next":
+      {"display": "j₃",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.j₂":
+   [{"id": "CM___ExIV_20___j___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___j___-next":
+      {"display": "j₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.j₁":
+   [{"id": "CM___ExIV_20___j___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___j___":
+      {"display": "j₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.C":
+   [{"id": "CM___ExIV_20___C",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___C":
+      {"display": "C",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.B_C":
+   [{"id": "CM___ExIV_20___B_C",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___B_C":
+      {"display": "B_C",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.B":
+   [{"id": "CM___ExIV_20___B",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___B":
+      {"display": "B",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.AxC":
+   [{"id": "CM___ExIV_20___AxC",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___AxC":
+      {"display": "AxC",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.AxB_C":
+   [{"id": "CM___ExIV_20___AxB_C",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___AxB_C":
+      {"display": "AxB_C",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.AxB_AxC":
+   [{"id": "CM___ExIV_20___AxB_AxC",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___AxB_AxC":
+      {"display": "AxB_AxC",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.AxB":
+   [{"id": "CM___ExIV_20___AxB",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___AxB":
+      {"display": "AxB",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_20.A":
+   [{"id": "CM___ExIV_20___A",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_20___A":
+      {"display": "A",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_18.j₂":
+   [{"id": "CM___ExIV_18___j___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_18___j___-next":
+      {"display": "j₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "6. Sums"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_18.j₁":
+   [{"id": "CM___ExIV_18___j___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_18___j___":
+      {"display": "j₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "6. Sums"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_18.f₂":
+   [{"id": "CM___ExIV_18___f___-next",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_18___f___-next":
+      {"display": "f₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "6. Sums"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_18.f₁":
+   [{"id": "CM___ExIV_18___f___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_18___f___":
+      {"display": "f₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "6. Sums"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_18.f":
+   [{"id": "CM___ExIV_18___f",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_18___f":
+      {"display": "f",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "6. Sums"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_18.X":
+   [{"id": "CM___ExIV_18___X",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_18___X":
+      {"display": "X",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "6. Sums"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_13.Point'":
+   [{"id": "CM___ExIV_13___Point___",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_13___Point___":
+      {"display": "Point'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "4. Products"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_10c.BSTwo":
+   [{"id": "CM___ExIV_10c___BSTwo",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_10c___BSTwo":
+      {"display": "BSTwo",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_10b.BipointedSet":
+   [{"id": "CM___ExIV_10b___BipointedSet",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_10b___BipointedSet":
+      {"display": "BipointedSet",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_10b.BSTwo":
+   [{"id": "CM___ExIV_10b___BSTwo",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_10b___BSTwo":
+      {"display": "BSTwo",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.ExIV_10a.BSTwo":
+   [{"id": "CM___ExIV_10a___BSTwo",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___ExIV_10a___BSTwo":
+      {"display": "BSTwo",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.ExII_5.g":
    [{"id": "CM___ExII_5___g",
      "data":
@@ -8273,6 +8909,16 @@ window.onload = () => {
         "Article III: Examples of categories",
         "4. Categories of endomaps"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.DistributiveLaw":
+   [{"id": "CM___DistributiveLaw",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___DistributiveLaw":
+      {"display": "DistributiveLaw",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "7. Distributive laws"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.Danilo's_formula":
    [{"id": "CM___Danilo___s_formula",
      "data":
@@ -8546,6 +9192,36 @@ window.onload = () => {
        ["A Lean Companion to Conceptual Mathematics",
         "Article I: Sets, maps, composition"]}},
      "address": "/Article-I___-Sets___-maps___-composition/"}],
+   "CM.BipointedSet.point":
+   [{"id": "CM___BipointedSet___point",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___BipointedSet___point":
+      {"display": "point",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.BipointedSet.carrier":
+   [{"id": "CM___BipointedSet___carrier",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___BipointedSet___carrier":
+      {"display": "carrier",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.BipointedSet":
+   [{"id": "CM___BipointedSet",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___BipointedSet":
+      {"display": "BipointedSet",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.Alysia's_formula":
    [{"id": "CM___Alysia___s_formula",
      "data":
@@ -8763,6 +9439,201 @@ if (paramName) {
     });
 }
 </script>
+    <script>
+      
+window.onload = () => {
+
+    // Don't show hovers inside of closed tactic states
+    function blockedByTactic(elem) {
+      let parent = elem.parentNode;
+      while (parent && "classList" in parent) {
+        if (parent.classList.contains("tactic")) {
+          const toggle = parent.querySelector("input.tactic-toggle");
+          if (toggle) {
+            return !toggle.checked;
+          }
+        }
+        parent = parent.parentNode;
+      }
+      return false;
+    }
+
+    function blockedByTippy(elem) {
+      // Don't show a new hover until the old ones are all closed.
+      // Scoped to the nearest "top-level block" to avoid being O(n) in the size of the document.
+      var block = elem;
+      const topLevel = new Set(["section", "body", "html", "nav", "header"]);
+      while (block.parentNode && !topLevel.has(block.parentNode.nodeName.toLowerCase())) {
+        block = block.parentNode;
+      }
+      for (const child of block.querySelectorAll(".token, .has-info")) {
+        if (child._tippy && child._tippy.state.isVisible) { return true };
+      }
+      return false;
+    }
+
+    for (const c of document.querySelectorAll(".hl.lean .token")) {
+        if (c.dataset.binding != "") {
+            c.addEventListener("mouseover", (event) => {
+                if (blockedByTactic(c)) {return;}
+                const context = c.closest(".hl.lean").dataset.leanContext;
+                for (const example of document.querySelectorAll(".hl.lean")) {
+                    if (example.dataset.leanContext == context) {
+                        for (const tok of example.querySelectorAll(".token")) {
+                            if (c.dataset.binding == tok.dataset.binding) {
+                                tok.classList.add("binding-hl");
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        c.addEventListener("mouseout", (event) => {
+            for (const tok of document.querySelectorAll(".hl.lean .token")) {
+                tok.classList.remove("binding-hl");
+            }
+        });
+    }
+    /* Render docstrings */
+    if ('undefined' !== typeof marked) {
+        for (const d of document.querySelectorAll("code.docstring, pre.docstring")) {
+            const str = d.innerText;
+            const html = marked.parse(str);
+            const rendered = document.createElement("div");
+            rendered.classList.add("docstring");
+            rendered.innerHTML = html;
+            d.parentNode.replaceChild(rendered, d);
+        }
+    }
+    // Add hovers
+    let docsJson = "-verso-docs.json";
+    fetch(docsJson).then((resp) => resp.json()).then((versoDocData) => {
+
+      function hideParentTooltips(element) {
+        let parent = element.parentElement;
+        while (parent) {
+          const tippyInstance = parent._tippy;
+          if (tippyInstance) {
+            tippyInstance.hide();
+          }
+          parent = parent.parentElement;
+        }
+      }
+
+
+
+      const defaultTippyProps = {
+        /* DEBUG -- remove the space: * /
+        onHide(any) { return false; },
+        trigger: "click",
+        // */
+        /* theme: "lean", */
+        maxWidth: "none",
+        appendTo: () => document.body,
+        interactive: true,
+        delay: [100, null],
+        /* ignoreAttributes: true, */
+        followCursor: 'initial',
+        onShow(inst) {
+          if (inst.reference.className == 'tactic') {
+
+            const toggle = inst.reference.querySelector("input.tactic-toggle");
+            if (toggle && toggle.checked) {
+              return false;
+            }
+            hideParentTooltips(inst.reference);
+            //if (blockedByTippy(inst.reference)) { return false; }
+
+          } else if (inst.reference.querySelector(".hover-info") || "versoHover" in inst.reference.dataset) {
+            if (blockedByTactic(inst.reference)) { return false };
+            if (blockedByTippy(inst.reference)) { return false; }
+          } else { // Nothing to show here!
+            return false;
+          }
+        },
+        content (tgt) {
+          const content = document.createElement("span");
+          if (tgt.className == 'tactic') {
+            const state = tgt.querySelector(".tactic-state").cloneNode(true);
+            state.style.display = "block";
+            content.appendChild(state);
+            content.style.display = "block";
+            content.className = "hl lean popup";
+          } else {
+            content.className = "hl lean";
+            content.style.display = "block";
+            content.style.maxHeight = "300px";
+            content.style.overflowY = "auto";
+            content.style.overflowX = "hidden";
+            const hoverId = tgt.dataset.versoHover;
+            const hoverInfo = tgt.querySelector(".hover-info");
+            if (hoverId) { // Docstrings from the table
+              // TODO stop doing an implicit conversion from string to number here
+              let data = versoDocData[hoverId];
+              if (data) {
+                const info = document.createElement("span");
+                info.className = "hover-info";
+                info.style.display = "block";
+                info.innerHTML = data;
+                content.appendChild(info);
+                /* Render docstrings - TODO server-side */
+                if ('undefined' !== typeof marked) {
+                    for (const d of content.querySelectorAll("code.docstring, pre.docstring")) {
+                        const str = d.innerText;
+                        const html = marked.parse(str);
+                        const rendered = document.createElement("div");
+                        rendered.classList.add("docstring");
+                        rendered.innerHTML = html;
+                        d.parentNode.replaceChild(rendered, d);
+                    }
+                }
+              } else {
+                content.innerHTML = "Failed to load doc ID: " + hoverId;
+              }
+            } else if (hoverInfo) { // The inline info, still used for compiler messages
+              content.appendChild(hoverInfo.cloneNode(true));
+            }
+            const extraLinks = tgt.parentElement.dataset['versoLinks'];
+            if (extraLinks) {
+              try {
+                const extras = JSON.parse(extraLinks);
+                const links = document.createElement('ul');
+                links.className = 'extra-doc-links';
+                extras.forEach((l) => {
+                  const li = document.createElement('li');
+                  li.innerHTML = "<a href=\"" + l['href'] + "\" title=\"" + l.long + "\">" + l.short + "</a>";
+                  links.appendChild(li);
+                });
+                content.appendChild(links);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+          }
+          return content;
+        }
+      };
+
+
+      document.querySelectorAll('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'lean');
+      });
+      document.querySelectorAll('.hl.lean .has-info.warning').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'warning message');
+      });
+      document.querySelectorAll('.hl.lean .has-info.information').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'info message');
+      });
+      document.querySelectorAll('.hl.lean .has-info.error').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'error message');
+      });
+      document.querySelectorAll('.hl.lean .tactic').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'tactic');
+      });
+      let insts = tippy('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .has-info, .hl.lean .tactic, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort', defaultTippyProps);
+  });
+}
+</script>
     <script src="-verso-search/search-highlight.js" defer="defer"></script>
     </head>
   <body>
@@ -8783,7 +9654,7 @@ if (paramName) {
             <div class="split-toc book">
               <div class="title">
                 <label for="--verso-manual-toc-----bookRoot" class="toggle-split-toc"><input type="checkbox" class="toggle-split-toc" id="--verso-manual-toc-----bookRoot" checked="checked"></label><span class="">Table of Contents</span></div>
-              <table><tr class="unnumbered"><td class="num"><td><a href="Article-I___-Sets___-maps___-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Article-I___-Sets___-maps___-composition">Article I: Sets, maps, composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-2___-Sets___-maps___-and-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Session-2___-Sets___-maps___-and-composition">Session 2: Sets, maps, and composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-3___-Composing-maps-and-counting-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Session-3___-Composing-maps-and-counting-maps">Session 3: Composing maps and counting maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-II___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Article-II___-Isomorphisms">Article II: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-4___-Division-of-maps___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Session-4___-Division-of-maps___-Isomorphisms">Session 4: Division of maps: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-5___-Division-of-maps___-Sections-and-retractions/#A-Lean-Companion-to-Conceptual-Mathematics--Session-5___-Division-of-maps___-Sections-and-retractions">Session 5: Division of maps: Sections and retractions</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-9___-Retracts-and-idempotents/#A-Lean-Companion-to-Conceptual-Mathematics--Session-9___-Retracts-and-idempotents">Session 9: Retracts and idempotents</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Quiz/#A-Lean-Companion-to-Conceptual-Mathematics--Quiz">Quiz</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___quiz-on-pairs-of-___opposed___-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___quiz-on-pairs-of-___opposed___-maps">Summary/quiz on pairs of 'opposed' maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___-On-the-equation-p-___-j-___-1A/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___-On-the-equation-p-___-j-___-1A">Summary: On the equation p ∘ j = 1A</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Review-of-___I-words___/#A-Lean-Companion-to-Conceptual-Mathematics--Review-of-___I-words___">Review of 'I-words'</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-1/#A-Lean-Companion-to-Conceptual-Mathematics--Test-1">Test 1</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-10___-Brouwer___s-theorems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-10___-Brouwer___s-theorems">Session 10: Brouwer's theorems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-III___-Examples-of-categories/#A-Lean-Companion-to-Conceptual-Mathematics--Article-III___-Examples-of-categories">Article III: Examples of categories</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-11___-Ascending-to-categories-of-richer-structures/#A-Lean-Companion-to-Conceptual-Mathematics--Session-11___-Ascending-to-categories-of-richer-structures">Session 11: Ascending to categories of richer structures</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-12___-Categories-of-diagrams/#A-Lean-Companion-to-Conceptual-Mathematics--Session-12___-Categories-of-diagrams">Session 12: Categories of diagrams</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-13___-Monoids/#A-Lean-Companion-to-Conceptual-Mathematics--Session-13___-Monoids">Session 13: Monoids</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-14___-Maps-preserve-positive-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Session-14___-Maps-preserve-positive-properties">Session 14: Maps preserve positive properties</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-15___-Objectification-of-properties-in-dynamical-systems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-15___-Objectification-of-properties-in-dynamical-systems">Session 15: Objectification of properties in dynamical systems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-16___-Idempotents___-involutions___-and-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-16___-Idempotents___-involutions___-and-graphs">Session 16: Idempotents, involutions, and graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-17___-Some-uses-of-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs">Session 17: Some uses of graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-2/#A-Lean-Companion-to-Conceptual-Mathematics--Test-2">Test 2</a></td></tr></table></div>
+              <table><tr class="unnumbered"><td class="num"><td><a href="Article-I___-Sets___-maps___-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Article-I___-Sets___-maps___-composition">Article I: Sets, maps, composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-2___-Sets___-maps___-and-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Session-2___-Sets___-maps___-and-composition">Session 2: Sets, maps, and composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-3___-Composing-maps-and-counting-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Session-3___-Composing-maps-and-counting-maps">Session 3: Composing maps and counting maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-II___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Article-II___-Isomorphisms">Article II: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-4___-Division-of-maps___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Session-4___-Division-of-maps___-Isomorphisms">Session 4: Division of maps: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-5___-Division-of-maps___-Sections-and-retractions/#A-Lean-Companion-to-Conceptual-Mathematics--Session-5___-Division-of-maps___-Sections-and-retractions">Session 5: Division of maps: Sections and retractions</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-9___-Retracts-and-idempotents/#A-Lean-Companion-to-Conceptual-Mathematics--Session-9___-Retracts-and-idempotents">Session 9: Retracts and idempotents</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Quiz/#A-Lean-Companion-to-Conceptual-Mathematics--Quiz">Quiz</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___quiz-on-pairs-of-___opposed___-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___quiz-on-pairs-of-___opposed___-maps">Summary/quiz on pairs of 'opposed' maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___-On-the-equation-p-___-j-___-1A/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___-On-the-equation-p-___-j-___-1A">Summary: On the equation p ∘ j = 1A</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Review-of-___I-words___/#A-Lean-Companion-to-Conceptual-Mathematics--Review-of-___I-words___">Review of 'I-words'</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-1/#A-Lean-Companion-to-Conceptual-Mathematics--Test-1">Test 1</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-10___-Brouwer___s-theorems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-10___-Brouwer___s-theorems">Session 10: Brouwer's theorems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-III___-Examples-of-categories/#A-Lean-Companion-to-Conceptual-Mathematics--Article-III___-Examples-of-categories">Article III: Examples of categories</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-11___-Ascending-to-categories-of-richer-structures/#A-Lean-Companion-to-Conceptual-Mathematics--Session-11___-Ascending-to-categories-of-richer-structures">Session 11: Ascending to categories of richer structures</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-12___-Categories-of-diagrams/#A-Lean-Companion-to-Conceptual-Mathematics--Session-12___-Categories-of-diagrams">Session 12: Categories of diagrams</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-13___-Monoids/#A-Lean-Companion-to-Conceptual-Mathematics--Session-13___-Monoids">Session 13: Monoids</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-14___-Maps-preserve-positive-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Session-14___-Maps-preserve-positive-properties">Session 14: Maps preserve positive properties</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-15___-Objectification-of-properties-in-dynamical-systems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-15___-Objectification-of-properties-in-dynamical-systems">Session 15: Objectification of properties in dynamical systems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-16___-Idempotents___-involutions___-and-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-16___-Idempotents___-involutions___-and-graphs">Session 16: Idempotents, involutions, and graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-17___-Some-uses-of-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs">Session 17: Some uses of graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-2/#A-Lean-Companion-to-Conceptual-Mathematics--Test-2">Test 2</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-IV___-Universal-mapping-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties">Article IV: Universal mapping properties</a></td></tr></table></div>
             </div>
           </div>
         <div class="last"></div>
