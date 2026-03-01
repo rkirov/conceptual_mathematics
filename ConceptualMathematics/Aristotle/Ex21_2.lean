@@ -20,12 +20,12 @@ If you add the comment "-- Harmonic `generalize_proofs` tactic" to your file, we
 import Mathlib
 
 
-import Mathlib.Tactic.GeneralizeProofs
+import Batteries.Tactic.GeneralizeProofs
 
 namespace Harmonic.GeneralizeProofs
 -- Harmonic `generalize_proofs` tactic
 
-open Lean Meta Elab Parser.Tactic Elab.Tactic Mathlib.Tactic.GeneralizeProofs
+open Lean Meta Elab Parser.Tactic Elab.Tactic Batteries.Tactic.GeneralizeProofs
 def mkLambdaFVarsUsedOnly' (fvars : Array Expr) (e : Expr) : MetaM (Array Expr × Expr) := do
   let mut e := e
   let mut fvars' : List Expr := []
@@ -195,7 +195,7 @@ where
 
 end GeneralizeProofs
 
-open Lean Elab Parser.Tactic Elab.Tactic Mathlib.Tactic.GeneralizeProofs
+open Lean Elab Parser.Tactic Elab.Tactic Batteries.Tactic.GeneralizeProofs
 partial def generalizeProofs'
     (g : MVarId) (fvars : Array FVarId) (target : Bool) (config : Config := {}) :
     MetaM (Array Expr × MVarId) := do
@@ -314,6 +314,7 @@ lemma fwd_map_fst_comm (m n : ℕ) [NeZero m] [NeZero n] [NeZero (m.lcm n)] (p :
     unfold fwd_map;
     simp_all +decide [ ← ZMod.natCast_eq_natCast_iff' ]
 
+set_option maxHeartbeats 400000
 lemma fwd_map_snd_comm (m n : ℕ) [NeZero m] [NeZero n] [NeZero (m.lcm n)] (p : ZMod m × ZMod n) :
   (fwd_map m n (p.1 + 1, p.2 + 1)).2 = (fwd_map m n p).2 + 1 := by
     -- By definition of $fwd\_map$, we know that its second component is the second component of its argument.
