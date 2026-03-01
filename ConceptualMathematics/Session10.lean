@@ -24,6 +24,8 @@ namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 ```
 
+See this [GitHub repository](https://github.com/harfe/fixed-point-theorems-lean4) for a formalisation of Brouwer's fixed point theorem in Lean 4.
+
 # 1. Balls, spheres, fixed points, and retractions
 
 :::theoremDirective (theoremTitle := "Brouwer fixed point theorem (1)") (theoremPage := "120")
