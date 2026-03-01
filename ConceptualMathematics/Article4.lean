@@ -1700,7 +1700,8 @@ Theorem (uniqueness of products) (p. 221)
 ```
 
 ```savedLean
-example {𝒞 : Type u} [Category.{v, u} 𝒞] {I : Type} (Cᵢ : I → 𝒞)
+theorem uniqueness_of_products
+    {𝒞 : Type u} [Category.{v, u} 𝒞] {I : Type} (Cᵢ : I → 𝒞)
     (coneP coneQ : Fan Cᵢ)
     (prodP : IsLimit coneP) (prodQ : IsLimit coneQ)
     : ∃! f : coneP.pt ⟶ coneQ.pt,
