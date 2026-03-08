@@ -305,6 +305,90 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations--4___-Basic-figure-types___-singular-figures___-and-incidence___-in-the-category-of-graphs":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations--4___-Basic-figure-types___-singular-figures___-and-incidence___-in-the-category-of-graphs",
+     "data":
+     {"title":
+      "4. Basic figure-types, singular figures, and incidence, in the category of graphs",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "Session 22: Universal mapping properties; Incidence relations",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations",
+     "data":
+     {"title": "Session 22: Universal mapping properties; Incidence relations",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "Session 22: Universal mapping properties; Incidence relations",
+        "shortTitle": null,
+        "number": null}]},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-21___-Products-in-categories":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-21___-Products-in-categories",
+     "data":
+     {"title": "Session 21: Products in categories",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 21: Products in categories",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-20___-Points-of-an-object":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-20___-Points-of-an-object",
+     "data":
+     {"title": "Session 20: Points of an object",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 20: Points of an object",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-20___-Points-of-an-object/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-19___-Terminal-objects":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-19___-Terminal-objects",
+     "data":
+     {"title": "Session 19: Terminal objects",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 19: Terminal objects",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-19___-Terminal-objects/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs--3___-Commuting-diagrams":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs--3___-Commuting-diagrams",
@@ -1315,6 +1399,15 @@
         "Quiz",
         "Optional questions"]}},
      "address": "/Quiz/"}],
+   "CM.uniqueness_of_terminal_objects'":
+   [{"id": "CM___uniqueness_of_terminal_objects___",
+     "data":
+     {"/Session-19___-Terminal-objects/#CM___uniqueness_of_terminal_objects___":
+      {"display": "uniqueness_of_terminal_objects'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 19: Terminal objects"]}},
+     "address": "/Session-19___-Terminal-objects/"}],
    "CM.uniqueness_of_terminal_objects":
    [{"id": "CM___uniqueness_of_terminal_objects",
      "data":
@@ -1324,6 +1417,25 @@
        ["A Lean Companion to Conceptual Mathematics",
         "Article IV: Universal mapping properties",
         "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.uniqueness_of_products'":
+   [{"id": "CM___uniqueness_of_products___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___uniqueness_of_products___":
+      {"display": "uniqueness_of_products'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.uniqueness_of_products":
+   [{"id": "CM___uniqueness_of_products",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___uniqueness_of_products":
+      {"display": "uniqueness_of_products",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "5. Commutative, associative, and identity laws for multiplication of objects"]}},
      "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.uniqueness_of_inverses":
    [{"id": "CM___uniqueness_of_inverses",
@@ -1496,6 +1608,28 @@
        ["A Lean Companion to Conceptual Mathematics",
         "Article I: Sets, maps, composition"]}},
      "address": "/Article-I___-Sets___-maps___-composition/"}],
+   "CM.homDEquiv":
+   [{"id": "CM___homDEquiv",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___homDEquiv":
+      {"display": "homDEquiv",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.homAEquiv":
+   [{"id": "CM___homAEquiv",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___homAEquiv":
+      {"display": "homAEquiv",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
    "CM.functorSetWithEndomapToSimpleGraph":
    [{"id": "CM___functorSetWithEndomapToSimpleGraph",
      "data":
@@ -4737,6 +4871,129 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex22_2.FigA₂.IsSingular":
+   [{"id": "CM___Ex22_2___FigA______IsSingular",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___Ex22_2___FigA______IsSingular":
+      {"display": "FigA₂.IsSingular",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.Ex22_2.FigA₂":
+   [{"id": "CM___Ex22_2___FigA___",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___Ex22_2___FigA___":
+      {"display": "FigA₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.Ex22_2.A₂":
+   [{"id": "CM___Ex22_2___A___",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___Ex22_2___A___":
+      {"display": "A₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.Ex21_1.shiftClock":
+   [{"id": "CM___Ex21_1___shiftClock",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___shiftClock":
+      {"display": "shiftClock",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.p₂":
+   [{"id": "CM___Ex21_1___p___-next",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___p___-next":
+      {"display": "p₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.p₁":
+   [{"id": "CM___Ex21_1___p___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___p___":
+      {"display": "p₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_p₂_crt":
+   [{"id": "CM___Ex21_1___h_p____crt-next",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_p____crt-next":
+      {"display": "h_p₂_crt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_p₁_crt":
+   [{"id": "CM___Ex21_1___h_p____crt",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_p____crt":
+      {"display": "h_p₁_crt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_crt_uniq":
+   [{"id": "CM___Ex21_1___h_crt_uniq",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_crt_uniq":
+      {"display": "h_crt_uniq",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_crt_comm":
+   [{"id": "CM___Ex21_1___h_crt_comm",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_crt_comm":
+      {"display": "h_crt_comm",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.dayClock":
+   [{"id": "CM___Ex21_1___dayClock",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___dayClock":
+      {"display": "dayClock",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.crt":
+   [{"id": "CM___Ex21_1___crt",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___crt":
+      {"display": "crt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.Xα":
+   [{"id": "CM___Ex21_1___X___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___X___":
+      {"display": "Xα",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
    "CM.Ex17_4_c.Vertex.C":
    [{"id": "CM___Ex17_4_c___Vertex___C",
      "data":
@@ -6607,6 +6864,24 @@
        ["A Lean Companion to Conceptual Mathematics",
         "Session 14: Maps preserve positive properties"]}},
      "address": "/Session-14___-Maps-preserve-positive-properties/"}],
+   "CM.Ex12_3.p₂":
+   [{"id": "CM___Ex12_3___p___-next",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex12_3___p___-next":
+      {"display": "p₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex12_3.p₁":
+   [{"id": "CM___Ex12_3___p___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex12_3___p___":
+      {"display": "p₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
    "CM.Ex12_3.m₃":
    [{"id": "CM___Ex12_3___m___-next-next",
      "data":

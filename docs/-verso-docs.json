@@ -1028,582 +1028,856 @@
  "338": "<code>h 1 = 1</code>",
  "337": "<code>h ∘ hinv = id</code>",
  "336": "<code>hinv ∘ h = id</code>",
+ "3355": "<code>(↑f).2 1 = (↑f).2 2</code>",
+ "3354": "<code>(↑f).2 0 = (↑f).2 2</code>",
+ "3353": "<code>A₂.carrierD</code>",
+ "3352": "<code>(↑f).2 0 = (↑f).2 1</code>",
+ "3351": "<code>Function.Injective (↑f).2</code>",
+ "3350": "<code>Function.Injective (↑f).1</code>",
  "335": "<code>∀ (x : ℝ), h x = x * x</code>",
+ "3349": "<code>A₂.carrierA</code>",
+ "3348": "<code>(↑f).1 0 = (↑f).1 1</code>",
+ "3347": "<code>FigA₂ X</code>",
+ "3346":
+ "<code>CM.Ex22_2.FigA₂.IsSingular {X : IrreflexiveGraph} (f : FigA₂ X) : Prop</code>",
+ "3345": "<code>CM.Ex22_2.FigA₂ (X : IrreflexiveGraph) : Type</code>",
+ "3344": "<code>Fin 2 → Fin 3</code>",
+ "3343": "<code>CM.Ex22_2.A₂ : IrreflexiveGraph</code>",
+ "3342": "<code>fDP (fD xD) = Classical.choose ⋯</code>",
+ "3341": "<code>fDP ((↑f').2 xD) = Classical.choose ⋯</code>",
+ "3340":
+ "<code>∀ (y : D ⟶ P), (fun fDP ↦ p₁ ⊚ fDP = f₁ ⊚ fDX xD ∧ p₂ ⊚ fDP = f₂ ⊚ fDX xD) y → y = Classical.choose ⋯</code>",
  "334": "<code>NNReal.mul_self_sqrt (x : ℝ≥0) : sqrt x * sqrt x = x</code>",
+ "3339": "<code>p₁ ⊚ fDP ((↑f').2 xD) = (p₁ ⊚ f') ⊚ fDX xD</code>",
+ "3338": "<code>(↑(p₂ ⊚ f')).2 xD = (↑f₂).2 xD</code>",
+ "3337": "<code>e_1 ≍ ⋯</code>",
+ "3336": "<code>p₂ ⊚ fDP ((↑f').2 xD) = f₂ ⊚ fDX xD</code>",
+ "3335": "<code>(↑(p₁ ⊚ f')).2 xD = (↑f₁).2 xD</code>",
+ "3334": "<code>p₁ ⊚ fDP ((↑f').2 xD) = f₁ ⊚ fDX xD</code>",
+ "3333": "<code>fAP (fA xA) = Classical.choose ⋯</code>",
+ "3332": "<code>fAP ((↑f').1 xA) = Classical.choose ⋯</code>",
+ "3331":
+ "<code>∀ (y : A ⟶ P), (fun fAP ↦ p₁ ⊚ fAP = f₁ ⊚ fAX xA ∧ p₂ ⊚ fAP = f₂ ⊚ fAX xA) y → y = Classical.choose ⋯</code>",
+ "3330": "<code>(X.carrierA ⟶ B₂.carrierA) × (X.carrierD ⟶ B₂.carrierD)</code>",
  "333": "<code>NNReal.sqrt_mul_self (x : ℝ≥0) : sqrt (x * x) = x</code>",
+ "3329": "<code>p₁ ⊚ fAP ((↑f').1 xA) = (p₁ ⊚ f') ⊚ fAX xA</code>",
+ "3328": "<code>(X.carrierA ⟶ B₂.carrierA) × β</code>",
+ "3327": "<code>(↑(p₂ ⊚ f')).1 xA = (↑f₂).1 xA</code>",
+ "3326": "<code>(X.carrierA ⟶ B₁.carrierA) × (X.carrierD ⟶ B₁.carrierD)</code>",
+ "3325": "<code>e_3 ≍ ⋯</code>",
+ "3324": "<code>self = a</code>",
+ "3323": "<code>Subtype p</code>",
+ "3322": "<code>α → Prop</code>",
+ "3321": "<code>e_2 ≍ ⋯</code>",
+ "3320": "<code>self = self</code>",
  "332":
  "<code>NNReal.sqrt : ℝ≥0 ≃o ℝ≥0</code><span class=\"sep\"></span><code class=\"docstring\">Square root of a nonnegative real number. </code>",
+ "3319": "<code>self' = self</code>",
+ "3318": "<code>self = a_1</code>",
+ "3317": "<code>hf'₂ ≍ ⋯</code>",
+ "3316":
+ "<code>∀ (xD : X.carrierD), p₁ ⊚ fDP (fD xD) = (p₁ ⊚ f') ⊚ fDX xD ∧ p₂ ⊚ fDP (fD xD) = (p₂ ⊚ f') ⊚ fDX xD</code>",
+ "3315":
+ "<code>∀ (xA : X.carrierA), p₁ ⊚ fAP (fA xA) = (p₁ ⊚ f') ⊚ fAX xA ∧ p₂ ⊚ fAP (fA xA) = (p₂ ⊚ f') ⊚ fAX xA</code>",
+ "3314":
+ "<code>∃! fDP, p₁ ⊚ fDP = (p₁ ⊚ f') ⊚ fDX xD ∧ p₂ ⊚ fDP = (p₂ ⊚ f') ⊚ fDX xD</code>",
+ "3313":
+ "<code>∃! fAP, p₁ ⊚ fAP = (p₁ ⊚ f') ⊚ fAX xA ∧ p₂ ⊚ fAP = (p₂ ⊚ f') ⊚ fAX xA</code>",
+ "3312": "<code>p₂ ⊚ f' = p₂ ⊚ f'</code>",
+ "3311": "<code>f₂ = p₂ ⊚ f'</code>",
+ "3310": "<code>p₂ ⊚ f' = a_1</code>",
  "331":
  "<code>NNReal : Type</code><span class=\"sep\"></span><code class=\"docstring\">Nonnegative real numbers, denoted as `ℝ≥0` within the NNReal namespace </code>",
+ "3309": "<code>hf'₁ ≍ ⋯</code>",
+ "3308": "<code>p₁ ⊚ f' = p₁ ⊚ f'</code>",
+ "3307":
+ "<code>∀ (xD : X.carrierD), p₁ ⊚ fDP (fD xD) = (p₁ ⊚ f') ⊚ fDX xD ∧ p₂ ⊚ fDP (fD xD) = f₂ ⊚ fDX xD</code>",
+ "3306":
+ "<code>∀ (xA : X.carrierA), p₁ ⊚ fAP (fA xA) = (p₁ ⊚ f') ⊚ fAX xA ∧ p₂ ⊚ fAP (fA xA) = f₂ ⊚ fAX xA</code>",
+ "3305":
+ "<code>∃! fDP, p₁ ⊚ fDP = (p₁ ⊚ f') ⊚ fDX xD ∧ p₂ ⊚ fDP = f₂ ⊚ fDX xD</code>",
+ "3304":
+ "<code>∃! fAP, p₁ ⊚ fAP = (p₁ ⊚ f') ⊚ fAX xA ∧ p₂ ⊚ fAP = f₂ ⊚ fAX xA</code>",
+ "3303": "<code>f₁ = p₁ ⊚ f'</code>",
+ "3302": "<code>p₁ ⊚ f' = a_1</code>",
+ "3301":
+ "<code>Eq.casesOn.{u, u_1} {α : Sort u_1} {a✝ : α} {motive : (a : α) → a✝ = a → Sort u} {a✝¹ : α} (t : a✝ = a✝¹)\n  (refl : motive a✝ ⋯) : motive a✝¹ t</code>",
+ "3300": "<code>self = self'</code>",
  "330": "<code>ℝ≥0</code>",
  "33":
  "<code class=\"docstring\">Apply function extensionality and introduce new hypotheses.\nThe tactic `funext` will keep applying the `funext` lemma until the goal target is not reducible to\n```\n  |-  ((fun x =&gt; ...) = (fun x =&gt; ...))\n```\nThe variant `funext h₁ ... hₙ` applies `funext` `n` times, and uses the given identifiers to name the new hypotheses.\nPatterns can be used like in the `intro` tactic. Example, given a goal\n```\n  |-  ((fun x : Nat × Bool =&gt; ...) = (fun x =&gt; ...))\n```\n`funext (a, b)` applies `funext` once and performs pattern matching on the newly introduced pair.\n</code>",
+ "3299": "<code>(X.carrierA ⟶ B₁.carrierA) × β</code>",
+ "3298": "<code>p₂ ⊚ fAP ((↑f').1 xA) = f₂ ⊚ fAX xA</code>",
+ "3297": "<code>(↑(p₁ ⊚ f')).1 xA = (↑f₁).1 xA</code>",
+ "3296": "<code>p₁ ⊚ fAP ((↑f').1 xA) = f₁ ⊚ fAX xA</code>",
+ "3295": "<code>p₂ ⊚ f' = f₂</code>",
+ "3294": "<code>p₁ ⊚ f' = f₁</code>",
+ "3293": "<code>(↑(p₂ ⊚ fDP (fD xD))).2 () = (↑(f₂ ⊚ fDX xD)).2 ()</code>",
+ "3292": "<code>p₂ ⊚ fDP (fD xD) = f₂ ⊚ fDX xD</code>",
+ "3291": "<code>(↑(p₂ ⊚ fAP (fA xA))).1 () = (↑(f₂ ⊚ fAX xA)).1 ()</code>",
+ "3290": "<code>p₂ ⊚ fAP (fA xA) = f₂ ⊚ fAX xA</code>",
  "329": "<code>∀ (x : ℝ≥0), g x = x * x</code>",
+ "3289": "<code>(↑(p₁ ⊚ fDP (fD xD))).2 () = (↑(f₁ ⊚ fDX xD)).2 ()</code>",
+ "3288": "<code>p₁ ⊚ fDP (fD xD) = f₁ ⊚ fDX xD</code>",
+ "3287": "<code>(↑(p₁ ⊚ fAP (fA xA))).1 () = (↑(f₁ ⊚ fAX xA)).1 ()</code>",
+ "3286": "<code>p₁ ⊚ fAP (fA xA) = f₁ ⊚ fAX xA</code>",
+ "3285": "<code>fDP (fD (X.toTgt xA)) = Classical.choose ⋯</code>",
+ "3284": "<code>fDP (P.toTgt (fA xA)) = Classical.choose ⋯</code>",
+ "3283":
+ "<code>∀ (y : D ⟶ P),\n  (fun fDP ↦ p₁ ⊚ fDP = f₁ ⊚ fDX (X.toTgt xA) ∧ p₂ ⊚ fDP = f₂ ⊚ fDX (X.toTgt xA)) y → y = Classical.choose ⋯</code>",
+ "3282": "<code>p₂ ⊚ fDP (P.toTgt (fA xA)) = f₂ ⊚ fDX (X.toTgt xA)</code>",
+ "3281": "<code>p₁ ⊚ fDP (P.toTgt (fA xA)) = f₁ ⊚ fDX (X.toTgt xA)</code>",
+ "3280": "<code>∀ (xA : X.carrierA), P.toTgt (fA xA) = fD (X.toTgt xA)</code>",
  "328": "<code>ℝ≥0 → ℝ≥0</code>",
+ "3279": "<code>fDP (fD (X.toSrc xA)) = Classical.choose ⋯</code>",
+ "3278": "<code>fDP (P.toSrc (fA xA)) = Classical.choose ⋯</code>",
+ "3277":
+ "<code>∀ (y : D ⟶ P),\n  (fun fDP ↦ p₁ ⊚ fDP = f₁ ⊚ fDX (X.toSrc xA) ∧ p₂ ⊚ fDP = f₂ ⊚ fDX (X.toSrc xA)) y → y = Classical.choose ⋯</code>",
+ "3276": "<code>X.carrierA ⟶ B₂.carrierD</code>",
+ "3275": "<code>P.carrierA ⟶ B₂.carrierD</code>",
+ "3274": "<code>X.carrierA ⟶ B₁.carrierD</code>",
+ "3273": "<code>P.carrierA ⟶ B₁.carrierD</code>",
+ "3272": "<code>p₂ ⊚ fDP (P.toSrc (fA xA)) = f₂ ⊚ fDX (X.toSrc xA)</code>",
+ "3271":
+ "<code>Equiv.injective.{u, v} {α : Sort u} {β : Sort v} (e : α ≃ β) : Function.Injective ⇑e</code>",
+ "3270": "<code>p₁ ⊚ fDP (P.toSrc (fA xA)) = f₁ ⊚ fDX (X.toSrc xA)</code>",
  "327":
  "<code class=\"docstring\">`ring` solves equations in *commutative* (semi)rings, allowing for variables in the\nexponent. If the goal is not appropriate for `ring` (e.g. not an equality) `ring_nf` will be\nsuggested. See also `ring1`, which fails if the goal is not an equality.\n\n* `ring!` will use a more aggressive reducibility setting to determine equality of atoms.\n\nExamples:\n```\nexample (n : ℕ) (m : ℤ) : 2^(n+1) * m = 2 * 2^n * m := by ring\nexample (a b : ℤ) (n : ℕ) : (a + b)^(n + 2) = (a^2 + b^2 + a * b + b * a) * (a + b)^n := by ring\nexample (x y : ℕ) : x + id y = y + id x := by ring!\nexample (x : ℕ) (h : x * 2 &gt; 5): x + x &gt; 5 := by ring; assumption -- suggests ring_nf\n```\n</code>",
+ "3269": "<code>∀ (xA : X.carrierA), P.toSrc (fA xA) = fD (X.toSrc xA)</code>",
+ "3268":
+ "<code>∀ (xD : X.carrierD), p₁ ⊚ fDP (fD xD) = f₁ ⊚ fDX xD ∧ p₂ ⊚ fDP (fD xD) = f₂ ⊚ fDX xD</code>",
+ "3267":
+ "<code>Equiv.symm_apply_apply.{u, v} {α : Sort u} {β : Sort v} (e : α ≃ β) (x : α) : e.symm (e x) = x</code>",
+ "3266":
+ "<code>∀ (xA : X.carrierA), p₁ ⊚ fAP (fA xA) = f₁ ⊚ fAX xA ∧ p₂ ⊚ fAP (fA xA) = f₂ ⊚ fAX xA</code>",
+ "3265": "<code>P.carrierD</code>",
+ "3264": "<code>P.carrierD → (D ⟶ P)</code>",
+ "3263": "<code>P.carrierA</code>",
+ "3262": "<code>P.carrierA → (A ⟶ P)</code>",
+ "3261": "<code>∃! fDP, p₁ ⊚ fDP = f₁ ⊚ fDX xD ∧ p₂ ⊚ fDP = f₂ ⊚ fDX xD</code>",
+ "3260": "<code>X.carrierD → P.carrierD</code>",
  "326":
  "<code>id_eq.{u_1} {α : Sort u_1} (a : α) : id a = a</code><span class=\"sep\"></span><code class=\"docstring\">`id x = x`, as a `@[simp]` lemma. </code>",
+ "3259": "<code>∃! fAP, p₁ ⊚ fAP = f₁ ⊚ fAX xA ∧ p₂ ⊚ fAP = f₂ ⊚ fAX xA</code>",
+ "3258": "<code>X.carrierA → P.carrierA</code>",
+ "3257": "<code>X.carrierD → (D ⟶ X)</code>",
+ "3256": "<code>X.carrierA → (A ⟶ X)</code>",
+ "3255": "<code>D ⟶ P</code>",
+ "3254": "<code>D ⟶ B₂</code>",
+ "3253": "<code>D ⟶ B₁</code>",
+ "3252":
+ "<code>∀ (fDP₁ : D ⟶ B₁) (fDP₂ : D ⟶ B₂), ∃! fDP, p₁ ⊚ fDP = fDP₁ ∧ p₂ ⊚ fDP = fDP₂</code>",
+ "3251": "<code>A ⟶ P</code>",
+ "3250": "<code>A ⟶ B₂</code>",
  "325":
  "<code>HDiv.hDiv.{u, v, w} {α : Type u} {β : Type v} {γ : outParam (Type w)} [self : HDiv α β γ] : α → β → γ</code><span class=\"sep\"></span><code class=\"docstring\">`a / b` computes the result of dividing `a` by `b`.\nThe meaning of this notation is type-dependent.\n* For most types like `Nat`, `Int`, `Rat`, `Real`, `a / 0` is defined to be `0`.\n* For `Nat`, `a / b` rounds downwards.\n* For `Int`, `a / b` rounds downwards if `b` is positive or upwards if `b` is negative.\n  It is implemented as `Int.ediv`, the unique function satisfying\n  `a % b + b * (a / b) = a` and `0 ≤ a % b &lt; natAbs b` for `b ≠ 0`.\n  Other rounding conventions are available using the functions\n  `Int.fdiv` (floor rounding) and `Int.tdiv` (truncation rounding).\n* For `Float`, `a / 0` follows the IEEE 754 semantics for division,\n  usually resulting in `inf` or `nan`. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `/` in identifiers is `div`.</code>",
+ "3249": "<code>A ⟶ B₁</code>",
+ "3248":
+ "<code>∀ (fAP₁ : A ⟶ B₁) (fAP₂ : A ⟶ B₂), ∃! fAP, p₁ ⊚ fAP = fAP₁ ∧ p₂ ⊚ fAP = fAP₂</code>",
+ "3247":
+ "<code>∀ (xD : X.carrierD),\n  (fun fDX ↦ (↑fDX).2 ()) ((fun xD ↦ ⟨(Empty.elim, fun x ↦ xD), ⋯⟩) xD) =\n    (fun fDX ↦ (↑fDX).2 ()) ((fun xD ↦ ⟨(Empty.elim, fun x ↦ xD), ⋯⟩) xD)</code>",
+ "3246":
+ "<code>∀ (fDX : D ⟶ X), (fun xD ↦ ⟨(Empty.elim, fun x ↦ xD), ⋯⟩) ((fun fDX ↦ (↑fDX).2 ()) fDX) = fDX</code>",
+ "3245":
+ "<code>X.carrierD → { f // f.2 ⊚ D.toSrc = X.toSrc ⊚ f.1 ∧ f.2 ⊚ D.toTgt = X.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The backward map of an equivalence.\n\nDo NOT use `e.invFun` directly. Use the coercion of `e.symm` instead. </code>",
+ "3244":
+ "<code>(D ⟶ X) → X.carrierD</code><span class=\"sep\"></span><code class=\"docstring\">The forward map of an equivalence.\n\nDo NOT use directly. Use the coercion instead. </code>",
+ "3243":
+ "<code>CM.homDEquiv (X : IrreflexiveGraph) : (D ⟶ X) ≃ X.carrierD</code>",
+ "3242":
+ "<code>∀ (xA : X.carrierA),\n  (fun fAX ↦ (↑fAX).1 ())\n      ((fun xA ↦\n          ⟨(fun x ↦ xA, fun x ↦\n              match x with\n              | 0 =&gt; X.toSrc xA\n              | 1 =&gt; X.toTgt xA),\n            ⋯⟩)\n        xA) =\n    (fun fAX ↦ (↑fAX).1 ())\n      ((fun xA ↦\n          ⟨(fun x ↦ xA, fun x ↦\n              match x with\n              | 0 =&gt; X.toSrc xA\n              | 1 =&gt; X.toTgt xA),\n            ⋯⟩)\n        xA)</code>",
+ "3241":
+ "<code>∀ (fAX : A ⟶ X),\n  (fun xA ↦\n        ⟨(fun x ↦ xA, fun x ↦\n            match x with\n            | 0 =&gt; X.toSrc xA\n            | 1 =&gt; X.toTgt xA),\n          ⋯⟩)\n      ((fun fAX ↦ (↑fAX).1 ()) fAX) =\n    fAX</code>",
+ "3240":
+ "<code>X.carrierA → { f // f.2 ⊚ A.toSrc = X.toSrc ⊚ f.1 ∧ f.2 ⊚ A.toTgt = X.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The backward map of an equivalence.\n\nDo NOT use `e.invFun` directly. Use the coercion of `e.symm` instead. </code>",
  "324":
  "<code>HSub.hSub.{u, v, w} {α : Type u} {β : Type v} {γ : outParam (Type w)} [self : HSub α β γ] : α → β → γ</code><span class=\"sep\"></span><code class=\"docstring\">`a - b` computes the difference of `a` and `b`.\nThe meaning of this notation is type-dependent.\n* For natural numbers, this operator saturates at 0: `a - b = 0` when `a ≤ b`. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `-` in identifiers is `sub` (when used as a binary operator).</code>",
+ "3239":
+ "<code>(A ⟶ X) → X.carrierA</code><span class=\"sep\"></span><code class=\"docstring\">The forward map of an equivalence.\n\nDo NOT use directly. Use the coercion instead. </code>",
+ "3238":
+ "<code>CM.homAEquiv (X : IrreflexiveGraph) : (A ⟶ X) ≃ X.carrierA</code>",
+ "3237": "<code>s.pt ⟶ (pair G C).obj { as := WalkingPair.right }</code>",
+ "3236": "<code>s.pt ⟶ (pair G C).obj { as := WalkingPair.left }</code>",
+ "3235":
+ "<code>∀ (s : Cone (pair G C)) (m : s.pt ⟶ (BinaryFan.mk p₁ p₂).pt),\n  (∀ (j : Discrete WalkingPair), (BinaryFan.mk p₁ p₂).π.app j ⊚ m = s.π.app j) →\n    m = ⟨fun x ↦ (↑(BinaryFan.fst s) x, ↑(BinaryFan.snd s) x), ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">It is the unique such map to do this </code>",
+ "3234":
+ "<code>∀ (s : Cone (pair G C)) (j : Discrete WalkingPair),\n  (BinaryFan.mk p₁ p₂).π.app j ⊚ ⟨fun x ↦ (↑(BinaryFan.fst s) x, ↑(BinaryFan.snd s) x), ⋯⟩ = s.π.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map makes the triangle with the two natural transformations commute </code>",
+ "3233": "<code>((pair G C).obj { as := WalkingPair.right }).carrier</code>",
+ "3232":
+ "<code>↑(BinaryFan.snd s) ⊚ s.pt.toEnd2 = C.toEnd2 ⊚ ↑(BinaryFan.snd s)</code>",
+ "3231":
+ "<code>↑(BinaryFan.snd s) ⊚ s.pt.toEnd = C.toEnd ⊚ ↑(BinaryFan.snd s)</code>",
+ "3230":
+ "<code>↑(BinaryFan.fst s) ⊚ s.pt.toEnd2 = G.toEnd2 ⊚ ↑(BinaryFan.fst s)</code>",
  "323":
  "<code>HAdd.hAdd.{u, v, w} {α : Type u} {β : Type v} {γ : outParam (Type w)} [self : HAdd α β γ] : α → β → γ</code><span class=\"sep\"></span><code class=\"docstring\">`a + b` computes the sum of `a` and `b`.\nThe meaning of this notation is type-dependent. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `+` in identifiers is `add`.</code>",
+ "3229":
+ "<code>↑(BinaryFan.fst s) ⊚ s.pt.toEnd = G.toEnd ⊚ ↑(BinaryFan.fst s)</code>",
+ "3228":
+ "<code>↑(BinaryFan.snd s) ⊚ (((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.right }).toEnd2 =\n  ((pair G C).obj { as := WalkingPair.right }).toEnd2 ⊚ ↑(BinaryFan.snd s)</code>",
+ "3227":
+ "<code>↑(BinaryFan.snd s) ⊚ (((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.right }).toEnd =\n  ((pair G C).obj { as := WalkingPair.right }).toEnd ⊚ ↑(BinaryFan.snd s)</code>",
+ "3226":
+ "<code>↑(BinaryFan.fst s) ⊚ (((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.left }).toEnd2 =\n  ((pair G C).obj { as := WalkingPair.left }).toEnd2 ⊚ ↑(BinaryFan.fst s)</code>",
+ "3225":
+ "<code>↑(BinaryFan.fst s) ⊚ (((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.left }).toEnd =\n  ((pair G C).obj { as := WalkingPair.left }).toEnd ⊚ ↑(BinaryFan.fst s)</code>",
+ "3224": "<code>Cone (pair G C)</code>",
+ "3223":
+ "<code>(s : Cone (pair G C)) →\n  { f // f ⊚ s.pt.toEnd = (BinaryFan.mk p₁ p₂).pt.toEnd ⊚ f ∧ f ⊚ s.pt.toEnd2 = (BinaryFan.mk p₁ p₂).pt.toEnd2 ⊚ f }</code><span class=\"sep\"></span><code class=\"docstring\">There is a morphism from any cone point to `t.pt` </code>",
+ "3222": "<code>CM.Ex12_3.p₂ : GC ⟶ C</code>",
+ "3221": "<code>GC.carrier</code>",
+ "3220": "<code>Gender</code>",
  "322":
  "<code>HMul.hMul.{u, v, w} {α : Type u} {β : Type v} {γ : outParam (Type w)} [self : HMul α β γ] : α → β → γ</code><span class=\"sep\"></span><code class=\"docstring\">`a * b` computes the product of `a` and `b`.\nThe meaning of this notation is type-dependent. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `*` in identifiers is `mul`.</code>",
+ "3219": "<code>CM.Ex12_3.p₁ : GC ⟶ G</code>",
+ "3218":
+ "<code>∀ (j : Discrete WalkingPair), (BinaryFan.mk p₁ p₂).π.app j ⊚ f = s.π.app j</code>",
+ "3217":
+ "<code>∀ (s : Cone (pair shiftClock Xα)) (f : s.pt ⟶ (BinaryFan.mk p₁ p₂).pt),\n  (∀ (j : Discrete WalkingPair), (BinaryFan.mk p₁ p₂).π.app j ⊚ f = s.π.app j) →\n    f = ⟨fun x ↦ crt (↑(BinaryFan.fst s) x) (↑(BinaryFan.snd s) x), ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">It is the unique such map to do this </code>",
+ "3216":
+ "<code>∀ (s : Cone (pair shiftClock Xα)) (j : Discrete WalkingPair),\n  (BinaryFan.mk p₁ p₂).π.app j ⊚ ⟨fun x ↦ crt (↑(BinaryFan.fst s) x) (↑(BinaryFan.snd s) x), ⋯⟩ = s.π.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map makes the triangle with the two natural transformations commute </code>",
+ "3215":
+ "<code>↑(BinaryFan.snd s) (s.pt.toEnd x) = ↑(BinaryFan.snd s) x + 1</code>",
+ "3214":
+ "<code>↑(BinaryFan.fst s) (s.pt.toEnd x) = ↑(BinaryFan.fst s) x + 1</code>",
+ "3213":
+ "<code>(↑(BinaryFan.snd s) ⊚ (((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.right }).toEnd) x =\n  (((pair shiftClock Xα).obj { as := WalkingPair.right }).toEnd ⊚ ↑(BinaryFan.snd s)) x</code>",
+ "3212":
+ "<code>(↑(BinaryFan.fst s) ⊚ (((Functor.const (Discrete WalkingPair)).obj s.pt).obj { as := WalkingPair.left }).toEnd) x =\n  (((pair shiftClock Xα).obj { as := WalkingPair.left }).toEnd ⊚ ↑(BinaryFan.fst s)) x</code>",
+ "3211": "<code>s.pt.carrier</code>",
+ "3210": "<code>Cone (pair shiftClock Xα)</code>",
  "321":
  "<code>Real : Type</code><span class=\"sep\"></span><code class=\"docstring\">The type `ℝ` of real numbers constructed as equivalence classes of Cauchy sequences of rational\nnumbers. </code>",
+ "3209":
+ "<code>(s : Cone (pair shiftClock Xα)) → { f // f ⊚ s.pt.toEnd = (BinaryFan.mk p₁ p₂).pt.toEnd ⊚ f }</code><span class=\"sep\"></span><code class=\"docstring\">There is a morphism from any cone point to `t.pt` </code>",
+ "3208":
+ "<code>CM.Ex21_1.h_crt_uniq (x : dayClock.carrier) : crt (↑p₁ x) (↑p₂ x) = x</code>",
+ "3207":
+ "<code>CM.Ex21_1.h_p₂_crt (a : Fin 8) (b : Fin 3) : ↑p₂ (crt a b) = b</code>",
+ "3206":
+ "<code>CM.Ex21_1.h_p₁_crt (a : Fin 8) (b : Fin 3) : ↑p₁ (crt a b) = a</code>",
+ "3205":
+ "<code>CM.Ex21_1.h_crt_comm (a : Fin 8) (b : Fin 3) : crt (a + 1) (b + 1) = crt a b + 1</code>",
+ "3204":
+ "<code>Fin.val {n : ℕ} (self : Fin n) : ℕ</code><span class=\"sep\"></span><code class=\"docstring\">The number that is strictly less than `n`.\n\n`Fin.val` is a coercion, so any `Fin n` can be used in a position where a `Nat` is expected.\n</code>",
+ "3203": "<code>CM.Ex21_1.crt (a : Fin 8) (b : Fin 3) : Fin 24</code>",
+ "3202": "<code>CM.Ex21_1.p₂ : dayClock ⟶ Xα</code>",
+ "3201": "<code>Fin 3 → Fin 3</code>",
+ "3200": "<code>CM.Ex21_1.Xα : SetWithEndomap</code>",
  "320": "<code>ℝ</code>",
  "32":
  "<code>Function.comp.{u, v, w} {α : Sort u} {β : Sort v} {δ : Sort w} (f : β → δ) (g : α → β) : α → δ</code><span class=\"sep\"></span><code class=\"docstring\">Function composition, usually written with the infix operator `∘`. A new function is created from\ntwo existing functions, where one function's output is used as input to the other.\n\nExamples:\n * `Function.comp List.reverse (List.drop 2) [3, 2, 4, 1] = [1, 4]`\n * `(List.reverse ∘ List.drop 2) [3, 2, 4, 1] = [1, 4]`\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `∘` in identifiers is `comp`.</code>",
+ "3199":
+ "<code>Fin.ofNat (n : ℕ) [NeZero n] (a : ℕ) : Fin n</code><span class=\"sep\"></span><code class=\"docstring\">Returns `a` modulo `n` as a `Fin n`.\n\nThe assumption `NeZero n` ensures that `Fin n` is nonempty.\n</code>",
+ "3198": "<code>dayClock.carrier</code>",
+ "3197": "<code>CM.Ex21_1.p₁ : dayClock ⟶ shiftClock</code>",
+ "3196": "<code>Fin 8</code>",
+ "3195": "<code>Fin 8 → Fin 8</code>",
+ "3194": "<code>CM.Ex21_1.shiftClock : SetWithEndomap</code>",
+ "3193": "<code>Fin 24</code>",
+ "3192": "<code>Fin 24 → Fin 24</code>",
+ "3191": "<code>CM.Ex21_1.dayClock : SetWithEndomap</code>",
+ "3190":
+ "<code>f ⊚ g = 𝟙 Q</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
  "319": "<code>∀ (x : ℝ), f x = 3 * x + 7</code>",
+ "3189":
+ "<code>g ⊚ f = 𝟙 P</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3188":
+ "<code>Q ⟶ P</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3187":
+ "<code>P ⟶ Q</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3186": "<code>f ⊚ g = 𝟙 Q</code>",
+ "3185":
+ "<code class=\"docstring\">* `symm` applies to a goal whose target has the form `t ~ u` where `~` is a symmetric relation,\n  that is, a relation which has a symmetry lemma tagged with the attribute [symm].\n  It replaces the target with `u ~ t`.\n* `symm at h` will rewrite a hypothesis `h : t ~ u` to `h : u ~ t`.\n</code>",
+ "3184": "<code>g ⊚ f = 𝟙 P</code>",
+ "3183":
+ "<code>∀ (y : Q ⟶ P), (fun t ↦ q₁ = p₁ ⊚ t ∧ q₂ = p₂ ⊚ t) y → y = g</code>",
+ "3182": "<code>q₁ = p₁ ⊚ g ∧ q₂ = p₂ ⊚ g</code>",
+ "3181":
+ "<code>∀ (y : P ⟶ Q), (fun t ↦ p₁ = q₁ ⊚ t ∧ p₂ = q₂ ⊚ t) y → y = f</code>",
+ "3180": "<code>p₁ = q₁ ⊚ f ∧ p₂ = q₂ ⊚ f</code>",
  "318": "<code>ℝ → ℝ</code>",
+ "3179": "<code>T ⟶ Q</code>",
+ "3178":
+ "<code>∀ (T : 𝒞) (t₁ : T ⟶ A) (t₂ : T ⟶ B), ∃! t, t₁ = q₁ ⊚ t ∧ t₂ = q₂ ⊚ t</code>",
+ "3177": "<code>Q ⟶ B</code>",
+ "3176": "<code>Q ⟶ A</code>",
+ "3175": "<code>T ⟶ P</code>",
+ "3174":
+ "<code>∀ (T : 𝒞) (t₁ : T ⟶ A) (t₂ : T ⟶ B), ∃! t, t₁ = p₁ ⊚ t ∧ t₂ = p₂ ⊚ t</code>",
+ "3173": "<code>P ⟶ B</code>",
+ "3172": "<code>P ⟶ A</code>",
+ "3171":
+ "<code>CM.uniqueness_of_products'.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] (A B P Q : 𝒞) (p₁ : P ⟶ A) (p₂ : P ⟶ B)\n  (hP : ∀ (T : 𝒞) (t₁ : T ⟶ A) (t₂ : T ⟶ B), ∃! t, t₁ = p₁ ⊚ t ∧ t₂ = p₂ ⊚ t) (q₁ : Q ⟶ A) (q₂ : Q ⟶ B)\n  (hQ : ∀ (T : 𝒞) (t₁ : T ⟶ A) (t₂ : T ⟶ B), ∃! t, t₁ = q₁ ⊚ t ∧ t₂ = q₂ ⊚ t) : Nonempty (P ≅ Q)</code>",
+ "3170":
+ "<code>f ⊚ g = 𝟙 T₂</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
  "317": "<code>1 = 0</code>",
+ "3169":
+ "<code>g ⊚ f = 𝟙 T₁</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3168":
+ "<code>T₂ ⟶ T₁</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3167":
+ "<code>T₁ ⟶ T₂</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3166": "<code>∀ (f' : T₂ ⟶ T₂), t₂ = f'</code>",
+ "3165": "<code>T₂ ⟶ T₂</code>",
+ "3164": "<code>f ⊚ g = 𝟙 T₂</code>",
+ "3163": "<code>∀ (f' : T₁ ⟶ T₁), t₁ = f'</code>",
+ "3162": "<code>T₁ ⟶ T₁</code>",
+ "3161": "<code>g ⊚ f = 𝟙 T₁</code>",
+ "3160": "<code>T₂ ⟶ T₁</code>",
  "316": "<code>k 0 = 0</code>",
- "3152":
+ "3159": "<code>T₁ ⟶ T₂</code>",
+ "3158": "<code>X ⟶ T₂</code>",
+ "3157": "<code>∀ (X : 𝒞), ∃ f, ∀ (f' : X ⟶ T₂), f = f'</code>",
+ "3156": "<code>X ⟶ T₁</code>",
+ "3155": "<code>∀ (X : 𝒞), ∃ f, ∀ (f' : X ⟶ T₁), f = f'</code>",
+ "3154":
+ "<code>CM.uniqueness_of_terminal_objects'.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {T₁ T₂ : 𝒞}\n  (hT₁ : ∀ (X : 𝒞), ∃ f, ∀ (f' : X ⟶ T₁), f = f') (hT₂ : ∀ (X : 𝒞), ∃ f, ∀ (f' : X ⟶ T₂), f = f') : Nonempty (T₁ ≅ T₂)</code>",
+ "3153":
  "<code>(BinaryFan.mk t s).pt ⟶ (pair A A).obj { as := WalkingPair.right }</code>",
- "3151":
+ "3152":
  "<code>(BinaryFan.mk t s).pt ⟶ (pair A A).obj { as := WalkingPair.left }</code>",
- "3150":
+ "3151":
  "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 2 } ⟶\n  coconeAA.pt</code>",
+ "3150": "<code>(↑(p₂ ⊚ finv ⊚ j₃)).2 x = d₀</code>",
  "315": "<code>h 0 = 1</code>",
- "3149": "<code>(↑(p₂ ⊚ finv ⊚ j₃)).2 x = d₀</code>",
- "3148": "<code>(↑(p₁ ⊚ finv ⊚ j₃)).2 x = d₁</code>",
- "3147":
+ "3149": "<code>(↑(p₁ ⊚ finv ⊚ j₃)).2 x = d₁</code>",
+ "3148":
  "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨2, ⋯⟩ }).carrierD</code>",
- "3146":
+ "3147":
  "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨2, ⋯⟩ }).carrierA</code>",
- "3145":
+ "3146":
  "<code>(BinaryFan.mk s t).pt ⟶ (pair A A).obj { as := WalkingPair.right }</code>",
- "3144":
+ "3145":
  "<code>(BinaryFan.mk s t).pt ⟶ (pair A A).obj { as := WalkingPair.left }</code>",
- "3143":
+ "3144":
  "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 1 } ⟶\n  coconeAA.pt</code>",
- "3142": "<code>(↑(p₂ ⊚ finv ⊚ j₂)).2 x = d₁</code>",
- "3141": "<code>(↑(p₁ ⊚ finv ⊚ j₂)).2 x = d₀</code>",
- "3140":
+ "3143": "<code>(↑(p₂ ⊚ finv ⊚ j₂)).2 x = d₁</code>",
+ "3142": "<code>(↑(p₁ ⊚ finv ⊚ j₂)).2 x = d₀</code>",
+ "3141":
  "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierD</code>",
+ "3140":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierA</code>",
  "314":
  "<code class=\"docstring\">`by_contra h` proves `⊢ p` by contradiction,\nintroducing a hypothesis `h : ¬p` and proving `False`.\n* If `p` is a negation `¬q`, `h : q` will be introduced instead of `¬¬q`.\n* If `p` is decidable, it uses `Decidable.byContradiction` instead of `Classical.byContradiction`.\n* If `h` is omitted, the introduced variable will be called `this`.\n</code>",
  "3139":
- "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierA</code>",
- "3138":
  "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨1, ⋯⟩) = (fun i ↦ i) ⟨1, ⋯⟩</code>",
- "3137":
+ "3138":
  "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨1, ⋯⟩) = (fun i ↦ i) ⟨1, ⋯⟩</code>",
- "3136":
+ "3137":
  "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨0, ⋯⟩) = (fun i ↦ i) ⟨0, ⋯⟩</code>",
- "3135":
+ "3136":
  "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨0, ⋯⟩) = (fun i ↦ i) ⟨0, ⋯⟩</code>",
- "3134":
+ "3135":
  "<code>(BinaryFan.mk (𝟙 A) (𝟙 A)).pt ⟶ (pair A A).obj { as := WalkingPair.right }</code>",
- "3133":
+ "3134":
  "<code>(BinaryFan.mk (𝟙 A) (𝟙 A)).pt ⟶ (pair A A).obj { as := WalkingPair.left }</code>",
- "3132":
+ "3133":
  "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 0 } ⟶\n  coconeAA.pt</code>",
- "3131": "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 x = x</code>",
- "3130": "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 x = x</code>",
+ "3132": "<code>(↑(p₂ ⊚ finv ⊚ j₁)).2 x = x</code>",
+ "3131": "<code>(↑(p₁ ⊚ finv ⊚ j₁)).2 x = x</code>",
+ "3130":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨0, ⋯⟩ }).carrierD</code>",
  "313": "<code>CM.ExII_3.k : Fin 2 ⟶ Fin 2</code>",
  "3129":
- "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨0, ⋯⟩ }).carrierD</code>",
- "3128":
  "<code>CategoryTheory.Limits.IsColimit.hom_ext.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (h : IsColimit t) {W : C} {f f' : t.pt ⟶ W}\n  (w : ∀ (j : J), f ⊚ t.ι.app j = f' ⊚ t.ι.app j) : f = f'</code><span class=\"sep\"></span><code class=\"docstring\">Two morphisms out of a colimit are equal if their compositions with\neach cocone morphism are equal. </code>",
- "3127":
+ "3128":
  "<code>f ⊚ finv = 𝟙 ADD</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
- "3126":
+ "3127":
  "<code class=\"docstring\">`erw [rules]` is a shorthand for `rw (transparency := .default) [rules]`.\nThis does rewriting up to unfolding of regular definitions (by comparison to regular `rw`\nwhich only unfolds `@[reducible]` definitions). </code>",
- "3125": "<code>A.carrierD</code>",
- "3124":
+ "3126": "<code>A.carrierD</code>",
+ "3125":
  "<code>CategoryTheory.Limits.BinaryFan.IsLimit.hom_ext.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} {s : BinaryFan X Y}\n  (h : IsLimit s) {f g : W ⟶ s.pt} (h₁ : s.fst ⊚ f = s.fst ⊚ g) (h₂ : s.snd ⊚ f = s.snd ⊚ g) : f = g</code>",
- "3123":
+ "3124":
  "<code>finv ⊚ f = 𝟙 AA</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
- "3122":
+ "3123":
  "<code>ADD ⟶ AA</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
- "3121":
+ "3122":
  "<code>AA ⟶ ADD</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
- "3120": "<code>ADD ⟶ AA</code>",
- "312": "<code>CM.ExII_3.h : Fin 2 ⟶ Fin 2</code>",
- "3119":
+ "3121": "<code>ADD ⟶ AA</code>",
+ "3120":
  "<code>CategoryTheory.Limits.Cofan.mk.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] {f : β → C} (P : C)\n  (p : (b : β) → f b ⟶ P) : Cofan f</code><span class=\"sep\"></span><code class=\"docstring\">A cofan over `f : β → C` consists of a collection of maps from every `f b` to an object `P`. </code>",
- "3118": "<code>D ⟶ A</code>",
- "3117": "<code>(↑j₁).2 d₁ = ADD.toTgt ((↑j₁).1 ())</code>",
- "3116": "<code>(↑p₂).2 (AA.toTgt x) = d₁</code>",
- "3115": "<code>(↑p₁).2 (AA.toTgt x) = d₁</code>",
- "3114": "<code>(↑j₁).2 d₀ = ADD.toSrc ((↑j₁).1 ())</code>",
- "3113": "<code>(↑p₂).2 (AA.toSrc x) = d₀</code>",
- "3112": "<code>(↑p₁).2 (AA.toSrc x) = d₀</code>",
- "3111": "<code>AA.carrierA</code>",
- "3110": "<code>AA.carrierD</code>",
+ "312": "<code>CM.ExII_3.h : Fin 2 ⟶ Fin 2</code>",
+ "3119": "<code>D ⟶ A</code>",
+ "3118": "<code>(↑j₁).2 d₁ = ADD.toTgt ((↑j₁).1 ())</code>",
+ "3117": "<code>(↑p₂).2 (AA.toTgt x) = d₁</code>",
+ "3116": "<code>(↑p₁).2 (AA.toTgt x) = d₁</code>",
+ "3115": "<code>(↑j₁).2 d₀ = ADD.toSrc ((↑j₁).1 ())</code>",
+ "3114": "<code>(↑p₂).2 (AA.toSrc x) = d₀</code>",
+ "3113": "<code>(↑p₁).2 (AA.toSrc x) = d₀</code>",
+ "3112": "<code>AA.carrierA</code>",
+ "3111": "<code>AA.carrierD</code>",
+ "3110": "<code>AA.carrierD ⟶ ADD.carrierD</code>",
  "311":
  "<code>Fin.mk {n : ℕ} (val : ℕ) (isLt : val &lt; n) : Fin n</code><span class=\"sep\"></span><code class=\"docstring\">Creates a `Fin n` from `i : Nat` and a proof that `i &lt; n`. </code>",
- "3109": "<code>AA.carrierD ⟶ ADD.carrierD</code>",
- "3108": "<code>AA.carrierA ⟶ ADD.carrierA</code>",
- "3107": "<code>AA ⟶ ADD</code>",
- "3106": "<code>D ⟶ coconeADD.pt</code>",
- "3105": "<code>A ⟶ coconeADD.pt</code>",
- "3104": "<code>coneAA.pt ⟶ A</code>",
- "3103": "<code>j₃ = coconeADD.ι.app { as := 2 }</code>",
- "3102":
+ "3109": "<code>AA.carrierA ⟶ ADD.carrierA</code>",
+ "3108": "<code>AA ⟶ ADD</code>",
+ "3107": "<code>D ⟶ coconeADD.pt</code>",
+ "3106": "<code>A ⟶ coconeADD.pt</code>",
+ "3105": "<code>coneAA.pt ⟶ A</code>",
+ "3104": "<code>j₃ = coconeADD.ι.app { as := 2 }</code>",
+ "3103":
  "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 2 } ⟶\n  ((Functor.const (Discrete (Fin 3))).obj coconeADD.pt).obj { as := 2 }</code>",
- "3101": "<code>j₂ = coconeADD.ι.app { as := 1 }</code>",
- "3100":
+ "3102": "<code>j₂ = coconeADD.ι.app { as := 1 }</code>",
+ "3101":
  "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 1 } ⟶\n  ((Functor.const (Discrete (Fin 3))).obj coconeADD.pt).obj { as := 1 }</code>",
+ "3100": "<code>j₁ = coconeADD.ι.app { as := 0 }</code>",
  "310":
  "<code class=\"docstring\">`fin_cases h` performs case analysis on a hypothesis of the form\n`h : A`, where `[Fintype A]` is available, or\n`h : a ∈ A`, where `A : Finset X`, `A : Multiset X` or `A : List X`.\n\nAs an example, in\n```\nexample (f : ℕ → Prop) (p : Fin 3) (h0 : f 0) (h1 : f 1) (h2 : f 2) : f p.val := by\n  fin_cases p; simp\n  all_goals assumption\n```\nafter `fin_cases p; simp`, there are three goals, `f 0`, `f 1`, and `f 2`.\n</code>",
  "31":
  "<code>Eq.{u_1} {α : Sort u_1} : α → α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">The equality relation. It has one introduction rule, `Eq.refl`.\nWe use `a = b` as notation for `Eq a b`.\nA fundamental property of equality is that it is an equivalence relation.\n```\nvariable (α : Type) (a b c d : α)\nvariable (hab : a = b) (hcb : c = b) (hcd : c = d)\n\nexample : a = d :=\n  Eq.trans (Eq.trans hab (Eq.symm hcb)) hcd\n```\nEquality is much more than an equivalence relation, however. It has the important property that every assertion\nrespects the equivalence, in the sense that we can substitute equal expressions without changing the truth value.\nThat is, given `h1 : a = b` and `h2 : p a`, we can construct a proof for `p b` using substitution: `Eq.subst h1 h2`.\nExample:\n```\nexample (α : Type) (a b : α) (p : α → Prop)\n        (h1 : a = b) (h2 : p a) : p b :=\n  Eq.subst h1 h2\n\nexample (α : Type) (a b : α) (p : α → Prop)\n    (h1 : a = b) (h2 : p a) : p b :=\n  h1 ▸ h2\n```\nThe triangle in the second presentation is a macro built on top of `Eq.subst` and `Eq.symm`, and you can enter it by typing `\\t`.\nFor more information: [Equality](https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#equality)\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `=` in identifiers is `eq`.</code>",
- "3099": "<code>j₁ = coconeADD.ι.app { as := 0 }</code>",
- "3098":
+ "3099":
  "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D).obj\n    { as := 0 } ⟶\n  ((Functor.const (Discrete (Fin 3))).obj coconeADD.pt).obj { as := 0 }</code>",
- "3097": "<code>p₂ = coneAA.π.app { as := WalkingPair.right }</code>",
- "3096":
+ "3098": "<code>p₂ = coneAA.π.app { as := WalkingPair.right }</code>",
+ "3097":
  "<code>((Functor.const (Discrete WalkingPair)).obj coneAA.pt).obj { as := WalkingPair.right } ⟶\n  (pair A A).obj { as := WalkingPair.right }</code>",
- "3095":
+ "3096":
  "<code>CategoryTheory.Functor.const.{v₁, v₂, u₁, u₂} (J : Type u₁) [Category.{v₁, u₁} J] {C : Type u₂} [Category.{v₂, u₂} C] :\n  C ⥤ J ⥤ C</code><span class=\"sep\"></span><code class=\"docstring\">The functor sending `X : C` to the constant functor `J ⥤ C` sending everything to `X`.\n</code>",
- "3094": "<code>p₁ = coneAA.π.app { as := WalkingPair.left }</code>",
- "3093":
+ "3095": "<code>p₁ = coneAA.π.app { as := WalkingPair.left }</code>",
+ "3094":
  "<code>((Functor.const (Discrete WalkingPair)).obj coneAA.pt).obj { as := WalkingPair.left } ⟶\n  (pair A A).obj { as := WalkingPair.left }</code>",
- "3092": "<code>ADD = coconeADD.pt</code>",
- "3091": "<code>AA = coneAA.pt</code>",
- "3090": "<code>IsColimit coconeADD</code>",
+ "3093": "<code>ADD = coconeADD.pt</code>",
+ "3092": "<code>AA = coneAA.pt</code>",
+ "3091": "<code>IsColimit coconeADD</code>",
+ "3090":
+ "<code>CategoryTheory.Limits.Cofan.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] (f : β → C) : Type (max (max w u) v)</code><span class=\"sep\"></span><code class=\"docstring\">A cofan over `f : β → C` consists of a collection of maps from every `f b` to an object `P`. </code>",
  "309": "<code>Fin 2</code>",
  "3089":
- "<code>CategoryTheory.Limits.Cofan.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] (f : β → C) : Type (max (max w u) v)</code><span class=\"sep\"></span><code class=\"docstring\">A cofan over `f : β → C` consists of a collection of maps from every `f b` to an object `P`. </code>",
- "3088":
  "<code>Cofan fun x ↦\n  match x with\n  | 0 =&gt; A\n  | 1 =&gt; D\n  | 2 =&gt; D</code>",
- "3087": "<code>IsLimit coneAA</code>",
- "3086": "<code>BinaryFan A A</code>",
- "3085":
+ "3088": "<code>IsLimit coneAA</code>",
+ "3087": "<code>BinaryFan A A</code>",
+ "3086":
  "<code>Fintype.card_congr.{u_4, u_5} {α : Type u_4} {β : Type u_5} [Fintype α] [Fintype β] (f : α ≃ β) :\n  Fintype.card α = Fintype.card β</code>",
- "3084":
+ "3085":
  "<code>absurd.{v} {a : Prop} {b : Sort v} (h₁ : a) (h₂ : ¬a) : b</code><span class=\"sep\"></span><code class=\"docstring\">Anything follows from two contradictory hypotheses. Example:\n```\nexample (hp : p) (hnp : ¬p) : q := absurd hp hnp\n```\nFor more information: [Propositional Logic](https://lean-lang.org/theorem_proving_in_lean4/propositions_and_proofs.html#propositional-logic)\n</code>",
- "3083":
+ "3084":
  "<code>Equiv.mk.{u_1, u_2} {α : Sort u_1} {β : Sort u_2} (toFun : α → β) (invFun : β → α)\n  (left_inv : Function.LeftInverse invFun toFun := by intro;\n    first\n    | rfl\n    | ext &lt;;&gt; rfl)\n  (right_inv : Function.RightInverse invFun toFun := by intro;\n    first\n    | rfl\n    | ext &lt;;&gt; rfl) :\n  α ≃ β</code>",
- "3082":
+ "3083":
  "<code>Equiv.{u_1, u_2} (α : Sort u_1) (β : Sort u_2) : Sort (max (max 1 u_1) u_2)</code><span class=\"sep\"></span><code class=\"docstring\">`α ≃ β` is the type of functions from `α → β` with a two-sided inverse. </code>",
- "3081": "<code>∀ (a : AxB_C.carrier), ↑iso.hom (↑iso.inv a) = a</code>",
- "3080": "<code>∀ (a : AxB_AxC.carrier), ↑iso.inv (↑iso.hom a) = a</code>",
+ "3082": "<code>∀ (a : AxB_C.carrier), ↑iso.hom (↑iso.inv a) = a</code>",
+ "3081": "<code>∀ (a : AxB_AxC.carrier), ↑iso.inv (↑iso.hom a) = a</code>",
+ "3080":
+ "<code>AxB_C.carrier ⟶ AxB_AxC.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The backward map of an equivalence.\n\nDo NOT use `e.invFun` directly. Use the coercion of `e.symm` instead. </code>",
  "308":
  "<code>Fin (n : ℕ) : Type</code><span class=\"sep\"></span><code class=\"docstring\">Natural numbers less than some upper bound.\n\nIn particular, a `Fin n` is a natural number `i` with the constraint that `i &lt; n`. It is the\ncanonical type with `n` elements.\n</code>",
  "3079":
- "<code>AxB_C.carrier ⟶ AxB_AxC.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The backward map of an equivalence.\n\nDo NOT use `e.invFun` directly. Use the coercion of `e.symm` instead. </code>",
- "3078":
  "<code>AxB_AxC.carrier ⟶ AxB_C.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The forward map of an equivalence.\n\nDo NOT use directly. Use the coercion instead. </code>",
- "3077": "<code>AxB_AxC.carrier ≃ AxB_C.carrier</code>",
- "3076": "<code>AxB_AxC ≅ AxB_C</code>",
- "3075": "<code>g ⊚ j₄ = g₂</code>",
- "3074": "<code>g ⊚ j₃ = g₁</code>",
- "3073": "<code>C.carrier</code>",
- "3072": "<code>B_C.carrier</code>",
- "3071":
+ "3078": "<code>AxB_AxC.carrier ≃ AxB_C.carrier</code>",
+ "3077": "<code>AxB_AxC ≅ AxB_C</code>",
+ "3076": "<code>g ⊚ j₄ = g₂</code>",
+ "3075": "<code>g ⊚ j₃ = g₁</code>",
+ "3074": "<code>C.carrier</code>",
+ "3073": "<code>B_C.carrier</code>",
+ "3072":
  "<code>PUnit.unit.{u} : PUnit.{u}</code><span class=\"sep\"></span><code class=\"docstring\">The only element of the universe-polymorphic unit type. </code>",
- "3070": "<code>AxB_AxC.carrier</code>",
+ "3071": "<code>AxB_AxC.carrier</code>",
+ "3070": "<code>p₁ ⊚ f = f₁ ∧ p₂ ⊚ f = f₂</code>",
  "307": "<code>CM.ExII_3.f : Fin 2 ⟶ Fin 2</code>",
- "3069": "<code>p₁ ⊚ f = f₁ ∧ p₂ ⊚ f = f₂</code>",
- "3068": "<code>PUnit.ext.{u_1} (a b : PUnit.{u_1}) : a = b</code>",
- "3067": "<code>One ⟶ A.carrier</code>",
- "3066": "<code>A.carrier</code>",
- "3065": "<code>Fin.ext {n : ℕ} {a b : Fin n} (h : ↑a = ↑b) : a = b</code>",
- "3064":
+ "3069": "<code>PUnit.ext.{u_1} (a b : PUnit.{u_1}) : a = b</code>",
+ "3068": "<code>One ⟶ A.carrier</code>",
+ "3067": "<code>A.carrier</code>",
+ "3066": "<code>Fin.ext {n : ℕ} {a b : Fin n} (h : ↑a = ↑b) : a = b</code>",
+ "3065":
  "<code>CategoryTheory.types_ext.{u} {α β : Type u} (f g : α ⟶ β) (h : ∀ (a : α), f a = g a) : f = g</code>",
- "3063": "<code>Nonempty (AxB_AxC ≅ AxB_C)</code>",
- "3062": "<code>p₂ ⊚ f = f₂</code>",
- "3061": "<code>p₁ ⊚ f = f₁</code>",
- "3060":
+ "3064": "<code>Nonempty (AxB_AxC ≅ AxB_C)</code>",
+ "3063": "<code>p₂ ⊚ f = f₂</code>",
+ "3062": "<code>p₁ ⊚ f = f₁</code>",
+ "3061":
  "<code>∀ (X : PointedSet) (f₁ : X ⟶ A) (f₂ : X ⟶ B), ∃! f, p₁ ⊚ f = f₁ ∧ p₂ ⊚ f = f₂</code>",
+ "3060": "<code>DistributiveLaw PointedSet</code>",
  "306": "<code>h ⊚ 𝟙 B = k ⊚ 𝟙 B</code>",
- "3059": "<code>DistributiveLaw PointedSet</code>",
- "3058": "<code>CM.ExIV_20.p₆ : AxB_C ⟶ B_C</code>",
- "3057": "<code>AxB_C.carrier</code>",
- "3056": "<code>CM.ExIV_20.p₅ : AxB_C ⟶ A</code>",
- "3055": "<code>CM.ExIV_20.j₄ : C ⟶ B_C</code>",
- "3054": "<code>CM.ExIV_20.j₃ : B ⟶ B_C</code>",
- "3053": "<code>CM.ExIV_20.j₂ : AxC ⟶ AxB_AxC</code>",
- "3052": "<code>CM.ExIV_20.j₁ : AxB ⟶ AxB_AxC</code>",
- "3051": "<code>CM.ExIV_20.p₄ : AxC ⟶ C</code>",
- "3050": "<code>AxC.carrier</code>",
+ "3059": "<code>CM.ExIV_20.p₆ : AxB_C ⟶ B_C</code>",
+ "3058": "<code>AxB_C.carrier</code>",
+ "3057": "<code>CM.ExIV_20.p₅ : AxB_C ⟶ A</code>",
+ "3056": "<code>CM.ExIV_20.j₄ : C ⟶ B_C</code>",
+ "3055": "<code>CM.ExIV_20.j₃ : B ⟶ B_C</code>",
+ "3054": "<code>CM.ExIV_20.j₂ : AxC ⟶ AxB_AxC</code>",
+ "3053": "<code>CM.ExIV_20.j₁ : AxB ⟶ AxB_AxC</code>",
+ "3052": "<code>CM.ExIV_20.p₄ : AxC ⟶ C</code>",
+ "3051": "<code>AxC.carrier</code>",
+ "3050": "<code>CM.ExIV_20.p₃ : AxC ⟶ A</code>",
  "305": "<code>h ⊚ f ⊚ finv = k ⊚ f ⊚ finv</code>",
- "3049": "<code>CM.ExIV_20.p₃ : AxC ⟶ A</code>",
- "3048": "<code>CM.ExIV_20.p₂ : AxB ⟶ B</code>",
- "3047": "<code>AxB.carrier</code>",
- "3046": "<code>CM.ExIV_20.p₁ : AxB ⟶ A</code>",
- "3045": "<code>CM.ExIV_20.AxB_C : PointedSet</code>",
- "3044": "<code>CM.ExIV_20.B_C : PointedSet</code>",
- "3043": "<code>One → Fin 2 × Unit ⊕ Unit</code>",
- "3042": "<code>CM.ExIV_20.AxB_AxC : PointedSet</code>",
- "3041": "<code>CM.ExIV_20.AxC : PointedSet</code>",
- "3040": "<code>One → Fin 2 × Unit</code>",
+ "3049": "<code>CM.ExIV_20.p₂ : AxB ⟶ B</code>",
+ "3048": "<code>AxB.carrier</code>",
+ "3047": "<code>CM.ExIV_20.p₁ : AxB ⟶ A</code>",
+ "3046": "<code>CM.ExIV_20.AxB_C : PointedSet</code>",
+ "3045": "<code>CM.ExIV_20.B_C : PointedSet</code>",
+ "3044": "<code>One → Fin 2 × Unit ⊕ Unit</code>",
+ "3043": "<code>CM.ExIV_20.AxB_AxC : PointedSet</code>",
+ "3042": "<code>CM.ExIV_20.AxC : PointedSet</code>",
+ "3041": "<code>One → Fin 2 × Unit</code>",
+ "3040": "<code>CM.ExIV_20.AxB : PointedSet</code>",
  "304": "<code>(h ⊚ f) ⊚ finv = (k ⊚ f) ⊚ finv</code>",
- "3039": "<code>CM.ExIV_20.AxB : PointedSet</code>",
- "3038": "<code>CM.ExIV_20.C : PointedSet</code>",
- "3037": "<code>One → One</code>",
- "3036": "<code>CM.ExIV_20.B : PointedSet</code>",
- "3035": "<code>CM.ExIV_20.A : PointedSet</code>",
- "3034": "<code>X ⟶ AxB_C</code>",
- "3033": "<code>X ⟶ B_C</code>",
- "3032": "<code>B_C ⟶ Y</code>",
- "3031": "<code>AxB_AxC ⟶ Y</code>",
- "3030": "<code>AxC ⟶ Y</code>",
+ "3039": "<code>CM.ExIV_20.C : PointedSet</code>",
+ "3038": "<code>One → One</code>",
+ "3037": "<code>CM.ExIV_20.B : PointedSet</code>",
+ "3036": "<code>CM.ExIV_20.A : PointedSet</code>",
+ "3035": "<code>X ⟶ AxB_C</code>",
+ "3034": "<code>X ⟶ B_C</code>",
+ "3033": "<code>B_C ⟶ Y</code>",
+ "3032": "<code>AxB_AxC ⟶ Y</code>",
+ "3031": "<code>AxC ⟶ Y</code>",
+ "3030": "<code>AxB ⟶ Y</code>",
  "303": "<code>h ⊚ f = k ⊚ f</code>",
- "3029": "<code>AxB ⟶ Y</code>",
- "3028": "<code>X ⟶ AxC</code>",
- "3027": "<code>X ⟶ C</code>",
- "3026": "<code>X ⟶ AxB</code>",
- "3025": "<code>X ⟶ B</code>",
- "3024": "<code>AxB_C ⟶ B_C</code>",
- "3023": "<code>AxB_C ⟶ A</code>",
- "3022": "<code>C ⟶ B_C</code>",
- "3021": "<code>B ⟶ B_C</code>",
- "3020": "<code>AxC ⟶ AxB_AxC</code>",
+ "3029": "<code>X ⟶ AxC</code>",
+ "3028": "<code>X ⟶ C</code>",
+ "3027": "<code>X ⟶ AxB</code>",
+ "3026": "<code>X ⟶ B</code>",
+ "3025": "<code>AxB_C ⟶ B_C</code>",
+ "3024": "<code>AxB_C ⟶ A</code>",
+ "3023": "<code>C ⟶ B_C</code>",
+ "3022": "<code>B ⟶ B_C</code>",
+ "3021": "<code>AxC ⟶ AxB_AxC</code>",
+ "3020": "<code>AxB ⟶ AxB_AxC</code>",
  "302": "<code>h = k</code>",
- "3019": "<code>AxB ⟶ AxB_AxC</code>",
- "3018": "<code>AxC ⟶ C</code>",
- "3017": "<code>AxC ⟶ A</code>",
- "3016": "<code>AxB ⟶ B</code>",
- "3015": "<code>AxB ⟶ A</code>",
- "3014": "<code>T</code>",
- "3013":
+ "3019": "<code>AxC ⟶ C</code>",
+ "3018": "<code>AxC ⟶ A</code>",
+ "3017": "<code>AxB ⟶ B</code>",
+ "3016": "<code>AxB ⟶ A</code>",
+ "3015": "<code>T</code>",
+ "3014":
  "<code>CM.DistributiveLaw.{u, v} (T : Type u) [Category.{v, u} T] : Prop</code>",
- "3012":
+ "3013":
  "<code>CategoryTheory.Limits.coprod.associator.{v, u} {C : Type u} [Category.{v, u} C] [HasBinaryCoproducts C] (P Q R : C) :\n  (P ⨿ Q) ⨿ R ≅ P ⨿ Q ⨿ R</code><span class=\"sep\"></span><code class=\"docstring\">The associator isomorphism for binary coproducts. </code>",
- "3011":
+ "3012":
  "<code>CategoryTheory.Limits.HasBinaryCoproducts.{v, u} (C : Type u) [Category.{v, u} C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">A category `HasBinaryCoproducts` if it has all colimit of shape `Discrete WalkingPair`,\ni.e. if it has a coproduct for every pair of objects. </code>",
- "3010":
+ "3011":
  "<code>f ⊚ g = 𝟙 A_BC</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "3010":
+ "<code>g ⊚ f = 𝟙 AB_C</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
  "301": "<code>𝟙 A ⊚ h = 𝟙 A ⊚ k</code>",
  "3009":
- "<code>g ⊚ f = 𝟙 AB_C</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
- "3008":
  "<code>A_BC ⟶ AB_C</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
- "3007":
+ "3008":
  "<code>AB_C ⟶ A_BC</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
- "3006": "<code>C ⟶ A_BC</code>",
- "3005": "<code>B ⟶ A_BC</code>",
- "3004": "<code>B ⟶ AB_C</code>",
- "3003": "<code>A ⟶ AB_C</code>",
- "3002": "<code>f ⊚ g = 𝟙 A_BC</code>",
- "3001":
+ "3007": "<code>C ⟶ A_BC</code>",
+ "3006": "<code>B ⟶ A_BC</code>",
+ "3005": "<code>B ⟶ AB_C</code>",
+ "3004": "<code>A ⟶ AB_C</code>",
+ "3003": "<code>f ⊚ g = 𝟙 A_BC</code>",
+ "3002":
  "<code>ExistsUnique.unique.{u_1} {α : Sort u_1} {p : α → Prop} (h : ∃! x, p x) {y₁ y₂ : α} (py₁ : p y₁) (py₂ : p y₂) : y₁ = y₂</code>",
- "3000": "<code>g ⊚ f = 𝟙 AB_C</code>",
+ "3001": "<code>g ⊚ f = 𝟙 AB_C</code>",
+ "3000": "<code>g ⊚ k₄ = q</code>",
  "300": "<code>(finv ⊚ f) ⊚ h = (finv ⊚ f) ⊚ k</code>",
  "30":
  "<code class=\"docstring\">`by tac` constructs a term of the expected type by running the tactic(s) `tac`. </code>",
  "3":
  "<code class=\"docstring\">In Lean, every concrete type other than the universes\nand every type constructor other than dependent arrows\nis an instance of a general family of type constructions known as inductive types.\nIt is remarkable that it is possible to construct a substantial edifice of mathematics\nbased on nothing more than the type universes, dependent arrow types, and inductive types;\neverything else follows from those.\nIntuitively, an inductive type is built up from a specified list of constructors.\nFor example, `List α` is the list of elements of type `α`, and is defined as follows:\n```\ninductive List (α : Type u) where\n| nil\n| cons (head : α) (tail : List α)\n```\nA list of elements of type `α` is either the empty list, `nil`,\nor an element `head : α` followed by a list `tail : List α`.\nSee [Inductive types](https://lean-lang.org/theorem_proving_in_lean4/inductive_types.html)\nfor more information.\n</code>",
- "2999": "<code>g ⊚ k₄ = q</code>",
- "2998": "<code>g ⊚ k₃ = j₃ ⊚ j₁</code>",
- "2997":
+ "2999": "<code>g ⊚ k₃ = j₃ ⊚ j₁</code>",
+ "2998":
  "<code>∀ (y : A_BC ⟶ AB_C), (fun g ↦ g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q) y → y = g</code>",
- "2996":
+ "2997":
  "<code>∀ (y : A_BC ⟶ AB_C), (fun g ↦ g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q) y → y = Exists.choose hg</code>",
- "2995": "<code>Exists.choose hg ⊚ k₄ = q</code>",
- "2994": "<code>Exists.choose hg ⊚ k₃ = j₃ ⊚ j₁</code>",
- "2993": "<code>A_BC ⟶ AB_C</code>",
- "2992": "<code>∃! g, g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q</code>",
- "2991": "<code>f ⊚ j₄ = k₄ ⊚ k₂</code>",
- "2990": "<code>f ⊚ j₃ = p</code>",
+ "2996": "<code>Exists.choose hg ⊚ k₄ = q</code>",
+ "2995": "<code>Exists.choose hg ⊚ k₃ = j₃ ⊚ j₁</code>",
+ "2994": "<code>A_BC ⟶ AB_C</code>",
+ "2993": "<code>∃! g, g ⊚ k₃ = j₃ ⊚ j₁ ∧ g ⊚ k₄ = q</code>",
+ "2992": "<code>f ⊚ j₄ = k₄ ⊚ k₂</code>",
+ "2991": "<code>f ⊚ j₃ = p</code>",
+ "2990":
+ "<code>∀ (y : AB_C ⟶ A_BC), (fun g ↦ g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂) y → y = f</code>",
  "299": "<code>finv ⊚ f ⊚ h = finv ⊚ f ⊚ k</code>",
  "2989":
- "<code>∀ (y : AB_C ⟶ A_BC), (fun g ↦ g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂) y → y = f</code>",
- "2988":
  "<code>∀ (y : AB_C ⟶ A_BC), (fun g ↦ g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂) y → y = Exists.choose hf</code>",
- "2987": "<code>Exists.choose hf ⊚ j₄ = k₄ ⊚ k₂</code>",
- "2986": "<code>Exists.choose hf ⊚ j₃ = p</code>",
- "2985": "<code>AB_C ⟶ A_BC</code>",
- "2984": "<code>∃! g, g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂</code>",
- "2983": "<code>q ⊚ k₂ = j₄</code>",
- "2982": "<code>q ⊚ k₁ = j₃ ⊚ j₂</code>",
- "2981":
+ "2988": "<code>Exists.choose hf ⊚ j₄ = k₄ ⊚ k₂</code>",
+ "2987": "<code>Exists.choose hf ⊚ j₃ = p</code>",
+ "2986": "<code>AB_C ⟶ A_BC</code>",
+ "2985": "<code>∃! g, g ⊚ j₃ = p ∧ g ⊚ j₄ = k₄ ⊚ k₂</code>",
+ "2984": "<code>q ⊚ k₂ = j₄</code>",
+ "2983": "<code>q ⊚ k₁ = j₃ ⊚ j₂</code>",
+ "2982":
  "<code>∀ (y : BC ⟶ AB_C), (fun g ↦ g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄) y → y = q</code>",
- "2980":
+ "2981":
  "<code>∀ (y : BC ⟶ AB_C), (fun g ↦ g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄) y → y = Exists.choose hq</code>",
+ "2980": "<code>Exists.choose hq ⊚ k₂ = j₄</code>",
  "298": "<code>f ⊚ h = f ⊚ k</code>",
- "2979": "<code>Exists.choose hq ⊚ k₂ = j₄</code>",
- "2978": "<code>Exists.choose hq ⊚ k₁ = j₃ ⊚ j₂</code>",
- "2977": "<code>BC ⟶ AB_C</code>",
- "2976": "<code>∃! g, g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄</code>",
- "2975": "<code>p ⊚ j₂ = k₄ ⊚ k₁</code>",
- "2974": "<code>p ⊚ j₁ = k₃</code>",
- "2973":
+ "2979": "<code>Exists.choose hq ⊚ k₁ = j₃ ⊚ j₂</code>",
+ "2978": "<code>BC ⟶ AB_C</code>",
+ "2977": "<code>∃! g, g ⊚ k₁ = j₃ ⊚ j₂ ∧ g ⊚ k₂ = j₄</code>",
+ "2976": "<code>p ⊚ j₂ = k₄ ⊚ k₁</code>",
+ "2975": "<code>p ⊚ j₁ = k₃</code>",
+ "2974":
  "<code>∀ (y : AB ⟶ A_BC), (fun g ↦ g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁) y → y = p</code>",
- "2972":
+ "2973":
  "<code>∀ (y : AB ⟶ A_BC), (fun g ↦ g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁) y → y = Exists.choose hp</code>",
- "2971": "<code>Exists.choose hp ⊚ j₂ = k₄ ⊚ k₁</code>",
- "2970": "<code>Exists.choose hp ⊚ j₁ = k₃</code>",
+ "2972": "<code>Exists.choose hp ⊚ j₂ = k₄ ⊚ k₁</code>",
+ "2971": "<code>Exists.choose hp ⊚ j₁ = k₃</code>",
+ "2970": "<code>AB ⟶ A_BC</code>",
  "297": "<code>f ⊚ finv = 𝟙 B</code>",
- "2969": "<code>AB ⟶ A_BC</code>",
- "2968": "<code>∃! g, g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁</code>",
- "2967": "<code>A_BC ⟶ Y</code>",
- "2966":
+ "2969": "<code>∃! g, g ⊚ j₁ = k₃ ∧ g ⊚ j₂ = k₄ ⊚ k₁</code>",
+ "2968": "<code>A_BC ⟶ Y</code>",
+ "2967":
  "<code>∀ (Y : 𝒞) (g₁ : A ⟶ Y) (g₂ : BC ⟶ Y), ∃! g, g ⊚ k₃ = g₁ ∧ g ⊚ k₄ = g₂</code>",
- "2965": "<code>BC ⟶ Y</code>",
- "2964":
+ "2966": "<code>BC ⟶ Y</code>",
+ "2965":
  "<code>∀ (Y : 𝒞) (g₁ : B ⟶ Y) (g₂ : C ⟶ Y), ∃! g, g ⊚ k₁ = g₁ ∧ g ⊚ k₂ = g₂</code>",
- "2963": "<code>BC ⟶ A_BC</code>",
- "2962": "<code>A ⟶ A_BC</code>",
- "2961": "<code>C ⟶ BC</code>",
- "2960": "<code>B ⟶ BC</code>",
+ "2964": "<code>BC ⟶ A_BC</code>",
+ "2963": "<code>A ⟶ A_BC</code>",
+ "2962": "<code>C ⟶ BC</code>",
+ "2961": "<code>B ⟶ BC</code>",
+ "2960": "<code>AB_C ⟶ Y</code>",
  "296": "<code>finv ⊚ f = 𝟙 A</code>",
- "2959": "<code>AB_C ⟶ Y</code>",
- "2958": "<code>C ⟶ Y</code>",
- "2957":
+ "2959": "<code>C ⟶ Y</code>",
+ "2958":
  "<code>∀ (Y : 𝒞) (g₁ : AB ⟶ Y) (g₂ : C ⟶ Y), ∃! g, g ⊚ j₃ = g₁ ∧ g ⊚ j₄ = g₂</code>",
- "2956": "<code>AB ⟶ Y</code>",
- "2955": "<code>B ⟶ Y</code>",
- "2954":
+ "2957": "<code>AB ⟶ Y</code>",
+ "2956": "<code>B ⟶ Y</code>",
+ "2955":
  "<code>∀ (Y : 𝒞) (g₁ : A ⟶ Y) (g₂ : B ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
- "2953": "<code>C ⟶ AB_C</code>",
- "2952": "<code>AB ⟶ AB_C</code>",
- "2951": "<code>B ⟶ AB</code>",
- "2950": "<code>A ⟶ AB</code>",
+ "2954": "<code>C ⟶ AB_C</code>",
+ "2953": "<code>AB ⟶ AB_C</code>",
+ "2952": "<code>B ⟶ AB</code>",
+ "2951": "<code>A ⟶ AB</code>",
+ "2950": "<code>Sum.inl () = Sum.inr ()</code>",
  "295": "<code>∃ finv, finv ⊚ f = 𝟙 A ∧ f ⊚ finv = 𝟙 B</code>",
- "2949": "<code>Sum.inl () = Sum.inr ()</code>",
- "2948": "<code>f = j₂ ⊚ f₂</code>",
- "2947": "<code>Sum.inr () = Sum.inl ()</code>",
- "2946": "<code>f = j₁ ⊚ f₁</code>",
- "2945": "<code>X ⟶ Unit ⊕ Unit</code>",
- "2944": "<code>CM.ExIV_18.f : X ⟶ Unit ⊕ Unit</code>",
- "2943": "<code>CM.ExIV_18.j₂ : Unit ⟶ Unit ⊕ Unit</code>",
- "2942": "<code>CM.ExIV_18.f₂ : X ⟶ Unit</code>",
- "2941": "<code>CM.ExIV_18.j₁ : Unit ⟶ Unit ⊕ Unit</code>",
- "2940": "<code>CM.ExIV_18.f₁ : X ⟶ Unit</code>",
+ "2949": "<code>f = j₂ ⊚ f₂</code>",
+ "2948": "<code>Sum.inr () = Sum.inl ()</code>",
+ "2947": "<code>f = j₁ ⊚ f₁</code>",
+ "2946": "<code>X ⟶ Unit ⊕ Unit</code>",
+ "2945": "<code>CM.ExIV_18.f : X ⟶ Unit ⊕ Unit</code>",
+ "2944": "<code>CM.ExIV_18.j₂ : Unit ⟶ Unit ⊕ Unit</code>",
+ "2943": "<code>CM.ExIV_18.f₂ : X ⟶ Unit</code>",
+ "2942": "<code>CM.ExIV_18.j₁ : Unit ⟶ Unit ⊕ Unit</code>",
+ "2941": "<code>CM.ExIV_18.f₁ : X ⟶ Unit</code>",
+ "2940": "<code>CM.ExIV_18.X : Type</code>",
  "294":
  "<code class=\"docstring\">Step-wise reasoning over transitive relations.\n```\ncalc\n  a = b := pab\n  b = c := pbc\n  ...\n  y = z := pyz\n```\nproves `a = z` from the given step-wise proofs. `=` can be replaced with any\nrelation implementing the typeclass `Trans`. Instead of repeating the right-\nhand sides, subsequent left-hand sides can be replaced with `_`.\n```\ncalc\n  a = b := pab\n  _ = c := pbc\n  ...\n  _ = z := pyz\n```\nIt is also possible to write the *first* relation as `&lt;lhs&gt;\\n  _ = &lt;rhs&gt; :=\n&lt;proof&gt;`. This is useful for aligning relation symbols, especially on longer\nidentifiers:\n```\ncalc abc\n  _ = bce := pabce\n  _ = cef := pbcef\n  ...\n  _ = xyz := pwxyz\n```\n\n`calc` works as a term, as a tactic or as a `conv` tactic.\n\nSee [Theorem Proving in Lean 4][tpil4] for more information.\n\n[tpil4]: https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#calculational-proofs\n</code>",
- "2939": "<code>CM.ExIV_18.X : Type</code>",
- "2938": "<code>Sum.inl xD = Y.toSrc (Sum.inr xA)</code>",
- "2937": "<code>(↑(g ⊚ s)).2 () = Sum.inl xD</code>",
- "2936": "<code>(↑(g ⊚ s)).1 () = Sum.inr xA</code>",
- "2935": "<code>Sum.inr xD = Y.toSrc (Sum.inl xA)</code>",
- "2934": "<code>(↑(g ⊚ s)).2 () = Sum.inr xD</code>",
- "2933": "<code>(↑(g ⊚ s)).1 () = Sum.inl xA</code>",
- "2932": "<code>Sum.inl ((↑b₁).1 ()) = Sum.inr x₂A</code>",
- "2931": "<code>Sum.inr x₂D = Y.toTgt (Sum.inr x₂A)</code>",
- "2930": "<code>Sum.inr x₂D = Y.toSrc (Sum.inr x₂A)</code>",
+ "2939": "<code>Sum.inl xD = Y.toSrc (Sum.inr xA)</code>",
+ "2938": "<code>(↑(g ⊚ s)).2 () = Sum.inl xD</code>",
+ "2937": "<code>(↑(g ⊚ s)).1 () = Sum.inr xA</code>",
+ "2936": "<code>Sum.inr xD = Y.toSrc (Sum.inl xA)</code>",
+ "2935": "<code>(↑(g ⊚ s)).2 () = Sum.inr xD</code>",
+ "2934": "<code>(↑(g ⊚ s)).1 () = Sum.inl xA</code>",
+ "2933": "<code>Sum.inl ((↑b₁).1 ()) = Sum.inr x₂A</code>",
+ "2932": "<code>Sum.inr x₂D = Y.toTgt (Sum.inr x₂A)</code>",
+ "2931": "<code>Sum.inr x₂D = Y.toSrc (Sum.inr x₂A)</code>",
+ "2930": "<code>(↑(g ⊚ s)).2 () = Sum.inr x₂D</code>",
  "293": "<code>k ⊚ f = 𝟙 A ∧ f ⊚ k = 𝟙 B</code>",
- "2929": "<code>(↑(g ⊚ s)).2 () = Sum.inr x₂D</code>",
- "2928": "<code>(↑(g ⊚ s)).1 () = Sum.inr x₂A</code>",
- "2927": "<code>Sum.inr ((↑b₂).1 ()) = Sum.inl x₁A</code>",
- "2926": "<code>Sum.inl x₁D = Y.toTgt (Sum.inl x₁A)</code>",
- "2925": "<code>(↑(g ⊚ s)).2 () = Y.toTgt ((↑(g ⊚ s)).1 ())</code>",
- "2924":
+ "2929": "<code>(↑(g ⊚ s)).1 () = Sum.inr x₂A</code>",
+ "2928": "<code>Sum.inr ((↑b₂).1 ()) = Sum.inl x₁A</code>",
+ "2927": "<code>Sum.inl x₁D = Y.toTgt (Sum.inl x₁A)</code>",
+ "2926": "<code>(↑(g ⊚ s)).2 () = Y.toTgt ((↑(g ⊚ s)).1 ())</code>",
+ "2925":
  "<code>((↑(g ⊚ s)).2 ⊚ termIG.toTgt) () = (Y.toTgt ⊚ (↑(g ⊚ s)).1) ()</code>",
- "2923": "<code>Sum.inl x₁D = Y.toSrc (Sum.inl x₁A)</code>",
- "2922": "<code>(↑(g ⊚ s)).2 () = Y.toSrc ((↑(g ⊚ s)).1 ())</code>",
- "2921":
+ "2924": "<code>Sum.inl x₁D = Y.toSrc (Sum.inl x₁A)</code>",
+ "2923": "<code>(↑(g ⊚ s)).2 () = Y.toSrc ((↑(g ⊚ s)).1 ())</code>",
+ "2922":
  "<code>((↑(g ⊚ s)).2 ⊚ termIG.toSrc) () = (Y.toSrc ⊚ (↑(g ⊚ s)).1) ()</code>",
- "2920": "<code>(↑(g ⊚ s)).2 () = Sum.inl x₁D</code>",
+ "2921": "<code>(↑(g ⊚ s)).2 () = Sum.inl x₁D</code>",
+ "2920": "<code>(↑(g ⊚ s)).1 () = Sum.inl x₁A</code>",
  "292": "<code>kinv ⊚ k = 𝟙 B ∧ k ⊚ kinv = 𝟙 C</code>",
- "2919": "<code>(↑(g ⊚ s)).1 () = Sum.inl x₁A</code>",
- "2918": "<code>(↑(f ⊚ g ⊚ s)).2 () = (↑s).2 ()</code>",
- "2917": "<code>(↑(f ⊚ g ⊚ s)).1 () = (↑s).1 ()</code>",
- "2916": "<code>B₂.carrierD</code>",
- "2915": "<code>B₁.carrierD</code>",
- "2914": "<code>B₁.carrierA ⊕ B₂.carrierA</code>",
- "2913": "<code>B₂.carrierA</code>",
- "2912": "<code>B₁.carrierA</code>",
- "2911": "<code>B₁.carrierA ⊕ B₂.carrierA → B₁.carrierD ⊕ B₂.carrierD</code>",
- "2910": "<code>termIG ⟶ B₂</code>",
+ "2919": "<code>(↑(f ⊚ g ⊚ s)).2 () = (↑s).2 ()</code>",
+ "2918": "<code>(↑(f ⊚ g ⊚ s)).1 () = (↑s).1 ()</code>",
+ "2917": "<code>B₂.carrierD</code>",
+ "2916": "<code>B₁.carrierD</code>",
+ "2915": "<code>B₁.carrierA ⊕ B₂.carrierA</code>",
+ "2914": "<code>B₂.carrierA</code>",
+ "2913": "<code>B₁.carrierA</code>",
+ "2912": "<code>B₁.carrierA ⊕ B₂.carrierA → B₁.carrierD ⊕ B₂.carrierD</code>",
+ "2911": "<code>termIG ⟶ B₂</code>",
+ "2910": "<code>termIG ⟶ B₁</code>",
  "291": "<code>finv ⊚ f = 𝟙 A ∧ f ⊚ finv = 𝟙 B</code>",
- "2909": "<code>termIG ⟶ B₁</code>",
- "2908": "<code>termIG ⟶ S</code>",
- "2907":
+ "2909": "<code>termIG ⟶ S</code>",
+ "2908":
  "<code>∀ (Y : IrreflexiveGraph) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
- "2906": "<code>Sum.inl (↑b₁ ()) = Sum.inr x₂</code>",
- "2905":
+ "2907": "<code>Sum.inl (↑b₁ ()) = Sum.inr x₂</code>",
+ "2906":
  "<code>Sum.inr.inj.{u, v} {α : Type u} {β : Type v} {val val✝ : β} : Sum.inr val = Sum.inr val✝ → val = val✝</code>",
- "2904": "<code>Sum.inr x₂ = Y.toEnd (Sum.inr x₂)</code>",
- "2903": "<code>↑(g ⊚ s) () = Sum.inr x₂</code>",
- "2902": "<code>Sum.inr (↑b₂ ()) = Sum.inl x₁</code>",
- "2901":
+ "2905": "<code>Sum.inr x₂ = Y.toEnd (Sum.inr x₂)</code>",
+ "2904": "<code>↑(g ⊚ s) () = Sum.inr x₂</code>",
+ "2903": "<code>Sum.inr (↑b₂ ()) = Sum.inl x₁</code>",
+ "2902":
  "<code>Sum.inl.inj.{u, v} {α : Type u} {β : Type v} {val val✝ : α} : Sum.inl val = Sum.inl val✝ → val = val✝</code>",
- "2900": "<code>Sum.inl x₁ = Y.toEnd (Sum.inl x₁)</code>",
+ "2901": "<code>Sum.inl x₁ = Y.toEnd (Sum.inl x₁)</code>",
+ "2900": "<code>↑(g ⊚ s) () = Y.toEnd (↑(g ⊚ s) ())</code>",
  "290": "<code>IsIso k</code>",
  "29": "<code>CM.ExI_1.hg : B → D</code>",
- "2899": "<code>↑(g ⊚ s) () = Y.toEnd (↑(g ⊚ s) ())</code>",
- "2898": "<code>(↑(g ⊚ s) ⊚ termSWE.toEnd) () = (Y.toEnd ⊚ ↑(g ⊚ s)) ()</code>",
- "2897": "<code>↑(g ⊚ s) () = Sum.inl x₁</code>",
- "2896": "<code>↑(f ⊚ g ⊚ s) () = ↑s ()</code>",
- "2895": "<code>B₁.carrier ⊕ B₂.carrier</code>",
- "2894": "<code>B₂.carrier</code>",
- "2893":
+ "2899": "<code>(↑(g ⊚ s) ⊚ termSWE.toEnd) () = (Y.toEnd ⊚ ↑(g ⊚ s)) ()</code>",
+ "2898": "<code>↑(g ⊚ s) () = Sum.inl x₁</code>",
+ "2897": "<code>↑(f ⊚ g ⊚ s) () = ↑s ()</code>",
+ "2896": "<code>B₁.carrier ⊕ B₂.carrier</code>",
+ "2895": "<code>B₂.carrier</code>",
+ "2894":
  "<code>Sum.inr.{u, v} {α : Type u} {β : Type v} (val : β) : α ⊕ β</code><span class=\"sep\"></span><code class=\"docstring\">Right injection into the sum type `α ⊕ β`. </code>",
- "2892": "<code>B₁.carrier</code>",
- "2891":
+ "2893": "<code>B₁.carrier</code>",
+ "2892":
  "<code>Sum.inl.{u, v} {α : Type u} {β : Type v} (val : α) : α ⊕ β</code><span class=\"sep\"></span><code class=\"docstring\">Left injection into the sum type `α ⊕ β`. </code>",
- "2890": "<code>B₁.carrier ⊕ B₂.carrier → B₁.carrier ⊕ B₂.carrier</code>",
- "289": "<code>B ⟶ C</code>",
- "2889":
+ "2891": "<code>B₁.carrier ⊕ B₂.carrier → B₁.carrier ⊕ B₂.carrier</code>",
+ "2890":
  "<code>Sum.{u, v} (α : Type u) (β : Type v) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">The disjoint union of types `α` and `β`, ordinarily written `α ⊕ β`.\n\nAn element of `α ⊕ β` is either an `a : α` wrapped in `Sum.inl` or a `b : β` wrapped in `Sum.inr`.\n`α ⊕ β` is not equivalent to the set-theoretic union of `α` and `β` because its values include an\nindication of which of the two types was chosen. The union of a singleton set with itself contains\none element, while `Unit ⊕ Unit` contains distinct values `inl ()` and `inr ()`.\n</code>",
- "2888": "<code>termSWE ⟶ B₂</code>",
- "2887": "<code>termSWE ⟶ B₁</code>",
- "2886": "<code>termSWE ⟶ S</code>",
- "2885":
+ "289": "<code>B ⟶ C</code>",
+ "2889": "<code>termSWE ⟶ B₂</code>",
+ "2888": "<code>termSWE ⟶ B₁</code>",
+ "2887": "<code>termSWE ⟶ S</code>",
+ "2886":
  "<code>∀ (Y : SetWithEndomap) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
- "2884": "<code>true = false</code>",
- "2883": "<code>⟨true, b₁ ()⟩ = ⟨false, x₂⟩</code>",
- "2882": "<code>j₁ ⊚ b₁ = s</code>",
- "2881": "<code>(g ⊚ s) () = ⟨false, x₂⟩</code>",
- "2880": "<code>false = true</code>",
+ "2885": "<code>true = false</code>",
+ "2884": "<code>⟨true, b₁ ()⟩ = ⟨false, x₂⟩</code>",
+ "2883": "<code>j₁ ⊚ b₁ = s</code>",
+ "2882": "<code>(g ⊚ s) () = ⟨false, x₂⟩</code>",
+ "2881": "<code>false = true</code>",
+ "2880": "<code>Unit ⟶ Y</code>",
  "288":
  "<code>And.intro {a b : Prop} (left : a) (right : b) : a ∧ b</code><span class=\"sep\"></span><code class=\"docstring\">`And.intro : a → b → a ∧ b` is the constructor for the And operation. </code>",
- "2879": "<code>Unit ⟶ Y</code>",
- "2878":
+ "2879":
  "<code>Sigma.fst.{u, v} {α : Type u} {β : α → Type v} (self : Sigma β) : α</code><span class=\"sep\"></span><code class=\"docstring\">The first component of a dependent pair.\n</code>",
- "2877": "<code>⟨false, b₂ ()⟩ = ⟨true, x₁⟩</code>",
- "2876": "<code>j₂ ⊚ b₂ = s</code>",
- "2875": "<code>(g ⊚ s) () = ⟨true, x₁⟩</code>",
- "2874": "<code>f ⊚ g ⊚ s = s</code>",
- "2873": "<code>f ⊚ g = 𝟙 S</code>",
- "2872": "<code>𝟙 S = e</code>",
- "2871": "<code>f ⊚ g = e</code>",
- "2870": "<code>e ⊚ j₁ = j₁ ∧ e ⊚ j₂ = j₂</code>",
- "287": "<code>IsIso f</code>",
- "2869":
+ "2878": "<code>⟨false, b₂ ()⟩ = ⟨true, x₁⟩</code>",
+ "2877": "<code>j₂ ⊚ b₂ = s</code>",
+ "2876": "<code>(g ⊚ s) () = ⟨true, x₁⟩</code>",
+ "2875": "<code>f ⊚ g ⊚ s = s</code>",
+ "2874": "<code>f ⊚ g = 𝟙 S</code>",
+ "2873": "<code>𝟙 S = e</code>",
+ "2872": "<code>f ⊚ g = e</code>",
+ "2871": "<code>e ⊚ j₁ = j₁ ∧ e ⊚ j₂ = j₂</code>",
+ "2870":
  "<code>∀ (y : S ⟶ S), (fun g ↦ g ⊚ j₁ = j₁ ∧ g ⊚ j₂ = j₂) y → y = e</code>",
- "2868": "<code>S ⟶ S</code>",
- "2867": "<code>match false with\n| true =&gt; B₁\n| false =&gt; B₂</code>",
- "2866": "<code>match true with\n| true =&gt; B₁\n| false =&gt; B₂</code>",
- "2865":
+ "287": "<code>IsIso f</code>",
+ "2869": "<code>S ⟶ S</code>",
+ "2868": "<code>match false with\n| true =&gt; B₁\n| false =&gt; B₂</code>",
+ "2867": "<code>match true with\n| true =&gt; B₁\n| false =&gt; B₂</code>",
+ "2866":
  "<code>(fun x ↦\n    match x with\n    | true =&gt; B₁\n    | false =&gt; B₂)\n  false</code>",
- "2864":
+ "2865":
  "<code>(fun x ↦\n    match x with\n    | true =&gt; B₁\n    | false =&gt; B₂)\n  true</code>",
- "2863": "<code>Y ⟶ S</code>",
- "2862":
+ "2864": "<code>Y ⟶ S</code>",
+ "2863":
  "<code>∀ (y : S ⟶ Y), (fun g ↦ g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂) y → y = g</code>",
- "2861": "<code>g ⊚ j₂ = g₂</code>",
- "2860": "<code>g ⊚ j₁ = g₁</code>",
+ "2862": "<code>g ⊚ j₂ = g₂</code>",
+ "2861": "<code>g ⊚ j₁ = g₁</code>",
+ "2860": "<code>B₂</code>",
  "286": "<code>g ⊚ f = 𝟙 A ∧ f ⊚ g = 𝟙 B</code>",
- "2859": "<code>B₂</code>",
- "2858":
+ "2859":
  "<code>Sigma.mk.{u, v} {α : Type u} {β : α → Type v} (fst : α) (snd : β fst) : Sigma β</code><span class=\"sep\"></span><code class=\"docstring\">Constructs a dependent pair.\n\nUsing this constructor in a context in which the type is not known usually requires a type\nascription to determine `β`. This is because the desired relationship between the two values can't\ngenerally be determined automatically.\n</code>",
- "2857": "<code>B₁</code>",
- "2856":
+ "2858": "<code>B₁</code>",
+ "2857":
  "<code>Bool : Type</code><span class=\"sep\"></span><code class=\"docstring\">The Boolean values, `true` and `false`.\n\nLogically speaking, this is equivalent to `Prop` (the type of propositions). The distinction is\npublic important for programming: both propositions and their proofs are erased in the code generator,\nwhile `Bool` corresponds to the Boolean type in most programming languages and carries precisely one\nbit of run-time information.\n</code>",
- "2855": "<code>Bool</code>",
- "2854": "<code>Unit ⟶ B₂</code>",
- "2853": "<code>Unit ⟶ B₁</code>",
- "2852":
+ "2856": "<code>Bool</code>",
+ "2855": "<code>Unit ⟶ B₂</code>",
+ "2854": "<code>Unit ⟶ B₁</code>",
+ "2853":
  "<code>Xor' (a b : Prop) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Xor' a b` is the exclusive-or of propositions. </code>",
- "2851": "<code>Unit ⟶ S</code>",
- "2850":
+ "2852": "<code>Unit ⟶ S</code>",
+ "2851":
  "<code>∀ (Y : Type) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
+ "2850":
+ "<code>∀ (j : Discrete WalkingPair), m ⊚ (BinaryCofan.mk j₁ j₂).ι.app j = s.ι.app j</code>",
  "285":
  "<code class=\"docstring\">If the main goal's target type is an inductive type, `constructor` solves it with\nthe first matching constructor, or else fails.\n</code>",
- "2849":
- "<code>∀ (j : Discrete WalkingPair), m ⊚ (BinaryCofan.mk j₁ j₂).ι.app j = s.ι.app j</code>",
- "2848": "<code>(BinaryCofan.mk j₁ j₂).pt ⟶ s.pt</code>",
- "2847": "<code>Cocone (pair B₁ B₂)</code>",
- "2846": "<code>S ⟶ s.pt</code>",
- "2845": "<code>B₂ ⟶ s.pt</code>",
- "2844": "<code>B₁ ⟶ s.pt</code>",
- "2843":
+ "2849": "<code>(BinaryCofan.mk j₁ j₂).pt ⟶ s.pt</code>",
+ "2848": "<code>Cocone (pair B₁ B₂)</code>",
+ "2847": "<code>S ⟶ s.pt</code>",
+ "2846": "<code>B₂ ⟶ s.pt</code>",
+ "2845": "<code>B₁ ⟶ s.pt</code>",
+ "2844":
  "<code>∀ (s : BinaryCofan B₁ B₂),\n  ∃! g, g ⊚ j₁ = s.ι.app { as := WalkingPair.left } ∧ g ⊚ j₂ = s.ι.app { as := WalkingPair.right }</code>",
- "2842":
+ "2843":
  "<code>∀ (Y : 𝒞) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ j₁ = g₁ ∧ g ⊚ j₂ = g₂</code>",
- "2841": "<code>m ⊚ j₂ = g₂</code>",
- "2840": "<code>m ⊚ j₁ = g₁</code>",
+ "2842": "<code>m ⊚ j₂ = g₂</code>",
+ "2841": "<code>m ⊚ j₁ = g₁</code>",
+ "2840": "<code>BinaryCofan B₁ B₂</code>",
  "284":
  "<code class=\"docstring\">`use e₁, e₂, ⋯` is similar to `exists`, but unlike `exists` it is equivalent to applying the tactic\n`refine ⟨e₁, e₂, ⋯, ?_, ⋯, ?_⟩` with any number of placeholders (rather than just one) and\nthen trying to close goals associated to the placeholders with a configurable discharger (rather\nthan just `try trivial`).\n\nExamples:\n\n```lean\nexample : ∃ x : Nat, x = x := by use 42\n\nexample : ∃ x : Nat, ∃ y : Nat, x = y := by use 42, 42\n\nexample : Nonempty Nat := by use 5\n\nexample : Nonempty (PNat ≃ Nat) := by\n  use PNat.natPred, Nat.succPNat\n  · exact PNat.succPNat_natPred\n  · intro; rfl\n```\n\n`use! e₁, e₂, ⋯` is similar but it applies constructors everywhere rather than just for\ngoals that correspond to the last argument of a constructor. This gives the effect that\nnested constructors are being flattened out, with the supplied values being used along the\nleaves and nodes of the tree of constructors.\nWith `use!` one can feed in each `42` one at a time:\n\n```lean\nexample : ∃ n : {n : Nat // n % 2 = 0}, n.val &gt; 10 := by use! 20; simp\n\nexample : ∃ p : Nat × Nat, p.1 = p.2 := by use! (42, 42)\n```\n\nThe second line makes use of the fact that `use!` tries refining with the argument before\napplying a constructor. Also note that `use`/`use!` by default uses a tactic\ncalled `use_discharger` to discharge goals, so `use! 42` will close the goal in this example since\n`use_discharger` applies `rfl`, which as a consequence solves for the other `Nat` metavariable.\n\nThese tactics take an optional discharger to handle remaining explicit `Prop` constructor arguments.\nBy default it is `use (discharger := try with_reducible use_discharger) e₁, e₂, ⋯`.\nTo turn off the discharger and keep all goals, use `(discharger := skip)`.\nTo allow \"heavy refls\", use `(discharger := try use_discharger)`.\n</code>",
- "2839": "<code>BinaryCofan B₁ B₂</code>",
- "2838": "<code>IsColimit (BinaryCofan.mk j₁ j₂)</code>",
- "2837": "<code>S ⟶ Y</code>",
- "2836": "<code>B₂ ⟶ Y</code>",
- "2835": "<code>B₁ ⟶ Y</code>",
- "2834":
+ "2839": "<code>IsColimit (BinaryCofan.mk j₁ j₂)</code>",
+ "2838": "<code>S ⟶ Y</code>",
+ "2837": "<code>B₂ ⟶ Y</code>",
+ "2836": "<code>B₁ ⟶ Y</code>",
+ "2835":
  "<code>CategoryTheory.Limits.BinaryCofan.mk.{v, u} {C : Type u} [Category.{v, u} C] {X Y P : C} (ι₁ : X ⟶ P) (ι₂ : Y ⟶ P) :\n  BinaryCofan X Y</code><span class=\"sep\"></span><code class=\"docstring\">A binary cofan with vertex `P` consists of the two inclusions `ι₁ : X ⟶ P` and `ι₂ : Y ⟶ P`. </code>",
- "2833": "<code>B₂ ⟶ S</code>",
- "2832": "<code>B₁ ⟶ S</code>",
- "2831":
+ "2834": "<code>B₂ ⟶ S</code>",
+ "2833": "<code>B₁ ⟶ S</code>",
+ "2832":
  "<code>autoParam (∀ (s : Cocone F) (m : t.pt ⟶ s.pt), (∀ (j : J), m ⊚ t.ι.app j = s.ι.app j) → m = desc s)\n  IsColimit.uniq._autoParam</code>",
- "2830":
+ "2831":
  "<code>autoParam (∀ (s : Cocone F) (j : J), desc s ⊚ t.ι.app j = s.ι.app j) IsColimit.fac._autoParam</code>",
+ "2830": "<code>(s : Cocone F) → t.pt ⟶ s.pt</code>",
  "283": "<code>Category.{v, u} 𝒞</code>",
- "2829": "<code>(s : Cocone F) → t.pt ⟶ s.pt</code>",
- "2828":
+ "2829":
  "<code>CategoryTheory.Limits.IsColimit.mk.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (desc : (s : Cocone F) → t.pt ⟶ s.pt)\n  (fac : ∀ (s : Cocone F) (j : J), desc s ⊚ t.ι.app j = s.ι.app j := by cat_disch)\n  (uniq : ∀ (s : Cocone F) (m : t.pt ⟶ s.pt), (∀ (j : J), m ⊚ t.ι.app j = s.ι.app j) → m = desc s := by cat_disch) :\n  IsColimit t</code>",
- "2827": "<code>t.pt ⟶ s.pt</code>",
- "2826":
+ "2828": "<code>t.pt ⟶ s.pt</code>",
+ "2827":
  "<code>CategoryTheory.Limits.IsColimit.uniq.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (self : IsColimit t) (s : Cocone F) (m : t.pt ⟶ s.pt) :\n  (∀ (j : J), m ⊚ t.ι.app j = s.ι.app j) → m = self.desc s</code><span class=\"sep\"></span><code class=\"docstring\">`desc` is the unique such map </code>",
- "2825":
+ "2826":
  "<code>CategoryTheory.Limits.Cocone.ι.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (self : Cocone F) : F ⟶ (Functor.const J).obj self.pt</code><span class=\"sep\"></span><code class=\"docstring\">A natural transformation from `F` to the constant functor at `pt` </code>",
- "2824": "<code>IsColimit t</code>",
- "2823":
+ "2825": "<code>IsColimit t</code>",
+ "2824":
  "<code>CategoryTheory.Limits.IsColimit.fac.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (self : IsColimit t) (s : Cocone F) (j : J) :\n  self.desc s ⊚ t.ι.app j = s.ι.app j</code><span class=\"sep\"></span><code class=\"docstring\">The map `desc` makes the diagram with the natural transformations commute </code>",
- "2822":
+ "2823":
  "<code>CategoryTheory.Limits.Cocone.pt.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  {F : J ⥤ C} (self : Cocone F) : C</code><span class=\"sep\"></span><code class=\"docstring\">An object of `C` </code>",
- "2821":
+ "2822":
  "<code>CategoryTheory.Limits.IsColimit.desc.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cocone F} (self : IsColimit t) (s : Cocone F) : t.pt ⟶ s.pt</code><span class=\"sep\"></span><code class=\"docstring\">`t.pt` maps to all other cocone covertices </code>",
- "2820": "<code>Cocone F</code>",
+ "2821": "<code>Cocone F</code>",
+ "2820":
+ "<code>CategoryTheory.Limits.BinaryCofan.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">A binary cofan is just a cocone on a diagram indexing a coproduct. </code>",
  "282":
  "<code>CategoryTheory.Iso.trans.{v, u} {C : Type u} [Category.{v, u} C] {X Y Z : C} (α : X ≅ Y) (β : Y ≅ Z) : X ≅ Z</code><span class=\"sep\"></span><code class=\"docstring\">Composition of two isomorphisms </code>",
  "2819":
- "<code>CategoryTheory.Limits.BinaryCofan.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">A binary cofan is just a cocone on a diagram indexing a coproduct. </code>",
- "2818":
  "<code>CategoryTheory.Limits.Cocone.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃} [Category.{v₃, u₃} C]\n  (F : J ⥤ C) : Type (max (max u₁ u₃) v₃)</code><span class=\"sep\"></span><code class=\"docstring\">A `c : Cocone F` is\n* an object `c.pt` and\n* a natural transformation `c.ι : F ⟶ c.pt` from `F` to the constant `c.pt` functor.\n\nFor example, if the source `J` of `F` is a partially ordered set, then to give\n`c : Cocone F` is to give a collection of morphisms `ιⱼ : F j ⟶ c.pt` and, for\nall `j ≤ k` in `J`, morphisms `ιⱼₖ : F j ⟶ F k` such that `Fⱼₖ ≫ Fₖ = Fⱼ` for all `j ≤ k`.\n\n`Cocone F` is equivalent, via `Cone.equiv` below, to `Σ X, F.cocones.obj X`.\n</code>",
- "2817":
+ "2818":
  "<code>Fin 2 → Discrete (Fin 2)</code><span class=\"sep\"></span><code class=\"docstring\">An embedding as a function. Use coercion instead. </code>",
- "2816": "<code>Discrete (Fin 2)</code>",
- "2815":
+ "2817": "<code>Discrete (Fin 2)</code>",
+ "2816":
  "<code>∀ (j : Discrete (Fin 3)),\n  (Fan.mk coneQ.pt fun i ↦\n              match i with\n              | 0 =&gt; coneP.π.app { as := 0 } ⊚ coneQ.π.app { as := 0 }\n              | 1 =&gt; coneP.π.app { as := 1 } ⊚ coneQ.π.app { as := 0 }\n              | 2 =&gt; coneQ.π.app { as := 1 }).π.app\n        j ⊚\n      m =\n    coneX.π.app j</code>",
- "2814":
+ "2815":
  "<code>coneX.pt ⟶\n  (Fan.mk coneQ.pt fun i ↦\n      match i with\n      | 0 =&gt; coneP.π.app { as := 0 } ⊚ coneQ.π.app { as := 0 }\n      | 1 =&gt; coneP.π.app { as := 1 } ⊚ coneQ.π.app { as := 0 }\n      | 2 =&gt; coneQ.π.app { as := 1 }).pt</code>",
- "2813":
+ "2814":
  "<code>Function.Injective ⇑discreteEquiv.symm</code><span class=\"sep\"></span><code class=\"docstring\">An embedding is an injective function. Use `Function.Embedding.injective` instead. </code>",
- "2812":
+ "2813":
  "<code>Equiv.symm.{u, v} {α : Sort u} {β : Sort v} (e : α ≃ β) : β ≃ α</code><span class=\"sep\"></span><code class=\"docstring\">Inverse of an equivalence `e : α ≃ β`. </code>",
- "2811":
+ "2812":
  "<code>CategoryTheory.discreteEquiv.{u₁} {α : Type u₁} : Discrete α ≃ α</code><span class=\"sep\"></span><code class=\"docstring\">`Discrete α` is equivalent to the original type `α`. </code>",
- "2810":
+ "2811":
  "<code>Fin 3 → Discrete (Fin 3)</code><span class=\"sep\"></span><code class=\"docstring\">An embedding as a function. Use coercion instead. </code>",
+ "2810":
+ "<code>Function.Embedding.mk.{u_1, u_2} {α : Sort u_1} {β : Sort u_2} (toFun : α → β) (inj' : Function.Injective toFun) : α ↪ β</code>",
  "281":
  "<code>(β.hom ⊚ α.hom) ⊚ α.inv ⊚ β.inv = 𝟙 Z</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
  "2809":
- "<code>Function.Embedding.mk.{u_1, u_2} {α : Sort u_1} {β : Sort u_2} (toFun : α → β) (inj' : Function.Injective toFun) : α ↪ β</code>",
- "2808":
  "<code>Fin 3</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
- "2807":
+ "2808":
  "<code>s.pt ⟶\n  (Fan.mk coneQ.pt fun i ↦\n      match i with\n      | 0 =&gt; coneP.π.app { as := 0 } ⊚ coneQ.π.app { as := 0 }\n      | 1 =&gt; coneP.π.app { as := 1 } ⊚ coneQ.π.app { as := 0 }\n      | 2 =&gt; coneQ.π.app { as := 1 }).pt</code>",
- "2806": "<code>Discrete (Fin 3)</code>",
- "2805":
+ "2807": "<code>Discrete (Fin 3)</code>",
+ "2806":
  "<code>Cone\n  (Discrete.functor fun x ↦\n    match x with\n    | 0 =&gt; C_a\n    | 1 =&gt; C_b\n    | 2 =&gt; C_c)</code>",
- "2804":
+ "2805":
  "<code>Fin 2</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
- "2803":
+ "2804":
  "<code>Fan fun x ↦\n  match x with\n  | 0 =&gt; coneP.pt\n  | 1 =&gt; C_c</code>",
- "2802":
+ "2803":
  "<code>Fan fun x ↦\n  match x with\n  | 0 =&gt; C_a\n  | 1 =&gt; C_b</code>",
- "2801": "<code>q_c ⊚ m = f_c</code>",
- "2800": "<code>p_b ⊚ q ⊚ m = f_b</code>",
+ "2802": "<code>q_c ⊚ m = f_c</code>",
+ "2801": "<code>p_b ⊚ q ⊚ m = f_b</code>",
+ "2800": "<code>p_a ⊚ q ⊚ m = f_a</code>",
  "280":
  "<code>(α.inv ⊚ β.inv) ⊚ β.hom ⊚ α.hom = 𝟙 X</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
  "28": "<code>CM.ExI_1.h : C → D</code>",
- "2799": "<code>p_a ⊚ q ⊚ m = f_a</code>",
- "2798":
+ "2799":
  "<code>∀ (y : X ⟶ Q), (fun f ↦ q ⊚ f = f_p ∧ q_c ⊚ f = f_c) y → y = f</code>",
- "2797": "<code>q_c ⊚ f = f_c</code>",
- "2796": "<code>q ⊚ f = f_p</code>",
- "2795":
+ "2798": "<code>q_c ⊚ f = f_c</code>",
+ "2797": "<code>q ⊚ f = f_p</code>",
+ "2796":
  "<code>∀ (y : X ⟶ P), (fun f ↦ p_a ⊚ f = f_a ∧ p_b ⊚ f = f_b) y → y = f_p</code>",
- "2794": "<code>p_b ⊚ f_p = f_b</code>",
- "2793": "<code>p_a ⊚ f_p = f_a</code>",
- "2792": "<code>X ⟶ Q</code>",
- "2791": "<code>X ⟶ C_c</code>",
- "2790":
+ "2795": "<code>p_b ⊚ f_p = f_b</code>",
+ "2794": "<code>p_a ⊚ f_p = f_a</code>",
+ "2793": "<code>X ⟶ Q</code>",
+ "2792": "<code>X ⟶ C_c</code>",
+ "2791":
  "<code>∀ (X : 𝒞) (f₁ : X ⟶ P) (f₂ : X ⟶ C_c), ∃! f, q ⊚ f = f₁ ∧ q_c ⊚ f = f₂</code>",
+ "2790": "<code>Q ⟶ C_c</code>",
  "279":
  "<code>Z ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
- "2789": "<code>Q ⟶ C_c</code>",
- "2788": "<code>Q ⟶ P</code>",
- "2787": "<code>X ⟶ C_b</code>",
- "2786": "<code>X ⟶ C_a</code>",
- "2785":
+ "2789": "<code>Q ⟶ P</code>",
+ "2788": "<code>X ⟶ C_b</code>",
+ "2787": "<code>X ⟶ C_a</code>",
+ "2786":
  "<code>∀ (X : 𝒞) (f₁ : X ⟶ C_a) (f₂ : X ⟶ C_b), ∃! f, p_a ⊚ f = f₁ ∧ p_b ⊚ f = f₂</code>",
- "2784": "<code>P ⟶ C_b</code>",
- "2783": "<code>P ⟶ C_a</code>",
- "2782": "<code>∀ (i : I), coneQ.proj i ⊚ f = coneP.proj i</code>",
- "2781":
+ "2785": "<code>P ⟶ C_b</code>",
+ "2784": "<code>P ⟶ C_a</code>",
+ "2783": "<code>∀ (i : I), coneQ.proj i ⊚ f = coneP.proj i</code>",
+ "2782":
  "<code>CategoryTheory.Limits.Fan.proj.{w, v, u} {β : Type w} {C : Type u} [Category.{v, u} C] {f : β → C} (p : Fan f) (j : β) :\n  p.pt ⟶ f j</code><span class=\"sep\"></span><code class=\"docstring\">Get the `j`th \"projection\" in the fan.\n(Note that the initial letter of `proj` matches the greek letter in `Cone.π`.) </code>",
+ "2781":
+ "<code>CM.uniqueness_of_products.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {I : Type} (Cᵢ : I → 𝒞) (coneP coneQ : Fan Cᵢ)\n  (prodP : IsLimit coneP) (prodQ : IsLimit coneQ) : ∃! f, (∀ (i : I), coneQ.proj i ⊚ f = coneP.proj i) ∧ IsIso f</code>",
  "2780":
  "<code>∀ (j : Discrete I), (Fan.mk P pᵢ).π.app j ⊚ m = s.π.app j</code>",
  "278":

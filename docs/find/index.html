@@ -689,6 +689,201 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
 }
 
 </style><script>
+      
+window.onload = () => {
+
+    // Don't show hovers inside of closed tactic states
+    function blockedByTactic(elem) {
+      let parent = elem.parentNode;
+      while (parent && "classList" in parent) {
+        if (parent.classList.contains("tactic")) {
+          const toggle = parent.querySelector("input.tactic-toggle");
+          if (toggle) {
+            return !toggle.checked;
+          }
+        }
+        parent = parent.parentNode;
+      }
+      return false;
+    }
+
+    function blockedByTippy(elem) {
+      // Don't show a new hover until the old ones are all closed.
+      // Scoped to the nearest "top-level block" to avoid being O(n) in the size of the document.
+      var block = elem;
+      const topLevel = new Set(["section", "body", "html", "nav", "header"]);
+      while (block.parentNode && !topLevel.has(block.parentNode.nodeName.toLowerCase())) {
+        block = block.parentNode;
+      }
+      for (const child of block.querySelectorAll(".token, .has-info")) {
+        if (child._tippy && child._tippy.state.isVisible) { return true };
+      }
+      return false;
+    }
+
+    for (const c of document.querySelectorAll(".hl.lean .token")) {
+        if (c.dataset.binding != "") {
+            c.addEventListener("mouseover", (event) => {
+                if (blockedByTactic(c)) {return;}
+                const context = c.closest(".hl.lean").dataset.leanContext;
+                for (const example of document.querySelectorAll(".hl.lean")) {
+                    if (example.dataset.leanContext == context) {
+                        for (const tok of example.querySelectorAll(".token")) {
+                            if (c.dataset.binding == tok.dataset.binding) {
+                                tok.classList.add("binding-hl");
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        c.addEventListener("mouseout", (event) => {
+            for (const tok of document.querySelectorAll(".hl.lean .token")) {
+                tok.classList.remove("binding-hl");
+            }
+        });
+    }
+    /* Render docstrings */
+    if ('undefined' !== typeof marked) {
+        for (const d of document.querySelectorAll("code.docstring, pre.docstring")) {
+            const str = d.innerText;
+            const html = marked.parse(str);
+            const rendered = document.createElement("div");
+            rendered.classList.add("docstring");
+            rendered.innerHTML = html;
+            d.parentNode.replaceChild(rendered, d);
+        }
+    }
+    // Add hovers
+    let docsJson = "-verso-docs.json";
+    fetch(docsJson).then((resp) => resp.json()).then((versoDocData) => {
+
+      function hideParentTooltips(element) {
+        let parent = element.parentElement;
+        while (parent) {
+          const tippyInstance = parent._tippy;
+          if (tippyInstance) {
+            tippyInstance.hide();
+          }
+          parent = parent.parentElement;
+        }
+      }
+
+
+
+      const defaultTippyProps = {
+        /* DEBUG -- remove the space: * /
+        onHide(any) { return false; },
+        trigger: "click",
+        // */
+        /* theme: "lean", */
+        maxWidth: "none",
+        appendTo: () => document.body,
+        interactive: true,
+        delay: [100, null],
+        /* ignoreAttributes: true, */
+        followCursor: 'initial',
+        onShow(inst) {
+          if (inst.reference.className == 'tactic') {
+
+            const toggle = inst.reference.querySelector("input.tactic-toggle");
+            if (toggle && toggle.checked) {
+              return false;
+            }
+            hideParentTooltips(inst.reference);
+            //if (blockedByTippy(inst.reference)) { return false; }
+
+          } else if (inst.reference.querySelector(".hover-info") || "versoHover" in inst.reference.dataset) {
+            if (blockedByTactic(inst.reference)) { return false };
+            if (blockedByTippy(inst.reference)) { return false; }
+          } else { // Nothing to show here!
+            return false;
+          }
+        },
+        content (tgt) {
+          const content = document.createElement("span");
+          if (tgt.className == 'tactic') {
+            const state = tgt.querySelector(".tactic-state").cloneNode(true);
+            state.style.display = "block";
+            content.appendChild(state);
+            content.style.display = "block";
+            content.className = "hl lean popup";
+          } else {
+            content.className = "hl lean";
+            content.style.display = "block";
+            content.style.maxHeight = "300px";
+            content.style.overflowY = "auto";
+            content.style.overflowX = "hidden";
+            const hoverId = tgt.dataset.versoHover;
+            const hoverInfo = tgt.querySelector(".hover-info");
+            if (hoverId) { // Docstrings from the table
+              // TODO stop doing an implicit conversion from string to number here
+              let data = versoDocData[hoverId];
+              if (data) {
+                const info = document.createElement("span");
+                info.className = "hover-info";
+                info.style.display = "block";
+                info.innerHTML = data;
+                content.appendChild(info);
+                /* Render docstrings - TODO server-side */
+                if ('undefined' !== typeof marked) {
+                    for (const d of content.querySelectorAll("code.docstring, pre.docstring")) {
+                        const str = d.innerText;
+                        const html = marked.parse(str);
+                        const rendered = document.createElement("div");
+                        rendered.classList.add("docstring");
+                        rendered.innerHTML = html;
+                        d.parentNode.replaceChild(rendered, d);
+                    }
+                }
+              } else {
+                content.innerHTML = "Failed to load doc ID: " + hoverId;
+              }
+            } else if (hoverInfo) { // The inline info, still used for compiler messages
+              content.appendChild(hoverInfo.cloneNode(true));
+            }
+            const extraLinks = tgt.parentElement.dataset['versoLinks'];
+            if (extraLinks) {
+              try {
+                const extras = JSON.parse(extraLinks);
+                const links = document.createElement('ul');
+                links.className = 'extra-doc-links';
+                extras.forEach((l) => {
+                  const li = document.createElement('li');
+                  li.innerHTML = "<a href=\"" + l['href'] + "\" title=\"" + l.long + "\">" + l.short + "</a>";
+                  links.appendChild(li);
+                });
+                content.appendChild(links);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+          }
+          return content;
+        }
+      };
+
+
+      document.querySelectorAll('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'lean');
+      });
+      document.querySelectorAll('.hl.lean .has-info.warning').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'warning message');
+      });
+      document.querySelectorAll('.hl.lean .has-info.information').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'info message');
+      });
+      document.querySelectorAll('.hl.lean .has-info.error').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'error message');
+      });
+      document.querySelectorAll('.hl.lean .tactic').forEach(element => {
+        element.setAttribute('data-tippy-theme', 'tactic');
+      });
+      let insts = tippy('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .has-info, .hl.lean .tactic, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort', defaultTippyProps);
+  });
+}
+</script>
+    <script>
       window.xref = {"Verso.Genre.Manual.section":
  {"title": "Sections or chapters of the manual",
   "description": null,
@@ -996,6 +1191,90 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations--4___-Basic-figure-types___-singular-figures___-and-incidence___-in-the-category-of-graphs":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations--4___-Basic-figure-types___-singular-figures___-and-incidence___-in-the-category-of-graphs",
+     "data":
+     {"title":
+      "4. Basic figure-types, singular figures, and incidence, in the category of graphs",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "Session 22: Universal mapping properties; Incidence relations",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations",
+     "data":
+     {"title": "Session 22: Universal mapping properties; Incidence relations",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title":
+        "Session 22: Universal mapping properties; Incidence relations",
+        "shortTitle": null,
+        "number": null}]},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-21___-Products-in-categories":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-21___-Products-in-categories",
+     "data":
+     {"title": "Session 21: Products in categories",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 21: Products in categories",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-20___-Points-of-an-object":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-20___-Points-of-an-object",
+     "data":
+     {"title": "Session 20: Points of an object",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 20: Points of an object",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-20___-Points-of-an-object/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-19___-Terminal-objects":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-19___-Terminal-objects",
+     "data":
+     {"title": "Session 19: Terminal objects",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 19: Terminal objects",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-19___-Terminal-objects/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs--3___-Commuting-diagrams":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs--3___-Commuting-diagrams",
@@ -2006,6 +2285,15 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
         "Quiz",
         "Optional questions"]}},
      "address": "/Quiz/"}],
+   "CM.uniqueness_of_terminal_objects'":
+   [{"id": "CM___uniqueness_of_terminal_objects___",
+     "data":
+     {"/Session-19___-Terminal-objects/#CM___uniqueness_of_terminal_objects___":
+      {"display": "uniqueness_of_terminal_objects'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 19: Terminal objects"]}},
+     "address": "/Session-19___-Terminal-objects/"}],
    "CM.uniqueness_of_terminal_objects":
    [{"id": "CM___uniqueness_of_terminal_objects",
      "data":
@@ -2015,6 +2303,25 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
        ["A Lean Companion to Conceptual Mathematics",
         "Article IV: Universal mapping properties",
         "1. Terminal objects"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.uniqueness_of_products'":
+   [{"id": "CM___uniqueness_of_products___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___uniqueness_of_products___":
+      {"display": "uniqueness_of_products'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.uniqueness_of_products":
+   [{"id": "CM___uniqueness_of_products",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___uniqueness_of_products":
+      {"display": "uniqueness_of_products",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "5. Commutative, associative, and identity laws for multiplication of objects"]}},
      "address": "/Article-IV___-Universal-mapping-properties/"}],
    "CM.uniqueness_of_inverses":
    [{"id": "CM___uniqueness_of_inverses",
@@ -2187,6 +2494,28 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
        ["A Lean Companion to Conceptual Mathematics",
         "Article I: Sets, maps, composition"]}},
      "address": "/Article-I___-Sets___-maps___-composition/"}],
+   "CM.homDEquiv":
+   [{"id": "CM___homDEquiv",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___homDEquiv":
+      {"display": "homDEquiv",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.homAEquiv":
+   [{"id": "CM___homAEquiv",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___homAEquiv":
+      {"display": "homAEquiv",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
    "CM.functorSetWithEndomapToSimpleGraph":
    [{"id": "CM___functorSetWithEndomapToSimpleGraph",
      "data":
@@ -5428,6 +5757,129 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex22_2.FigA₂.IsSingular":
+   [{"id": "CM___Ex22_2___FigA______IsSingular",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___Ex22_2___FigA______IsSingular":
+      {"display": "FigA₂.IsSingular",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.Ex22_2.FigA₂":
+   [{"id": "CM___Ex22_2___FigA___",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___Ex22_2___FigA___":
+      {"display": "FigA₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.Ex22_2.A₂":
+   [{"id": "CM___Ex22_2___A___",
+     "data":
+     {"/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#CM___Ex22_2___A___":
+      {"display": "A₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 22: Universal mapping properties; Incidence relations",
+        "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
+     "address":
+     "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.Ex21_1.shiftClock":
+   [{"id": "CM___Ex21_1___shiftClock",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___shiftClock":
+      {"display": "shiftClock",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.p₂":
+   [{"id": "CM___Ex21_1___p___-next",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___p___-next":
+      {"display": "p₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.p₁":
+   [{"id": "CM___Ex21_1___p___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___p___":
+      {"display": "p₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_p₂_crt":
+   [{"id": "CM___Ex21_1___h_p____crt-next",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_p____crt-next":
+      {"display": "h_p₂_crt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_p₁_crt":
+   [{"id": "CM___Ex21_1___h_p____crt",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_p____crt":
+      {"display": "h_p₁_crt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_crt_uniq":
+   [{"id": "CM___Ex21_1___h_crt_uniq",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_crt_uniq":
+      {"display": "h_crt_uniq",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.h_crt_comm":
+   [{"id": "CM___Ex21_1___h_crt_comm",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___h_crt_comm":
+      {"display": "h_crt_comm",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.dayClock":
+   [{"id": "CM___Ex21_1___dayClock",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___dayClock":
+      {"display": "dayClock",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.crt":
+   [{"id": "CM___Ex21_1___crt",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___crt":
+      {"display": "crt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex21_1.Xα":
+   [{"id": "CM___Ex21_1___X___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex21_1___X___":
+      {"display": "Xα",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
    "CM.Ex17_4_c.Vertex.C":
    [{"id": "CM___Ex17_4_c___Vertex___C",
      "data":
@@ -7298,6 +7750,24 @@ Some CSS frameworks customize details/summary in ways not compatible with Verso'
        ["A Lean Companion to Conceptual Mathematics",
         "Session 14: Maps preserve positive properties"]}},
      "address": "/Session-14___-Maps-preserve-positive-properties/"}],
+   "CM.Ex12_3.p₂":
+   [{"id": "CM___Ex12_3___p___-next",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex12_3___p___-next":
+      {"display": "p₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
+   "CM.Ex12_3.p₁":
+   [{"id": "CM___Ex12_3___p___",
+     "data":
+     {"/Session-21___-Products-in-categories/#CM___Ex12_3___p___":
+      {"display": "p₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 21: Products in categories"]}},
+     "address": "/Session-21___-Products-in-categories/"}],
    "CM.Ex12_3.m₃":
    [{"id": "CM___Ex12_3___m___-next-next",
      "data":
@@ -9439,201 +9909,6 @@ if (paramName) {
     });
 }
 </script>
-    <script>
-      
-window.onload = () => {
-
-    // Don't show hovers inside of closed tactic states
-    function blockedByTactic(elem) {
-      let parent = elem.parentNode;
-      while (parent && "classList" in parent) {
-        if (parent.classList.contains("tactic")) {
-          const toggle = parent.querySelector("input.tactic-toggle");
-          if (toggle) {
-            return !toggle.checked;
-          }
-        }
-        parent = parent.parentNode;
-      }
-      return false;
-    }
-
-    function blockedByTippy(elem) {
-      // Don't show a new hover until the old ones are all closed.
-      // Scoped to the nearest "top-level block" to avoid being O(n) in the size of the document.
-      var block = elem;
-      const topLevel = new Set(["section", "body", "html", "nav", "header"]);
-      while (block.parentNode && !topLevel.has(block.parentNode.nodeName.toLowerCase())) {
-        block = block.parentNode;
-      }
-      for (const child of block.querySelectorAll(".token, .has-info")) {
-        if (child._tippy && child._tippy.state.isVisible) { return true };
-      }
-      return false;
-    }
-
-    for (const c of document.querySelectorAll(".hl.lean .token")) {
-        if (c.dataset.binding != "") {
-            c.addEventListener("mouseover", (event) => {
-                if (blockedByTactic(c)) {return;}
-                const context = c.closest(".hl.lean").dataset.leanContext;
-                for (const example of document.querySelectorAll(".hl.lean")) {
-                    if (example.dataset.leanContext == context) {
-                        for (const tok of example.querySelectorAll(".token")) {
-                            if (c.dataset.binding == tok.dataset.binding) {
-                                tok.classList.add("binding-hl");
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        c.addEventListener("mouseout", (event) => {
-            for (const tok of document.querySelectorAll(".hl.lean .token")) {
-                tok.classList.remove("binding-hl");
-            }
-        });
-    }
-    /* Render docstrings */
-    if ('undefined' !== typeof marked) {
-        for (const d of document.querySelectorAll("code.docstring, pre.docstring")) {
-            const str = d.innerText;
-            const html = marked.parse(str);
-            const rendered = document.createElement("div");
-            rendered.classList.add("docstring");
-            rendered.innerHTML = html;
-            d.parentNode.replaceChild(rendered, d);
-        }
-    }
-    // Add hovers
-    let docsJson = "-verso-docs.json";
-    fetch(docsJson).then((resp) => resp.json()).then((versoDocData) => {
-
-      function hideParentTooltips(element) {
-        let parent = element.parentElement;
-        while (parent) {
-          const tippyInstance = parent._tippy;
-          if (tippyInstance) {
-            tippyInstance.hide();
-          }
-          parent = parent.parentElement;
-        }
-      }
-
-
-
-      const defaultTippyProps = {
-        /* DEBUG -- remove the space: * /
-        onHide(any) { return false; },
-        trigger: "click",
-        // */
-        /* theme: "lean", */
-        maxWidth: "none",
-        appendTo: () => document.body,
-        interactive: true,
-        delay: [100, null],
-        /* ignoreAttributes: true, */
-        followCursor: 'initial',
-        onShow(inst) {
-          if (inst.reference.className == 'tactic') {
-
-            const toggle = inst.reference.querySelector("input.tactic-toggle");
-            if (toggle && toggle.checked) {
-              return false;
-            }
-            hideParentTooltips(inst.reference);
-            //if (blockedByTippy(inst.reference)) { return false; }
-
-          } else if (inst.reference.querySelector(".hover-info") || "versoHover" in inst.reference.dataset) {
-            if (blockedByTactic(inst.reference)) { return false };
-            if (blockedByTippy(inst.reference)) { return false; }
-          } else { // Nothing to show here!
-            return false;
-          }
-        },
-        content (tgt) {
-          const content = document.createElement("span");
-          if (tgt.className == 'tactic') {
-            const state = tgt.querySelector(".tactic-state").cloneNode(true);
-            state.style.display = "block";
-            content.appendChild(state);
-            content.style.display = "block";
-            content.className = "hl lean popup";
-          } else {
-            content.className = "hl lean";
-            content.style.display = "block";
-            content.style.maxHeight = "300px";
-            content.style.overflowY = "auto";
-            content.style.overflowX = "hidden";
-            const hoverId = tgt.dataset.versoHover;
-            const hoverInfo = tgt.querySelector(".hover-info");
-            if (hoverId) { // Docstrings from the table
-              // TODO stop doing an implicit conversion from string to number here
-              let data = versoDocData[hoverId];
-              if (data) {
-                const info = document.createElement("span");
-                info.className = "hover-info";
-                info.style.display = "block";
-                info.innerHTML = data;
-                content.appendChild(info);
-                /* Render docstrings - TODO server-side */
-                if ('undefined' !== typeof marked) {
-                    for (const d of content.querySelectorAll("code.docstring, pre.docstring")) {
-                        const str = d.innerText;
-                        const html = marked.parse(str);
-                        const rendered = document.createElement("div");
-                        rendered.classList.add("docstring");
-                        rendered.innerHTML = html;
-                        d.parentNode.replaceChild(rendered, d);
-                    }
-                }
-              } else {
-                content.innerHTML = "Failed to load doc ID: " + hoverId;
-              }
-            } else if (hoverInfo) { // The inline info, still used for compiler messages
-              content.appendChild(hoverInfo.cloneNode(true));
-            }
-            const extraLinks = tgt.parentElement.dataset['versoLinks'];
-            if (extraLinks) {
-              try {
-                const extras = JSON.parse(extraLinks);
-                const links = document.createElement('ul');
-                links.className = 'extra-doc-links';
-                extras.forEach((l) => {
-                  const li = document.createElement('li');
-                  li.innerHTML = "<a href=\"" + l['href'] + "\" title=\"" + l.long + "\">" + l.short + "</a>";
-                  links.appendChild(li);
-                });
-                content.appendChild(links);
-              } catch (error) {
-                console.error(error);
-              }
-            }
-          }
-          return content;
-        }
-      };
-
-
-      document.querySelectorAll('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'lean');
-      });
-      document.querySelectorAll('.hl.lean .has-info.warning').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'warning message');
-      });
-      document.querySelectorAll('.hl.lean .has-info.information').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'info message');
-      });
-      document.querySelectorAll('.hl.lean .has-info.error').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'error message');
-      });
-      document.querySelectorAll('.hl.lean .tactic').forEach(element => {
-        element.setAttribute('data-tippy-theme', 'tactic');
-      });
-      let insts = tippy('.hl.lean .const.token, .hl.lean .keyword.token, .hl.lean .literal.token, .hl.lean .option.token, .hl.lean .var.token, .hl.lean .typed.token, .hl.lean .has-info, .hl.lean .tactic, .hl.lean .level-var, .hl.lean .level-const, .hl.lean .level-op, .hl.lean .sort', defaultTippyProps);
-  });
-}
-</script>
     <script src="-verso-search/search-highlight.js" defer="defer"></script>
     </head>
   <body>
@@ -9654,7 +9929,7 @@ window.onload = () => {
             <div class="split-toc book">
               <div class="title">
                 <label for="--verso-manual-toc-----bookRoot" class="toggle-split-toc"><input type="checkbox" class="toggle-split-toc" id="--verso-manual-toc-----bookRoot" checked="checked"></label><span class="">Table of Contents</span></div>
-              <table><tr class="unnumbered"><td class="num"><td><a href="Article-I___-Sets___-maps___-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Article-I___-Sets___-maps___-composition">Article I: Sets, maps, composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-2___-Sets___-maps___-and-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Session-2___-Sets___-maps___-and-composition">Session 2: Sets, maps, and composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-3___-Composing-maps-and-counting-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Session-3___-Composing-maps-and-counting-maps">Session 3: Composing maps and counting maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-II___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Article-II___-Isomorphisms">Article II: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-4___-Division-of-maps___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Session-4___-Division-of-maps___-Isomorphisms">Session 4: Division of maps: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-5___-Division-of-maps___-Sections-and-retractions/#A-Lean-Companion-to-Conceptual-Mathematics--Session-5___-Division-of-maps___-Sections-and-retractions">Session 5: Division of maps: Sections and retractions</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-9___-Retracts-and-idempotents/#A-Lean-Companion-to-Conceptual-Mathematics--Session-9___-Retracts-and-idempotents">Session 9: Retracts and idempotents</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Quiz/#A-Lean-Companion-to-Conceptual-Mathematics--Quiz">Quiz</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___quiz-on-pairs-of-___opposed___-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___quiz-on-pairs-of-___opposed___-maps">Summary/quiz on pairs of 'opposed' maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___-On-the-equation-p-___-j-___-1A/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___-On-the-equation-p-___-j-___-1A">Summary: On the equation p ∘ j = 1A</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Review-of-___I-words___/#A-Lean-Companion-to-Conceptual-Mathematics--Review-of-___I-words___">Review of 'I-words'</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-1/#A-Lean-Companion-to-Conceptual-Mathematics--Test-1">Test 1</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-10___-Brouwer___s-theorems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-10___-Brouwer___s-theorems">Session 10: Brouwer's theorems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-III___-Examples-of-categories/#A-Lean-Companion-to-Conceptual-Mathematics--Article-III___-Examples-of-categories">Article III: Examples of categories</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-11___-Ascending-to-categories-of-richer-structures/#A-Lean-Companion-to-Conceptual-Mathematics--Session-11___-Ascending-to-categories-of-richer-structures">Session 11: Ascending to categories of richer structures</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-12___-Categories-of-diagrams/#A-Lean-Companion-to-Conceptual-Mathematics--Session-12___-Categories-of-diagrams">Session 12: Categories of diagrams</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-13___-Monoids/#A-Lean-Companion-to-Conceptual-Mathematics--Session-13___-Monoids">Session 13: Monoids</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-14___-Maps-preserve-positive-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Session-14___-Maps-preserve-positive-properties">Session 14: Maps preserve positive properties</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-15___-Objectification-of-properties-in-dynamical-systems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-15___-Objectification-of-properties-in-dynamical-systems">Session 15: Objectification of properties in dynamical systems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-16___-Idempotents___-involutions___-and-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-16___-Idempotents___-involutions___-and-graphs">Session 16: Idempotents, involutions, and graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-17___-Some-uses-of-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs">Session 17: Some uses of graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-2/#A-Lean-Companion-to-Conceptual-Mathematics--Test-2">Test 2</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-IV___-Universal-mapping-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties">Article IV: Universal mapping properties</a></td></tr></table></div>
+              <table><tr class="unnumbered"><td class="num"><td><a href="Article-I___-Sets___-maps___-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Article-I___-Sets___-maps___-composition">Article I: Sets, maps, composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-2___-Sets___-maps___-and-composition/#A-Lean-Companion-to-Conceptual-Mathematics--Session-2___-Sets___-maps___-and-composition">Session 2: Sets, maps, and composition</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-3___-Composing-maps-and-counting-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Session-3___-Composing-maps-and-counting-maps">Session 3: Composing maps and counting maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-II___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Article-II___-Isomorphisms">Article II: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-4___-Division-of-maps___-Isomorphisms/#A-Lean-Companion-to-Conceptual-Mathematics--Session-4___-Division-of-maps___-Isomorphisms">Session 4: Division of maps: Isomorphisms</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-5___-Division-of-maps___-Sections-and-retractions/#A-Lean-Companion-to-Conceptual-Mathematics--Session-5___-Division-of-maps___-Sections-and-retractions">Session 5: Division of maps: Sections and retractions</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-9___-Retracts-and-idempotents/#A-Lean-Companion-to-Conceptual-Mathematics--Session-9___-Retracts-and-idempotents">Session 9: Retracts and idempotents</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Quiz/#A-Lean-Companion-to-Conceptual-Mathematics--Quiz">Quiz</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___quiz-on-pairs-of-___opposed___-maps/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___quiz-on-pairs-of-___opposed___-maps">Summary/quiz on pairs of 'opposed' maps</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Summary___-On-the-equation-p-___-j-___-1A/#A-Lean-Companion-to-Conceptual-Mathematics--Summary___-On-the-equation-p-___-j-___-1A">Summary: On the equation p ∘ j = 1A</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Review-of-___I-words___/#A-Lean-Companion-to-Conceptual-Mathematics--Review-of-___I-words___">Review of 'I-words'</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-1/#A-Lean-Companion-to-Conceptual-Mathematics--Test-1">Test 1</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-10___-Brouwer___s-theorems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-10___-Brouwer___s-theorems">Session 10: Brouwer's theorems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-III___-Examples-of-categories/#A-Lean-Companion-to-Conceptual-Mathematics--Article-III___-Examples-of-categories">Article III: Examples of categories</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-11___-Ascending-to-categories-of-richer-structures/#A-Lean-Companion-to-Conceptual-Mathematics--Session-11___-Ascending-to-categories-of-richer-structures">Session 11: Ascending to categories of richer structures</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-12___-Categories-of-diagrams/#A-Lean-Companion-to-Conceptual-Mathematics--Session-12___-Categories-of-diagrams">Session 12: Categories of diagrams</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-13___-Monoids/#A-Lean-Companion-to-Conceptual-Mathematics--Session-13___-Monoids">Session 13: Monoids</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-14___-Maps-preserve-positive-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Session-14___-Maps-preserve-positive-properties">Session 14: Maps preserve positive properties</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-15___-Objectification-of-properties-in-dynamical-systems/#A-Lean-Companion-to-Conceptual-Mathematics--Session-15___-Objectification-of-properties-in-dynamical-systems">Session 15: Objectification of properties in dynamical systems</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-16___-Idempotents___-involutions___-and-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-16___-Idempotents___-involutions___-and-graphs">Session 16: Idempotents, involutions, and graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-17___-Some-uses-of-graphs/#A-Lean-Companion-to-Conceptual-Mathematics--Session-17___-Some-uses-of-graphs">Session 17: Some uses of graphs</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Test-2/#A-Lean-Companion-to-Conceptual-Mathematics--Test-2">Test 2</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Article-IV___-Universal-mapping-properties/#A-Lean-Companion-to-Conceptual-Mathematics--Article-IV___-Universal-mapping-properties">Article IV: Universal mapping properties</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-19___-Terminal-objects/#A-Lean-Companion-to-Conceptual-Mathematics--Session-19___-Terminal-objects">Session 19: Terminal objects</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-20___-Points-of-an-object/#A-Lean-Companion-to-Conceptual-Mathematics--Session-20___-Points-of-an-object">Session 20: Points of an object</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-21___-Products-in-categories/#A-Lean-Companion-to-Conceptual-Mathematics--Session-21___-Products-in-categories">Session 21: Products in categories</a></td></tr><tr class="unnumbered"><td class="num"><td><a href="Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/#A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations">Session 22: Universal mapping properties; Incidence relations</a></td></tr></table></div>
             </div>
           </div>
         <div class="last"></div>
