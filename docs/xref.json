@@ -305,6 +305,57 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties--2___-How-to-calculate-products":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties--2___-How-to-calculate-products",
+     "data":
+     {"title": "2. How to calculate products",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 23: More on universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "2. How to calculate products",
+        "shortTitle": null,
+        "number": "2"}]},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties--1___-A-category-of-pairs-of-maps":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties--1___-A-category-of-pairs-of-maps",
+     "data":
+     {"title": "1. A category of pairs of maps",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 23: More on universal mapping properties",
+        "shortTitle": null,
+        "number": null},
+       {"title": "1. A category of pairs of maps",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties",
+     "data":
+     {"title": "Session 23: More on universal mapping properties",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 23: More on universal mapping properties",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations--4___-Basic-figure-types___-singular-figures___-and-incidence___-in-the-category-of-graphs":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations--4___-Basic-figure-types___-singular-figures___-and-incidence___-in-the-category-of-graphs",
@@ -4871,6 +4922,126 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex23_2.IGSum.inr":
+   [{"id": "CM___Ex23_2___IGSum___inr",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___IGSum___inr":
+      {"display": "IGSum.inr",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.IGSum.inl":
+   [{"id": "CM___Ex23_2___IGSum___inl",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___IGSum___inl":
+      {"display": "IGSum.inl",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.IGSum":
+   [{"id": "CM___Ex23_2___IGSum",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___IGSum":
+      {"display": "IGSum",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.CategorySum.j₂":
+   [{"id": "CM___Ex23_2___CategorySum___j___-next",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___CategorySum___j___-next":
+      {"display": "j₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.CategorySum.j₁":
+   [{"id": "CM___Ex23_2___CategorySum___j___",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___CategorySum___j___":
+      {"display": "j₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.CategorySum.h_univ":
+   [{"id": "CM___Ex23_2___CategorySum___h_univ",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___CategorySum___h_univ":
+      {"display": "h_univ",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.CategorySum.carrier":
+   [{"id": "CM___Ex23_2___CategorySum___carrier",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___CategorySum___carrier":
+      {"display": "carrier",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_2.CategorySum":
+   [{"id": "CM___Ex23_2___CategorySum",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_2___CategorySum":
+      {"display": "CategorySum",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "2. How to calculate products"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_1.PairOfMaps.p₂":
+   [{"id": "CM___Ex23_1___PairOfMaps___p___-next",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_1___PairOfMaps___p___-next":
+      {"display": "p₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "1. A category of pairs of maps"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_1.PairOfMaps.p₁":
+   [{"id": "CM___Ex23_1___PairOfMaps___p___",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_1___PairOfMaps___p___":
+      {"display": "p₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "1. A category of pairs of maps"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_1.PairOfMaps.carrier":
+   [{"id": "CM___Ex23_1___PairOfMaps___carrier",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_1___PairOfMaps___carrier":
+      {"display": "carrier",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "1. A category of pairs of maps"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
+   "CM.Ex23_1.PairOfMaps":
+   [{"id": "CM___Ex23_1___PairOfMaps",
+     "data":
+     {"/Session-23___-More-on-universal-mapping-properties/#CM___Ex23_1___PairOfMaps":
+      {"display": "PairOfMaps",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 23: More on universal mapping properties",
+        "1. A category of pairs of maps"]}},
+     "address": "/Session-23___-More-on-universal-mapping-properties/"}],
    "CM.Ex22_2.FigA₂.IsSingular":
    [{"id": "CM___Ex22_2___FigA______IsSingular",
      "data":

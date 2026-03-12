@@ -1019,15 +1019,105 @@
  "<code>Mathlib.Meta.NormNum.isNat_ofNat.{u} (α : Type u) [AddMonoidWithOne α] {a : α} {n : ℕ} (h : ↑n = a) :\n  Mathlib.Meta.NormNum.IsNat a n</code>",
  "342":
  "<code>Mathlib.Meta.NormNum.isNat_mul.{u_1} {α : Type u_1} [Semiring α] {f : α → α → α} {a b : α} {a' b' c : ℕ} :\n  f = HMul.hMul →\n    Mathlib.Meta.NormNum.IsNat a a' →\n      Mathlib.Meta.NormNum.IsNat b b' → a'.mul b' = c → Mathlib.Meta.NormNum.IsNat (a * b) c</code>",
+ "3418": "<code>(↑(g ⊚ IGSum.inr)).2 = (↑g₂).2</code>",
+ "3417": "<code>(↑(g ⊚ IGSum.inr)).1 = (↑g₂).1</code>",
+ "3416":
+ "<code>CM.IrreflexiveGraph.hom_ext_iff {X Y : IrreflexiveGraph} {f g : X ⟶ Y} : f = g ↔ (↑f).1 = (↑g).1 ∧ (↑f).2 = (↑g).2</code>",
+ "3415": "<code>(↑(g ⊚ IGSum.inl)).2 = (↑g₁).2</code>",
+ "3414": "<code>(↑(g ⊚ IGSum.inl)).1 = (↑g₁).1</code>",
+ "3413": "<code>g ⊚ IGSum.inr = g₂</code>",
+ "3412": "<code>g ⊚ IGSum.inl = g₁</code>",
+ "3411": "<code>(IGSum B₁ B₂).carrierD</code>",
+ "3410": "<code>(IGSum B₁ B₂).carrierA</code>",
  "341":
  "<code>Mathlib.Meta.NormNum.isNat_eq_true.{u} {α : Type u} [AddMonoidWithOne α] {a b : α} {c : ℕ} :\n  Mathlib.Meta.NormNum.IsNat a c → Mathlib.Meta.NormNum.IsNat b c → a = b</code>",
+ "3409": "<code>IGSum B₁ B₂ ⟶ Y</code>",
+ "3408":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ IGSum.inl = g₁ ∧ g ⊚ IGSum.inr = g₂</code>",
+ "3407": "<code>B₂ ⟶ IGSum B₁ B₂</code>",
+ "3406": "<code>B₁ ⟶ IGSum B₁ B₂</code>",
+ "3405": "<code>IrreflexiveGraph</code>",
+ "3404":
+ "<code>CM.Ex23_2.IGSum.inr {B₁ B₂ : IrreflexiveGraph} : B₂ ⟶ IGSum B₁ B₂</code>",
+ "3403":
+ "<code>CM.Ex23_2.IGSum.inl {B₁ B₂ : IrreflexiveGraph} : B₁ ⟶ IGSum B₁ B₂</code>",
+ "3402":
+ "<code>CM.Ex23_2.IGSum (B₁ B₂ : IrreflexiveGraph) : IrreflexiveGraph</code>",
+ "3401": "<code>g ⊚ Sum.inr = g₂</code>",
+ "3400": "<code>g ⊚ Sum.inl = g₁</code>",
  "340": "<code>h (-1) = 1</code>",
  "34": "<code>B</code>",
+ "3399": "<code>B₁ ⊕ B₂</code>",
+ "3398": "<code>B₁ ⊕ B₂ ⟶ Y</code>",
+ "3397":
+ "<code>∀ (Y : Type) (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y), ∃! g, g ⊚ Sum.inl = g₁ ∧ g ⊚ Sum.inr = g₂</code>",
+ "3396": "<code>B₂ → B₁ ⊕ B₂</code>",
+ "3395": "<code>B₁ → B₁ ⊕ B₂</code>",
+ "3394": "<code>B₂ ⟶ carrier</code>",
+ "3393": "<code>B₁ ⟶ carrier</code>",
+ "3392": "<code>carrier ⟶ Y</code>",
+ "3391":
+ "<code>CM.Ex23_2.CategorySum.h_univ.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : CategorySum B₁ B₂) (Y : 𝒞)\n  (g₁ : B₁ ⟶ Y) (g₂ : B₂ ⟶ Y) : ∃! g, g ⊚ self.j₁ = g₁ ∧ g ⊚ self.j₂ = g₂</code>",
+ "3390":
+ "<code>CM.Ex23_2.CategorySum.j₂.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : CategorySum B₁ B₂) :\n  B₂ ⟶ self.carrier</code>",
  "339":
  "<code class=\"docstring\">`norm_num1` normalizes numerical expressions in the goal. It is a basic version of `norm_num`\nthat does not call `simp`.\n\nBy default, it supports the operations `+` `-` `*` `/` `⁻¹` `^` and `%` over types with (at least)\nan `AddMonoidWithOne` instance, such as `ℕ`, `ℤ`, `ℚ`, `ℝ`, `ℂ`. If the goal has the form `A = B`,\n`A ≠ B`, `A &lt; B` or `A ≤ B`, where `A` and `B` are numerical expressions, `norm_num1` will try to\nclose it. It also has a relatively simple primality prover.\n:e\nThis tactic is extensible. Extensions can allow `norm_num1` to evaluate more kinds of expressions,\nor to prove more kinds of propositions. See the `@[norm_num]` attribute for further information on\nextending `norm_num1`.\n\n* `norm_num1 at l` normalizes at location(s) `l`.\n\nExamples:\n```lean\nexample : 43 ≤ 74 + (33 : ℤ) := by norm_num1\nexample : ¬ (7-2)/(2*3) ≥ (1:ℝ) + 2/(3^2) := by norm_num1\n```\n</code>",
+ "3389":
+ "<code>CM.Ex23_2.CategorySum.j₁.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : CategorySum B₁ B₂) :\n  B₁ ⟶ self.carrier</code>",
+ "3388":
+ "<code>CM.Ex23_2.CategorySum.carrier.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : CategorySum B₁ B₂) : 𝒞</code>",
+ "3387":
+ "<code>CM.Ex23_2.CategorySum.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] (B₁ B₂ : 𝒞) : Type (max u v)</code>",
+ "3386":
+ "<code>CategoryTheory.Limits.limit.lift.{v₁, u₁, v, u} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u} [Category.{v, u} C]\n  (F : J ⥤ C) [HasLimit F] (c : Cone F) : c.pt ⟶ limit F</code><span class=\"sep\"></span><code class=\"docstring\">The morphism from the cone point of any other cone to the limit object. </code>",
+ "3385": "<code>W ⟶ Y</code>",
+ "3384":
+ "<code>CategoryTheory.Limits.HasBinaryProduct.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">An abbreviation for `HasLimit (pair X Y)`. </code>",
+ "3383": "<code>HasBinaryProduct X Y</code>",
+ "3382":
+ "<code>CategoryTheory.IsIso.inv_hom_id.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (f : X ⟶ Y) [I : IsIso f] :\n  f ⊚ inv f = 𝟙 Y</code>",
+ "3381":
+ "<code>↑(t ⊚ inv t) = ↑(𝟙 T₂)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "3380":
+ "<code>CategoryTheory.IsIso.hom_inv_id.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (f : X ⟶ Y) [I : IsIso f] :\n  inv f ⊚ f = 𝟙 X</code>",
  "338": "<code>h 1 = 1</code>",
+ "3379":
+ "<code>↑(inv t ⊚ t) = ↑(𝟙 T₁)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3378":
+ "<code>T₂.carrier ⟶ T₁.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3377":
+ "<code>T₁.carrier ⟶ T₂.carrier</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3376": "<code>∀ (y : T₁ ⟶ T₂), (fun s ↦ IsIso s) y → y = t</code>",
+ "3375": "<code>IsIso t</code>",
+ "3374": "<code>IsTerminal T₂</code>",
+ "3373": "<code>IsTerminal T₁</code>",
+ "3372": "<code>T.p₁ ⊚ f = f₁ ∧ T.p₂ ⊚ f = f₂</code>",
+ "3371": "<code>XP ⟶ T</code>",
+ "3370":
+ "<code>CM.Ex23_1.PairOfMaps.mk.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (carrier : 𝒞) (p₁ : carrier ⟶ B₁)\n  (p₂ : carrier ⟶ B₂) : PairOfMaps B₁ B₂</code>",
  "337": "<code>h ∘ hinv = id</code>",
+ "3369": "<code>X ⟶ B₂</code>",
+ "3368": "<code>X ⟶ B₁</code>",
+ "3367": "<code>𝒞</code>",
+ "3366": "<code>X ⟶ T.carrier</code>",
+ "3365": "<code>{ f // Z✝.p₁ ⊚ f = Y✝.p₁ ∧ Z✝.p₂ ⊚ f = Y✝.p₂ }</code>",
+ "3364": "<code>{ f // Y✝.p₁ ⊚ f = X✝.p₁ ∧ Y✝.p₂ ⊚ f = X✝.p₂ }</code>",
+ "3363":
+ "<code>{X Y Z : PairOfMaps B₁ B₂} →\n  { f // Y.p₁ ⊚ f = X.p₁ ∧ Y.p₂ ⊚ f = X.p₂ } →\n    { f // Z.p₁ ⊚ f = Y.p₁ ∧ Z.p₂ ⊚ f = Y.p₂ } → { f // Z.p₁ ⊚ f = X.p₁ ∧ Z.p₂ ⊚ f = X.p₂ }</code><span class=\"sep\"></span><code class=\"docstring\">Composition of morphisms in a category, written `f ≫ g`. </code>",
+ "3362":
+ "<code>(X : PairOfMaps B₁ B₂) → { f // X.p₁ ⊚ f = X.p₁ ∧ X.p₂ ⊚ f = X.p₂ }</code><span class=\"sep\"></span><code class=\"docstring\">The identity morphism on an object. </code>",
+ "3361": "<code>PairOfMaps B₁ B₂</code>",
+ "3360":
+ "<code>PairOfMaps B₁ B₂ → PairOfMaps B₁ B₂ → Type (max 0 v)</code><span class=\"sep\"></span><code class=\"docstring\">The type of edges/arrows/morphisms between a given source and target. </code>",
  "336": "<code>hinv ∘ h = id</code>",
+ "3359":
+ "<code>CM.Ex23_1.PairOfMaps.p₂.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : PairOfMaps B₁ B₂) :\n  self.carrier ⟶ B₂</code>",
+ "3358":
+ "<code>CM.Ex23_1.PairOfMaps.p₁.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : PairOfMaps B₁ B₂) :\n  self.carrier ⟶ B₁</code>",
+ "3357":
+ "<code>CM.Ex23_1.PairOfMaps.carrier.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {B₁ B₂ : 𝒞} (self : PairOfMaps B₁ B₂) : 𝒞</code>",
+ "3356":
+ "<code>CM.Ex23_1.PairOfMaps.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] (B₁ B₂ : 𝒞) : Type (max u v)</code>",
  "3355": "<code>(↑f).2 1 = (↑f).2 2</code>",
  "3354": "<code>(↑f).2 0 = (↑f).2 2</code>",
  "3353": "<code>A₂.carrierD</code>",
