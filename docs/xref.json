@@ -305,6 +305,60 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum--3___-Sum-of-two-objects-in-a-category":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum--3___-Sum-of-two-objects-in-a-category",
+     "data":
+     {"title": "3. Sum of two objects in a category",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 24: Uniqueness of products and definition of sum",
+        "shortTitle": null,
+        "number": null},
+       {"title": "3. Sum of two objects in a category",
+        "shortTitle": null,
+        "number": "2"}]},
+     "address":
+     "/Session-24___-Uniqueness-of-products-and-definition-of-sum/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum--2___-The-uniqueness-theorem-for-products":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum--2___-The-uniqueness-theorem-for-products",
+     "data":
+     {"title": "2. The uniqueness theorem for products",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 24: Uniqueness of products and definition of sum",
+        "shortTitle": null,
+        "number": null},
+       {"title": "2. The uniqueness theorem for products",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address":
+     "/Session-24___-Uniqueness-of-products-and-definition-of-sum/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum",
+     "data":
+     {"title": "Session 24: Uniqueness of products and definition of sum",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 24: Uniqueness of products and definition of sum",
+        "shortTitle": null,
+        "number": null}]},
+     "address":
+     "/Session-24___-Uniqueness-of-products-and-definition-of-sum/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties--2___-How-to-calculate-products":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-23___-More-on-universal-mapping-properties--2___-How-to-calculate-products",
@@ -1469,6 +1523,28 @@
         "Article IV: Universal mapping properties",
         "1. Terminal objects"]}},
      "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.uniqueness_of_sums'":
+   [{"id": "CM___uniqueness_of_sums___",
+     "data":
+     {"/Session-24___-Uniqueness-of-products-and-definition-of-sum/#CM___uniqueness_of_sums___":
+      {"display": "uniqueness_of_sums'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 24: Uniqueness of products and definition of sum",
+        "3. Sum of two objects in a category"]}},
+     "address":
+     "/Session-24___-Uniqueness-of-products-and-definition-of-sum/"}],
+   "CM.uniqueness_of_sums":
+   [{"id": "CM___uniqueness_of_sums",
+     "data":
+     {"/Session-24___-Uniqueness-of-products-and-definition-of-sum/#CM___uniqueness_of_sums":
+      {"display": "uniqueness_of_sums",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 24: Uniqueness of products and definition of sum",
+        "3. Sum of two objects in a category"]}},
+     "address":
+     "/Session-24___-Uniqueness-of-products-and-definition-of-sum/"}],
    "CM.uniqueness_of_products'":
    [{"id": "CM___uniqueness_of_products___",
      "data":
@@ -4922,6 +4998,17 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex24_2.IG2":
+   [{"id": "CM___Ex24_2___IG2",
+     "data":
+     {"/Session-24___-Uniqueness-of-products-and-definition-of-sum/#CM___Ex24_2___IG2":
+      {"display": "IG2",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 24: Uniqueness of products and definition of sum",
+        "3. Sum of two objects in a category"]}},
+     "address":
+     "/Session-24___-Uniqueness-of-products-and-definition-of-sum/"}],
    "CM.Ex23_2.IGSum.inr":
    [{"id": "CM___Ex23_2___IGSum___inr",
      "data":

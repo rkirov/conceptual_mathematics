@@ -994,31 +994,210 @@
  "357": "<code>hinv 1 = -1</code>",
  "356": "<code>hinv 1 = 1</code>",
  "355": "<code>hinv (h (-1)) = -1</code>",
+ "3543": "<code>G ≅ prodAD</code>",
+ "3542":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ : Y ⟶ A) (g₂ : Y ⟶ D), ∃! g, g₁ = pG₁ ⊚ g ∧ g₂ = pG₂ ⊚ g</code>",
+ "3541":
+ "<code>(Empty.elim, fun x ↦ x).2 ⊚ G.toSrc = A.toSrc ⊚ (Empty.elim, fun x ↦ x).1 ∧\n  (Empty.elim, fun x ↦ x).2 ⊚ G.toTgt = A.toTgt ⊚ (Empty.elim, fun x ↦ x).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3540":
+ "<code>(G.carrierA ⟶ A.carrierA) × (G.carrierD ⟶ A.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
  "354": "<code>hinv (h 1) = 1</code>",
+ "3539": "<code>G ⟶ A</code>",
+ "3538": "<code>Y ⟶ prodAD</code>",
+ "3537": "<code>Y ⟶ A</code>",
+ "3536":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ : Y ⟶ A) (g₂ : Y ⟶ D), ∃! g, g₁ = p₁ ⊚ g ∧ g₂ = p₂ ⊚ g</code>",
+ "3535": "<code>prodAD ⟶ D</code>",
+ "3534": "<code>prodAD ⟶ A</code>",
+ "3533":
+ "<code>⟨((↑p₁).1, fun x ↦ ()), ⋯⟩ ⊚ Classical.choose ⋯ = 𝟙 D</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "3532": "<code>prodDD.carrierA</code>",
+ "3531":
+ "<code>𝟙 D = p₁ ⊚ Classical.choose ⋯ ∧ 𝟙 D = p₂ ⊚ Classical.choose ⋯</code>",
+ "3530":
+ "<code>Classical.choose ⋯ ⊚ ⟨((↑p₁).1, fun x ↦ ()), ⋯⟩ = 𝟙 prodDD</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
  "353":
  "<code>Int.ofNat : ℕ → ℤ</code><span class=\"sep\"></span><code class=\"docstring\">A natural number is an integer.\n\nThis constructor covers the non-negative integers (from `0` to `∞`).\n</code>",
+ "3529":
+ "<code>ExistsUnique.exists.{u_1} {α : Sort u_1} {p : α → Prop} : (∃! x, p x) → ∃ x, p x</code>",
+ "3528":
+ "<code>D ⟶ prodDD</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3527": "<code>prodDD.carrierD</code>",
+ "3526":
+ "<code>((↑p₁).1, fun x ↦ ()).2 ⊚ prodDD.toSrc = D.toSrc ⊚ ((↑p₁).1, fun x ↦ ()).1 ∧\n  ((↑p₁).1, fun x ↦ ()).2 ⊚ prodDD.toTgt = D.toTgt ⊚ ((↑p₁).1, fun x ↦ ()).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3525":
+ "<code>(prodDD.carrierA ⟶ D.carrierA) × (prodDD.carrierD ⟶ D.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "3524":
+ "<code>{ f // f.2 ⊚ prodDD.toSrc = D.toSrc ⊚ f.1 ∧ f.2 ⊚ prodDD.toTgt = D.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3523": "<code>Y ⟶ prodDD</code>",
+ "3522":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ g₂ : Y ⟶ D), ∃! g, g₁ = p₁ ⊚ g ∧ g₂ = p₂ ⊚ g</code>",
+ "3521": "<code>prodDD ⟶ D</code>",
+ "3520": "<code>G ≅ prod2D</code>",
  "352":
  "<code>Int.negOfNat : ℕ → ℤ</code><span class=\"sep\"></span><code class=\"docstring\">Negation of natural numbers.\n\nExamples:\n* `Int.negOfNat 6 = -6`\n* `Int.negOfNat 0 = 0`\n</code>",
+ "3519": "<code>g₁ = pG₁ ⊚ g ∧ g₂ = pG₂ ⊚ g</code>",
+ "3518":
+ "<code>((↑g₂).1, (↑g₁).2).2 ⊚ Y.toSrc = G.toSrc ⊚ ((↑g₂).1, (↑g₁).2).1 ∧\n  ((↑g₂).1, (↑g₁).2).2 ⊚ Y.toTgt = G.toTgt ⊚ ((↑g₂).1, (↑g₁).2).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3517":
+ "<code>(Y.carrierA ⟶ G.carrierA) × (Y.carrierD ⟶ G.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "3516": "<code>Y ⟶ G</code>",
+ "3515":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ : Y ⟶ IG2) (g₂ : Y ⟶ D), ∃! g, g₁ = pG₁ ⊚ g ∧ g₂ = pG₂ ⊚ g</code>",
+ "3514": "<code>[] = b :: as</code>",
+ "3513": "<code>List.ctorIdx.{u} {α : Type u} : List α → ℕ</code>",
+ "3512": "<code>[] = x :: as</code>",
+ "3511": "<code>List.Mem x []</code>",
+ "3510": "<code>(fun i ↦ i) ⟨1, ⋯⟩ ≍ b</code>",
  "351":
  "<code>Mathlib.Meta.NormNum.IsNat.to_isInt.{u_1} {α : Type u_1} [Ring α] {a : α} {n : ℕ} :\n  Mathlib.Meta.NormNum.IsNat a n → Mathlib.Meta.NormNum.IsInt a (Int.ofNat n)</code>",
+ "3509": "<code>(fun x1 x2 ↦ (fun i ↦ i) x1 :: x2) ⟨1, ⋯⟩ [] = b :: as</code>",
+ "3508": "<code>a ≍ ⋯</code>",
+ "3507": "<code>[] ≍ as</code>",
+ "3506":
+ "<code>List.Mem ((fun i ↦ i) ⟨1, ⋯⟩) ((fun x1 x2 ↦ (fun i ↦ i) x1 :: x2) ⟨1, ⋯⟩ [])</code>",
+ "3505": "<code>(fun i ↦ i) ⟨1, ⋯⟩ ≍ x</code>",
+ "3504": "<code>(fun x1 x2 ↦ (fun i ↦ i) x1 :: x2) ⟨1, ⋯⟩ [] = x :: as</code>",
+ "3503": "<code>List.Mem x a_1</code>",
+ "3502": "<code>⋯ ≍ ⋯</code>",
+ "3501":
+ "<code>List.Mem x ((fun x1 x2 ↦ (fun i ↦ i) x1 :: x2) ⟨1, ⋯⟩ [])</code>",
+ "3500":
+ "<code>List.Mem.{u} {α : Type u} (a : α) : List α → Prop</code><span class=\"sep\"></span><code class=\"docstring\">List membership, typically accessed via the `∈` operator.\n\n`a ∈ l` means that `a` is an element of the list `l`. Elements are compared according to Lean's\nlogical equality.\n\nThe related function `List.elem` is a Boolean membership test that uses a `BEq α` instance.\n\nExamples:\n* `a ∈ [x, y, z] ↔ a = x ∨ a = y ∨ a = z`\n</code>",
  "350":
  "<code>Neg.neg.{u} {α : Type u} [self : Neg α] : α → α</code><span class=\"sep\"></span><code class=\"docstring\">`-a` computes the negative or opposite of `a`.\nThe meaning of this notation is type-dependent. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `-` in identifiers is `neg` (when used as a unary operator).</code>",
  "35":
  "<code class=\"docstring\">Assuming `x` is a variable in the local context with an inductive type,\n`cases x` splits the main goal, producing one goal for each constructor of the\ninductive type, in which the target is replaced by a general instance of that constructor.\nIf the type of an element in the local context depends on `x`,\nthat element is reverted and reintroduced afterward,\nso that the case split affects that hypothesis as well.\n`cases` detects unreachable cases and closes them automatically.\n\nFor example, given `n : Nat` and a goal with a hypothesis `h : P n` and target `Q n`,\n`cases n` produces one goal with hypothesis `h : P 0` and target `Q 0`,\nand one goal with hypothesis `h : P (Nat.succ a)` and target `Q (Nat.succ a)`.\nHere the name `a` is chosen automatically and is not accessible.\nYou can use `with` to provide the variables names for each constructor.\n- `cases e`, where `e` is an expression instead of a variable, generalizes `e` in the goal,\n  and then cases on the resulting variable.\n- Given `as : List α`, `cases as with | nil =&gt; tac₁ | cons a as' =&gt; tac₂`,\n  uses tactic `tac₁` for the `nil` case, and `tac₂` for the `cons` case,\n  and `a` and `as'` are used as names for the new variables introduced.\n- `cases h : e`, where `e` is a variable or an expression,\n  performs cases on `e` as above, but also adds a hypothesis `h : e = ...` to each goal,\n  where `...` is the constructor instance for that particular case.\n</code>",
+ "3499":
+ "<code>List.Mem.tail.{u} {α : Type u} {a : α} (b : α) {as : List α} : List.Mem a as → List.Mem a (b :: as)</code><span class=\"sep\"></span><code class=\"docstring\">A member of the tail of a list is a member of the list: `a ∈ l → a ∈ b :: l`. </code>",
+ "3498": "<code>(fun i ↦ i) ⟨0, ⋯⟩ ≍ b</code>",
+ "3497": "<code>List.finRange 2 = b :: as</code>",
+ "3496": "<code>List.Mem x as</code>",
+ "3495": "<code>this ≍ ⋯</code>",
+ "3494": "<code>Nat.le_of_lt {n m : ℕ} : n &lt; m → n ≤ m</code>",
+ "3493": "<code>(fun x1 x2 ↦ (fun i ↦ i) x1 :: x2) ⟨1, ⋯⟩ [] ≍ as</code>",
+ "3492": "<code>(fun i ↦ i) ⟨0, ⋯⟩ ∈ Fintype.elems</code>",
+ "3491":
+ "<code>List.Mem.head.{u} {α : Type u} {a : α} (as : List α) : List.Mem a (a :: as)</code><span class=\"sep\"></span><code class=\"docstring\">The head of a list is a member: `a ∈ a :: as`. </code>",
+ "3490":
+ "<code>List.nil.{u} {α : Type u} : List α</code><span class=\"sep\"></span><code class=\"docstring\">The empty list, usually written `[]`. \n\nConventions for notations in identifiers:\n\n * The recommended spelling of `[]` in identifiers is `nil`.</code>",
  "349":
  "<code>Mathlib.Meta.NormNum.isInt_neg.{u_1} {α : Type u_1} [Ring α] {f : α → α} {a : α} {a' b : ℤ} :\n  f = Neg.neg → Mathlib.Meta.NormNum.IsInt a a' → a'.neg = b → Mathlib.Meta.NormNum.IsInt (-a) b</code>",
+ "3489": "<code>Nat.le_refl (n : ℕ) : n ≤ n</code>",
+ "3488":
+ "<code>List.cons.{u} {α : Type u} (head : α) (tail : List α) : List α</code><span class=\"sep\"></span><code class=\"docstring\">The list whose first element is `head`, where `tail` is the rest of the list.\nUsually written `head :: tail`.\n\n\nConventions for notations in identifiers:\n\n * The recommended spelling of `::` in identifiers is `cons`.\n\n * The recommended spelling of `[a]` in identifiers is `singleton`.</code>",
+ "3487": "<code>List (Fin 2)</code>",
+ "3486":
+ "<code>Fintype.elems.{u_4} {α : Type u_4} [self : Fintype α] : Finset α</code><span class=\"sep\"></span><code class=\"docstring\">The `Finset` containing all elements of a `Fintype` </code>",
+ "3485": "<code>x ∈ Fintype.elems</code>",
+ "3484": "<code>(fun i ↦ i) ⟨0, ⋯⟩ ≍ x</code>",
+ "3483":
+ "<code>List.cons.noConfusion.{u_1, u} {α : Type u} {P : Sort u_1} {head : α} {tail : List α} {head' : α} {tail' : List α}\n  (eq : head :: tail = head' :: tail') (k : head ≍ head' → tail ≍ tail' → P) : P</code>",
+ "3482": "<code>List.finRange 2 = x :: as</code>",
+ "3481":
+ "<code>Fintype.complete.{u_4} {α : Type u_4} [self : Fintype α] (x : α) : x ∈ Fintype.elems</code><span class=\"sep\"></span><code class=\"docstring\">A proof that `elems` contains every element of the type </code>",
+ "3480":
+ "<code>List.finRange (n : ℕ) : List (Fin n)</code><span class=\"sep\"></span><code class=\"docstring\">Lists all elements of `Fin n` in order, starting at `0`.\n\nExamples:\n* `List.finRange 0 = ([] : List (Fin 0))`\n* `List.finRange 2 = ([0, 1] : List (Fin 2))`\n</code>",
  "348":
  "<code>Mathlib.Meta.NormNum.isInt_mul.{u_1} {α : Type u_1} [Ring α] {f : α → α → α} {a b : α} {a' b' c : ℤ} :\n  f = HMul.hMul →\n    Mathlib.Meta.NormNum.IsInt a a' →\n      Mathlib.Meta.NormNum.IsInt b b' → a'.mul b' = c → Mathlib.Meta.NormNum.IsInt (a * b) c</code>",
+ "3479": "<code>List.Mem x a</code>",
+ "3478": "<code>List G.carrierD</code>",
+ "3477":
+ "<code>List.Mem.casesOn.{u} {α : Type u} {a : α} {motive : (a_1 : List α) → List.Mem a a_1 → Prop} {a✝ : List α}\n  (t : List.Mem a a✝) (head : ∀ (as : List α), motive (a :: as) ⋯)\n  (tail : ∀ (b : α) {as : List α} (a_1 : List.Mem a as), motive (b :: as) ⋯) : motive a✝ t</code>",
+ "3476": "<code>Empty</code>",
+ "3475":
+ "<code>Empty.casesOn.{u} (motive : Empty → Sort u) (t : Empty) : motive t</code>",
+ "3474": "<code>G ≅ sumDD</code>",
+ "3473": "<code>f₁ = f ⊚ jG₁ ∧ f₂ = f ⊚ jG₂</code>",
+ "3472":
+ "<code>(Empty.elim, fun x ↦\n          match x with\n          | 0 =&gt; (↑f₁).2 ()\n          | 1 =&gt; (↑f₂).2 ()).2 ⊚\n      G.toSrc =\n    X.toSrc ⊚\n      (Empty.elim, fun x ↦\n          match x with\n          | 0 =&gt; (↑f₁).2 ()\n          | 1 =&gt; (↑f₂).2 ()).1 ∧\n  (Empty.elim, fun x ↦\n          match x with\n          | 0 =&gt; (↑f₁).2 ()\n          | 1 =&gt; (↑f₂).2 ()).2 ⊚\n      G.toTgt =\n    X.toTgt ⊚\n      (Empty.elim, fun x ↦\n          match x with\n          | 0 =&gt; (↑f₁).2 ()\n          | 1 =&gt; (↑f₂).2 ()).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3471":
+ "<code>(G.carrierA ⟶ X.carrierA) × (G.carrierD ⟶ X.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "3470": "<code>G ⟶ X</code>",
  "347":
  "<code>Mathlib.Meta.NormNum.IsInt.to_isNat.{u_1} {α : Type u_1} [Ring α] {a : α} {n : ℕ} :\n  Mathlib.Meta.NormNum.IsInt a (Int.ofNat n) → Mathlib.Meta.NormNum.IsNat a n</code>",
+ "3469":
+ "<code>∀ (X : IrreflexiveGraph) (f₁ f₂ : D ⟶ X), ∃! f, f₁ = f ⊚ jG₁ ∧ f₂ = f ⊚ jG₂</code>",
+ "3468":
+ "<code>(Empty.elim, fun x ↦ ()).2 ⊚ G.toSrc = D.toSrc ⊚ (Empty.elim, fun x ↦ ()).1 ∧\n  (Empty.elim, fun x ↦ ()).2 ⊚ G.toTgt = D.toTgt ⊚ (Empty.elim, fun x ↦ ()).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3467":
+ "<code>(G.carrierA ⟶ D.carrierA) × (G.carrierD ⟶ D.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "3466": "<code>G ⟶ D</code>",
+ "3465": "<code>G.carrierA</code>",
+ "3464":
+ "<code>(Empty.elim, fun x ↦ x).2 ⊚ G.toSrc = IG2.toSrc ⊚ (Empty.elim, fun x ↦ x).1 ∧\n  (Empty.elim, fun x ↦ x).2 ⊚ G.toTgt = IG2.toTgt ⊚ (Empty.elim, fun x ↦ x).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3463":
+ "<code>(G.carrierA ⟶ IG2.carrierA) × (G.carrierD ⟶ IG2.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "3462": "<code>G ⟶ IG2</code>",
+ "3461":
+ "<code>(Empty.elim, fun x ↦ 1).2 ⊚ D.toSrc = G.toSrc ⊚ (Empty.elim, fun x ↦ 1).1 ∧\n  (Empty.elim, fun x ↦ 1).2 ⊚ D.toTgt = G.toTgt ⊚ (Empty.elim, fun x ↦ 1).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
+ "3460":
+ "<code>(Empty.elim, fun x ↦ 0).2 ⊚ D.toSrc = G.toSrc ⊚ (Empty.elim, fun x ↦ 0).1 ∧\n  (Empty.elim, fun x ↦ 0).2 ⊚ D.toTgt = G.toTgt ⊚ (Empty.elim, fun x ↦ 0).1</code><span class=\"sep\"></span><code class=\"docstring\">The proof that `val` satisfies the predicate `p`.\n</code>",
  "346": "<code>(hinv ∘ h) (-1) = -1</code>",
+ "3459":
+ "<code>(D.carrierA ⟶ G.carrierA) × (D.carrierD ⟶ G.carrierD)</code><span class=\"sep\"></span><code class=\"docstring\">The value in the underlying type that satisfies the predicate.\n</code>",
+ "3458": "<code>D ⟶ G</code>",
+ "3457": "<code>Empty → Fin 2</code>",
+ "3456": "<code>Y ⟶ prod2D</code>",
+ "3455": "<code>Y ⟶ D</code>",
+ "3454": "<code>Y ⟶ IG2</code>",
+ "3453":
+ "<code>∀ (Y : IrreflexiveGraph) (g₁ : Y ⟶ IG2) (g₂ : Y ⟶ D), ∃! g, g₁ = p₁ ⊚ g ∧ g₂ = p₂ ⊚ g</code>",
+ "3452": "<code>prod2D ⟶ D</code>",
+ "3451": "<code>prod2D ⟶ IG2</code>",
+ "3450": "<code>sumDD ⟶ X</code>",
  "345": "<code>(hinv ∘ h) 1 = 1</code>",
+ "3449":
+ "<code>∀ (X : IrreflexiveGraph) (f₁ f₂ : D ⟶ X), ∃! f, f₁ = f ⊚ j₁ ∧ f₂ = f ⊚ j₂</code>",
+ "3448": "<code>D ⟶ sumDD</code>",
+ "3447": "<code>CM.Ex24_2.IG2 : IrreflexiveGraph</code>",
+ "3446":
+ "<code>f ⊚ g = 𝟙 T</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "3445":
+ "<code>g ⊚ f = 𝟙 S</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3444":
+ "<code>T ⟶ S</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3443":
+ "<code>S ⟶ T</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3442": "<code>f ⊚ g = 𝟙 T</code>",
+ "3441": "<code>g ⊚ f = 𝟙 S</code>",
+ "3440":
+ "<code>∀ (y : T ⟶ S), (fun f ↦ j₁ = f ⊚ k₁ ∧ j₂ = f ⊚ k₂) y → y = g</code>",
  "344":
  "<code>Nat.cast_one.{u_1} {R : Type u_1} [AddMonoidWithOne R] : ↑1 = 1</code>",
+ "3439": "<code>j₁ = g ⊚ k₁ ∧ j₂ = g ⊚ k₂</code>",
+ "3438": "<code>T ⟶ S</code>",
+ "3437":
+ "<code>∀ (y : S ⟶ T), (fun f ↦ k₁ = f ⊚ j₁ ∧ k₂ = f ⊚ j₂) y → y = f</code>",
+ "3436": "<code>k₁ = f ⊚ j₁ ∧ k₂ = f ⊚ j₂</code>",
+ "3435": "<code>S ⟶ T</code>",
+ "3434":
+ "<code>∀ (X : 𝒞) (f₁ : B₁ ⟶ X) (f₂ : B₂ ⟶ X), ∃! f, f₁ = f ⊚ k₁ ∧ f₂ = f ⊚ k₂</code>",
+ "3433": "<code>B₂ ⟶ T</code>",
+ "3432": "<code>B₁ ⟶ T</code>",
+ "3431": "<code>S ⟶ X</code>",
+ "3430": "<code>B₂ ⟶ X</code>",
  "343":
  "<code>Mathlib.Meta.NormNum.isNat_ofNat.{u} (α : Type u) [AddMonoidWithOne α] {a : α} {n : ℕ} (h : ↑n = a) :\n  Mathlib.Meta.NormNum.IsNat a n</code>",
+ "3429": "<code>B₁ ⟶ X</code>",
+ "3428":
+ "<code>∀ (X : 𝒞) (f₁ : B₁ ⟶ X) (f₂ : B₂ ⟶ X), ∃! f, f₁ = f ⊚ j₁ ∧ f₂ = f ⊚ j₂</code>",
+ "3427":
+ "<code>CM.uniqueness_of_sums'.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] (B₁ B₂ S T : 𝒞) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)\n  (hS : ∀ (X : 𝒞) (f₁ : B₁ ⟶ X) (f₂ : B₂ ⟶ X), ∃! f, f₁ = f ⊚ j₁ ∧ f₂ = f ⊚ j₂) (k₁ : B₁ ⟶ T) (k₂ : B₂ ⟶ T)\n  (hT : ∀ (X : 𝒞) (f₁ : B₁ ⟶ X) (f₂ : B₂ ⟶ X), ∃! f, f₁ = f ⊚ k₁ ∧ f₂ = f ⊚ k₂) : Nonempty (S ≅ T)</code>",
+ "3426":
+ "<code>CategoryTheory.Limits.IsColimit.nonempty_isColimit_iff_isIso_desc.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J]\n  {C : Type u₃} [Category.{v₃, u₃} C] {F : J ⥤ C} {s t : Cocone F} (hs : IsColimit s) :\n  Nonempty (IsColimit t) ↔ IsIso (hs.desc t)</code>",
+ "3425":
+ "<code>coconeT.ι.app { as := WalkingPair.right } = f ⊚ coconeS.ι.app { as := WalkingPair.right }</code>",
+ "3424":
+ "<code>coconeT.ι.app { as := WalkingPair.left } = f ⊚ coconeS.ι.app { as := WalkingPair.left }</code>",
+ "3423": "<code>coconeT.pt ⟶ coconeS.pt</code>",
+ "3422": "<code>coconeS.pt ⟶ coconeT.pt</code>",
+ "3421": "<code>IsColimit coconeT</code>",
+ "3420": "<code>IsColimit coconeS</code>",
  "342":
  "<code>Mathlib.Meta.NormNum.isNat_mul.{u_1} {α : Type u_1} [Semiring α] {f : α → α → α} {a b : α} {a' b' c : ℕ} :\n  f = HMul.hMul →\n    Mathlib.Meta.NormNum.IsNat a a' →\n      Mathlib.Meta.NormNum.IsNat b b' → a'.mul b' = c → Mathlib.Meta.NormNum.IsNat (a * b) c</code>",
+ "3419":
+ "<code>CM.uniqueness_of_sums.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] (B₁ B₂ : 𝒞) (coconeS coconeT : BinaryCofan B₁ B₂)\n  (sumS : IsColimit coconeS) (sumT : IsColimit coconeT) :\n  ∃! f,\n    (coconeT.ι.app { as := WalkingPair.left } = f ⊚ coconeS.ι.app { as := WalkingPair.left } ∧\n        coconeT.ι.app { as := WalkingPair.right } = f ⊚ coconeS.ι.app { as := WalkingPair.right }) ∧\n      IsIso f</code>",
  "3418": "<code>(↑(g ⊚ IGSum.inr)).2 = (↑g₂).2</code>",
  "3417": "<code>(↑(g ⊚ IGSum.inr)).1 = (↑g₂).1</code>",
  "3416":
