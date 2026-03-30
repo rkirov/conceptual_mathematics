@@ -962,38 +962,352 @@
  "38": "<code>A</code>",
  "379":
  "<code>Finset.filter.{u_1} {α : Type u_1} (p : α → Prop) [DecidablePred p] (s : Finset α) : Finset α</code><span class=\"sep\"></span><code class=\"docstring\">`Finset.filter p s` is the set of elements of `s` that satisfy `p`.\n\nFor example, one can use `s.filter (· ∈ t)` to get the intersection of `s` with `t : Set α`\nas a `Finset α` (when a `DecidablePred (· ∈ t)` instance is available). </code>",
+ "3789":
+ "<code>CategoryTheory.Limits.coprod.inr.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} [HasBinaryCoproduct X Y] : Y ⟶ X ⨿ Y</code><span class=\"sep\"></span><code class=\"docstring\">The inclusion map from the second component of the coproduct. </code>",
+ "3788":
+ "<code>CategoryTheory.Limits.coprod.inl.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} [HasBinaryCoproduct X Y] : X ⟶ X ⨿ Y</code><span class=\"sep\"></span><code class=\"docstring\">The inclusion map from the first component of the coproduct. </code>",
+ "3787":
+ "<code>CategoryTheory.Limits.coprod.desc.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} [HasBinaryCoproduct X Y]\n  (f : X ⟶ W) (g : Y ⟶ W) : X ⨿ Y ⟶ W</code><span class=\"sep\"></span><code class=\"docstring\">If the coproduct of `X` and `Y` exists, then every pair of morphisms `f : X ⟶ W` and\n`g : Y ⟶ W` induces a morphism `coprod.desc f g : X ⨿ Y ⟶ W`. </code>",
+ "3786":
+ "<code>CategoryTheory.Limits.limit.isoLimitCone.{v₁, u₁, v, u} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u}\n  [Category.{v, u} C] {F : J ⥤ C} [HasLimit F] (t : LimitCone F) : limit F ≅ t.cone.pt</code><span class=\"sep\"></span><code class=\"docstring\">Given any other limit cone for `F`, the chosen `limit F` is isomorphic to the cone point.\n</code>",
+ "3785": "<code>C.carrierD</code>",
+ "3784":
+ "<code>⟨(id, swapD), ⋯⟩ ⊚ ⟨(id, swapD), ⋯⟩ = 𝟙 (A.prodObj C)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "3783": "<code>B.carrierD</code>",
+ "3782":
+ "<code>⟨(id, swapD), ⋯⟩ ⊚ ⟨(id, swapD), ⋯⟩ = 𝟙 (A.prodObj B)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3781": "<code>C.carrierA</code>",
+ "3780":
+ "<code>{ f // f.2 ⊚ (A.prodObj C).toSrc = (A.prodObj B).toSrc ⊚ f.1 ∧ f.2 ⊚ (A.prodObj C).toTgt = (A.prodObj B).toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
  "378":
  "<code>CM.Chad's_formula.pinvCount.{u_1, u_2} {α : Type u_1} {χ : Type u_2} [DecidableEq α] (X : Finset χ) (p : χ → α)\n  (a : α) : ℕ</code>",
+ "3779": "<code>B.carrierA</code>",
+ "3778":
+ "<code>{ f // f.2 ⊚ (A.prodObj B).toSrc = (A.prodObj C).toSrc ⊚ f.1 ∧ f.2 ⊚ (A.prodObj B).toTgt = (A.prodObj C).toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3777": "<code>A.prodObj B ≅ A.prodObj C</code>",
+ "3776": "<code>Fin 2 × Fin 3</code>",
+ "3775": "<code>CM.Ex25_5.swapD : Fin 2 × Fin 3 → Fin 2 × Fin 3</code>",
+ "3774":
+ "<code>CategoryTheory.Limits.LimitCone.mk.{v₁, u₁, v, u} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u} [Category.{v, u} C]\n  {F : J ⥤ C} (cone : Cone F) (isLimit : IsLimit cone) : LimitCone F</code>",
+ "3773":
+ "<code>CategoryTheory.Limits.HasLimit.mk.{v₁, u₁, v, u} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u} [Category.{v, u} C]\n  {F : J ⥤ C} (d : LimitCone F) : HasLimit F</code>",
+ "3772": "<code>x✝¹.pt ⟶ Y</code>",
+ "3771": "<code>x✝¹.pt ⟶ X</code>",
+ "3770": "<code>x✝¹.pt.carrierD</code>",
  "377": "<code>χ → α</code>",
+ "3769": "<code>x✝¹.pt.carrierA</code>",
+ "3768": "<code>x✝¹.pt ⟶ X.prodObj Y</code>",
+ "3767": "<code>X.sndHom Y ⊚ x✝ = x✝¹.snd</code>",
+ "3766": "<code>X.fstHom Y ⊚ x✝ = x✝¹.fst</code>",
+ "3765": "<code>s.pt.carrierD</code>",
+ "3764": "<code>s.pt.carrierA</code>",
+ "3763": "<code>BinaryFan X Y</code>",
+ "3762":
+ "<code>CategoryTheory.Limits.BinaryFan.isLimitMk.{v, u} {C : Type u} [Category.{v, u} C] {X Y W : C} {fst : W ⟶ X}\n  {snd : W ⟶ Y} (lift : (s : BinaryFan X Y) → s.pt ⟶ W) (fac_left : ∀ (s : BinaryFan X Y), fst ⊚ lift s = s.fst)\n  (fac_right : ∀ (s : BinaryFan X Y), snd ⊚ lift s = s.snd)\n  (uniq : ∀ (s : BinaryFan X Y) (m : s.pt ⟶ W), fst ⊚ m = s.fst → snd ⊚ m = s.snd → m = lift s) :\n  IsLimit (BinaryFan.mk fst snd)</code><span class=\"sep\"></span><code class=\"docstring\">This is a more convenient formulation to show that a `BinaryFan` constructed using\n`BinaryFan.mk` is a limit cone.\n</code>",
+ "3761":
+ "<code>CM.IrreflexiveGraph.isLimit (X Y : IrreflexiveGraph) : IsLimit (X.binaryFan Y)</code>",
+ "3760":
+ "<code>CM.IrreflexiveGraph.binaryFan (X Y : IrreflexiveGraph) : BinaryFan X Y</code>",
  "376": "<code>Finset χ</code>",
+ "3759":
+ "<code>CM.IrreflexiveGraph.sndHom (X Y : IrreflexiveGraph) : X.prodObj Y ⟶ Y</code>",
+ "3758":
+ "<code>Prod.fst.{u, v} {α : Type u} {β : Type v} (self : α × β) : α</code><span class=\"sep\"></span><code class=\"docstring\">The first element of a pair. </code>",
+ "3757":
+ "<code>CM.IrreflexiveGraph.fstHom (X Y : IrreflexiveGraph) : X.prodObj Y ⟶ X</code>",
+ "3756": "<code>X.carrierA × Y.carrierA</code>",
+ "3755": "<code>X.carrierA × Y.carrierA → X.carrierD × Y.carrierD</code>",
+ "3754":
+ "<code>CM.IrreflexiveGraph.prodObj (X Y : IrreflexiveGraph) : IrreflexiveGraph</code>",
+ "3753": "<code>Fin 3 → Fin 3</code>",
+ "3752": "<code>Fin 2 → Fin 2</code>",
+ "3751":
+ "<code>∀ (gA : Fin 2 → Fin 2) (gD : Fin 3 → Fin 3),\n  (∀ (a : Fin 2), gD (C.toSrc a) = B.toSrc (gA a)) → (∀ (a : Fin 2), gD (C.toTgt a) = B.toTgt (gA a)) → False</code>",
+ "3750": "<code>hom✝ ⊚ g = 𝟙 C</code>",
  "375":
  "<code>DecidableEq.{u} (α : Sort u) : Sort (max 1 u)</code><span class=\"sep\"></span><code class=\"docstring\">Propositional equality is `Decidable` for all elements of a type.\n\nIn other words, an instance of `DecidableEq α` is a means of deciding the proposition `a = b` is\nfor all `a b : α`.\n</code>",
+ "3749": "<code>g ⊚ hom✝ = 𝟙 B</code>",
+ "3748": "<code>B ≅ C</code>",
+ "3747": "<code>CM.Ex25_5.C : IrreflexiveGraph</code>",
+ "3746": "<code>CM.Ex25_5.B : IrreflexiveGraph</code>",
+ "3745": "<code>(X.toSrc ⊚ (↑g).1) 1 = (X.toTgt ⊚ (↑g).1) 0</code>",
+ "3744": "<code>((↑g).2 ⊚ A₂.toTgt) 0 = (X.toTgt ⊚ (↑g).1) 0</code>",
+ "3743": "<code>((↑g).2 ⊚ A₂.toSrc) 1 = (X.toSrc ⊚ (↑g).1) 1</code>",
+ "3742": "<code>A₂ ⟶ X</code>",
+ "3741": "<code>X.toTgt a = X.toSrc aX</code>",
+ "3740": "<code>∀ (a₁ a₂ : X.carrierA), X.toSrc a₂ ≠ X.toTgt a₁</code>",
  "374":
  "<code>CM.Chad's_formula.{u_1, u_2} {α : Type u_1} {χ : Type u_2} [DecidableEq α] [Fintype α] [Fintype χ] (X : Finset χ)\n  (A : Finset α) (p : χ → α) : ℕ</code>",
+ "3739": "<code>A.toTgt ((↑f).1 aX₁) = A.toSrc ((↑f).1 aX₂)</code>",
+ "3738": "<code>(↑f).2 (X.toTgt aX₁) = A.toTgt ((↑f).1 aX₁)</code>",
+ "3737": "<code>(↑f).2 (X.toSrc aX₂) = A.toSrc ((↑f).1 aX₂)</code>",
+ "3736": "<code>X.toSrc aX₂ = X.toTgt aX₁</code>",
+ "3735": "<code>¬∃ a₁ a₂, X.toSrc a₂ = X.toTgt a₁</code>",
+ "3734": "<code>∃ a₁ a₂, X.toSrc a₂ = X.toTgt a₁</code>",
+ "3733":
+ "<code>IsEmpty.elim.{u, v} {α : Sort u} : IsEmpty α → {p : α → Sort v} → (a : α) → p a</code><span class=\"sep\"></span><code class=\"docstring\">Eliminate out of a type that `IsEmpty` (using projection notation). </code>",
+ "3732": "<code>IsEmpty X.carrierA</code>",
+ "3731":
+ "<code>not_nonempty_iff.{u_1} {α : Sort u_1} : ¬Nonempty α ↔ IsEmpty α</code>",
+ "3730": "<code>X ⟶ D</code>",
  "373": "<code>kinv 1 = -1</code>",
+ "3729": "<code>¬Nonempty X.carrierA</code>",
+ "3728": "<code>Nonempty X.carrierA</code>",
+ "3727": "<code>X ⟶ IrreflexiveGraph.Zero</code>",
+ "3726": "<code>¬Nonempty X.carrierD</code>",
+ "3725": "<code>Nonempty X.carrierD</code>",
+ "3724": "<code>CM.IrreflexiveGraph.A₂ : IrreflexiveGraph</code>",
+ "3723": "<code>CM.IrreflexiveGraph.Zero : IrreflexiveGraph</code>",
+ "3722": "<code>IsTricolouring Y gD</code>",
+ "3721": "<code>Y.carrierA ⟶ F.carrierA</code>",
+ "3720": "<code>gD = c</code>",
  "372": "<code>kinv 1 = 1</code>",
+ "3719": "<code>(fst✝, gD).2 ⊚ Y.toTgt = F.toTgt ⊚ (fst✝, gD).1</code>",
+ "3718": "<code>(fst✝, gD).2 ⊚ Y.toSrc = F.toSrc ⊚ (fst✝, gD).1</code>",
+ "3717": "<code>Y.carrierD ⟶ F.carrierD</code>",
+ "3716": "<code>Y ⟶ F</code>",
+ "3715": "<code>IsTricolouring Y c</code>",
+ "3714": "<code>Y.carrierD ⟶ Tricolour</code>",
+ "3713": "<code>F.carrierA</code>",
+ "3712": "<code>{ p // p.1 ≠ p.2 }</code>",
+ "3711": "<code>{ p // p.1 ≠ p.2 } → Tricolour</code>",
+ "3710": "<code>Tricolour × Tricolour</code>",
  "371": "<code>kinv (k (-1)) = -1</code>",
+ "3709": "<code>CM.Ex25_3.F : IrreflexiveGraph</code>",
+ "3708": "<code>f ⊚ tgtDot a = tgtDot ((↑f).1 a)</code>",
+ "3707": "<code>f ⊚ srcDot a = srcDot ((↑f).1 a)</code>",
+ "3706": "<code>IsTricolouring' X c</code>",
+ "3705": "<code>Dot Y</code>",
+ "3704":
+ "<code>CM.Ex25_3.inducedColouring' {Y X : IrreflexiveGraph} (f : Y ⟶ X) (c : Dot X ⟶ Tricolour) : Dot Y ⟶ Tricolour</code>",
+ "3703": "<code>Dot X ⟶ Tricolour</code>",
+ "3702":
+ "<code>CM.Ex25_3.IsTricolouring' (X : IrreflexiveGraph) (c : Dot X ⟶ Tricolour) : Prop</code>",
+ "3701":
+ "<code>CM.Ex25_3.tgtDot {X : IrreflexiveGraph} (a : X.carrierA) : Dot X</code>",
+ "3700": "<code>IrreflexiveGraph.D.carrierA</code>",
  "370": "<code>kinv (k 1) = 1</code>",
  "37": "<code>CM.ExI_1.hgf : A → D</code>",
+ "3699": "<code>IrreflexiveGraph.D.carrierD</code>",
+ "3698":
+ "<code>CM.Ex25_3.srcDot {X : IrreflexiveGraph} (a : X.carrierA) : Dot X</code>",
+ "3697": "<code>CM.Ex25_3.Dot (X : IrreflexiveGraph) : Type</code>",
+ "3696": "<code>IsTricolouring X c</code>",
+ "3695":
+ "<code>CM.Ex25_3.inducedColouring {Y X : IrreflexiveGraph} (f : Y ⟶ X) (c : X.carrierD ⟶ Tricolour) : Y.carrierD ⟶ Tricolour</code>",
+ "3694": "<code>X.carrierD ⟶ Tricolour</code>",
+ "3693":
+ "<code>CM.Ex25_3.IsTricolouring (X : IrreflexiveGraph) (c : X.carrierD ⟶ Tricolour) : Prop</code>",
+ "3692": "<code>CM.Ex25_3.Tricolour.green : Tricolour</code>",
+ "3691": "<code>CM.Ex25_3.Tricolour.red : Tricolour</code>",
+ "3690": "<code>CM.Ex25_3.Tricolour.white : Tricolour</code>",
  "369": "<code>(kinv ∘ k) (-1) = -1</code>",
+ "3689": "<code>CM.Ex25_3.Tricolour : Type</code>",
+ "3688":
+ "<code>Equiv.surjective.{u, v} {α : Sort u} {β : Sort v} (e : α ≃ β) : Function.Surjective ⇑e</code>",
+ "3687": "<code>eA bA = sA</code>",
+ "3686": "<code>B₁.carrierD ⊕ B₂.carrierD ≃ S.carrierD</code>",
+ "3685": "<code>B₁.carrierA ⊕ B₂.carrierA ≃ S.carrierA</code>",
+ "3684": "<code>jD x = sD</code>",
+ "3683": "<code>¬jD x = sD</code>",
+ "3682": "<code>(fun x ↦ 0) = f₁ ⊚ jD</code>",
+ "3681": "<code>(fun x ↦ 0) = f₀ ⊚ jD</code>",
+ "3680": "<code>¬∃ a, jD a = sD</code>",
  "368": "<code>(kinv ∘ k) 1 = 1</code>",
+ "3679":
+ "<code>(fun fD ↦ (fun b ↦ if x = b then 1 else 0) = fD ⊚ jD) fD ∧\n  ∀ (y : S.carrierD ⟶ TwoD.carrierD), (fun fD ↦ (fun b ↦ if x = b then 1 else 0) = fD ⊚ jD) y → y = fD</code>",
+ "3678": "<code>S.carrierD</code>",
+ "3677": "<code>Function.Surjective jD</code>",
+ "3676":
+ "<code>∀ (y : S.carrierD ⟶ TwoD.carrierD), (fun fD ↦ (fun b ↦ if x = b then 1 else 0) = fD ⊚ jD) y → y = fD</code>",
+ "3675": "<code>(fun b ↦ if x = b then 1 else 0) = fD ⊚ jD</code>",
+ "3674": "<code>jD x = jD y</code>",
+ "3673": "<code>x = Sum.inr hD₂</code>",
+ "3672": "<code>x = Sum.inl bD₁</code>",
+ "3671":
+ "<code>kD ⊚ Sum.inl = fD ⊚ (↑j₁).2 ∧ kD ⊚ Sum.inr = fD ⊚ (↑j₂).2</code>",
+ "3670":
+ "<code>(fun fD ↦ kD ⊚ Sum.inl = fD ⊚ (↑j₁).2 ∧ kD ⊚ Sum.inr = fD ⊚ (↑j₂).2) fD ∧\n  ∀ (y : S.carrierD ⟶ TwoD.carrierD), (fun fD ↦ kD ⊚ Sum.inl = fD ⊚ (↑j₁).2 ∧ kD ⊚ Sum.inr = fD ⊚ (↑j₂).2) y → y = fD</code>",
  "367":
  "<code>Eq.symm.{u} {α : Sort u} {a b : α} (h : a = b) : b = a</code><span class=\"sep\"></span><code class=\"docstring\">Equality is symmetric: if `a = b` then `b = a`.\n\nBecause this is in the `Eq` namespace, if you have a variable `h : a = b`,\n`h.symm` can be used as shorthand for `Eq.symm h` as a proof of `b = a`.\n\nFor more information: [Equality](https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#equality)\n</code>",
+ "3669": "<code>Function.Injective jD</code>",
+ "3668": "<code>kD = fD' ⊚ jD</code>",
+ "3667": "<code>B₁.carrierD ⊕ B₂.carrierD</code>",
+ "3666":
+ "<code>∀ (y : S.carrierD ⟶ TwoD.carrierD), (fun fD ↦ kD ⊚ Sum.inl = fD ⊚ (↑j₁).2 ∧ kD ⊚ Sum.inr = fD ⊚ (↑j₂).2) y → y = fD</code>",
+ "3665": "<code>kD ⊚ Sum.inr = fD ⊚ (↑j₂).2</code>",
+ "3664": "<code>kD ⊚ Sum.inl = fD ⊚ (↑j₁).2</code>",
+ "3663": "<code>B₁.carrierD ⊕ B₂.carrierD ⟶ TwoD.carrierD</code>",
+ "3662":
+ "<code>∀ (kD : B₁.carrierD ⊕ B₂.carrierD ⟶ TwoD.carrierD), ∃! fD, kD = fD ⊚ jD</code>",
+ "3661": "<code>fD₁ = fD' ⊚ (↑j₁).2 ∧ fD₂ = fD' ⊚ (↑j₂).2</code>",
+ "3660": "<code>liftTwoD fD₁ = f ⊚ j₁ ∧ liftTwoD fD₂ = f ⊚ j₂</code>",
  "366": "<code>k (-1) = 1</code>",
+ "3659":
+ "<code>(fun f ↦ liftTwoD fD₁ = f ⊚ j₁ ∧ liftTwoD fD₂ = f ⊚ j₂) f ∧\n  ∀ (y : S ⟶ TwoD), (fun f ↦ liftTwoD fD₁ = f ⊚ j₁ ∧ liftTwoD fD₂ = f ⊚ j₂) y → y = f</code>",
+ "3658": "<code>B₁.carrierD ⊕ B₂.carrierD ⟶ S.carrierD</code>",
+ "3657": "<code>liftTwoD fD' = f</code>",
+ "3656": "<code>fD₂ = fD' ⊚ (↑j₂).2</code>",
+ "3655": "<code>fD₁ = fD' ⊚ (↑j₁).2</code>",
+ "3654":
+ "<code>∀ (y : S ⟶ TwoD), (fun f ↦ liftTwoD fD₁ = f ⊚ j₁ ∧ liftTwoD fD₂ = f ⊚ j₂) y → y = f</code>",
+ "3653": "<code>liftTwoD fD₂ = f ⊚ j₂</code>",
+ "3652": "<code>liftTwoD fD₁ = f ⊚ j₁</code>",
+ "3651": "<code>S.carrierD ⟶ TwoD.carrierD</code>",
+ "3650": "<code>B₂.carrierD ⟶ TwoD.carrierD</code>",
  "365": "<code>NNReal.coe_eq_one {r : ℝ≥0} : ↑r = 1 ↔ r = 1</code>",
+ "3649": "<code>B₁.carrierD ⟶ TwoD.carrierD</code>",
+ "3648":
+ "<code>∀ (fD₁ : B₁.carrierD ⟶ TwoD.carrierD) (fD₂ : B₂.carrierD ⟶ TwoD.carrierD),\n  ∃! fD, fD₁ = fD ⊚ (↑j₁).2 ∧ fD₂ = fD ⊚ (↑j₂).2</code>",
+ "3647": "<code>jA x = sA</code>",
+ "3646": "<code>¬jA x = sA</code>",
+ "3645": "<code>(fun x ↦ 0) = f₁ ⊚ jA</code>",
+ "3644": "<code>(fun x ↦ 0) = f₀ ⊚ jA</code>",
+ "3643": "<code>¬∃ a, jA a = sA</code>",
+ "3642":
+ "<code>(fun fA ↦ (fun b ↦ if x = b then 1 else 0) = fA ⊚ jA) fA ∧\n  ∀ (y : S.carrierA ⟶ TwoA.carrierA), (fun fA ↦ (fun b ↦ if x = b then 1 else 0) = fA ⊚ jA) y → y = fA</code>",
+ "3641": "<code>S.carrierA</code>",
+ "3640": "<code>Function.Surjective jA</code>",
  "364": "<code>k 1 = 1</code>",
+ "3639":
+ "<code>∀ (y : S.carrierA ⟶ TwoA.carrierA), (fun fA ↦ (fun b ↦ if x = b then 1 else 0) = fA ⊚ jA) y → y = fA</code>",
+ "3638": "<code>(fun b ↦ if x = b then 1 else 0) = fA ⊚ jA</code>",
+ "3637": "<code>jA x = jA y</code>",
+ "3636": "<code>x = Sum.inr bA₂</code>",
+ "3635": "<code>x = Sum.inl bA₁</code>",
+ "3634":
+ "<code>kA ⊚ Sum.inl = fA ⊚ (↑j₁).1 ∧ kA ⊚ Sum.inr = fA ⊚ (↑j₂).1</code>",
+ "3633":
+ "<code>(fun fA ↦ kA ⊚ Sum.inl = fA ⊚ (↑j₁).1 ∧ kA ⊚ Sum.inr = fA ⊚ (↑j₂).1) fA ∧\n  ∀ (y : S.carrierA ⟶ TwoA.carrierA), (fun fA ↦ kA ⊚ Sum.inl = fA ⊚ (↑j₁).1 ∧ kA ⊚ Sum.inr = fA ⊚ (↑j₂).1) y → y = fA</code>",
+ "3632": "<code>Function.Injective jA</code>",
+ "3631": "<code>kA = fA' ⊚ jA</code>",
+ "3630":
+ "<code>∀ (y : S.carrierA ⟶ TwoA.carrierA), (fun fA ↦ kA ⊚ Sum.inl = fA ⊚ (↑j₁).1 ∧ kA ⊚ Sum.inr = fA ⊚ (↑j₂).1) y → y = fA</code>",
  "363": "<code>k ∘ kinv = id</code>",
+ "3629": "<code>kA ⊚ Sum.inr = fA ⊚ (↑j₂).1</code>",
+ "3628": "<code>kA ⊚ Sum.inl = fA ⊚ (↑j₁).1</code>",
+ "3627": "<code>B₁.carrierA ⊕ B₂.carrierA ⟶ TwoA.carrierA</code>",
+ "3626":
+ "<code>∀ (kA : B₁.carrierA ⊕ B₂.carrierA ⟶ TwoA.carrierA), ∃! fA, kA = fA ⊚ jA</code>",
+ "3625": "<code>fA₁ = fA' ⊚ (↑j₁).1 ∧ fA₂ = fA' ⊚ (↑j₂).1</code>",
+ "3624": "<code>liftTwoA fA₁ = f ⊚ j₁ ∧ liftTwoA fA₂ = f ⊚ j₂</code>",
+ "3623":
+ "<code>(fun f ↦ liftTwoA fA₁ = f ⊚ j₁ ∧ liftTwoA fA₂ = f ⊚ j₂) f ∧\n  ∀ (y : S ⟶ TwoA), (fun f ↦ liftTwoA fA₁ = f ⊚ j₁ ∧ liftTwoA fA₂ = f ⊚ j₂) y → y = f</code>",
+ "3622": "<code>B₁.carrierA ⊕ B₂.carrierA ⟶ S.carrierA</code>",
+ "3621": "<code>liftTwoA fA' = f</code>",
+ "3620": "<code>fA₂ = fA' ⊚ (↑j₂).1</code>",
  "362": "<code>kinv ∘ k = id</code>",
+ "3619": "<code>fA₁ = fA' ⊚ (↑j₁).1</code>",
+ "3618":
+ "<code>∀ (y : S ⟶ TwoA), (fun f ↦ liftTwoA fA₁ = f ⊚ j₁ ∧ liftTwoA fA₂ = f ⊚ j₂) y → y = f</code>",
+ "3617": "<code>liftTwoA fA₂ = f ⊚ j₂</code>",
+ "3616": "<code>liftTwoA fA₁ = f ⊚ j₁</code>",
+ "3615": "<code>S.carrierA ⟶ TwoA.carrierA</code>",
+ "3614": "<code>B₂.carrierA ⟶ TwoA.carrierA</code>",
+ "3613": "<code>B₁.carrierA ⟶ TwoA.carrierA</code>",
+ "3612":
+ "<code>∀ (fA₁ : B₁.carrierA ⟶ TwoA.carrierA) (fA₂ : B₂.carrierA ⟶ TwoA.carrierA),\n  ∃! fA, fA₁ = fA ⊚ (↑j₁).1 ∧ fA₂ = fA ⊚ (↑j₂).1</code>",
+ "3611": "<code>S ⟶ TwoD</code>",
+ "3610": "<code>B₂ ⟶ TwoD</code>",
  "361": "<code>ℝ≥0 → ℝ</code>",
+ "3609": "<code>B₁ ⟶ TwoD</code>",
+ "3608":
+ "<code>∀ (f₁ : B₁ ⟶ TwoD) (f₂ : B₂ ⟶ TwoD), ∃! f, f₁ = f ⊚ j₁ ∧ f₂ = f ⊚ j₂</code>",
+ "3607": "<code>S ⟶ TwoA</code>",
+ "3606": "<code>B₂ ⟶ TwoA</code>",
+ "3605": "<code>B₁ ⟶ TwoA</code>",
+ "3604":
+ "<code>∀ (f₁ : B₁ ⟶ TwoA) (f₂ : B₂ ⟶ TwoA), ∃! f, f₁ = f ⊚ j₁ ∧ f₂ = f ⊚ j₂</code>",
+ "3603": "<code>Y.carrierD ⟶ TwoD.carrierD</code>",
+ "3602":
+ "<code>CM.Ex25_2.liftTwoD_comp {X Y : IrreflexiveGraph} (f : X ⟶ Y) (g : Y.carrierD ⟶ TwoD.carrierD) :\n  liftTwoD (g ⊚ (↑f).2) = liftTwoD g ⊚ f</code>",
+ "3601": "<code>Y.carrierA ⟶ TwoA.carrierA</code>",
+ "3600":
+ "<code>CM.Ex25_2.liftTwoA_comp {X Y : IrreflexiveGraph} (f : X ⟶ Y) (g : Y.carrierA ⟶ TwoA.carrierA) :\n  liftTwoA (g ⊚ (↑f).1) = liftTwoA g ⊚ f</code>",
  "360": "<code>∀ (x : ℝ), ↑(k x) = x * x</code>",
  "36":
  "<code class=\"docstring\">The `dsimp` tactic is the definitional simplifier. It is similar to `simp` but only\napplies theorems that hold by reflexivity. Thus, the result is guaranteed to be\ndefinitionally equal to the input.\n</code>",
+ "3599": "<code>X.carrierD ⟶ TwoD.carrierD</code>",
+ "3598":
+ "<code>CM.Ex25_2.liftTwoD {X : IrreflexiveGraph} (f : X.carrierD ⟶ TwoD.carrierD) : X ⟶ TwoD</code>",
+ "3597":
+ "<code>CM.Ex25_2.mkTwoDArrow_tgt (s t : Fin 2) : TwoD.toTgt (mkTwoDArrow s t) = t</code>",
+ "3596":
+ "<code>CM.Ex25_2.mkTwoDArrow_src (s t : Fin 2) : TwoD.toSrc (mkTwoDArrow s t) = s</code>",
+ "3595": "<code>CM.Ex25_2.mkTwoDArrow (s t : Fin 2) : Fin 4</code>",
+ "3594": "<code>X.carrierA ⟶ TwoA.carrierA</code>",
+ "3593":
+ "<code>CM.Ex25_2.liftTwoA {X : IrreflexiveGraph} (f : X.carrierA ⟶ TwoA.carrierA) : X ⟶ TwoA</code>",
+ "3592":
+ "<code>Equiv.apply_symm_apply.{u, v} {α : Sort u} {β : Sort v} (e : α ≃ β) (x : β) : e (e.symm x) = x</code>",
+ "3591": "<code>g₂ = f' ⊚ j₂</code>",
+ "3590": "<code>g₁ = f' ⊚ j₁</code>",
  "359": "<code>ℝ → ℝ≥0</code>",
+ "3589":
+ "<code>Equiv.ofBijective.{u, v} {α : Sort u} {β : Sort v} (f : α → β) (hf : Function.Bijective f) : α ≃ β</code><span class=\"sep\"></span><code class=\"docstring\">If `f` is a bijective function, then its domain is equivalent to its codomain. </code>",
+ "3588": "<code>B₁ ⊕ B₂ ≃ S</code>",
+ "3587": "<code>0 = 1</code>",
+ "3586": "<code>f₀ = f₁</code>",
+ "3585": "<code>j x = s</code>",
+ "3584": "<code>¬j x = s</code>",
+ "3583": "<code>(fun x ↦ 0) = f₁ ⊚ j</code>",
+ "3582": "<code>(fun x ↦ 0) = f₀ ⊚ j</code>",
+ "3581": "<code>¬∃ a, j a = s</code>",
+ "3580":
+ "<code>Decidable.decide (p : Prop) [h : Decidable p] : Bool</code><span class=\"sep\"></span><code class=\"docstring\">Converts a decidable proposition into a `Bool`.\n\nIf `p : Prop` is decidable, then `decide p : Bool` is the Boolean value\nthat is `true` if `p` is true and `false` if `p` is false.\n</code>",
  "358":
  "<code class=\"docstring\">`linarith` attempts to find a contradiction between hypotheses that are linear (in)equalities.\nEquivalently, it can prove a linear inequality by assuming its negation and proving `False`.\n\nIn theory, `linarith` should prove any goal that is true in the theory of linear arithmetic over\nthe rationals. While there is some special handling for non-dense orders like `Nat` and `Int`,\nthis tactic is not complete for these theories and will not prove every true goal. It will solve\ngoals over arbitrary types that instantiate `CommRing`, `LinearOrder` and `IsStrictOrderedRing`.\n\nAn example:\n```lean\nexample (x y z : ℚ) (h1 : 2*x &lt; 3*y) (h2 : -4*x + 2*z &lt; 0)\n        (h3 : 12*y - 4* z &lt; 0) : False := by\n  linarith\n```\n\n`linarith` will use all appropriate hypotheses and the negation of the goal, if applicable.\nDisequality hypotheses require case splitting and are not normally considered\n(see the `splitNe` option below).\n\n`linarith [t1, t2, t3]` will additionally use proof terms `t1, t2, t3`.\n\n`linarith only [h1, h2, h3, t1, t2, t3]` will use only the goal (if relevant), local hypotheses\n`h1`, `h2`, `h3`, and proofs `t1`, `t2`, `t3`. It will ignore the rest of the local context.\n\n`linarith!` will use a stronger reducibility setting to try to identify atoms. For example,\n```lean\nexample (x : ℚ) : id x ≥ x := by\n  linarith\n```\nwill fail, because `linarith` will not identify `x` and `id x`. `linarith!` will.\nThis can sometimes be expensive.\n\n`linarith (config := { .. })` takes a config object with five\noptional arguments:\n* `discharger` specifies a tactic to be used for reducing an algebraic equation in the\n  proof stage. The default is `ring`. Other options include `simp` for basic\n  problems.\n* `transparency` controls how hard `linarith` will try to match atoms to each other. By default\n  it will only unfold `reducible` definitions.\n* If `splitHypotheses` is true, `linarith` will split conjunctions in the context into separate\n  hypotheses.\n* If `splitNe` is `true`, `linarith` will case split on disequality hypotheses.\n  For a given `x ≠ y` hypothesis, `linarith` is run with both `x &lt; y` and `x &gt; y`,\n  and so this runs linarith exponentially many times with respect to the number of\n  disequality hypotheses. (`false` by default.)\n* If `exfalso` is `false`, `linarith` will fail when the goal is neither an inequality nor `False`.\n  (`true` by default.)\n* If `minimize` is `false`, `linarith?` will report all hypotheses appearing in its initial\n  proof without attempting to drop redundancies. (`true` by default.)\n* `restrict_type` (not yet implemented in mathlib4)\n  will only use hypotheses that are inequalities over `tp`. This is useful\n  if you have e.g. both integer- and rational-valued inequalities in the local context, which can\n  sometimes confuse the tactic.\n\nA variant, `nlinarith`, does some basic preprocessing to handle some nonlinear goals.\n\nThe option `set_option trace.linarith true` will trace certain intermediate stages of the `linarith`\nroutine.\n</code>",
+ "3579":
+ "<code>of_decide_eq_false {p : Prop} [inst : Decidable p] : decide p = false → ¬p</code>",
+ "3578":
+ "<code>if_neg.{u} {c : Prop} {h : Decidable c} (hnc : ¬c) {α : Sort u} {t e : α} : (if c then t else e) = e</code>",
+ "3577":
+ "<code>(fun f ↦ (fun b ↦ if x = b then 1 else 0) = f ⊚ j) f ∧\n  ∀ (y : S ⟶ Two), (fun f ↦ (fun b ↦ if x = b then 1 else 0) = f ⊚ j) y → y = f</code>",
+ "3576": "<code>S</code>",
+ "3575": "<code>Function.Surjective j</code>",
+ "3574": "<code>¬x = y</code>",
+ "3573": "<code>1 = 1</code>",
+ "3572": "<code>x = y</code>",
+ "3571":
+ "<code class=\"docstring\">Splits all if-then-else-expressions into multiple goals.\nGiven a goal of the form `g (if p then x else y)`, `split_ifs` will produce\ntwo goals: `p ⊢ g x` and `¬p ⊢ g y`.\nIf there are multiple ite-expressions, then `split_ifs` will split them all,\nstarting with a top-most one whose condition does not contain another\nite-expression.\n`split_ifs at *` splits all ite-expressions in all hypotheses as well as the goal.\n`split_ifs with h₁ h₂ h₃` overrides the default names for the hypotheses.\n</code>",
+ "3570":
+ "<code>if_pos.{u} {c : Prop} {h : Decidable c} (hc : c) {α : Sort u} {t e : α} : (if c then t else e) = t</code>",
  "357": "<code>hinv 1 = -1</code>",
+ "3569": "<code>1 = if x = y then 1 else 0</code>",
+ "3568":
+ "<code>∀ (y : S ⟶ Two), (fun f ↦ (fun b ↦ if x = b then 1 else 0) = f ⊚ j) y → y = f</code>",
+ "3567": "<code>(fun b ↦ if x = b then 1 else 0) = f ⊚ j</code>",
+ "3566": "<code>j x = j y</code>",
+ "3565": "<code>x = Sum.inr b₂</code>",
+ "3564": "<code>x = Sum.inl b₁</code>",
+ "3563":
+ "<code>Sum.casesOn.{u_1, u, v} {α : Type u} {β : Type v} {motive : α ⊕ β → Sort u_1} (t : α ⊕ β)\n  (inl : (val : α) → motive (Sum.inl val)) (inr : (val : β) → motive (Sum.inr val)) : motive t</code>",
+ "3562": "<code>k ⊚ Sum.inl = f ⊚ j₁ ∧ k ⊚ Sum.inr = f ⊚ j₂</code>",
+ "3561":
+ "<code>(fun f ↦ k ⊚ Sum.inl = f ⊚ j₁ ∧ k ⊚ Sum.inr = f ⊚ j₂) f ∧\n  ∀ (y : S ⟶ Two), (fun f ↦ k ⊚ Sum.inl = f ⊚ j₁ ∧ k ⊚ Sum.inr = f ⊚ j₂) y → y = f</code>",
+ "3560": "<code>k = f' ⊚ j</code>",
  "356": "<code>hinv 1 = 1</code>",
+ "3559":
+ "<code>∀ (y : S ⟶ Two), (fun f ↦ k ⊚ Sum.inl = f ⊚ j₁ ∧ k ⊚ Sum.inr = f ⊚ j₂) y → y = f</code>",
+ "3558": "<code>k ⊚ Sum.inr = f ⊚ j₂</code>",
+ "3557": "<code>k ⊚ Sum.inl = f ⊚ j₁</code>",
+ "3556": "<code>B₁ ⊕ B₂ ⟶ Two</code>",
+ "3555": "<code>∀ (k : B₁ ⊕ B₂ ⟶ Two), ∃! f, k = f ⊚ j</code>",
+ "3554":
+ "<code>Sum.elim.{u_1, u_2, u_3} {α : Type u_1} {β : Type u_2} {γ : Sort u_3} (f : α → γ) (g : β → γ) : α ⊕ β → γ</code><span class=\"sep\"></span><code class=\"docstring\">Case analysis for sums that applies the appropriate function `f` or `g` after checking which\nconstructor is present.\n</code>",
+ "3553": "<code>B₁ ⊕ B₂ ⟶ S</code>",
+ "3552":
+ "<code class=\"docstring\">`classical tacs` runs `tacs` in a scope where `Classical.propDecidable` is a low priority\nlocal instance.\n\nNote that `classical` is a scoping tactic: it adds the instance only within the\nscope of the tactic.\n</code>",
+ "3551": "<code>S ⟶ Two</code>",
+ "3550": "<code>B₂ ⟶ Two</code>",
  "355": "<code>hinv (h (-1)) = -1</code>",
+ "3549": "<code>B₁ ⟶ Two</code>",
+ "3548":
+ "<code>∀ (f₁ : B₁ ⟶ Two) (f₂ : B₂ ⟶ Two), ∃! f, f₁ = f ⊚ j₁ ∧ f₂ = f ⊚ j₂</code>",
+ "3547": "<code>Fin 2 → Unit</code>",
+ "3546": "<code>CM.IrreflexiveGraph.TwoA : IrreflexiveGraph</code>",
+ "3545": "<code>Fin 4 → Fin 2</code>",
+ "3544": "<code>CM.IrreflexiveGraph.TwoD : IrreflexiveGraph</code>",
  "3543": "<code>G ≅ prodAD</code>",
  "3542":
  "<code>∀ (Y : IrreflexiveGraph) (g₁ : Y ⟶ A) (g₂ : Y ⟶ D), ∃! g, g₁ = pG₁ ⊚ g ∧ g₂ = pG₂ ⊚ g</code>",

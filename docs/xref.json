@@ -305,6 +305,75 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--3___-The-distributive-law":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--3___-The-distributive-law",
+     "data":
+     {"title": "3. The distributive law",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 25: Labelings and products of graphs",
+        "shortTitle": null,
+        "number": null},
+       {"title": "3. The distributive law",
+        "shortTitle": null,
+        "number": "3"}]},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--2___-Calculating-the-graphs-A-___-Y":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--2___-Calculating-the-graphs-A-___-Y",
+     "data":
+     {"title": "2. Calculating the graphs A ⨯ Y",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 25: Labelings and products of graphs",
+        "shortTitle": null,
+        "number": null},
+       {"title": "2. Calculating the graphs A ⨯ Y",
+        "shortTitle": null,
+        "number": "2"}]},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--1___-Detecting-the-structure-of-a-graph-by-means-of-labelings":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--1___-Detecting-the-structure-of-a-graph-by-means-of-labelings",
+     "data":
+     {"title": "1. Detecting the structure of a graph by means of labelings",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 25: Labelings and products of graphs",
+        "shortTitle": null,
+        "number": null},
+       {"title": "1. Detecting the structure of a graph by means of labelings",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs",
+     "data":
+     {"title": "Session 25: Labelings and products of graphs",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 25: Labelings and products of graphs",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum--3___-Sum-of-two-objects-in-a-category":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-24___-Uniqueness-of-products-and-definition-of-sum--3___-Sum-of-two-objects-in-a-category",
@@ -2575,6 +2644,36 @@
         "Article III: Examples of categories",
         "5. Irreflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.IrreflexiveGraph.sndHom":
+   [{"id": "CM___IrreflexiveGraph___sndHom",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___sndHom":
+      {"display": "IrreflexiveGraph.sndHom",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.IrreflexiveGraph.prodObj":
+   [{"id": "CM___IrreflexiveGraph___prodObj",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___prodObj":
+      {"display": "IrreflexiveGraph.prodObj",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.IrreflexiveGraph.isLimit":
+   [{"id": "CM___IrreflexiveGraph___isLimit",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___isLimit":
+      {"display": "IrreflexiveGraph.isLimit",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
    "CM.IrreflexiveGraph.hom_ext":
    [{"id": "CM___IrreflexiveGraph___hom_ext",
      "data":
@@ -2585,6 +2684,16 @@
         "Article III: Examples of categories",
         "5. Irreflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.IrreflexiveGraph.fstHom":
+   [{"id": "CM___IrreflexiveGraph___fstHom",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___fstHom":
+      {"display": "IrreflexiveGraph.fstHom",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
    "CM.IrreflexiveGraph.carrierD":
    [{"id": "CM___IrreflexiveGraph___carrierD",
      "data":
@@ -2605,6 +2714,46 @@
         "Article III: Examples of categories",
         "5. Irreflexive graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.IrreflexiveGraph.binaryFan":
+   [{"id": "CM___IrreflexiveGraph___binaryFan",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___binaryFan":
+      {"display": "IrreflexiveGraph.binaryFan",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.IrreflexiveGraph.Zero":
+   [{"id": "CM___IrreflexiveGraph___Zero",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___Zero":
+      {"display": "IrreflexiveGraph.Zero",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.IrreflexiveGraph.TwoD":
+   [{"id": "CM___IrreflexiveGraph___TwoD",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___TwoD":
+      {"display": "IrreflexiveGraph.TwoD",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.IrreflexiveGraph.TwoA":
+   [{"id": "CM___IrreflexiveGraph___TwoA",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___TwoA":
+      {"display": "IrreflexiveGraph.TwoA",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
    "CM.IrreflexiveGraph.D":
    [{"id": "CM___IrreflexiveGraph___D",
      "data":
@@ -2615,6 +2764,16 @@
         "Article IV: Universal mapping properties",
         "2. Separating"]}},
      "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.IrreflexiveGraph.A₂":
+   [{"id": "CM___IrreflexiveGraph___A___",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___IrreflexiveGraph___A___":
+      {"display": "IrreflexiveGraph.A₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
    "CM.IrreflexiveGraph.A":
    [{"id": "CM___IrreflexiveGraph___A",
      "data":
@@ -4998,6 +5157,226 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex25_5.swapD":
+   [{"id": "CM___Ex25_5___swapD",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_5___swapD":
+      {"display": "swapD",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_5.C":
+   [{"id": "CM___Ex25_5___C",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_5___C":
+      {"display": "C",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_5.B":
+   [{"id": "CM___Ex25_5___B",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_5___B":
+      {"display": "B",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "2. Calculating the graphs A ⨯ Y"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.tgtDot":
+   [{"id": "CM___Ex25_3___tgtDot",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___tgtDot":
+      {"display": "tgtDot",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.srcDot":
+   [{"id": "CM___Ex25_3___srcDot",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___srcDot":
+      {"display": "srcDot",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.inducedColouring'":
+   [{"id": "CM___Ex25_3___inducedColouring___",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___inducedColouring___":
+      {"display": "inducedColouring'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.inducedColouring":
+   [{"id": "CM___Ex25_3___inducedColouring",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___inducedColouring":
+      {"display": "inducedColouring",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.Tricolour.white":
+   [{"id": "CM___Ex25_3___Tricolour___white",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___Tricolour___white":
+      {"display": "white",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.Tricolour.red":
+   [{"id": "CM___Ex25_3___Tricolour___red",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___Tricolour___red":
+      {"display": "red",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.Tricolour.green":
+   [{"id": "CM___Ex25_3___Tricolour___green",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___Tricolour___green":
+      {"display": "green",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.Tricolour":
+   [{"id": "CM___Ex25_3___Tricolour",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___Tricolour":
+      {"display": "Tricolour",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.IsTricolouring'":
+   [{"id": "CM___Ex25_3___IsTricolouring___",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___IsTricolouring___":
+      {"display": "IsTricolouring'",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.IsTricolouring":
+   [{"id": "CM___Ex25_3___IsTricolouring",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___IsTricolouring":
+      {"display": "IsTricolouring",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.F":
+   [{"id": "CM___Ex25_3___F",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___F":
+      {"display": "F",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_3.Dot":
+   [{"id": "CM___Ex25_3___Dot",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_3___Dot":
+      {"display": "Dot",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.mkTwoDArrow_tgt":
+   [{"id": "CM___Ex25_2___mkTwoDArrow_tgt",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___mkTwoDArrow_tgt":
+      {"display": "mkTwoDArrow_tgt",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.mkTwoDArrow_src":
+   [{"id": "CM___Ex25_2___mkTwoDArrow_src",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___mkTwoDArrow_src":
+      {"display": "mkTwoDArrow_src",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.mkTwoDArrow":
+   [{"id": "CM___Ex25_2___mkTwoDArrow",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___mkTwoDArrow":
+      {"display": "mkTwoDArrow",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.liftTwoD_comp":
+   [{"id": "CM___Ex25_2___liftTwoD_comp",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___liftTwoD_comp":
+      {"display": "liftTwoD_comp",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.liftTwoD":
+   [{"id": "CM___Ex25_2___liftTwoD",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___liftTwoD":
+      {"display": "liftTwoD",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.liftTwoA_comp":
+   [{"id": "CM___Ex25_2___liftTwoA_comp",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___liftTwoA_comp":
+      {"display": "liftTwoA_comp",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
+   "CM.Ex25_2.liftTwoA":
+   [{"id": "CM___Ex25_2___liftTwoA",
+     "data":
+     {"/Session-25___-Labelings-and-products-of-graphs/#CM___Ex25_2___liftTwoA":
+      {"display": "liftTwoA",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 25: Labelings and products of graphs",
+        "1. Detecting the structure of a graph by means of labelings"]}},
+     "address": "/Session-25___-Labelings-and-products-of-graphs/"}],
    "CM.Ex24_2.IG2":
    [{"id": "CM___Ex24_2___IG2",
      "data":
