@@ -228,7 +228,7 @@ example : Nonempty (IsTerminal termIG) := by
     default := {
       val := (fun _ ↦ (), fun _ ↦ ())
       property := by
-        constructor <;> (intros; trivial)
+        constructor <;> trivial
     }
     uniq := by
       intro f
@@ -313,7 +313,7 @@ We have already shown (in Exercise 3) that `termSWE` is terminal in 𝑺↻, so 
 
 ```savedLean
 example : ¬(∀ x : termSWE ⟶ Xα, f ⊚ x = g ⊚ x → f = g) := by
-  push_neg
+  push Not
   let x : termSWE ⟶ Xα := ⟨fun _ ↦ X.x₁, rfl⟩
   use x
   constructor
@@ -398,7 +398,7 @@ We have already shown (in Exercise 4) that `termIG` is terminal in 𝑺⇊, so w
 
 ```savedLean
 example : ¬(∀ x : termIG ⟶ X, f ⊚ x = g ⊚ x → f = g) := by
-  push_neg
+  push Not
   let x : termIG ⟶ X := ⟨
     (fun _ ↦ XA.a₁, fun _ ↦ XD.d₁),
     ⟨rfl, rfl⟩
@@ -1181,7 +1181,7 @@ We can now show that the statement is false in the category 𝑺↻.
 ```savedLean
 example : ¬(∀ X : SetWithEndomap, IsEmpty (IsInitial X) →
     Nonempty (⊤_ SetWithEndomap ⟶ X)) := by
-  push_neg
+  push Not
   -- Define an object X which is not initial
   -- and has no morphism from the terminal object
   let X : SetWithEndomap := {
@@ -1248,7 +1248,7 @@ instance : HasTerminal IrreflexiveGraph where
 
 example : ¬(∀ X : IrreflexiveGraph, IsEmpty (IsInitial X) →
     Nonempty (⊤_ IrreflexiveGraph ⟶ X)) := by
-  push_neg
+  push Not
   -- Define an object X which is not initial
   -- and has no morphism from the terminal object
   let X : IrreflexiveGraph := {
@@ -1373,7 +1373,7 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞]
       rintro ⟨_ | _⟩
       all_goals
         dsimp
-        first | rw [h₁] | rw [h₂]
+        first | erw [h₁] | erw [h₂]
         rfl
   · intro h
     constructor
@@ -1806,11 +1806,11 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (C_a C_b C_c : 𝒞)
     fin_cases i
     · -- Show that p_a q f = f_a
       dsimp
-      rw [← Category.assoc, prodQ.fac]
+      erw [← Category.assoc, prodQ.fac]
       exact prodP.fac _ ⟨0⟩
     · -- Show that p_b q f = f_b
       dsimp
-      rw [← Category.assoc, prodQ.fac]
+      erw [← Category.assoc, prodQ.fac]
       exact prodP.fac _ ⟨1⟩
     · -- Show that q_c f = f_c
       exact prodQ.fac _ ⟨1⟩
@@ -1828,9 +1828,9 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] (C_a C_b C_c : 𝒞)
         | 1 => coneX.π.app ⟨1⟩)) _ ?_
       intro i
       fin_cases i
-      · rw [Category.assoc]
+      · erw [Category.assoc]
         exact hm ⟨0⟩
-      · rw [Category.assoc]
+      · erw [Category.assoc]
         exact hm ⟨1⟩
     · exact hm ⟨2⟩
 ```
@@ -1901,7 +1901,7 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞]
       rintro ⟨_ | _⟩
       all_goals
         dsimp
-        first | rw [h₁] | rw [h₂]
+        first | erw [h₁] | erw [h₂]
         rfl
   · intro h
     constructor
@@ -2082,7 +2082,7 @@ example (S B₁ B₂ : SetWithEndomap) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
           funext ()
           have hgs_comm := congr_fun (g ⊚ s).property ()
           dsimp [termSWE] at hgs_comm
-          rw [hgs] at hgs_comm
+          erw [hgs] at hgs_comm
           exact Sum.inl.inj hgs_comm
       ⟩, ?_⟩, ?_⟩
       · -- Prove existence
@@ -2110,7 +2110,7 @@ example (S B₁ B₂ : SetWithEndomap) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
           funext ()
           have hgs_comm := congr_fun (g ⊚ s).property ()
           dsimp [termSWE] at hgs_comm
-          rw [hgs] at hgs_comm
+          erw [hgs] at hgs_comm
           exact Sum.inr.inj hgs_comm
       ⟩, ?_⟩, ?_⟩
       · -- Prove existence
@@ -2204,12 +2204,12 @@ example (S B₁ B₂ : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
           · funext ()
             have hgsSrc_comm := congr_fun (g ⊚ s).property.1 ()
             dsimp [termIG] at hgsSrc_comm
-            rw [hgsA, hgsD] at hgsSrc_comm
+            erw [hgsA, hgsD] at hgsSrc_comm
             exact Sum.inl.inj hgsSrc_comm
           · funext ()
             have hgsTgt_comm := congr_fun (g ⊚ s).property.2 ()
             dsimp [termIG] at hgsTgt_comm
-            rw [hgsA, hgsD] at hgsTgt_comm
+            erw [hgsA, hgsD] at hgsTgt_comm
             exact Sum.inl.inj hgsTgt_comm
       ⟩, ?_⟩, ?_⟩
       · -- Prove existence
@@ -2244,12 +2244,12 @@ example (S B₁ B₂ : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
           · funext ()
             have hgsSrc_comm := congr_fun (g ⊚ s).property.1 ()
             dsimp [termIG] at hgsSrc_comm
-            rw [hgsA, hgsD] at hgsSrc_comm
+            erw [hgsA, hgsD] at hgsSrc_comm
             exact Sum.inr.inj hgsSrc_comm
           · funext ()
             have hgsTgt_comm := congr_fun (g ⊚ s).property.2 ()
             dsimp [termIG] at hgsTgt_comm
-            rw [hgsA, hgsD] at hgsTgt_comm
+            erw [hgsA, hgsD] at hgsTgt_comm
             exact Sum.inr.inj hgsTgt_comm
       ⟩, ?_⟩, ?_⟩
       · -- Prove existence
@@ -2279,12 +2279,12 @@ example (S B₁ B₂ : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
   | Sum.inl xA, Sum.inr xD =>
       have h_contra := congr_fun (g ⊚ s).property.1 ()
       dsimp [termIG] at h_contra
-      rw [hgsA, hgsD] at h_contra
+      erw [hgsA, hgsD] at h_contra
       contradiction
   | Sum.inr xA, Sum.inl xD =>
       have h_contra := congr_fun (g ⊚ s).property.1 ()
       dsimp [termIG] at h_contra
-      rw [hgsA, hgsD] at h_contra
+      erw [hgsA, hgsD] at h_contra
       contradiction
 ```
 :::

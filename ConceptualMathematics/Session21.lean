@@ -288,18 +288,18 @@ example : IsLimit (BinaryFan.mk p₁ p₂) := {
       · funext x
         apply Prod.ext
         · change ((BinaryFan.fst s).val ⊚ s.pt.toEnd) x = _
-          rw [congr_fun h_fst_m x]; rfl
+          erw [congr_fun h_fst_m x]; rfl
         · change ((BinaryFan.snd s).val ⊚ s.pt.toEnd) x = _
-          rw [congr_fun h_snd_m x]; rfl
+          erw [congr_fun h_snd_m x]; rfl
       · funext x
         apply Prod.ext
         · change ((BinaryFan.fst s).val ⊚ s.pt.toEnd2) x = _
-          rw [congr_fun h_fst_f x]
+          erw [congr_fun h_fst_f x]
           dsimp
           generalize (BinaryFan.snd s).val x = c
           cases c <;> rfl
         · change ((BinaryFan.snd s).val ⊚ s.pt.toEnd2) x = _
-          rw [congr_fun h_snd_f x]
+          erw [congr_fun h_snd_f x]
           dsimp
           generalize (BinaryFan.snd s).val x = c
           cases c <;> rfl

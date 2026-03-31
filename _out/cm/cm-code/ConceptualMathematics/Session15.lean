@@ -131,7 +131,7 @@ example (Yβ : SetWithEndomap) (f : ℕσ ⟶ Yβ) (y : Yβ.carrier)
   have h0 : ℕσ.toEnd (0 : ℕ) = (1 : ℕ) := rfl
   rw [← hy]
   dsimp [σ]
-  rw [← types_comp_apply _ Yβ.toEnd, ← hf_comm, types_comp_apply, h0]
+  erw [← types_comp_apply _ Yβ.toEnd, ← hf_comm, types_comp_apply, h0]
 
 /-!
 Exercise 15.6 (p. 181)

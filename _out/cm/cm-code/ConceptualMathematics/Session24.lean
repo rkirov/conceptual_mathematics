@@ -35,13 +35,13 @@ theorem uniqueness_of_sums
                             (fun _ ↦ Category.comp_id _)]
       apply sumS.uniq coconeS
       intro j
-      rw [← Category.assoc, sumS.fac, sumT.fac]
+      erw [← Category.assoc, sumS.fac, sumT.fac]
     · -- f ⊚ f⁻¹ = 𝟙 T
       rw [sumT.uniq coconeT (𝟙 coconeT.pt)
                             (fun _ ↦ Category.comp_id _)]
       apply sumT.uniq coconeT
       intro j
-      rw [← Category.assoc, sumT.fac, sumS.fac]
+      erw [← Category.assoc, sumT.fac, sumS.fac]
   · -- Show that f is unique
     intro f ⟨⟨h_left, h_right⟩, _⟩
     apply sumS.uniq coconeT

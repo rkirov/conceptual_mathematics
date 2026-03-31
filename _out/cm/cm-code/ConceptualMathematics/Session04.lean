@@ -186,7 +186,7 @@ Exercise 4.3 (p. 66)
 -/
 example {p : ℝ ⟶ ℝ} (hp : ∀ x : ℝ, p x = x + 1)
     : ¬(∀ a b : ℝ, p (a + b) = p a + p b) := by
-  push_neg
+  push Not
   use 0, 0
   rw [add_zero, ne_eq, left_eq_add, hp]
   linarith
@@ -246,7 +246,7 @@ end Ex4_3_d
 
 example {m : ℝ ⟶ ℝ} (hm : ∀ x : ℝ, m x = -x)
     : ¬(∀ a b : ℝ, m (a * b) = m a * m b) := by
-  push_neg
+  push Not
   use 1, 1
   rw [mul_one, ne_eq, hm]
   linarith
@@ -257,7 +257,7 @@ abbrev ℝpos := { x : ℝ // x > 0 }
 
 example {c : ℝ → ℝpos} (hc : ∀ x : ℝ, c x = x ^ 3)
     : ∃ x : ℝ, ¬(∃ y : ℝpos, y.val = c x) := by
-  push_neg
+  push Not
   use -1
   rw [hc]
   norm_num

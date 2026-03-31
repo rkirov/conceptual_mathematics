@@ -486,7 +486,7 @@ def idA : Map A A := {
 open Finset in
 example : ¬(∃ f : Map A B, ∃ g : Map B A, g ∘ f = idA) := by
   -- Convert to the equivalent statement ∀ f g, g ∘ f ≠ idA
-  push_neg
+  push Not
   -- Assume that g ∘ f = idA for some f, g, and derive a contradiction
   intro f g h_eq
   -- Since the functions g ∘ f and idA are equal, so are their images

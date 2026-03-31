@@ -359,7 +359,7 @@ def t : X ⟶ P
 example : s X.b = t X.b := rfl
 
 example : ¬(∃ x : X, t x = P.k) := by
-  push_neg
+  push Not
   intro x
   cases x <;> simp [t]
 
@@ -997,7 +997,7 @@ def a'' : X' ⟶ Y' := ⟨
 ⟩
 
 example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') := by
-  push_neg
+  push Not
   intro p
   obtain ⟨p, hp_comm⟩ := p
   dsimp [X', Y'] at hp_comm
@@ -1005,7 +1005,7 @@ example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') := by
     intro y
     dsimp [α]
     cases p.1 y <;> rfl
-  rw [← hp_comm] at hpβ₀
+  erw [← hp_comm] at hpβ₀
   dsimp [Y'] at hpβ₀
   have hpβ : p.2 (β Y.y₂) = X.x₀ := hpβ₀ Y.y₂
   have hβ : β Y.y₂ = Y.y₁ := rfl
@@ -1023,7 +1023,7 @@ example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') := by
   contradiction
 
 example : ¬(∃ p : Yβ ⟶ Xα, J p ⊚ J a' = J (𝟙 Xα)) := by
-  push_neg
+  push Not
   intro p
   obtain ⟨p, hp_comm⟩ := p
   dsimp [Xα, Yβ] at hp_comm
@@ -1031,7 +1031,7 @@ example : ¬(∃ p : Yβ ⟶ Xα, J p ⊚ J a' = J (𝟙 Xα)) := by
     intro y
     dsimp [α]
     cases p y <;> rfl
-  rw [← hp_comm] at hpβ₀
+  erw [← hp_comm] at hpβ₀
   dsimp [Yβ] at hpβ₀
   have hpβ : p (β Y.y₂) = X.x₀ := hpβ₀ Y.y₂
   have hβ : β Y.y₂ = Y.y₁ := rfl

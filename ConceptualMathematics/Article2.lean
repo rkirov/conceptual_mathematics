@@ -273,7 +273,7 @@ def k : Fin 2 ⟶ Fin 2
   | 1 => 0
 
 example : ¬(h ⊚ f = f ⊚ k → h = k) := by
-  push_neg
+  push Not
   constructor
   · funext x
     fin_cases x <;> dsimp [f, h, k]
@@ -342,7 +342,7 @@ $`h` is not invertible, since $`{h(1) = h(-1) = 1}`.
 ```savedLean
 example (h : ℝ → ℝ) (hh : ∀ x : ℝ, h x = x * x)
     : ¬(∃ hinv : ℝ → ℝ, hinv ∘ h = id ∧ h ∘ hinv = id) := by
-  push_neg
+  push Not
   intro hinv h_inv_left _
   have h₁ : h 1 = 1 := by
     rw [hh 1]
@@ -366,7 +366,7 @@ $`k` is not invertible, since $`{k(1) = k(-1) = 1}`.
 open NNReal in
 example (k : ℝ → ℝ≥0) (hk : ∀ x : ℝ, k x = x * x)
     : ¬(∃ kinv : ℝ≥0 → ℝ, kinv ∘ k = id ∧ k ∘ kinv = id) := by
-  push_neg
+  push Not
   intro kinv h_inv_left _
   have h₁ : k 1 = 1 := by
     rw [← coe_eq_one, hk 1]

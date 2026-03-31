@@ -202,12 +202,11 @@ example (B₁ B₂ S : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
     intro x y hxy
     obtain ⟨fA, hfA, _⟩ :=
       hjA (fun b ↦ if x = b then (1 : Fin 2) else (0 : Fin 2))
-    have h : (1 : Fin 2) = if x = y then 1 else 0 :=
-      calc (1 : Fin 2)
-        _ = if x = x then 1 else 0           := (if_pos rfl).symm
-        _ = fA (jA x)                        := congr_fun hfA x
-        _ = fA (jA y)                        := by rw [hxy]
-        _ = if x = y then 1 else (0 : Fin 2) := congr_fun hfA.symm y
+    have h : (1 : Fin 2) = (if x = x then 1 else 0) :=
+        (if_pos rfl).symm
+    erw [congr_fun hfA x] at h
+    rw [types_comp_apply, hxy, ← types_comp_apply jA fA] at h
+    rw [congr_fun hfA.symm y] at h
     split_ifs at h with heq
     · exact heq
     · contradiction
@@ -225,12 +224,11 @@ example (B₁ B₂ S : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
       dsimp [f₁]
       exact (if_neg hnc).symm
     have heq : f₀ = f₁ := (hjA (fun _ ↦ (0 : Fin 2))).unique h₀ h₁
-    have h_absurd : (0 : Fin 2) = 1 :=
-      calc (0 : Fin 2)
-        _ = f₀ sA                              := rfl
-        _ = f₁ sA                              := by rw [heq]
-        _ = if sA = sA then 1 else (0 : Fin 2) := rfl
-        _ = (1 : Fin 2)                        := if_pos rfl
+    have h_absurd : (0 : Fin 2) = f₀ sA := rfl
+    rw [heq] at h_absurd
+    change (0 : Fin 2) = (if sA = sA then 1 else (0 : Fin 2))
+        at h_absurd
+    rw [if_pos rfl] at h_absurd
     contradiction
   -- Extract set-level hypothesis for dots from hS₂
   have hSD : ∀ (fD₁ : B₁.carrierD ⟶ TwoD.carrierD)
@@ -274,12 +272,11 @@ example (B₁ B₂ S : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
     intro x y hxy
     obtain ⟨fD, hfD, _⟩ :=
       hjD (fun b ↦ if x = b then (1 : Fin 2) else (0 : Fin 2))
-    have h : (1 : Fin 2) = if x = y then 1 else 0 :=
-      calc (1 : Fin 2)
-        _ = if x = x then 1 else 0           := (if_pos rfl).symm
-        _ = fD (jD x)                        := congr_fun hfD x
-        _ = fD (jD y)                        := by rw [hxy]
-        _ = if x = y then 1 else (0 : Fin 2) := congr_fun hfD.symm y
+    have h : (1 : Fin 2) = (if x = x then 1 else 0) :=
+        (if_pos rfl).symm
+    erw [congr_fun hfD x] at h
+    rw [types_comp_apply, hxy, ← types_comp_apply jD fD] at h
+    rw [congr_fun hfD.symm y] at h
     split_ifs at h with heq
     · exact heq
     · contradiction
@@ -297,12 +294,11 @@ example (B₁ B₂ S : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
       dsimp [f₁]
       exact (if_neg hnc).symm
     have heq : f₀ = f₁ := (hjD (fun _ ↦ (0 : Fin 2))).unique h₀ h₁
-    have h_absurd : (0 : Fin 2) = 1 :=
-      calc (0 : Fin 2)
-        _ = f₀ sD                              := rfl
-        _ = f₁ sD                              := by rw [heq]
-        _ = if sD = sD then 1 else (0 : Fin 2) := rfl
-        _ = (1 : Fin 2)                        := if_pos rfl
+    have h_absurd : (0 : Fin 2) = f₀ sD := rfl
+    rw [heq] at h_absurd
+    change (0 : Fin 2) = (if sD = sD then 1 else (0 : Fin 2))
+        at h_absurd
+    rw [if_pos rfl] at h_absurd
     contradiction
   intro Y g₁ g₂
   -- Since jA is bijective, we can construct equivalence for arrows
@@ -578,7 +574,7 @@ example : ∀ X : IrreflexiveGraph,
       change (1 : Fin 2) = (0 : Fin 2) at h_src
       contradiction
   · left
-    push_neg at h
+    push Not at h
     constructor
     · classical
       refine ⟨⟨(fun _ ↦ (), fun dX ↦ if ∃ aX : X.carrierA,

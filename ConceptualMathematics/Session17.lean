@@ -6,8 +6,6 @@ open Verso.Genre Manual InlineLean
 open ConceptualMathematics
 open CategoryTheory
 
-set_option maxHeartbeats 400000 -- required for Exercise 17.4(c)
-
 
 #doc (Manual) "Session 17: Some uses of graphs" =>
 
