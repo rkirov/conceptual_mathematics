@@ -30,6 +30,7 @@ import ConceptualMathematics.Session22
 import ConceptualMathematics.Session23
 import ConceptualMathematics.Session24
 import ConceptualMathematics.Session25
+import ConceptualMathematics.Session26
 import Mathlib
 
 open Verso.Genre Manual InlineLean
@@ -124,3 +125,5 @@ All page references given in this _Companion_ are to Lawvere, F.W. and Schanuel,
 {include 2 ConceptualMathematics.Session24}
 
 {include 2 ConceptualMathematics.Session25}
+
+{include 2 ConceptualMathematics.Session26}
