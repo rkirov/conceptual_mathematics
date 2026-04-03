@@ -305,6 +305,60 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories--3___-Sum-of-maps-in-a-linear-category":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories--3___-Sum-of-maps-in-a-linear-category",
+     "data":
+     {"title": "3. Sum of maps in a linear category",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 26: Distributive categories and linear categories",
+        "shortTitle": null,
+        "number": null},
+       {"title": "3. Sum of maps in a linear category",
+        "shortTitle": null,
+        "number": "2"}]},
+     "address":
+     "/Session-26___-Distributive-categories-and-linear-categories/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories--2___-Matrix-multiplication-in-linear-categories":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories--2___-Matrix-multiplication-in-linear-categories",
+     "data":
+     {"title": "2. Matrix multiplication in linear categories",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 26: Distributive categories and linear categories",
+        "shortTitle": null,
+        "number": null},
+       {"title": "2. Matrix multiplication in linear categories",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address":
+     "/Session-26___-Distributive-categories-and-linear-categories/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories",
+     "data":
+     {"title": "Session 26: Distributive categories and linear categories",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 26: Distributive categories and linear categories",
+        "shortTitle": null,
+        "number": null}]},
+     "address":
+     "/Session-26___-Distributive-categories-and-linear-categories/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--3___-The-distributive-law":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-25___-Labelings-and-products-of-graphs--3___-The-distributive-law",
@@ -5157,6 +5211,17 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex26_1.matrix2x2":
+   [{"id": "CM___Ex26_1___matrix2x2",
+     "data":
+     {"/Session-26___-Distributive-categories-and-linear-categories/#CM___Ex26_1___matrix2x2":
+      {"display": "matrix2x2",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 26: Distributive categories and linear categories",
+        "3. Sum of maps in a linear category"]}},
+     "address":
+     "/Session-26___-Distributive-categories-and-linear-categories/"}],
    "CM.Ex25_5.swapD":
    [{"id": "CM___Ex25_5___swapD",
      "data":

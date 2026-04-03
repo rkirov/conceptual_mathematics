@@ -1004,19 +1004,150 @@
  "355": "<code>α → χ</code>",
  "354":
  "<code>CM.Danilo's_formula.{u_1, u_2} {α : Type u_1} {χ : Type u_2} [Fintype α] [Fintype χ] (A : Finset α) (X : Finset χ)\n  (j : α → χ) (p : χ → α) : p ∘ j = id → Function.Injective j → ℕ</code>",
+ "3537":
+ "<code>∀ (X : 𝒞) {Y Z : 𝒞} (f : Y ⟶ Z), f ⊚ 0 = 0</code><span class=\"sep\"></span><code class=\"docstring\">`0` composed with `f` is `0` </code>",
+ "3536":
+ "<code>∀ {X Y : 𝒞} (f : X ⟶ Y) (Z : 𝒞), 0 ⊚ f = 0</code><span class=\"sep\"></span><code class=\"docstring\">`f` composed with `0` is `0` </code>",
+ "3535":
+ "<code>CategoryTheory.Limits.initial.to.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] [HasInitial C] (P : C) : ⊥_ C ⟶ P</code><span class=\"sep\"></span><code class=\"docstring\">The map to an object from the initial object. </code>",
+ "3534": "<code>Zero.mk.{u} {α : Type u} (zero : α) : Zero α</code>",
+ "3533":
+ "<code>(X Y : 𝒞) → Zero (X ⟶ Y)</code><span class=\"sep\"></span><code class=\"docstring\">Every morphism space has zero </code>",
+ "3532": "<code>⊥_ 𝒞 ≅ ⊤_ 𝒞</code>",
+ "3531":
+ "<code>CategoryTheory.Limits.terminal.hom_ext.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] [HasTerminal C] {P : C}\n  (f g : P ⟶ ⊤_ C) : f = g</code>",
+ "3530":
+ "<code>0 ⊚ 0 = 𝟙 (⊤_ 𝒞)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
  "353": "<code>χ</code>",
+ "3529":
+ "<code>CategoryTheory.Limits.initial.hom_ext.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] [HasInitial C] {P : C}\n  (f g : ⊥_ C ⟶ P) : f = g</code>",
+ "3528":
+ "<code>0 ⊚ 0 = 𝟙 (⊥_ 𝒞)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "3527": "<code>⊤_ 𝒞 ⟶ ⊥_ 𝒞</code>",
+ "3526":
+ "<code>⊤_ 𝒞 ⟶ ⊥_ 𝒞</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "3525": "<code>⊥_ 𝒞 ⟶ ⊤_ 𝒞</code>",
+ "3524":
+ "<code>⊥_ 𝒞 ⟶ ⊤_ 𝒞</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "3523": "<code>HasZeroMorphisms 𝒞</code>",
+ "3522":
+ "<code>CategoryTheory.Limits.initial.{v₁, u₁} (C : Type u₁) [Category.{v₁, u₁} C] [HasInitial C] : C</code><span class=\"sep\"></span><code class=\"docstring\">An arbitrary choice of initial object, if one exists.\nYou can use the notation `⊥_ C`.\nThis object is characterized by having a unique morphism to any object.\n</code>",
+ "3521": "<code>HasInitial 𝒞</code>",
+ "3520":
+ "<code>CategoryTheory.Limits.biprod.inl_desc.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {W X Y : C}\n  [HasBinaryBiproduct X Y] (f : X ⟶ W) (g : Y ⟶ W) : biprod.desc f g ⊚ biprod.inl = f</code>",
  "352":
  "<code>Finset.filter.{u_1} {α : Type u_1} (p : α → Prop) [DecidablePred p] (s : Finset α) : Finset α</code><span class=\"sep\"></span><code class=\"docstring\">`Finset.filter p s` is the set of elements of `s` that satisfy `p`.\n\nFor example, one can use `s.filter (· ∈ t)` to get the intersection of `s` with `t : Set α`\nas a `Finset α` (when a `DecidablePred (· ∈ t)` instance is available). </code>",
+ "3519":
+ "<code>CategoryTheory.Preadditive.comp_add.{v, u} {C : Type u} {inst✝ : Category.{v, u} C} [self : Preadditive C] (P Q R : C)\n  (f : P ⟶ Q) (g g' : Q ⟶ R) : (g + g') ⊚ f = g ⊚ f + g' ⊚ f</code><span class=\"sep\"></span><code class=\"docstring\">A category is called preadditive if `P ⟶ Q` is an abelian group such that composition is\nlinear in both variables. </code>",
+ "3518":
+ "<code>CategoryTheory.Limits.biprod.lift_desc.{v, u} {C : Type u} [Category.{v, u} C] [Preadditive C] {X Y : C}\n  [HasBinaryBiproduct X Y] {T U : C} {f : T ⟶ X} {g : T ⟶ Y} {h : X ⟶ U} {i : Y ⟶ U} :\n  biprod.desc h i ⊚ biprod.lift f g = h ⊚ f + i ⊚ g</code>",
+ "3517":
+ "<code>CategoryTheory.Limits.biprod.lift_fst.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {W X Y : C}\n  [HasBinaryBiproduct X Y] (f : W ⟶ X) (g : W ⟶ Y) : biprod.fst ⊚ biprod.lift f g = f</code>",
+ "3516":
+ "<code class=\"docstring\">* `unfold id` unfolds all occurrences of definition `id` in the target.\n* `unfold id1 id2 ...` is equivalent to `unfold id1; unfold id2; ...`.\n* `unfold id at h` unfolds at the hypothesis `h`.\n\nDefinitions can be either global or local definitions.\n\nFor non-recursive global definitions, this tactic is identical to `delta`.\nFor recursive global definitions, it uses the \"unfolding lemma\" `id.eq_def`,\nwhich is generated for each recursive definition, to unfold according to the recursive definition given by the user.\nOnly one level of unfolding is performed, in contrast to `simp only [id]`, which unfolds definition `id` recursively.\n</code>",
+ "3515":
+ "<code>CategoryTheory.Limits.biprod.inr.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {X Y : C}\n  [HasBinaryBiproduct X Y] : Y ⟶ X ⊞ Y</code><span class=\"sep\"></span><code class=\"docstring\">The inclusion into the second summand of a binary biproduct. </code>",
+ "3514":
+ "<code>CategoryTheory.Limits.biprod.inl.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {X Y : C}\n  [HasBinaryBiproduct X Y] : X ⟶ X ⊞ Y</code><span class=\"sep\"></span><code class=\"docstring\">The inclusion into the first summand of a binary biproduct. </code>",
+ "3513":
+ "<code>CategoryTheory.Limits.biprod.hom_ext'.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {X Y Z : C}\n  [HasBinaryBiproduct X Y] (f g : X ⊞ Y ⟶ Z) (h₀ : f ⊚ biprod.inl = g ⊚ biprod.inl)\n  (h₁ : f ⊚ biprod.inr = g ⊚ biprod.inr) : f = g</code>",
+ "3512":
+ "<code>CategoryTheory.Limits.biprod.snd.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {X Y : C}\n  [HasBinaryBiproduct X Y] : X ⊞ Y ⟶ Y</code><span class=\"sep\"></span><code class=\"docstring\">The projection onto the second summand of a binary biproduct. </code>",
+ "3511":
+ "<code>CategoryTheory.Limits.biprod.fst.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {X Y : C}\n  [HasBinaryBiproduct X Y] : X ⊞ Y ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The projection onto the first summand of a binary biproduct. </code>",
+ "3510":
+ "<code>CategoryTheory.Limits.biprod.hom_ext.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {X Y Z : C}\n  [HasBinaryBiproduct X Y] (f g : Z ⟶ X ⊞ Y) (h₀ : biprod.fst ⊚ f = biprod.fst ⊚ g)\n  (h₁ : biprod.snd ⊚ f = biprod.snd ⊚ g) : f = g</code>",
  "351":
  "<code>CM.Chad's_formula.pinvCount.{u_1, u_2} {α : Type u_1} {χ : Type u_2} [DecidableEq α] (X : Finset χ) (p : χ → α)\n  (a : α) : ℕ</code>",
+ "3509": "<code>HasBinaryBiproducts 𝒞</code>",
+ "3508": "<code>Preadditive 𝒞</code>",
+ "3507": "<code>Y ⟶ V</code>",
+ "3506": "<code>Y ⟶ U</code>",
+ "3505": "<code>X ⟶ V</code>",
+ "3504": "<code>X ⟶ U</code>",
+ "3503": "<code>B ⟶ X</code>",
+ "3502":
+ "<code>CategoryTheory.Preadditive.{v, u} (C : Type u) [Category.{v, u} C] : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">A category is called preadditive if `P ⟶ Q` is an abelian group such that composition is\nlinear in both variables. </code>",
+ "3501":
+ "<code>CategoryTheory.Limits.biprod.desc.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {W X Y : C}\n  [HasBinaryBiproduct X Y] (f : X ⟶ W) (g : Y ⟶ W) : X ⊞ Y ⟶ W</code><span class=\"sep\"></span><code class=\"docstring\">Given a pair of maps out of the summands of a binary biproduct,\nwe obtain a map out of the binary biproduct. </code>",
+ "3500":
+ "<code>CategoryTheory.Limits.biprod.lift.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {W X Y : C}\n  [HasBinaryBiproduct X Y] (f : W ⟶ X) (g : W ⟶ Y) : W ⟶ X ⊞ Y</code><span class=\"sep\"></span><code class=\"docstring\">Given a pair of maps into the summands of a binary biproduct,\nwe obtain a map into the binary biproduct. </code>",
  "350": "<code>χ → α</code>",
  "35":
  "<code class=\"docstring\">Assuming `x` is a variable in the local context with an inductive type,\n`cases x` splits the main goal, producing one goal for each constructor of the\ninductive type, in which the target is replaced by a general instance of that constructor.\nIf the type of an element in the local context depends on `x`,\nthat element is reverted and reintroduced afterward,\nso that the case split affects that hypothesis as well.\n`cases` detects unreachable cases and closes them automatically.\n\nFor example, given `n : Nat` and a goal with a hypothesis `h : P n` and target `Q n`,\n`cases n` produces one goal with hypothesis `h : P 0` and target `Q 0`,\nand one goal with hypothesis `h : P (Nat.succ a)` and target `Q (Nat.succ a)`.\nHere the name `a` is chosen automatically and is not accessible.\nYou can use `with` to provide the variables names for each constructor.\n- `cases e`, where `e` is an expression instead of a variable, generalizes `e` in the goal,\n  and then cases on the resulting variable.\n- Given `as : List α`, `cases as with | nil =&gt; tac₁ | cons a as' =&gt; tac₂`,\n  uses tactic `tac₁` for the `nil` case, and `tac₂` for the `cons` case,\n  and `a` and `as'` are used as names for the new variables introduced.\n- `cases h : e`, where `e` is a variable or an expression,\n  performs cases on `e` as above, but also adds a hypothesis `h : e = ...` to each goal,\n  where `...` is the constructor instance for that particular case.\n</code>",
+ "3499": "<code>C₂ ⟶ B</code>",
+ "3498": "<code>C₂ ⟶ A</code>",
+ "3497": "<code>C₁ ⟶ B</code>",
+ "3496": "<code>C₁ ⟶ A</code>",
+ "3495":
+ "<code>CM.Ex26_1.matrix2x2.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] [HasZeroMorphisms 𝒞] [HasBinaryBiproducts 𝒞] {C₁ C₂ A B : 𝒞}\n  (f₁₁ : C₁ ⟶ A) (f₁₂ : C₁ ⟶ B) (f₂₁ : C₂ ⟶ A) (f₂₂ : C₂ ⟶ B) : C₁ ⊞ C₂ ⟶ A ⊞ B</code>",
+ "3494":
+ "<code>autoParam (snd ⊚ inr = 𝟙 Q) BinaryBicone.inr_snd._autoParam</code>",
+ "3493":
+ "<code>autoParam (fst ⊚ inr = 0) BinaryBicone.inr_fst._autoParam</code>",
+ "3492":
+ "<code>autoParam (snd ⊚ inl = 0) BinaryBicone.inl_snd._autoParam</code>",
+ "3491":
+ "<code>autoParam (fst ⊚ inl = 𝟙 P) BinaryBicone.inl_fst._autoParam</code>",
+ "3490": "<code>Q ⟶ pt</code>",
  "349": "<code>Finset χ</code>",
+ "3489": "<code>P ⟶ pt</code>",
+ "3488": "<code>pt ⟶ Q</code>",
+ "3487": "<code>pt ⟶ P</code>",
+ "3486":
+ "<code>CategoryTheory.Limits.BinaryBicone.mk.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (pt : C) (fst : pt ⟶ P) (snd : pt ⟶ Q) (inl : P ⟶ pt) (inr : Q ⟶ pt) (inl_fst : fst ⊚ inl = 𝟙 P := by aesop)\n  (inl_snd : snd ⊚ inl = 0 := by aesop) (inr_fst : fst ⊚ inr = 0 := by aesop) (inr_snd : snd ⊚ inr = 𝟙 Q := by aesop) :\n  BinaryBicone P Q</code>",
+ "3485":
+ "<code>CategoryTheory.Limits.BinaryBicone.inr_snd.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : self.snd ⊚ self.inr = 𝟙 Q</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3484":
+ "<code>CategoryTheory.Limits.BinaryBicone.inr_fst.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : self.fst ⊚ self.inr = 0</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3483":
+ "<code>CategoryTheory.Limits.BinaryBicone.inl_snd.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : self.snd ⊚ self.inl = 0</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3482":
+ "<code>CategoryTheory.Limits.BinaryBicone.inl_fst.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : self.fst ⊚ self.inl = 𝟙 P</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3481":
+ "<code>CategoryTheory.Limits.BinaryBicone.inr.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : Q ⟶ self.pt</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3480":
+ "<code>CategoryTheory.Limits.BinaryBicone.inl.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : P ⟶ self.pt</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
  "348":
  "<code>DecidableEq.{u} (α : Sort u) : Sort (max 1 u)</code><span class=\"sep\"></span><code class=\"docstring\">Propositional equality is `Decidable` for all elements of a type.\n\nIn other words, an instance of `DecidableEq α` is a means of deciding the proposition `a = b` is\nfor all `a b : α`.\n</code>",
+ "3479":
+ "<code>CategoryTheory.Limits.BinaryBicone.snd.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : self.pt ⟶ Q</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3478": "<code>BinaryBicone P Q</code>",
+ "3477":
+ "<code>CategoryTheory.Limits.BinaryBicone.fst.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : self.pt ⟶ P</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3476":
+ "<code>CategoryTheory.Limits.BinaryBicone.pt.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] {P Q : C}\n  (self : BinaryBicone P Q) : C</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3475":
+ "<code>CategoryTheory.Limits.BinaryBicone.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] (P Q : C) :\n  Type (max uC uC')</code><span class=\"sep\"></span><code class=\"docstring\">A binary bicone for a pair of objects `P Q : C` consists of the cone point `X`,\nmaps from `X` to both `P` and `Q`, and maps from both `P` and `Q` to `X`,\nso that `inl ≫ fst = 𝟙 P`, `inl ≫ snd = 0`, `inr ≫ fst = 0`, and `inr ≫ snd = 𝟙 Q` </code>",
+ "3474": "<code>∀ (P Q : C), HasBinaryBiproduct P Q</code>",
+ "3473":
+ "<code>CategoryTheory.Limits.HasBinaryBiproducts.mk.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C]\n  (has_binary_biproduct : ∀ (P Q : C), HasBinaryBiproduct P Q) : HasBinaryBiproducts C</code>",
+ "3472":
+ "<code>CategoryTheory.Limits.HasBinaryBiproduct.{uC', uC} {C : Type uC} [Category.{uC', uC} C] [HasZeroMorphisms C] (P Q : C) :\n  Prop</code><span class=\"sep\"></span><code class=\"docstring\">`HasBinaryBiproduct P Q` expresses the mere existence of a bicone which is\nsimultaneously a limit and a colimit of the diagram `pair P Q`. </code>",
+ "3471":
+ "<code>CategoryTheory.Limits.HasBinaryBiproducts.has_binary_biproduct.{uC', uC} {C : Type uC} {inst✝ : Category.{uC', uC} C}\n  {inst✝¹ : HasZeroMorphisms C} [self : HasBinaryBiproducts C] (P Q : C) : HasBinaryBiproduct P Q</code>",
+ "3470": "<code>Type uC</code>",
  "347":
  "<code>CM.Chad's_formula.{u_1, u_2} {α : Type u_1} {χ : Type u_2} [DecidableEq α] [Fintype α] [Fintype χ] (X : Finset χ)\n  (A : Finset α) (p : χ → α) : ℕ</code>",
+ "3469":
+ "<code>CategoryTheory.Limits.HasBinaryBiproducts.{uC', uC} (C : Type uC) [Category.{uC', uC} C] [HasZeroMorphisms C] : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`HasBinaryBiproducts C` represents the existence of a bicone which is\nsimultaneously a limit and a colimit of the diagram `pair P Q`, for every `P Q : C`. </code>",
+ "3468":
+ "<code>autoParam (∀ (X : C) {Y Z : C} (f : Y ⟶ Z), f ⊚ 0 = 0) HasZeroMorphisms.zero_comp._autoParam</code>",
+ "3467":
+ "<code>autoParam (∀ {X Y : C} (f : X ⟶ Y) (Z : C), 0 ⊚ f = 0) HasZeroMorphisms.comp_zero._autoParam</code>",
+ "3466": "<code>(X Y : C) → Zero (X ⟶ Y)</code>",
+ "3465":
+ "<code>CategoryTheory.Limits.HasZeroMorphisms.mk.{v, u} {C : Type u} [Category.{v, u} C] [zero : (X Y : C) → Zero (X ⟶ Y)]\n  (comp_zero : ∀ {X Y : C} (f : X ⟶ Y) (Z : C), 0 ⊚ f = 0 := by cat_disch)\n  (zero_comp : ∀ (X : C) {Y Z : C} (f : Y ⟶ Z), f ⊚ 0 = 0 := by cat_disch) : HasZeroMorphisms C</code>",
+ "3464":
+ "<code>CategoryTheory.Limits.HasZeroMorphisms.zero_comp.{v, u} {C : Type u} {inst✝ : Category.{v, u} C}\n  [self : HasZeroMorphisms C] (X : C) {Y Z : C} (f : Y ⟶ Z) : f ⊚ 0 = 0</code><span class=\"sep\"></span><code class=\"docstring\">`0` composed with `f` is `0` </code>",
+ "3463":
+ "<code>CategoryTheory.Limits.HasZeroMorphisms.comp_zero.{v, u} {C : Type u} {inst✝ : Category.{v, u} C}\n  [self : HasZeroMorphisms C] {X Y : C} (f : X ⟶ Y) (Z : C) : 0 ⊚ f = 0</code><span class=\"sep\"></span><code class=\"docstring\">`f` composed with `0` is `0` </code>",
+ "3462":
+ "<code>Zero.{u} (α : Type u) : Type u</code><span class=\"sep\"></span><code class=\"docstring\">A type with a zero element. </code>",
+ "3461":
+ "<code>CategoryTheory.Limits.HasZeroMorphisms.zero.{v, u} {C : Type u} {inst✝ : Category.{v, u} C} [self : HasZeroMorphisms C]\n  (X Y : C) : Zero (X ⟶ Y)</code><span class=\"sep\"></span><code class=\"docstring\">Every morphism space has zero </code>",
+ "3460":
+ "<code>CategoryTheory.Limits.HasZeroMorphisms.{v, u} (C : Type u) [Category.{v, u} C] : Type (max u v)</code><span class=\"sep\"></span><code class=\"docstring\">A category \"has zero morphisms\" if there is a designated \"zero morphism\" in each morphism space,\nand compositions of zero morphisms with anything give the zero morphism. </code>",
  "346": "<code>kinv 1 = -1</code>",
  "3459":
  "<code>CategoryTheory.Limits.coprod.inr.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} [HasBinaryCoproduct X Y] : Y ⟶ X ⨿ Y</code><span class=\"sep\"></span><code class=\"docstring\">The inclusion map from the second component of the coproduct. </code>",
