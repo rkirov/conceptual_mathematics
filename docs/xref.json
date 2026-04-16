@@ -305,6 +305,73 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--4___-Solving-equations-and-picturing-maps":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--4___-Solving-equations-and-picturing-maps",
+     "data":
+     {"title": "4. Solving equations and picturing maps",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 27: Examples of universal constructions",
+        "shortTitle": null,
+        "number": null},
+       {"title": "4. Solving equations and picturing maps",
+        "shortTitle": null,
+        "number": "3"}]},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--3___-Idempotent-objects":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--3___-Idempotent-objects",
+     "data":
+     {"title": "3. Idempotent objects",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 27: Examples of universal constructions",
+        "shortTitle": null,
+        "number": null},
+       {"title": "3. Idempotent objects", "shortTitle": null, "number": "2"}]},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--2___-Can-objects-have-negatives___":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--2___-Can-objects-have-negatives___",
+     "data":
+     {"title": "2. Can objects have negatives?",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 27: Examples of universal constructions",
+        "shortTitle": null,
+        "number": null},
+       {"title": "2. Can objects have negatives?",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions",
+     "data":
+     {"title": "Session 27: Examples of universal constructions",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 27: Examples of universal constructions",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories--3___-Sum-of-maps-in-a-linear-category":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-26___-Distributive-categories-and-linear-categories--3___-Sum-of-maps-in-a-linear-category",
@@ -1880,6 +1947,36 @@
         "4. Basic figure-types, singular figures, and incidence, in the category of graphs"]}},
      "address":
      "/Session-22___-Universal-mapping-properties_SEMI_-Incidence-relations/"}],
+   "CM.graphOf_is_section":
+   [{"id": "CM___graphOf_is_section",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___graphOf_is_section":
+      {"display": "graphOf_is_section",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "4. Solving equations and picturing maps"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.graphOf_commutes":
+   [{"id": "CM___graphOf_commutes",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___graphOf_commutes":
+      {"display": "graphOf_commutes",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "4. Solving equations and picturing maps"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.graphOf":
+   [{"id": "CM___graphOf",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___graphOf":
+      {"display": "graphOf",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "4. Solving equations and picturing maps"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
    "CM.functorSetWithEndomapToSimpleGraph":
    [{"id": "CM___functorSetWithEndomapToSimpleGraph",
      "data":
@@ -1900,6 +1997,56 @@
         "Article III: Examples of categories",
         "6. Endomaps as special graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.emptySWE":
+   [{"id": "CM___emptySWE",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___emptySWE":
+      {"display": "emptySWE",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.emptyIG":
+   [{"id": "CM___emptyIG",
+     "data":
+     {"/Article-IV___-Universal-mapping-properties/#CM___emptyIG":
+      {"display": "emptyIG",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Article IV: Universal mapping properties",
+        "3. Initial object"]}},
+     "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.cographOf_is_retraction":
+   [{"id": "CM___cographOf_is_retraction",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___cographOf_is_retraction":
+      {"display": "cographOf_is_retraction",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "4. Solving equations and picturing maps"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.cographOf_commutes":
+   [{"id": "CM___cographOf_commutes",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___cographOf_commutes":
+      {"display": "cographOf_commutes",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "4. Solving equations and picturing maps"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.cographOf":
+   [{"id": "CM___cographOf",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___cographOf":
+      {"display": "cographOf",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "4. Solving equations and picturing maps"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
    "CM.autCount":
    [{"id": "CM___autCount",
      "data":
@@ -5211,6 +5358,76 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex27_4.tri_le_of_le":
+   [{"id": "CM___Ex27_4___tri_le_of_le",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___tri_le_of_le":
+      {"display": "tri_le_of_le",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.Ex27_4.tri":
+   [{"id": "CM___Ex27_4___tri",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___tri":
+      {"display": "tri",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.Ex27_4.g_ubound":
+   [{"id": "CM___Ex27_4___g_ubound",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___g_ubound":
+      {"display": "g_ubound",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.Ex27_4.g_lbound":
+   [{"id": "CM___Ex27_4___g_lbound",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___g_lbound":
+      {"display": "g_lbound",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.Ex27_4.g":
+   [{"id": "CM___Ex27_4___g",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___g":
+      {"display": "g",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.Ex27_4.exists_tri_bound":
+   [{"id": "CM___Ex27_4___exists_tri_bound",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___exists_tri_bound":
+      {"display": "exists_tri_bound",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
+   "CM.Ex27_4.eq_of_g_eq":
+   [{"id": "CM___Ex27_4___eq_of_g_eq",
+     "data":
+     {"/Session-27___-Examples-of-universal-constructions/#CM___Ex27_4___eq_of_g_eq":
+      {"display": "eq_of_g_eq",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 27: Examples of universal constructions",
+        "3. Idempotent objects"]}},
+     "address": "/Session-27___-Examples-of-universal-constructions/"}],
    "CM.Ex26_1.matrix2x2":
    [{"id": "CM___Ex26_1___matrix2x2",
      "data":
