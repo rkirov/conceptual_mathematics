@@ -609,19 +609,24 @@ example
     )
 ```
 
-In the case of 𝑺⇊ we have
+In the case of 𝑺⇊ we first define an empty object in 𝑺⇊.
+
+```savedLean
+def emptyIG : IrreflexiveGraph := {
+  carrierA := Empty
+  carrierD := Empty
+  toSrc := Empty.elim
+  toTgt := Empty.elim
+}
+```
+
+Then we have
 
 ```savedLean
 example
     {Zero X : IrreflexiveGraph}
     (hZero : IsInitial Zero) (f : X ⟶ Zero)
     : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) := by
-  let emptyIG : IrreflexiveGraph := {
-    carrierA := Empty
-    carrierD := Empty
-    toSrc := Empty.elim
-    toTgt := Empty.elim
-  }
   have e : Zero ⟶ emptyIG := hZero.to emptyIG
   constructor
   · intros
@@ -641,17 +646,22 @@ example
     )
 ```
 
-In the case of 𝑺↻ we have
+In the case of 𝑺↻ we first define an empty object in 𝑺↻.
+
+```savedLean
+def emptySWE : SetWithEndomap := {
+  carrier := Empty
+  toEnd := Empty.elim
+}
+```
+
+Then we have
 
 ```savedLean
 example
     {Zero X : SetWithEndomap}
     (hZero : IsInitial Zero) (f : X ⟶ Zero)
     : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) := by
-  let emptySWE : SetWithEndomap := {
-    carrier := Empty
-    toEnd := Empty.elim
-  }
   have e : Zero ⟶ emptySWE := hZero.to emptySWE
   constructor
   · intros
@@ -1176,7 +1186,7 @@ instance : HasTerminal SetWithEndomap where
   )
 ```
 
-We can now show that the statement is false in the category 𝑺↻.
+We can now use the `emptySWE` object defined in Exercise 8 above to show that the statement is false in the category 𝑺↻.
 
 ```savedLean
 example : ¬(∀ X : SetWithEndomap, IsEmpty (IsInitial X) →
@@ -1194,11 +1204,6 @@ example : ¬(∀ X : SetWithEndomap, IsEmpty (IsInitial X) →
   constructor
   · -- Assume towards a contradiction that X is initial
     refine ⟨fun hX : IsInitial X ↦ ?_⟩
-    -- Define an object emptySWE (which is in fact initial)
-    let emptySWE : SetWithEndomap := {
-      carrier := Empty
-      toEnd := Empty.elim
-    }
     -- Since, by assumption, X is initial, there exists X ⟶ emptySWE
     let f : X ⟶ emptySWE := hX.to emptySWE
     -- But the assumption is false, since the carrier of emptySWE is ∅
@@ -1265,13 +1270,6 @@ example : ¬(∀ X : IrreflexiveGraph, IsEmpty (IsInitial X) →
   constructor
   · -- Assume towards a contradiction that X is initial
     refine ⟨fun hX : IsInitial X ↦ ?_⟩
-    -- Define an object emptyIG (which is in fact initial)
-    let emptyIG : IrreflexiveGraph := {
-      carrierA := Empty
-      carrierD := Empty
-      toSrc := Empty.elim
-      toTgt := Empty.elim
-    }
     -- Since, by assumption, X is initial, there exists X ⟶ emptyIG
     let f : X ⟶ emptyIG := hX.to emptyIG
     -- But the assumption is false, since carrierA of emptyIG is ∅

@@ -592,12 +592,7 @@ Exercise 25.4 (p. 273)
 In this exercise, $`\mathbf{0}` is the initial graph, with no dots (and, of course, no arrows)
 
 ```savedLean
-def IrreflexiveGraph.Zero : IrreflexiveGraph := {
-  carrierA := Empty
-  carrierD := Empty
-  toSrc := Empty.elim
-  toTgt := Empty.elim
-}
+abbrev IrreflexiveGraph.Zero : IrreflexiveGraph := emptyIG
 ```
 
 and $`A_2` is the graph

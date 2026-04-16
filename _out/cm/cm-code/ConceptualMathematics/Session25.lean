@@ -480,12 +480,7 @@ end Ex25_3
 /-!
 Exercise 25.4 (p. 273)
 -/
-def IrreflexiveGraph.Zero : IrreflexiveGraph := {
-  carrierA := Empty
-  carrierD := Empty
-  toSrc := Empty.elim
-  toTgt := Empty.elim
-}
+abbrev IrreflexiveGraph.Zero : IrreflexiveGraph := emptyIG
 
 def IrreflexiveGraph.A₂ : IrreflexiveGraph := {
   carrierA := Fin 2
