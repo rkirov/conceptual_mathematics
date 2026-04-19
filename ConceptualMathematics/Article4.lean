@@ -2650,7 +2650,7 @@ Our solution this time uses the relevant APIs in mathlib in place of the book de
 In outline, though, since $`A` has $`1` arrow and $`2` dots, it follows that $`{A \times A}` has $`{1 \times 1 = 1}` arrow and $`{2 \times 2 = 4}` dots. Label the dots $`{(d₀, d₀)}`, $`{(d₀, d₁)}`, $`{(d₁, d₀)}`, and $`{(d₁, d₁)}`. Now, the source of the single arrow in $`{A \times A}` is $`{(d₀, d₀)}` and the target is $`{(d₁, d₁)}`, which leaves two 'naked dots' $`{(d₀, d₁)}` and $`{(d₁, d₀)}`. That is, $`{A \times A}` is exactly the disjoint union of one copy of $`A` and two copies of $`D`. In other words, $`{A \times A = A+D+D}`, which we prove up to isomorphism in the code that follows.
 
 ```savedLean
-open IrreflexiveGraph
+open IrreflexiveGraph in
 example
     (coneAA : BinaryFan A A)
     (limitAA : IsLimit coneAA)
@@ -2661,8 +2661,8 @@ example
     -- Improve readability
     set AA : IrreflexiveGraph := coneAA.pt with hAA
     set ADD : IrreflexiveGraph := coconeADD.pt with hADD
-    set p₁ := coneAA.π.app ⟨WalkingPair.left⟩ with hp₁ -- A ⟶ 𝐀×A
-    set p₂ := coneAA.π.app ⟨WalkingPair.right⟩ with hp₂ -- A ⟶ A×𝐀
+    set p₁ := coneAA.π.app ⟨WalkingPair.left⟩ with hp₁ -- 𝐀×A ⟶ A
+    set p₂ := coneAA.π.app ⟨WalkingPair.right⟩ with hp₂ -- A×𝐀 ⟶ A
     set j₁ := coconeADD.ι.app ⟨0⟩ with hj₁ -- A ⟶ 𝐀+D+D
     set j₂ := coconeADD.ι.app ⟨1⟩ with hj₂ -- D ⟶ A+𝐃+D
     set j₃ := coconeADD.ι.app ⟨2⟩ with hj₃ -- D ⟶ A+D+𝐃

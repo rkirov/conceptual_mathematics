@@ -1922,7 +1922,7 @@ end ExIV_20
 /-!
 Exercise IV.21 (p. 223)
 -/
-open IrreflexiveGraph
+open IrreflexiveGraph in
 example
     (coneAA : BinaryFan A A)
     (limitAA : IsLimit coneAA)
@@ -1933,8 +1933,8 @@ example
     -- Improve readability
     set AA : IrreflexiveGraph := coneAA.pt with hAA
     set ADD : IrreflexiveGraph := coconeADD.pt with hADD
-    set p₁ := coneAA.π.app ⟨WalkingPair.left⟩ with hp₁ -- A ⟶ 𝐀×A
-    set p₂ := coneAA.π.app ⟨WalkingPair.right⟩ with hp₂ -- A ⟶ A×𝐀
+    set p₁ := coneAA.π.app ⟨WalkingPair.left⟩ with hp₁ -- 𝐀×A ⟶ A
+    set p₂ := coneAA.π.app ⟨WalkingPair.right⟩ with hp₂ -- A×𝐀 ⟶ A
     set j₁ := coconeADD.ι.app ⟨0⟩ with hj₁ -- A ⟶ 𝐀+D+D
     set j₂ := coconeADD.ι.app ⟨1⟩ with hj₂ -- D ⟶ A+𝐃+D
     set j₃ := coconeADD.ι.app ⟨2⟩ with hj₃ -- D ⟶ A+D+𝐃
