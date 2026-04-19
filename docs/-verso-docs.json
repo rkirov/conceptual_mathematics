@@ -939,26 +939,161 @@
  "396": "<code>autoParam (f ⊚ section_ = 𝟙 Y) SplitEpi.id._autoParam</code>",
  "395":
  "<code>CategoryTheory.SplitEpi.mk.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} {f : X ⟶ Y} (section_ : Y ⟶ X)\n  (id : f ⊚ section_ = 𝟙 Y := by cat_disch) : SplitEpi f</code>",
+ "3942": "<code>v = 0</code>",
+ "3941": "<code>I ⊚ coprod.inr = prod.lift 0 (𝟙 B)</code>",
+ "3940": "<code>(v ⊚ I) ⊚ coprod.inr = (0 ⊚ I) ⊚ coprod.inr</code>",
  "394": "<code>SplitEpi f</code>",
+ "3939": "<code>I ⊚ coprod.inl = prod.lift (𝟙 A) 0</code>",
+ "3938": "<code>(v ⊚ I) ⊚ coprod.inl = (0 ⊚ I) ⊚ coprod.inl</code>",
+ "3937":
+ "<code>∀ (x : B.X), (ConcreteCategory.hom (prod.snd ⊚ prod.lift 0 (𝟙 B))) x = x</code>",
+ "3936":
+ "<code>∀ (x : B.X), (ConcreteCategory.hom (prod.fst ⊚ prod.lift 0 (𝟙 B))) x = 0</code>",
+ "3935": "<code>B.X</code>",
+ "3934":
+ "<code>∀ (x : A.X), (ConcreteCategory.hom (prod.snd ⊚ prod.lift (𝟙 A) 0)) x = 0</code>",
+ "3933":
+ "<code>∀ (x : A.X), (ConcreteCategory.hom (prod.fst ⊚ prod.lift (𝟙 A) 0)) x = x</code>",
+ "3932":
+ "<code>(fun x ↦ x) A.point = (fun x ↦ x) A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3931": "<code>A ⟶ A ⨯ B</code>",
+ "3930":
+ "<code>d11 (prod.fst.toFun (A ⨯ B).point) (prod.snd.toFun (A ⨯ B).point) = A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
  "393":
  "<code>CategoryTheory.SplitEpi.id.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} {f : X ⟶ Y} (self : SplitEpi f) :\n  f ⊚ self.section_ = 𝟙 Y</code><span class=\"sep\"></span><code class=\"docstring\">`section_` composed with `f` is the identity </code>",
+ "3929": "<code>(A ⨯ B).X</code>",
+ "3928":
+ "<code>(A ⨯ B).X → Fin 2</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3927": "<code>A ⨯ B ⟶ A</code>",
+ "3926": "<code>A ⨿ B ⟶ A ⨯ B</code>",
+ "3925":
+ "<code>IsIso (coprod.desc (prod.lift (𝟙 A) 0) (prod.lift 0 (𝟙 B)))</code>",
+ "3924": "<code>HasBinaryCoproduct A B</code>",
+ "3923": "<code>HasBinaryProduct A B</code>",
+ "3922": "<code>CM.Ex28_2.d11 : Fin 2 → Fin 2 → Fin 2</code>",
+ "3921":
+ "<code>(fun x ↦ Y.point) X.point = (fun x ↦ Y.point) X.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3920":
+ "<code>X.X → Y.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
  "392":
  "<code>CategoryTheory.SplitEpi.section_.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} {f : X ⟶ Y}\n  (self : SplitEpi f) : Y ⟶ X</code><span class=\"sep\"></span><code class=\"docstring\">The map splitting `f` </code>",
+ "3919": "<code>{ toFun := fun x ↦ Y.point, map_point := ⋯ } ⊚ 0 = 0</code>",
+ "3918":
+ "<code>CategoryTheory.Limits.zero_comp.{v, u} {C : Type u} [Category.{v, u} C] [HasZeroMorphisms C] {X Y Z : C} {f : Y ⟶ Z} :\n  f ⊚ 0 = 0</code>",
+ "3917": "<code>HasZeroMorphisms Pointed</code>",
+ "3916":
+ "<code>CM.Ex28_2.eval_zero.{u_1} {X Y : Pointed} [HasZeroMorphisms Pointed] (x : X.X) : (ConcreteCategory.hom 0) x = Y.point</code>",
+ "3915": "<code>CM.Ex28_2.B : Pointed</code>",
+ "3914": "<code>CM.Ex28_2.A : Pointed</code>",
+ "3913": "<code>v₁ = v₂</code>",
+ "3912": "<code>v₀ = v₂</code>",
+ "3911": "<code>v₀ = v₁</code>",
+ "3910": "<code>val✝² &lt; 2</code>",
  "391":
  "<code>CategoryTheory.SplitEpi.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} (f : X ⟶ Y) : Type v₁</code><span class=\"sep\"></span><code class=\"docstring\">A split epimorphism is a morphism `f : X ⟶ Y` with a given section `section_ f : Y ⟶ X`\nsuch that `section_ f ≫ f = 𝟙 Y`.\n(Note that `section` is a reserved keyword, so we append an underscore.)\n\nEvery split epimorphism is an epimorphism.\n</code>",
+ "3909": "<code>val✝¹ &lt; 2</code>",
+ "3908": "<code>val✝ &lt; 2</code>",
+ "3907": "<code>v₀ = v₁ ∨ v₀ = v₂ ∨ v₁ = v₂</code>",
+ "3906": "<code>e.hom ⊚ a = e.hom ⊚ b</code>",
+ "3905":
+ "<code>(fun x ↦ Z.point) X.point = (fun x ↦ Z.point) X.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3904":
+ "<code>X.X → Z.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3903": "<code>(ConcreteCategory.hom f) 1 = (ConcreteCategory.hom g) 1</code>",
+ "3902":
+ "<code>∀ {f g : A ⟶ A}, (ConcreteCategory.hom f) 1 = (ConcreteCategory.hom g) 1 → f = g</code>",
+ "3901":
+ "<code>(ConcreteCategory.hom (prod.fst ⊚ e.hom ⊚ a)) 1 = (ConcreteCategory.hom (prod.fst ⊚ e.hom ⊚ b)) 1</code>",
+ "3900":
+ "<code>∀ {a b : A ⟶ L},\n  (ConcreteCategory.hom (prod.fst ⊚ e.hom ⊚ a)) 1 = (ConcreteCategory.hom (prod.fst ⊚ e.hom ⊚ b)) 1 → a = b</code>",
  "390":
  "<code>CM.IsRetraction.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : Prop</code>",
  "39":
  "<code class=\"docstring\">`namespace &lt;id&gt;` opens a section with label `&lt;id&gt;` that influences naming and name resolution inside\nthe section:\n* Declarations names are prefixed: `def seventeen : ℕ := 17` inside a namespace `Nat` is given the\n  full name `Nat.seventeen`.\n* Names introduced by `export` declarations are also prefixed by the identifier.\n* All names starting with `&lt;id&gt;.` become available in the namespace without the prefix. These names\n  are preferred over names introduced by outer namespaces or `open`.\n* Within a namespace, declarations can be `protected`, which excludes them from the effects of\n  opening the namespace.\n\nAs with `section`, namespaces can be nested and the scope of a namespace is terminated by a\ncorresponding `end &lt;id&gt;` or the end of the file.\n\n`namespace` also acts like `section` in delimiting the scope of `variable`, `open`, and other scoped commands.\n</code>",
+ "3899": "<code>𝟙 Z = { toFun := fun x ↦ Z.point, map_point := ⋯ }</code>",
+ "3898":
+ "<code>(fun x ↦ Z.point) Z.point = (fun x ↦ Z.point) Z.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3897": "<code>Z.X</code>",
+ "3896":
+ "<code>Z.X → Z.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3895":
+ "<code>CategoryTheory.Limits.coprod.hom_ext.{v, u} {C : Type u} [Category.{v, u} C] {W X Y : C} [HasBinaryCoproduct X Y]\n  {f g : X ⨿ Y ⟶ W} (h₁ : f ⊚ coprod.inl = g ⊚ coprod.inl) (h₂ : f ⊚ coprod.inr = g ⊚ coprod.inr) : f = g</code>",
+ "3894": "<code>B₂.X</code>",
+ "3893": "<code>∀ {Y : Pointed} (f g : B₂ ⟶ Y), f = g</code>",
+ "3892": "<code>B₁.X</code>",
+ "3891": "<code>∀ {Y : Pointed} (f g : B₁ ⟶ Y), f = g</code>",
+ "3890": "<code>X ⟶ Z</code>",
  "389":
  "<code>CM.Retraction.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : Type v</code>",
+ "3889":
+ "<code>∀ {X : Pointed} (f : X ⟶ Z), f = { toFun := fun x ↦ Z.point, map_point := ⋯ }</code>",
+ "3888": "<code>m01 ⊚ j₂ = 𝟙 A</code>",
+ "3887": "<code>m10 ⊚ j₂ = cAA</code>",
+ "3886":
+ "<code class=\"docstring\">`clear x...` removes the given hypotheses, or fails if there are remaining\nreferences to a hypothesis.\n</code>",
+ "3885": "<code>m01 ⊚ j₁ = cAA</code>",
+ "3884": "<code>m10 ⊚ j₁ = 𝟙 A</code>",
+ "3883": "<code>m01 ⊚ cAL = cAA</code>",
+ "3882": "<code>m10 ⊚ cAL = cAA</code>",
+ "3881": "<code>L ⟶ A</code>",
+ "3880":
+ "<code>(fun x ↦ B₂.point) A.point = (fun x ↦ B₂.point) A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
  "388": "<code>Nonempty (SplitMono f)</code>",
+ "3879":
+ "<code>A.X → B₂.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3878":
+ "<code>(fun x ↦ B₁.point) A.point = (fun x ↦ B₁.point) A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3877":
+ "<code>A.X → B₁.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3876":
+ "<code>(fun x ↦ L.point) A.point = (fun x ↦ L.point) A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3875":
+ "<code>A.X → L.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3874": "<code>A ⟶ L</code>",
+ "3873":
+ "<code>(fun x ↦ A.point) A.point = (fun x ↦ A.point) A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3872":
+ "<code>A.X → A.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3871": "<code>(A ⨯ B₁) ⨿ A ⨯ B₂ ≅ A ⨯ B₁ ⨿ B₂</code>",
+ "3870":
+ "<code>CategoryTheory.Limits.coprod.{v, u} {C : Type u} [Category.{v, u} C] (X Y : C) [HasBinaryCoproduct X Y] : C</code><span class=\"sep\"></span><code class=\"docstring\">If we have a coproduct of `X` and `Y`, we can access it using `coprod X Y` or `X ⨿ Y`. </code>",
  "387":
  "<code>CategoryTheory.IsSplitMono.mk.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} {f : X ⟶ Y}\n  (exists_splitMono : Nonempty (SplitMono f)) : IsSplitMono f</code>",
+ "3869": "<code>HasBinaryProduct A (B₁ ⨿ B₂)</code>",
+ "3868": "<code>HasBinaryCoproduct B₁ B₂</code>",
+ "3867": "<code>HasBinaryCoproduct (A ⨯ B₁) (A ⨯ B₂)</code>",
+ "3866": "<code>HasBinaryProduct A B₂</code>",
+ "3865": "<code>HasBinaryProduct A B₁</code>",
+ "3864":
+ "<code>Fin 2</code><span class=\"sep\"></span><code class=\"docstring\">The `OfNat.ofNat` function is automatically inserted by the parser when\nthe user writes a numeric literal like `1 : α`. Implementations of this\ntypeclass can therefore customize the behavior of `n : α` based on `n` and\n`α`. </code>",
+ "3863":
+ "<code>OfNat.{u} (α : Type u) : ℕ → Type u</code><span class=\"sep\"></span><code class=\"docstring\">The class `OfNat α n` powers the numeric literal parser. If you write\n`37 : α`, Lean will attempt to synthesize `OfNat α 37`, and will generate\nthe term `(OfNat.ofNat 37 : α)`.\n\nThere is a bit of infinite regress here since the desugaring apparently\nstill contains a literal `37` in it. The type of expressions contains a\nprimitive constructor for \"raw natural number literals\", which you can directly\naccess using the macro `nat_lit 37`. Raw number literals are always of type `Nat`.\nSo it would be more correct to say that Lean looks for an instance of\n`OfNat α (nat_lit 37)`, and it generates the term `(OfNat.ofNat (nat_lit 37) : α)`.\n</code>",
+ "3862": "<code>CM.Ex28_1_b.B₂ : Pointed</code>",
+ "3861": "<code>CM.Ex28_1_b.B₁ : Pointed</code>",
+ "3860": "<code>CM.Ex28_1_b.A : Pointed</code>",
  "386":
  "<code>Nonempty.{u} (α : Sort u) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`Nonempty α` is a typeclass that says that `α` is not an empty type,\nthat is, there exists an element in the type. It differs from `Inhabited α`\nin that `Nonempty α` is a `Prop`, which means that it does not actually carry\nan element of `α`, only a proof that *there exists* such an element.\nGiven `Nonempty α`, you can construct an element of `α` *nonconstructively*\nusing `Classical.choice`.\n</code>",
+ "3859": "<code>one = A.point</code>",
+ "3858": "<code>pA ⊚ e.hom = a₀</code>",
+ "3857":
+ "<code>(fun x ↦ (⊥_ Pointed).point) A.point = (fun x ↦ (⊥_ Pointed).point) A.point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3856": "<code>A.X</code>",
+ "3855":
+ "<code>A.X → (⊥_ Pointed).X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
+ "3854": "<code>A ⟶ (⊥_ Pointed) ⨯ A</code>",
+ "3853": "<code>(⊥_ Pointed) ⨯ A ⟶ A</code>",
+ "3852":
+ "<code>(fun x ↦ A.point) (⊥_ Pointed).point = (fun x ↦ A.point) (⊥_ Pointed).point</code><span class=\"sep\"></span><code class=\"docstring\">compatibility with the distinguished points </code>",
+ "3851": "<code>(⊥_ Pointed).X</code>",
+ "3850":
+ "<code>(⊥_ Pointed).X → A.X</code><span class=\"sep\"></span><code class=\"docstring\">the underlying map </code>",
  "385":
  "<code>CategoryTheory.IsSplitMono.exists_splitMono.{v₁, u₁} {C : Type u₁} {inst✝ : Category.{v₁, u₁} C} {X Y : C} {f : X ⟶ Y}\n  [self : IsSplitMono f] : Nonempty (SplitMono f)</code><span class=\"sep\"></span><code class=\"docstring\">There is a splitting </code>",
+ "3849": "<code>⊥_ Pointed ⟶ A</code>",
+ "3848": "<code>⊥_ Pointed ≅ (⊥_ Pointed) ⨯ A</code>",
+ "3847": "<code>HasBinaryProduct (⊥_ Pointed) A</code>",
+ "3846": "<code>HasInitial Pointed</code>",
+ "3845": "<code>CM.Ex28_1_a.A : Pointed</code>",
  "3844": "<code>b = w✝</code>",
  "3843": "<code>f ⊚ w✝ = f ⊚ a ∧ g ⊚ w✝ = g ⊚ a</code>",
  "3842": "<code>a = w✝</code>",

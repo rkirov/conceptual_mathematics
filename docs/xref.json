@@ -305,6 +305,39 @@
         "shortTitle": null,
         "number": null}]},
      "address": "/Session-2___-Sets___-maps___-and-composition/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-28___-The-category-of-pointed-sets--1___-An-example-of-a-non-distributive-category":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-28___-The-category-of-pointed-sets--1___-An-example-of-a-non-distributive-category",
+     "data":
+     {"title": "1. An example of a non-distributive category",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 28: The category of pointed sets",
+        "shortTitle": null,
+        "number": null},
+       {"title": "1. An example of a non-distributive category",
+        "shortTitle": null,
+        "number": "1"}]},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Session-28___-The-category-of-pointed-sets":
+   [{"id":
+     "A-Lean-Companion-to-Conceptual-Mathematics--Session-28___-The-category-of-pointed-sets",
+     "data":
+     {"title": "Session 28: The category of pointed sets",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Session 28: The category of pointed sets",
+        "shortTitle": null,
+        "number": null}]},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
    "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--4___-Solving-equations-and-picturing-maps":
    [{"id":
      "A-Lean-Companion-to-Conceptual-Mathematics--Session-27___-Examples-of-universal-constructions--4___-Solving-equations-and-picturing-maps",
@@ -5358,6 +5391,86 @@
         "Session 4: Division of maps: Isomorphisms",
         "4. A small zoo of isomorphisms in other categories"]}},
      "address": "/Session-4___-Division-of-maps___-Isomorphisms/"}],
+   "CM.Ex28_2.eval_zero":
+   [{"id": "CM___Ex28_2___eval_zero",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_2___eval_zero":
+      {"display": "eval_zero",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_2.d11":
+   [{"id": "CM___Ex28_2___d11",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_2___d11":
+      {"display": "d11",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_2.B":
+   [{"id": "CM___Ex28_2___B",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_2___B":
+      {"display": "B",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_2.A":
+   [{"id": "CM___Ex28_2___A",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_2___A":
+      {"display": "A",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_1_b.B₂":
+   [{"id": "CM___Ex28_1_b___B___-next",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_1_b___B___-next":
+      {"display": "B₂",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_1_b.B₁":
+   [{"id": "CM___Ex28_1_b___B___",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_1_b___B___":
+      {"display": "B₁",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_1_b.A":
+   [{"id": "CM___Ex28_1_b___A",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_1_b___A":
+      {"display": "A",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
+   "CM.Ex28_1_a.A":
+   [{"id": "CM___Ex28_1_a___A",
+     "data":
+     {"/Session-28___-The-category-of-pointed-sets/#CM___Ex28_1_a___A":
+      {"display": "A",
+       "context":
+       ["A Lean Companion to Conceptual Mathematics",
+        "Session 28: The category of pointed sets",
+        "1. An example of a non-distributive category"]}},
+     "address": "/Session-28___-The-category-of-pointed-sets/"}],
    "CM.Ex27_4.tri_le_of_le":
    [{"id": "CM___Ex27_4___tri_le_of_le",
      "data":
