@@ -101,7 +101,7 @@ namespace Test3_3'
 ```
 
 ```lean
-def IrreflexiveGraph.A : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.A : IrreflexiveGraph := {
   carrierA := Unit
   carrierD := Fin 2
   toSrc := fun _ ↦ 0

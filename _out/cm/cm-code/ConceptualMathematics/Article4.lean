@@ -256,14 +256,14 @@ end ExIV_5b
 /-!
 Excerpt (p. 215)
 -/
-def IrreflexiveGraph.A : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.A : IrreflexiveGraph := {
   carrierA := Unit
   carrierD := Fin 2
   toSrc := fun _ ↦ 0
   toTgt := fun _ ↦ 1
 }
 
-def IrreflexiveGraph.D : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.D : IrreflexiveGraph := {
   carrierA := Empty
   carrierD := Unit
   toSrc := Empty.elim

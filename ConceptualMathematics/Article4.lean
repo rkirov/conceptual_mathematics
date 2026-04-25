@@ -428,14 +428,14 @@ Excerpt (p. 215)
 Consider the two graphs \[$`A`, the generic arrow, and $`D`, the naked dot,\] whose internal pictures are as indicated
 
 ```savedLean
-def IrreflexiveGraph.A : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.A : IrreflexiveGraph := {
   carrierA := Unit
   carrierD := Fin 2
   toSrc := fun _ ↦ 0
   toTgt := fun _ ↦ 1
 }
 
-def IrreflexiveGraph.D : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.D : IrreflexiveGraph := {
   carrierA := Empty
   carrierD := Unit
   toSrc := Empty.elim

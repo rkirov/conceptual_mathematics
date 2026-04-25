@@ -70,14 +70,14 @@ namespace Test4_2'
 ```
 
 ```lean
-def IrreflexiveGraph.D : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.D : IrreflexiveGraph := {
   carrierA := Empty
   carrierD := Unit
   toSrc := Empty.elim
   toTgt := Empty.elim
 }
 
-def IrreflexiveGraph.A : IrreflexiveGraph := {
+abbrev IrreflexiveGraph.A : IrreflexiveGraph := {
   carrierA := Unit
   carrierD := Fin 2
   toSrc := fun _ ↦ 0

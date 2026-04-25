@@ -205,10 +205,11 @@ example {sumDD prod2D : IrreflexiveGraph}
     }
     constructor
     · constructor
-      all_goals
-      ext e
-      · nomatch g₂.val.1 e
-      · rfl
+      · ext e
+        · nomatch g₂.val.1 e
+        · rfl
+      · ext e
+        nomatch g₂.val.1 e
     · intros g hg
       ext e
       · nomatch g.val.1 e
@@ -247,8 +248,7 @@ example {prodDD : IrreflexiveGraph}
       · constructor <;> rw [Category.id_comp]
     inv_hom_id := by
       ext x
-      · nomatch x
-      · rfl
+      nomatch x
   }
 
 open IrreflexiveGraph in
@@ -298,10 +298,9 @@ example {prodAD sumDD : IrreflexiveGraph}
     }
     constructor
     · constructor
-      all_goals
-      ext e
-      · nomatch g₂.val.1 e
       · rfl
+      · ext e
+        nomatch g₂.val.1 e
     · intros g hg
       ext e
       · nomatch g.val.1 e
