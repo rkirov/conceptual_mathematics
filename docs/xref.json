@@ -2,7 +2,43 @@
  {"title": "Sections or chapters of the manual",
   "description": null,
   "contents":
-  {"A-Lean-Companion-to-Conceptual-Mathematics--Test-2":
+  {"A-Lean-Companion-to-Conceptual-Mathematics--Test-5":
+   [{"id": "A-Lean-Companion-to-Conceptual-Mathematics--Test-5",
+     "data":
+     {"title": "Test 5",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Test 5", "shortTitle": null, "number": null}]},
+     "address": "/Test-5/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Test-4":
+   [{"id": "A-Lean-Companion-to-Conceptual-Mathematics--Test-4",
+     "data":
+     {"title": "Test 4",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Test 4", "shortTitle": null, "number": null}]},
+     "address": "/Test-4/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Test-3":
+   [{"id": "A-Lean-Companion-to-Conceptual-Mathematics--Test-3",
+     "data":
+     {"title": "Test 3",
+      "shortTitle": null,
+      "sectionNum": null,
+      "context":
+      [{"title": "A Lean Companion to Conceptual Mathematics",
+        "shortTitle": null,
+        "number": null},
+       {"title": "Test 3", "shortTitle": null, "number": null}]},
+     "address": "/Test-3/"}],
+   "A-Lean-Companion-to-Conceptual-Mathematics--Test-2":
    [{"id": "A-Lean-Companion-to-Conceptual-Mathematics--Test-2",
      "data":
      {"title": "Test 2",
@@ -2100,6 +2136,202 @@
         "Article IV: Universal mapping properties",
         "3. Initial object"]}},
      "address": "/Article-IV___-Universal-mapping-properties/"}],
+   "CM.Test5_2.IxI":
+   [{"id": "CM___Test5_2___IxI",
+     "data":
+     {"/Test-5/#CM___Test5_2___IxI":
+      {"display": "IxI",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_2.I":
+   [{"id": "CM___Test5_2___I",
+     "data":
+     {"/Test-5/#CM___Test5_2___I":
+      {"display": "I",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_2.G":
+   [{"id": "CM___Test5_2___G",
+     "data":
+     {"/Test-5/#CM___Test5_2___G":
+      {"display": "G",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_2.Fam2D2AI":
+   [{"id": "CM___Test5_2___Fam2D2AI",
+     "data":
+     {"/Test-5/#CM___Test5_2___Fam2D2AI":
+      {"display": "Fam2D2AI",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_2'.IrreflexiveGraph.D":
+   [{"id": "CM___Test5_2______IrreflexiveGraph___D",
+     "data":
+     {"/Test-5/#CM___Test5_2______IrreflexiveGraph___D":
+      {"display": "IrreflexiveGraph.D",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_2'.IrreflexiveGraph.A":
+   [{"id": "CM___Test5_2______IrreflexiveGraph___A",
+     "data":
+     {"/Test-5/#CM___Test5_2______IrreflexiveGraph___A":
+      {"display": "IrreflexiveGraph.A",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₉":
+   [{"id": "CM___Test5_1___G___-next-next-next-next-next-next-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next-next-next-next-next-next-next":
+      {"display": "G₉",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₈":
+   [{"id": "CM___Test5_1___G___-next-next-next-next-next-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next-next-next-next-next-next":
+      {"display": "G₈",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₇":
+   [{"id": "CM___Test5_1___G___-next-next-next-next-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next-next-next-next-next":
+      {"display": "G₇",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₆":
+   [{"id": "CM___Test5_1___G___-next-next-next-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next-next-next-next":
+      {"display": "G₆",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₅":
+   [{"id": "CM___Test5_1___G___-next-next-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next-next-next":
+      {"display": "G₅",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₄":
+   [{"id": "CM___Test5_1___G___-next-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next-next":
+      {"display": "G₄",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₃":
+   [{"id": "CM___Test5_1___G___-next-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next-next":
+      {"display": "G₃",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₂":
+   [{"id": "CM___Test5_1___G___-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___-next":
+      {"display": "G₂",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₁₁":
+   [{"id": "CM___Test5_1___G______-next",
+     "data":
+     {"/Test-5/#CM___Test5_1___G______-next":
+      {"display": "G₁₁",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₁₀":
+   [{"id": "CM___Test5_1___G______",
+     "data":
+     {"/Test-5/#CM___Test5_1___G______":
+      {"display": "G₁₀",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test5_1.G₁":
+   [{"id": "CM___Test5_1___G___",
+     "data":
+     {"/Test-5/#CM___Test5_1___G___":
+      {"display": "G₁",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
+   "CM.Test4_2.C":
+   [{"id": "CM___Test4_2___C",
+     "data":
+     {"/Test-4/#CM___Test4_2___C":
+      {"display": "C",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2.BuD":
+   [{"id": "CM___Test4_2___BuD",
+     "data":
+     {"/Test-4/#CM___Test4_2___BuD":
+      {"display": "BuD",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2.B":
+   [{"id": "CM___Test4_2___B",
+     "data":
+     {"/Test-4/#CM___Test4_2___B":
+      {"display": "B",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2.AxD":
+   [{"id": "CM___Test4_2___AxD",
+     "data":
+     {"/Test-4/#CM___Test4_2___AxD":
+      {"display": "AxD",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2.AxC":
+   [{"id": "CM___Test4_2___AxC",
+     "data":
+     {"/Test-4/#CM___Test4_2___AxC":
+      {"display": "AxC",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2.AxBuD":
+   [{"id": "CM___Test4_2___AxBuD",
+     "data":
+     {"/Test-4/#CM___Test4_2___AxBuD":
+      {"display": "AxBuD",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2.AxB":
+   [{"id": "CM___Test4_2___AxB",
+     "data":
+     {"/Test-4/#CM___Test4_2___AxB":
+      {"display": "AxB",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2'.IrreflexiveGraph.D":
+   [{"id": "CM___Test4_2______IrreflexiveGraph___D",
+     "data":
+     {"/Test-4/#CM___Test4_2______IrreflexiveGraph___D":
+      {"display": "IrreflexiveGraph.D",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test4_2'.IrreflexiveGraph.A":
+   [{"id": "CM___Test4_2______IrreflexiveGraph___A",
+     "data":
+     {"/Test-4/#CM___Test4_2______IrreflexiveGraph___A":
+      {"display": "IrreflexiveGraph.A",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 4"]}},
+     "address": "/Test-4/"}],
+   "CM.Test3_3.AAA":
+   [{"id": "CM___Test3_3___AAA",
+     "data":
+     {"/Test-3/#CM___Test3_3___AAA":
+      {"display": "AAA",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 3"]}},
+     "address": "/Test-3/"}],
+   "CM.Test3_3'.IrreflexiveGraph.A":
+   [{"id": "CM___Test3_3______IrreflexiveGraph___A",
+     "data":
+     {"/Test-3/#CM___Test3_3______IrreflexiveGraph___A":
+      {"display": "IrreflexiveGraph.A",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 3"]}},
+     "address": "/Test-3/"}],
    "CM.Test2_3.α":
    [{"id": "CM___Test2_3______",
      "data":
@@ -3132,6 +3364,13 @@
         "Article III: Examples of categories",
         "6. Endomaps as special graphs"]}},
      "address": "/Article-III___-Examples-of-categories/"}],
+   "CM.Example":
+   [{"id": "CM___Example",
+     "data":
+     {"/Test-5/#CM___Example":
+      {"display": "Example",
+       "context": ["A Lean Companion to Conceptual Mathematics", "Test 5"]}},
+     "address": "/Test-5/"}],
    "CM.ExI_9.k":
    [{"id": "CM___ExI_9___k",
      "data":

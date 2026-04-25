@@ -904,41 +904,305 @@
  "417": "<code>Z ⟶ X</code>",
  "416":
  "<code>CategoryTheory.Mono.right_cancellation.{v, u} {C : Type u} {inst✝ : Category.{v, u} C} {X Y : C} {f : X ⟶ Y}\n  [self : Mono f] {Z : C} (g h : Z ⟶ X) : f ⊚ g = f ⊚ h → g = h</code><span class=\"sep\"></span><code class=\"docstring\">A morphism `f` is a monomorphism if it can be cancelled when postcomposed. </code>",
+ "4151": "<code>(Fam2D2AI ((fun i ↦ i) ⟨4, ⋯⟩)).carrierD</code>",
+ "4150": "<code>(Fam2D2AI ((fun i ↦ i) ⟨3, ⋯⟩)).carrierD</code>",
  "415":
  "<code>CategoryTheory.Mono.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} (f : X ⟶ Y) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">A morphism `f` is a monomorphism if it can be cancelled when postcomposed:\n`g ≫ f = h ≫ f` implies `g = h`. \n\n[Stacks Tag 003B](https://stacks.math.columbia.edu/tag/003B)</code>",
+ "4149": "<code>(Fam2D2AI ((fun i ↦ i) ⟨2, ⋯⟩)).carrierD</code>",
+ "4148": "<code>(Fam2D2AI ((fun i ↦ i) ⟨1, ⋯⟩)).carrierD</code>",
+ "4147": "<code>(Fam2D2AI ((fun i ↦ i) ⟨0, ⋯⟩)).carrierD</code>",
+ "4146": "<code>(Fam2D2AI i).carrierD</code>",
+ "4145":
+ "<code>⟨(fun x ↦\n        match x with\n        | 0 =&gt; ⟨4, 0⟩\n        | 1 =&gt; ⟨2, ()⟩\n        | 2 =&gt; ⟨3, ()⟩\n        | 3 =&gt; ⟨4, 1⟩,\n        fun x ↦\n        match x with\n        | (0, 0) =&gt; ⟨4, 0⟩\n        | (0, 1) =&gt; ⟨2, 0⟩\n        | (0, 2) =&gt; ⟨0, ()⟩\n        | (1, 0) =&gt; ⟨3, 0⟩\n        | (1, 1) =&gt; ⟨4, 1⟩\n        | (1, 2) =&gt; ⟨2, 1⟩\n        | (2, 0) =&gt; ⟨1, ()⟩\n        | (2, 1) =&gt; ⟨3, 1⟩\n        | (2, 2) =&gt; ⟨4, 2⟩),\n      ⋯⟩ ⊚\n    ⟨(fun x ↦\n        match x with\n        | ⟨0, a⟩ =&gt; nomatch a\n        | ⟨1, a⟩ =&gt; nomatch a\n        | ⟨2, PUnit.unit⟩ =&gt; 1\n        | ⟨3, PUnit.unit⟩ =&gt; 2\n        | ⟨4, 0⟩ =&gt; 0\n        | ⟨4, 1⟩ =&gt; 3,\n        fun x ↦\n        match x with\n        | ⟨0, PUnit.unit⟩ =&gt; (0, 2)\n        | ⟨1, PUnit.unit⟩ =&gt; (2, 0)\n        | ⟨2, 0⟩ =&gt; (0, 1)\n        | ⟨2, 1⟩ =&gt; (1, 2)\n        | ⟨3, 0⟩ =&gt; (1, 0)\n        | ⟨3, 1⟩ =&gt; (2, 1)\n        | ⟨4, 0⟩ =&gt; (0, 0)\n        | ⟨4, 1⟩ =&gt; (1, 1)\n        | ⟨4, 2⟩ =&gt; (2, 2)),\n      ⋯⟩ =\n  𝟙 G</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "4144":
+ "<code>⟨(fun x ↦\n        match x with\n        | ⟨0, a⟩ =&gt; nomatch a\n        | ⟨1, a⟩ =&gt; nomatch a\n        | ⟨2, PUnit.unit⟩ =&gt; 1\n        | ⟨3, PUnit.unit⟩ =&gt; 2\n        | ⟨4, 0⟩ =&gt; 0\n        | ⟨4, 1⟩ =&gt; 3,\n        fun x ↦\n        match x with\n        | ⟨0, PUnit.unit⟩ =&gt; (0, 2)\n        | ⟨1, PUnit.unit⟩ =&gt; (2, 0)\n        | ⟨2, 0⟩ =&gt; (0, 1)\n        | ⟨2, 1⟩ =&gt; (1, 2)\n        | ⟨3, 0⟩ =&gt; (1, 0)\n        | ⟨3, 1⟩ =&gt; (2, 1)\n        | ⟨4, 0⟩ =&gt; (0, 0)\n        | ⟨4, 1⟩ =&gt; (1, 1)\n        | ⟨4, 2⟩ =&gt; (2, 2)),\n      ⋯⟩ ⊚\n    ⟨(fun x ↦\n        match x with\n        | 0 =&gt; ⟨4, 0⟩\n        | 1 =&gt; ⟨2, ()⟩\n        | 2 =&gt; ⟨3, ()⟩\n        | 3 =&gt; ⟨4, 1⟩,\n        fun x ↦\n        match x with\n        | (0, 0) =&gt; ⟨4, 0⟩\n        | (0, 1) =&gt; ⟨2, 0⟩\n        | (0, 2) =&gt; ⟨0, ()⟩\n        | (1, 0) =&gt; ⟨3, 0⟩\n        | (1, 1) =&gt; ⟨4, 1⟩\n        | (1, 2) =&gt; ⟨2, 1⟩\n        | (2, 0) =&gt; ⟨1, ()⟩\n        | (2, 1) =&gt; ⟨3, 1⟩\n        | (2, 2) =&gt; ⟨4, 2⟩),\n      ⋯⟩ =\n  𝟙 IxI</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "4143": "<code>(Fam2D2AI ((fun i ↦ i) ⟨4, ⋯⟩)).carrierA</code>",
+ "4142": "<code>(Fam2D2AI ((fun i ↦ i) ⟨3, ⋯⟩)).carrierA</code>",
+ "4141": "<code>(Fam2D2AI ((fun i ↦ i) ⟨2, ⋯⟩)).carrierA</code>",
+ "4140": "<code>(Fam2D2AI ((fun i ↦ i) ⟨1, ⋯⟩)).carrierA</code>",
  "414": "<code>f ⊚ x₁ = f ⊚ x₂</code>",
+ "4139": "<code>(Fam2D2AI ((fun i ↦ i) ⟨0, ⋯⟩)).carrierA</code>",
+ "4138": "<code>(Fam2D2AI 1).carrierA</code>",
+ "4137":
+ "<code class=\"docstring\">Empty match/ex falso. `nomatch e` is of arbitrary type `α : Sort u` if\nLean can show that an empty set of patterns is exhaustive given `e`'s type,\ne.g. because it has no constructors.\n</code>",
+ "4136": "<code>(Fam2D2AI 0).carrierA</code>",
+ "4135":
+ "<code>{ f // f.2 ⊚ G.toSrc = IxI.toSrc ⊚ f.1 ∧ f.2 ⊚ G.toTgt = IxI.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "4134": "<code>IxI.carrierD</code>",
+ "4133": "<code>(Fam2D2AI 3).carrierD</code>",
+ "4132": "<code>(Fam2D2AI 2).carrierD</code>",
+ "4131": "<code>(Fam2D2AI 4).carrierD</code>",
+ "4130": "<code>(Fam2D2AI 4).carrierA</code>",
  "413":
  "<code>CM.prop2.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞} (f : A ⟶ B) [hf : IsRetraction f] (x₁ x₂ : T ⟶ A) :\n  f ⊚ x₁ = f ⊚ x₂ → x₁ = x₂</code>",
+ "4129": "<code>IxI.carrierA</code>",
+ "4128":
+ "<code>{ f // f.2 ⊚ IxI.toSrc = G.toSrc ⊚ f.1 ∧ f.2 ⊚ IxI.toTgt = G.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "4127": "<code>(Fam2D2AI i).carrierA</code>",
+ "4126":
+ "<code>(i : Fin 5) × (Fam2D2AI i).carrierA → (i : Fin 5) × (Fam2D2AI i).carrierD</code>",
+ "4125": "<code>CM.Test5_2.G : IrreflexiveGraph</code>",
+ "4124": "<code>Fin 5</code>",
+ "4123": "<code>CM.Test5_2.Fam2D2AI : Fin 5 → IrreflexiveGraph</code>",
+ "4122": "<code>Fin 4 → Fin 3 × Fin 3</code>",
+ "4121": "<code>CM.Test5_2.IxI : IrreflexiveGraph</code>",
+ "4120": "<code>CM.Test5_2.I : IrreflexiveGraph</code>",
  "412": "<code>r ⊚ f = 𝟙 A</code>",
+ "4119": "<code>CM.Test5_2'.IrreflexiveGraph.A : IrreflexiveGraph</code>",
+ "4118": "<code>CM.Test5_2'.IrreflexiveGraph.D : IrreflexiveGraph</code>",
+ "4117": "<code>CM.Test5_1.G₁₁ : IrreflexiveGraph</code>",
+ "4116": "<code>CM.Test5_1.G₁₀ : IrreflexiveGraph</code>",
+ "4115": "<code>CM.Test5_1.G₉ : IrreflexiveGraph</code>",
+ "4114": "<code>CM.Test5_1.G₈ : IrreflexiveGraph</code>",
+ "4113": "<code>CM.Test5_1.G₇ : IrreflexiveGraph</code>",
+ "4112": "<code>CM.Test5_1.G₆ : IrreflexiveGraph</code>",
+ "4111": "<code>CM.Test5_1.G₅ : IrreflexiveGraph</code>",
+ "4110": "<code>CM.Test5_1.G₄ : IrreflexiveGraph</code>",
  "411": "<code>B ⟶ T</code>",
+ "4109": "<code>CM.Test5_1.G₃ : IrreflexiveGraph</code>",
+ "4108": "<code>CM.Test5_1.G₂ : IrreflexiveGraph</code>",
+ "4107": "<code>CM.Test5_1.G₁ : IrreflexiveGraph</code>",
+ "4106": "<code>Fin 2 → Fin 4</code>",
+ "4105": "<code>CM.Example : IrreflexiveGraph</code>",
+ "4104": "<code>AxC.carrierD</code>",
+ "4103":
+ "<code>⟨(fun a ↦ a, fD), ⋯⟩ ⊚ ⟨(fun a ↦ a, fD), ⋯⟩ = 𝟙 AxC</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "4102": "<code>AxBuD.carrierD</code>",
+ "4101":
+ "<code>⟨(fun a ↦ a, fD), ⋯⟩ ⊚ ⟨(fun a ↦ a, fD), ⋯⟩ = 𝟙 AxBuD</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "4100": "<code>AxC.carrierA</code>",
  "410": "<code>A ⟶ T</code>",
  "41":
  "<code>Finset.{u_4} (α : Type u_4) : Type u_4</code><span class=\"sep\"></span><code class=\"docstring\">`Finset α` is the type of finite sets of elements of `α`. It is implemented\nas a multiset (a list up to permutation) which has no duplicate elements. </code>",
+ "4099":
+ "<code>{ f // f.2 ⊚ AxC.toSrc = AxBuD.toSrc ⊚ f.1 ∧ f.2 ⊚ AxC.toTgt = AxBuD.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "4098": "<code>AxBuD.carrierA</code>",
+ "4097":
+ "<code>{ f // f.2 ⊚ AxBuD.toSrc = AxC.toSrc ⊚ f.1 ∧ f.2 ⊚ AxBuD.toTgt = AxC.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "4096": "<code>Fin 2 × Fin 3 ⟶ Fin 2 × Fin 3</code>",
+ "4095": "<code>CM.Test4_2.AxBuD : IrreflexiveGraph</code>",
+ "4094": "<code>Fin 2 → Fin 2 × Fin 3</code>",
+ "4093": "<code>CM.Test4_2.AxC : IrreflexiveGraph</code>",
+ "4092": "<code>CM.Test4_2.AxD : IrreflexiveGraph</code>",
+ "4091": "<code>Fin 2 → Fin 2 × Fin 2</code>",
+ "4090": "<code>CM.Test4_2.AxB : IrreflexiveGraph</code>",
  "409": "<code>IsRetraction f</code>",
+ "4089": "<code>1 = 2</code>",
+ "4088":
+ "<code>C.toSrc ((fun i ↦ i) ⟨1, ⋯⟩) = C.toTgt ((fun i ↦ i) ⟨1, ⋯⟩)</code>",
+ "4087":
+ "<code>C.toSrc ((fun i ↦ i) ⟨0, ⋯⟩) = C.toTgt ((fun i ↦ i) ⟨0, ⋯⟩)</code>",
+ "4086": "<code>C.toSrc a = C.toTgt a</code>",
+ "4085": "<code>C.toSrc ((↑f).1 ()) = C.toTgt ((↑f).1 ())</code>",
+ "4084": "<code>(↑f).2 () = C.toTgt ((↑f).1 ())</code>",
+ "4083": "<code>(↑f).2 () = C.toSrc ((↑f).1 ())</code>",
+ "4082": "<code>termIG ⟶ C</code>",
+ "4081": "<code>∀ (f : termIG ⟶ C), False</code>",
+ "4080": "<code>BuD.toSrc (Sum.inr d) = BuD.toTgt (Sum.inr d)</code>",
  "408":
  "<code>CM.«prop1*».{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞} (f : A ⟶ B) [hf : IsRetraction f] (g : A ⟶ T) :\n  ∃ t, t ⊚ f = g</code>",
+ "4079": "<code>(↑f).2 () = BuD.toTgt (Sum.inr d)</code>",
+ "4078": "<code>(↑f).2 () = BuD.toSrc (Sum.inr d)</code>",
+ "4077": "<code>Sum.inl 0 = Sum.inl 1</code>",
+ "4076":
+ "<code>BuD.toSrc (Sum.inl ((fun i ↦ i) ⟨1, ⋯⟩)) = BuD.toTgt (Sum.inl ((fun i ↦ i) ⟨1, ⋯⟩))</code>",
+ "4075": "<code>(↑f).2 () = BuD.toTgt (Sum.inl ((fun i ↦ i) ⟨1, ⋯⟩))</code>",
+ "4074": "<code>(↑f).2 () = BuD.toSrc (Sum.inl ((fun i ↦ i) ⟨1, ⋯⟩))</code>",
+ "4073":
+ "<code>BuD.toSrc (Sum.inl ((fun i ↦ i) ⟨0, ⋯⟩)) = BuD.toTgt (Sum.inl ((fun i ↦ i) ⟨0, ⋯⟩))</code>",
+ "4072": "<code>(↑f).2 () = BuD.toTgt (Sum.inl ((fun i ↦ i) ⟨0, ⋯⟩))</code>",
+ "4071": "<code>(↑f).2 () = BuD.toSrc (Sum.inl ((fun i ↦ i) ⟨0, ⋯⟩))</code>",
+ "4070": "<code>BuD.toSrc (Sum.inl b) = BuD.toTgt (Sum.inl b)</code>",
  "407": "<code>f ⊚ s = 𝟙 B</code>",
+ "4069": "<code>(↑f).2 () = BuD.toTgt (Sum.inl b)</code>",
+ "4068": "<code>(↑f).2 () = BuD.toSrc (Sum.inl b)</code>",
+ "4067": "<code>BuD.toSrc a = BuD.toTgt a</code>",
+ "4066": "<code>(↑f).2 () = BuD.toTgt a</code>",
+ "4065": "<code>(↑f).2 () = BuD.toSrc a</code>",
+ "4064": "<code>BuD.carrierA</code>",
+ "4063": "<code>BuD.toSrc ((↑f).1 ()) = BuD.toTgt ((↑f).1 ())</code>",
+ "4062": "<code>(↑f).2 () = BuD.toTgt ((↑f).1 ())</code>",
+ "4061": "<code>(↑f).2 () = BuD.toSrc ((↑f).1 ())</code>",
+ "4060": "<code>termIG ⟶ BuD</code>",
  "406": "<code>T ⟶ A</code>",
+ "4059":
+ "<code>∀ (f : termIG ⟶ BuD), f = ⟨(fun x ↦ Sum.inl 0, fun x ↦ Sum.inl 0), ⋯⟩</code><span class=\"sep\"></span><code class=\"docstring\">In a `Unique` type, every term is equal to the default element (from `Inhabited`). </code>",
+ "4058":
+ "<code>{ f // f.2 ⊚ termIG.toSrc = BuD.toSrc ⊚ f.1 ∧ f.2 ⊚ termIG.toTgt = BuD.toTgt ⊚ f.1 }</code><span class=\"sep\"></span><code class=\"docstring\">`default` is a function that produces a \"default\" element of any\n`Inhabited` type. This element does not have any particular specified\nproperties, but it is often an all-zeroes value. </code>",
+ "4057": "<code>B.carrierA ⊕ D.carrierA → B.carrierD ⊕ D.carrierD</code>",
+ "4056": "<code>CM.Test4_2.BuD : IrreflexiveGraph</code>",
+ "4055": "<code>CM.Test4_2.C : IrreflexiveGraph</code>",
+ "4054": "<code>CM.Test4_2.B : IrreflexiveGraph</code>",
+ "4053": "<code>CM.Test4_2'.IrreflexiveGraph.A : IrreflexiveGraph</code>",
+ "4052": "<code>CM.Test4_2'.IrreflexiveGraph.D : IrreflexiveGraph</code>",
+ "4051":
+ "<code>prod.lift (𝟙 B) (prod.snd ⊚ tBxC.from B) ⊚ prod.fst = 𝟙 (B ⨯ C)</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "4050":
+ "<code>prod.fst ⊚ prod.lift (𝟙 B) (prod.snd ⊚ tBxC.from B) = 𝟙 B</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
  "405": "<code>T ⟶ B</code>",
+ "4049":
+ "<code>B ⨯ C ⟶ B</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "4048":
+ "<code>B ⟶ B ⨯ C</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "4047": "<code>B ≅ B ⨯ C</code>",
+ "4046":
+ "<code>CategoryTheory.Limits.IsTerminal.ofIso.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {Y Z : C} (hY : IsTerminal Y)\n  (i : Y ≅ Z) : IsTerminal Z</code><span class=\"sep\"></span><code class=\"docstring\">Transport a term of type `IsTerminal` across an isomorphism. </code>",
+ "4045":
+ "<code>CategoryTheory.Limits.terminalIsTerminal.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] [HasTerminal C] :\n  IsTerminal (⊤_ C)</code><span class=\"sep\"></span><code class=\"docstring\">A terminal object is terminal. </code>",
+ "4044": "<code>IsTerminal (B ⨯ C)</code>",
+ "4043": "<code>HasBinaryProduct B C</code>",
+ "4042": "<code>B ⨯ C ≅ ⊤_ 𝒞</code>",
+ "4041": "<code>(↑(p₃ ⊚ finv ⊚ j₇)).2 x = d₀</code>",
+ "4040": "<code>(↑(p₂ ⊚ finv ⊚ j₇)).2 x = d₁</code>",
  "404": "<code>IsSection f</code>",
+ "4039": "<code>(↑(p₁ ⊚ finv ⊚ j₇)).2 x = d₁</code>",
+ "4038":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨6, ⋯⟩ }).carrierD</code>",
+ "4037":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨6, ⋯⟩ }).carrierA</code>",
+ "4036": "<code>(↑(p₃ ⊚ finv ⊚ j₆)).2 x = d₁</code>",
+ "4035": "<code>(↑(p₂ ⊚ finv ⊚ j₆)).2 x = d₀</code>",
+ "4034": "<code>(↑(p₁ ⊚ finv ⊚ j₆)).2 x = d₁</code>",
+ "4033":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨5, ⋯⟩ }).carrierD</code>",
+ "4032":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨5, ⋯⟩ }).carrierA</code>",
+ "4031": "<code>(↑(p₃ ⊚ finv ⊚ j₅)).2 x = d₀</code>",
+ "4030": "<code>(↑(p₂ ⊚ finv ⊚ j₅)).2 x = d₀</code>",
  "403":
  "<code>CM.prop1.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞} (f : A ⟶ B) [hf : IsSection f] (y : T ⟶ B) : ∃ x, f ⊚ x = y</code>",
+ "4029": "<code>(↑(p₁ ⊚ finv ⊚ j₅)).2 x = d₁</code>",
+ "4028":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨4, ⋯⟩ }).carrierD</code>",
+ "4027":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨4, ⋯⟩ }).carrierA</code>",
+ "4026": "<code>(↑(p₃ ⊚ finv ⊚ j₄)).2 x = d₁</code>",
+ "4025": "<code>(↑(p₂ ⊚ finv ⊚ j₄)).2 x = d₁</code>",
+ "4024": "<code>(↑(p₁ ⊚ finv ⊚ j₄)).2 x = d₀</code>",
+ "4023":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨3, ⋯⟩ }).carrierD</code>",
+ "4022":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨3, ⋯⟩ }).carrierA</code>",
+ "4021": "<code>(↑(p₃ ⊚ finv ⊚ j₃)).2 x = d₀</code>",
+ "4020": "<code>(↑(p₂ ⊚ finv ⊚ j₃)).2 x = d₁</code>",
  "402":
  "<code>CM.IsSection.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : Prop</code>",
+ "4019": "<code>(↑(p₁ ⊚ finv ⊚ j₃)).2 x = d₀</code>",
+ "4018":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨2, ⋯⟩ }).carrierD</code>",
+ "4017":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨2, ⋯⟩ }).carrierA</code>",
+ "4016": "<code>(↑(p₃ ⊚ finv ⊚ j₂)).2 x = d₁</code>",
+ "4015": "<code>(↑(p₂ ⊚ finv ⊚ j₂)).2 x = d₀</code>",
+ "4014":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierD</code>",
+ "4013":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨1, ⋯⟩ }).carrierA</code>",
+ "4012":
+ "<code>(↑(p₃ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨1, ⋯⟩) = (fun i ↦ i) ⟨1, ⋯⟩</code>",
+ "4011":
+ "<code>(↑(p₃ ⊚ finv ⊚ j₁)).2 ((fun i ↦ i) ⟨0, ⋯⟩) = (fun i ↦ i) ⟨0, ⋯⟩</code>",
+ "4010": "<code>(↑(p₃ ⊚ finv ⊚ j₁)).2 x = x</code>",
  "401":
  "<code>CM.Section.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : Type v</code>",
+ "4009":
+ "<code>((Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := (fun i ↦ i) ⟨0, ⋯⟩ }).carrierD</code>",
+ "4008": "<code>Discrete (Fin 7)</code>",
+ "4007":
+ "<code>f ⊚ finv = 𝟙 A6D</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism in reverse order\nis the identity on the target. </code>",
+ "4006":
+ "<code>CategoryTheory.Limits.IsLimit.hom_ext.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {t : Cone F} (h : IsLimit t) {W : C} {f f' : W ⟶ t.pt}\n  (w : ∀ (j : J), t.π.app j ⊚ f = t.π.app j ⊚ f') : f = f'</code><span class=\"sep\"></span><code class=\"docstring\">Two morphisms into a limit are equal if their compositions with\neach cone morphism are equal. </code>",
+ "4005":
+ "<code>finv ⊚ f = 𝟙 AAA</code><span class=\"sep\"></span><code class=\"docstring\">Composition of the two directions of an isomorphism is the identity on the source. </code>",
+ "4004":
+ "<code>A6D ⟶ AAA</code><span class=\"sep\"></span><code class=\"docstring\">The backwards direction of an isomorphism. </code>",
+ "4003":
+ "<code>AAA ⟶ A6D</code><span class=\"sep\"></span><code class=\"docstring\">The forward direction of an isomorphism. </code>",
+ "4002": "<code>A6D ⟶ AAA</code>",
+ "4001": "<code>(↑j₁).2 d₁ = A6D.toTgt ((↑j₁).1 ())</code>",
+ "4000": "<code>(↑p₃).2 (AAA.toTgt x) = d₁</code>",
  "400": "<code>Nonempty (SplitEpi f)</code>",
  "40": "<code>CM.CM_Finset.One : Finset Unit</code>",
  "4": "<code>CM.ExI_1.A : Type</code>",
+ "3999": "<code>(↑p₂).2 (AAA.toTgt x) = d₁</code>",
+ "3998": "<code>(↑p₁).2 (AAA.toTgt x) = d₁</code>",
+ "3997": "<code>(↑j₁).2 d₀ = A6D.toSrc ((↑j₁).1 ())</code>",
+ "3996": "<code>(↑p₃).2 (AAA.toSrc x) = d₀</code>",
+ "3995": "<code>(↑p₂).2 (AAA.toSrc x) = d₀</code>",
+ "3994": "<code>(↑p₁).2 (AAA.toSrc x) = d₀</code>",
+ "3993": "<code>AAA.carrierA</code>",
+ "3992": "<code>AAA.carrierD</code>",
+ "3991": "<code>AAA.carrierD ⟶ A6D.carrierD</code>",
+ "3990": "<code>AAA.carrierA ⟶ A6D.carrierA</code>",
  "399":
  "<code>CategoryTheory.IsSplitEpi.mk.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} {f : X ⟶ Y}\n  (exists_splitEpi : Nonempty (SplitEpi f)) : IsSplitEpi f</code>",
+ "3989": "<code>AAA ⟶ A6D</code>",
+ "3988": "<code>D ⟶ coconeA6D.pt</code>",
+ "3987": "<code>A ⟶ coconeA6D.pt</code>",
+ "3986": "<code>coneAAA.pt ⟶ A</code>",
+ "3985": "<code>j₇ = coconeA6D.ι.app { as := 6 }</code>",
+ "3984":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 6 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 6 }</code>",
+ "3983": "<code>j₆ = coconeA6D.ι.app { as := 5 }</code>",
+ "3982":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 5 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 5 }</code>",
+ "3981": "<code>j₅ = coconeA6D.ι.app { as := 4 }</code>",
+ "3980":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 4 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 4 }</code>",
  "398":
  "<code>CategoryTheory.IsSplitEpi.exists_splitEpi.{v₁, u₁} {C : Type u₁} {inst✝ : Category.{v₁, u₁} C} {X Y : C} {f : X ⟶ Y}\n  [self : IsSplitEpi f] : Nonempty (SplitEpi f)</code><span class=\"sep\"></span><code class=\"docstring\">There is a splitting </code>",
+ "3979": "<code>j₄ = coconeA6D.ι.app { as := 3 }</code>",
+ "3978":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 3 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 3 }</code>",
+ "3977": "<code>j₃ = coconeA6D.ι.app { as := 2 }</code>",
+ "3976":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 2 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 2 }</code>",
+ "3975": "<code>j₂ = coconeA6D.ι.app { as := 1 }</code>",
+ "3974":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 1 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 1 }</code>",
+ "3973":
+ "<code>Fin 7</code><span class=\"sep\"></span><code class=\"docstring\">A wrapper for promoting any type to a category,\nwith the only morphisms being equalities. </code>",
+ "3972": "<code>j₁ = coconeA6D.ι.app { as := 0 }</code>",
+ "3971":
+ "<code>(Discrete.functor fun x ↦\n        match x with\n        | 0 =&gt; A\n        | 1 =&gt; D\n        | 2 =&gt; D\n        | 3 =&gt; D\n        | 4 =&gt; D\n        | 5 =&gt; D\n        | 6 =&gt; D).obj\n    { as := 0 } ⟶\n  ((Functor.const (Discrete (Fin 7))).obj coconeA6D.pt).obj { as := 0 }</code>",
+ "3970": "<code>p₃ = coneAAA.π.app { as := 2 }</code>",
  "397":
  "<code>CategoryTheory.IsSplitEpi.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} (f : X ⟶ Y) : Prop</code><span class=\"sep\"></span><code class=\"docstring\">`IsSplitEpi f` is the assertion that `f` admits a section </code>",
+ "3969":
+ "<code>((Functor.const (Discrete (Fin 3))).obj coneAAA.pt).obj { as := 2 } ⟶ (Discrete.functor fun x ↦ A).obj { as := 2 }</code>",
+ "3968": "<code>p₂ = coneAAA.π.app { as := 1 }</code>",
+ "3967":
+ "<code>((Functor.const (Discrete (Fin 3))).obj coneAAA.pt).obj { as := 1 } ⟶ (Discrete.functor fun x ↦ A).obj { as := 1 }</code>",
+ "3966": "<code>p₁ = coneAAA.π.app { as := 0 }</code>",
+ "3965":
+ "<code>((Functor.const (Discrete (Fin 3))).obj coneAAA.pt).obj { as := 0 } ⟶ (Discrete.functor fun x ↦ A).obj { as := 0 }</code>",
+ "3964": "<code>A6D = coconeA6D.pt</code>",
+ "3963": "<code>AAA = coneAAA.pt</code>",
+ "3962": "<code>IsColimit coconeA6D</code>",
+ "3961": "<code>Fin 7</code>",
+ "3960":
+ "<code>Cofan fun x ↦\n  match x with\n  | 0 =&gt; A\n  | 1 =&gt; D\n  | 2 =&gt; D\n  | 3 =&gt; D\n  | 4 =&gt; D\n  | 5 =&gt; D\n  | 6 =&gt; D</code>",
  "396": "<code>autoParam (f ⊚ section_ = 𝟙 Y) SplitEpi.id._autoParam</code>",
+ "3959": "<code>IsLimit coneAAA</code>",
+ "3958": "<code>Fan fun x ↦ A</code>",
+ "3957": "<code>Unit → Fin 8</code>",
+ "3956": "<code>CM.Test3_3.AAA : IrreflexiveGraph</code>",
+ "3955": "<code>CM.Test3_3'.IrreflexiveGraph.A : IrreflexiveGraph</code>",
+ "3954":
+ "<code>CategoryTheory.Limits.IsLimit.conePointUniqueUpToIso.{v₁, v₃, u₁, u₃} {J : Type u₁} [Category.{v₁, u₁} J] {C : Type u₃}\n  [Category.{v₃, u₃} C] {F : J ⥤ C} {s t : Cone F} (P : IsLimit s) (Q : IsLimit t) : s.pt ≅ t.pt</code><span class=\"sep\"></span><code class=\"docstring\">Limits of `F` are unique up to isomorphism. </code>",
+ "3953": "<code>p₂ ⊚ m = s.snd</code>",
+ "3952": "<code>p₁ ⊚ m = s.fst</code>",
+ "3951": "<code>s.pt ⟶ C</code>",
+ "3950": "<code>IsLimit Cx1'</code>",
  "395":
  "<code>CategoryTheory.SplitEpi.mk.{v₁, u₁} {C : Type u₁} [Category.{v₁, u₁} C] {X Y : C} {f : X ⟶ Y} (section_ : Y ⟶ X)\n  (id : f ⊚ section_ = 𝟙 Y := by cat_disch) : SplitEpi f</code>",
+ "3949": "<code>C ⟶ ⊤_ 𝒞</code>",
+ "3948": "<code>C ⟶ C</code>",
+ "3947": "<code>IsLimit Cx1</code>",
+ "3946": "<code>BinaryFan C (⊤_ 𝒞)</code>",
+ "3945": "<code>g' ⊚ f = 𝟙 (⊤_ 𝒞)</code>",
+ "3944": "<code>X ⟶ ⊤_ 𝒞</code>",
+ "3943": "<code>⊤_ 𝒞 ⟶ X</code>",
  "3942": "<code>v = 0</code>",
  "3941": "<code>I ⊚ coprod.inr = prod.lift 0 (𝟙 B)</code>",
  "3940": "<code>(v ⊚ I) ⊚ coprod.inr = (0 ⊚ I) ⊚ coprod.inr</code>",
