@@ -82,10 +82,6 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] [HasTerminal 𝒞]
 :::
 
 :::question (questionTitle := "Problem 3") (questionPage := "299")
-```savedComment
-Problem Test 3.3 (p. 299)
-```
-
 In 𝑺⇊, the category of irreflexive graphs, 'find' $`{A \times A \times A}`.
 
 Express your answer in two ways:
@@ -100,8 +96,8 @@ Notes:
 
 1. Recall that $`A` is
 
-```savedLean -show
-namespace Test3_2'
+```lean -show
+namespace Test3_3'
 ```
 
 ```lean
@@ -113,16 +109,20 @@ def IrreflexiveGraph.A : IrreflexiveGraph := {
 }
 ```
 
-```savedLean -show
-end Test3_2'
+```lean -show
+end Test3_3'
 ```
 
 2. You may use the 'distributive law': $`{B \times C_1 + B \times C_2}` is isomorphic to $`{B \times (C_1 + C_2)}`.
 :::
 
 :::solution (solutionTo := "Problem 3")
+```savedComment
+Problem Test 3.3 (p. 299)
+```
+
 ```savedLean -show
-namespace Test3_2
+namespace Test3_3
 ```
 
 For part (a), in lieu of a picture, we can formalise the object $`{A \times A \times A}` as follows:
@@ -489,7 +489,7 @@ example
 ```
 
 ```savedLean -show
-end Test3_2
+end Test3_3
 ```
 :::
 

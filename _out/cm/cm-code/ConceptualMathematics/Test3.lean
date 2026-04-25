@@ -37,11 +37,7 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] [HasTerminal 𝒞]
 /-!
 Problem Test 3.3 (p. 299)
 -/
-namespace Test3_2'
-
-end Test3_2'
-
-namespace Test3_2
+namespace Test3_3
 
 def AAA : IrreflexiveGraph := {
   carrierA := Unit
@@ -396,7 +392,7 @@ example
             erw [h₁, h₂, h₃]; rfl
     }
 
-end Test3_2
+end Test3_3
 
 end CM
 
