@@ -54,13 +54,11 @@ example {X Y Z : Type}
     (α : X ⟶ X) (β : Y ⟶ Y) (γ : Z ⟶ Z)
     (f : X ⟶ Y) (hf_comm : f ⊚ α = β ⊚ f)
     (g : Y ⟶ Z) (hg_comm : g ⊚ β = γ ⊚ g)
-    : (g ⊚ f) ⊚ α = γ ⊚ (g ⊚ f) := by
-  -- cf. SetWithEndomapHom.comp above
-  rw [← Category.assoc, hf_comm, Category.assoc, hg_comm,
-      ← Category.assoc]
+    : (g ⊚ f) ⊚ α = γ ⊚ (g ⊚ f) :=
+  sorry
 
 example {X Y Z : SetWithEndomap} (f : X ⟶ Y) (g : Y ⟶ Z) : X ⟶ Z :=
-  g ⊚ f
+  sorry
 
 /-!
 The (concrete) category 𝑺ᵉ of idempotent endomaps of sets (p. 138)
@@ -148,13 +146,8 @@ Exercise III.2 (p. 139)
 -/
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞} {α β : A ⟶ A}
     (h_idem : α ⊚ α = α) (h_retraction : β ⊚ α = 𝟙 A)
-    : α = 𝟙 A := by
-  calc
-    α = 𝟙 A ⊚ α := by rw [Category.comp_id]
-    _ = (β ⊚ α) ⊚ α := by rw [h_retraction]
-    _ = β ⊚ α ⊚ α := by rw [Category.assoc]
-    _ = β ⊚ α := by rw [h_idem]
-    _ = 𝟙 A := by rw [h_retraction]
+    : α = 𝟙 A :=
+  sorry
 
 /-!
 Exercise III.3 (p. 140)
@@ -166,37 +159,14 @@ namespace ExIII_4
 
 def α : ℤ ⟶ ℤ := fun x ↦ -x
 
-example : ¬(IsIdempotent α) := by
-  by_contra h
-  have h_contra : (α ⊚ α) 1 = α 1 := congrFun h.idem 1
-  dsimp [α] at h_contra
-  contradiction
+example : ¬(IsIdempotent α) :=
+  sorry
 
-example : IsInvolution α := {
-  invol := by
-    funext
-    dsimp [CategoryStruct.comp, α]
-    ring
-}
+example : IsInvolution α :=
+  sorry
 
-example {x : ℤ} : Function.IsFixedPt α x ↔ x = 0 := by
-  dsimp [Function.IsFixedPt, α]
-  constructor
-  · exact eq_zero_of_neg_eq
-  · intro hx
-    rw [hx]
-    exact neg_zero
-
-theorem _root_.eq_zero_iff_neg_eq {α : Type u}
-    [AddCommGroup α] [LinearOrder α] [IsOrderedAddMonoid α]
-    {a : α} : -a = a ↔ a = 0 := by
-  constructor
-  · exact eq_zero_of_neg_eq
-  · intro h
-    rw [h]
-    exact neg_zero
-
-example {x : ℤ} : Function.IsFixedPt α x ↔ x = 0 := eq_zero_iff_neg_eq
+example {x : ℤ} : Function.IsFixedPt α x ↔ x = 0 :=
+  sorry
 
 end ExIII_4
 
@@ -207,37 +177,14 @@ namespace ExIII_5
 
 def α : ℤ ⟶ ℤ := fun x ↦ |x|
 
-example : IsIdempotent α := {
-  idem := by
-    funext
-    dsimp [CategoryStruct.comp, α]
-    rw [abs_abs]
-}
+example : IsIdempotent α :=
+  sorry
 
-example : ¬(IsInvolution α) := by
-  by_contra h
-  have h_contra : (α ⊚ α) (-1) = (𝟙 ℤ) (-1) := congrFun h.invol (-1)
-  dsimp [α] at h_contra
-  contradiction
+example : ¬(IsInvolution α) :=
+  sorry
 
-example {x : ℤ} : Function.IsFixedPt α x ↔ 0 ≤ x := by
-  dsimp [Function.IsFixedPt, α]
-  constructor
-  · intro hx
-    rw [← hx]
-    exact abs_nonneg x
-  · exact abs_of_nonneg
-
-theorem _root_.abs_iff_nonneg {α : Type u_1}
-    [Lattice α] [AddGroup α]
-    {a : α} [AddLeftMono α] [AddRightMono α] : 0 ≤ a ↔ |a| = a := by
-  constructor
-  · exact abs_of_nonneg
-  · intro h
-    rw [← h]
-    exact abs_nonneg a
-
-example {x : ℤ} : Function.IsFixedPt α x ↔ 0 ≤ x := abs_iff_nonneg.symm
+example {x : ℤ} : Function.IsFixedPt α x ↔ 0 ≤ x :=
+  sorry
 
 end ExIII_5
 
@@ -248,17 +195,8 @@ namespace ExIII_6
 
 def α : ℤ ⟶ ℤ := fun x ↦ x + 3
 
-example : IsIso α := by
-  let αinv : ℤ ⟶ ℤ := fun x ↦ x - 3
-  exact {
-    out := by
-      use αinv
-      constructor
-      all_goals
-        funext
-        dsimp [CategoryStruct.comp, α, αinv]
-        ring
-  }
+example : IsIso α :=
+  sorry
 
 end ExIII_6
 
@@ -269,14 +207,8 @@ namespace ExIII_7
 
 def α : ℤ ⟶ ℤ := fun x ↦ 5 * x
 
-example : ¬(IsIso α) := by
-  by_contra h
-  obtain ⟨αinv, _, h_right_inv⟩ := h.out
-  have h_contra₁ : (α ⊚ αinv) 1 = (𝟙 ℤ) 1 := congrFun h_right_inv 1
-  have h_contra₂ : (5 : ℤ) ∣ 1 := by
-    use αinv 1
-    exact h_contra₁.symm
-  contradiction
+example : ¬(IsIso α) :=
+  sorry
 
 end ExIII_7
 
@@ -284,20 +216,20 @@ end ExIII_7
 Exercise III.8 (p. 140)
 -/
 example {α : IdemEndomap}
-    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd := by
-  repeat rw [α.idem]
+    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd :=
+  sorry
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞}
-    (α : A ⟶ A) [IsIdempotent α] : α ⊚ α ⊚ α = α := by
-  repeat rw [IsIdempotent.idem]
+    (α : A ⟶ A) [IsIdempotent α] : α ⊚ α ⊚ α = α :=
+  sorry
 
 example {α : InvolEndomap}
-    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd := by
-  rw [α.invol, Category.id_comp]
+    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd :=
+  sorry
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞}
-    (α : A ⟶ A) [IsInvolution α] : α ⊚ α ⊚ α = α := by
-  rw [IsInvolution.invol, Category.id_comp]
+    (α : A ⟶ A) [IsInvolution α] : α ⊚ α ⊚ α = α :=
+  sorry
 
 /-!
 Exercise III.9 (p. 141)
@@ -312,22 +244,14 @@ def α : A ⟶ A
   | A.a₂ => A.a₃
   | A.a₃ => A.a₂
 
-example : α ⊚ α ⊚ α = α := by
-  funext x
-  dsimp [CategoryStruct.comp, α]
-  cases x <;> rfl
+example : α ⊚ α ⊚ α = α :=
+  sorry
 
-example : ¬(IsIdempotent α) := by
-  by_contra h
-  have h_contra : (α ⊚ α) A.a₁ = α A.a₁ := congrFun h.idem A.a₁
-  dsimp [α] at h_contra
-  contradiction
+example : ¬(IsIdempotent α) :=
+  sorry
 
-example : ¬(IsInvolution α) := by
-  by_contra h
-  have h_contra : (α ⊚ α) A.a₁ = (𝟙 A) A.a₁ := congrFun h.invol A.a₁
-  dsimp [α] at h_contra
-  contradiction
+example : ¬(IsInvolution α) :=
+  sorry
 
 end ExIII_9
 
@@ -342,26 +266,17 @@ inductive X
 inductive P
   | k | m | n | p | q | r
 
-def s : X ⟶ P
-    | X.a => P.k
-    | X.b => P.m
-    | X.c => P.k
-    | X.d => P.p
-    | X.e => P.m
+def s : X ⟶ P :=
+  sorry
 
-def t : X ⟶ P
-    | X.a => P.m
-    | X.b => P.m
-    | X.c => P.m
-    | X.d => P.q
-    | X.e => P.r
+def t : X ⟶ P :=
+  sorry
 
-example : s X.b = t X.b := rfl
+example : s X.b = t X.b :=
+  sorry
 
-example : ¬(∃ x : X, t x = P.k) := by
-  push Not
-  intro x
-  cases x <;> simp [t]
+example : ¬(∃ x : X, t x = P.k) :=
+  sorry
 
 end ExIII_10
 
@@ -416,13 +331,8 @@ example (fA : X ⟶ Y) (fD : P ⟶ Q) (gA : Y ⟶ Z) (gD : Q ⟶ R)
     (hgTgt_comm : gD ⊚ t' = t'' ⊚ gA)
     : (gD ⊚ fD) ⊚ s = s'' ⊚ (gA ⊚ fA)
         ∧ (gD ⊚ fD) ⊚ t = t'' ⊚ (gA ⊚ fA)
-    := by
-  constructor
-  -- cf. instCategoryIrreflexiveGraph.comp above
-  · rw [← Category.assoc, hfSrc_comm, Category.assoc, hgSrc_comm,
-        ← Category.assoc]
-  · rw [← Category.assoc, hfTgt_comm, Category.assoc, hgTgt_comm,
-        ← Category.assoc]
+    :=
+  sorry
 
 def graph (A D : Type) (src tgt : A ⟶ D) : IrreflexiveGraph := {
   carrierA := A
@@ -433,7 +343,8 @@ def graph (A D : Type) (src tgt : A ⟶ D) : IrreflexiveGraph := {
 
 example (f : graph X P s t ⟶ graph Y Q s' t')
     (g : graph Y Q s' t' ⟶ graph Z R s'' t'')
-    : graph X P s t ⟶ graph Z R s'' t'' := g ⊚ f
+    : graph X P s t ⟶ graph Z R s'' t'' :=
+  sorry
 
 end ExIII_11
 
@@ -488,10 +399,8 @@ local notation "fA₁" => f₁.val.1
 local notation "fD₁" => f₁.val.2
 set_option quotPrecheck true
 
-example : fA₁ = fD₁ := by
-  obtain ⟨hfSrc_comm, _⟩ := f₁.property
-  dsimp [graph₁] at hfSrc_comm
-  exact hfSrc_comm.symm
+example : fA₁ = fD₁ :=
+  sorry
 
 def graph₂ (S : SetWithEndomap) : IrreflexiveGraph :=
   functorSetWithEndomapToIrreflexiveGraph.obj S
@@ -503,11 +412,8 @@ local notation "fA₂" => f₂.val.1
 local notation "fD₂" => f₂.val.2
 set_option quotPrecheck true
 
-example : fA₂ = fD₂ := by
-  obtain ⟨hfSrc_comm, _⟩ := f₂.property
-  dsimp [graph₂, functorSetWithEndomapToIrreflexiveGraph]
-      at hfSrc_comm
-  exact hfSrc_comm.symm
+example : fA₂ = fD₂ :=
+  sorry
 
 end ExIII_13
 
@@ -575,30 +481,20 @@ inductive X
 inductive Y
   | y₁ | y₂
 
-def α : X ⟶ X
-  | X.x₁ => X.x₁
-  | X.x₂ => X.x₁
+def α : X ⟶ X :=
+  sorry
 
-def β : Y ⟶ Y
-  | Y.y₁ => Y.y₁
-  | Y.y₂ => Y.y₁
+def β : Y ⟶ Y :=
+  sorry
 
-def fA : X ⟶ Y
-  | X.x₁ => Y.y₁
-  | X.x₂ => Y.y₂
+def fA : X ⟶ Y :=
+  sorry
 
-def fD : X ⟶ Y
-  | X.x₁ => Y.y₁
-  | X.x₂ => Y.y₁
+def fD : X ⟶ Y :=
+  sorry
 
-example : fD ⊚ α = β ⊚ fA ∧ fA ≠ fD := by
-  constructor
-  · funext x
-    cases x <;> rfl
-  · by_contra h
-    have h_contra : fA X.x₂ = fD X.x₂ := congrFun h X.x₂
-    dsimp [fA, fD] at h_contra
-    contradiction
+example : fD ⊚ α = β ⊚ fA ∧ fA ≠ fD :=
+  sorry
 
 end ExIII_14
 
@@ -655,21 +551,17 @@ variable (e₁ e₀ : X.carrierA ⟶ X.carrierA)
          (h₁ : e₁ = X.toCommonSection ⊚ X.toSrc)
          (h₀ : e₀ = X.toCommonSection ⊚ X.toTgt)
 
-example : e₀ ⊚ e₀ = e₀ := by
-  rw [h₀, Category.assoc, ← Category.assoc X.toCommonSection,
-      X.section_tgt, Category.id_comp]
+example : e₀ ⊚ e₀ = e₀ :=
+  sorry
 
-example : e₀ ⊚ e₁ = e₁ := by
-  rw [h₀, h₁, Category.assoc, ← Category.assoc X.toCommonSection,
-      X.section_tgt, Category.id_comp]
+example : e₀ ⊚ e₁ = e₁ :=
+  sorry
 
-example : e₁ ⊚ e₀ = e₀ := by
-  rw [h₁, h₀, Category.assoc, ← Category.assoc X.toCommonSection,
-      X.section_src, Category.id_comp]
+example : e₁ ⊚ e₀ = e₀ :=
+  sorry
 
-example : e₁ ⊚ e₁ = e₁ := by
-  rw [h₁, Category.assoc, ← Category.assoc X.toCommonSection,
-      X.section_src, Category.id_comp]
+example : e₁ ⊚ e₁ = e₁ :=
+  sorry
 
 end ExIII_15
 
@@ -693,17 +585,11 @@ local notation "t'" => Y.toTgt
 local notation "i" => X.toCommonSection
 local notation "i'" => Y.toCommonSection
 
-example : fD = s' ⊚ fA ⊚ i := by
-  rw [← Category.id_comp fD, ← X.section_src]
-  repeat rw [Category.assoc]
-  congrm ?_ ⊚ X.toCommonSection
-  exact f.property.1
+example : fD = s' ⊚ fA ⊚ i :=
+  sorry
 
-example : fD = t' ⊚ fA ⊚ i := by
-  rw [← Category.id_comp fD, ← X.section_tgt]
-  repeat rw [Category.assoc]
-  congrm ?_ ⊚ X.toCommonSection
-  exact f.property.2.1
+example : fD = t' ⊚ fA ⊚ i :=
+  sorry
 
 end ExIII_16
 
@@ -720,38 +606,15 @@ structure ParentLike where
   μ : carrierF ⟶ carrierF
   μ' : carrierM ⟶ carrierF
 
-def ParentLikeHom (X Y : ParentLike) : Type := {
-  f : (X.carrierM ⟶ Y.carrierM) × (X.carrierF ⟶ Y.carrierF) //
-      f.1 ⊚ X.φ = Y.φ ⊚ f.1 -- φ commutes
-      ∧ f.1 ⊚ X.φ' = Y.φ' ⊚ f.2 -- φ' commutes
-      ∧ f.2 ⊚ X.μ = Y.μ ⊚ f.2 -- μ commutes
-      ∧ f.2 ⊚ X.μ' = Y.μ' ⊚ f.1 -- μ' commutes
-}
+def ParentLikeHom (X Y : ParentLike) : Type :=
+  sorry
 
 instance : Category ParentLike where
   Hom := ParentLikeHom -- our map between ParentLike structures
-  id X := ⟨
-    (𝟙 X.carrierM, 𝟙 X.carrierF),
-    by
-      split_ands <;> first | exact fun _ hx ↦ hx | rfl
-  ⟩
-  comp := by
-    rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
-    exact ⟨
-      (g.1 ⊚ f.1, g.2 ⊚ f.2),
-      by
-        obtain ⟨hfφ_comm, hfφ'_comm, hfμ_comm, hfμ'_comm⟩ := hf
-        obtain ⟨hgφ_comm, hgφ'_comm, hgμ_comm, hgμ'_comm⟩ := hg
-        split_ands
-        · rw [← Category.assoc, hfφ_comm, Category.assoc, hgφ_comm,
-              ← Category.assoc]
-        · rw [← Category.assoc, hfφ'_comm, Category.assoc, hgφ'_comm,
-              ← Category.assoc]
-        · rw [← Category.assoc, hfμ_comm, Category.assoc, hgμ_comm,
-              ← Category.assoc]
-        · rw [← Category.assoc, hfμ'_comm, Category.assoc, hgμ'_comm,
-              ← Category.assoc]
-    ⟩
+  id X :=
+    sorry
+  comp :=
+    sorry
 
 end ExIII_17
 
@@ -761,15 +624,8 @@ Exercise III.18 (p. 146)
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {X Y T : 𝒞}
     {a : X ⟶ Y} {p : Y ⟶ X} {x₁ x₂ : T ⟶ X}
     (h₁ : p ⊚ a = 𝟙 X) (h₂ : a ⊚ x₁ = a ⊚ x₂)
-    : x₁ = x₂ := by
-  calc x₁
-    _ = 𝟙 X ⊚ x₁ := by rw [Category.comp_id]
-    _ = (p ⊚ a) ⊚ x₁ := by rw [h₁]
-    _ = p ⊚ a ⊚ x₁ := by rw [Category.assoc]
-    _ = p ⊚ a ⊚ x₂ := by rw [h₂]
-    _ = (p ⊚ a) ⊚ x₂ := by rw [Category.assoc]
-    _ = 𝟙 X ⊚ x₂ := by rw [h₁]
-    _ = x₂ := by rw [Category.comp_id]
+    : x₁ = x₂ :=
+  sorry
 
 namespace ExIII_19_24
 
@@ -797,48 +653,24 @@ def a : X ⟶ Y
 /-!
 Exercise III.19 (p. 147)
 -/
-example : a ⊚ α = β ⊚ a := by
-  funext x
-  cases x <;> rfl
+example : a ⊚ α = β ⊚ a :=
+  sorry
 
-def Xα : SetWithEndomap := {
-  carrier := X
-  toEnd := α
-}
+def Xα : SetWithEndomap :=
+  sorry
 
-def Yβ : SetWithEndomap := {
-  carrier := Y
-  toEnd := β
-}
+def Yβ : SetWithEndomap :=
+  sorry
 
-def a' : Xα ⟶ Yβ := ⟨
-  a,
-  by
-    funext x
-    cases x <;> rfl
-⟩
+def a' : Xα ⟶ Yβ :=
+  sorry
 
 /-!
 Exercise III.20 (p. 147)
 -/
 example : ∀ {T : Type} (x₁ x₂ : T ⟶ X),
-    a ⊚ x₁ = a ⊚ x₂ → x₁ = x₂ := by
-  let p : Y ⟶ X
-    | Y.y₀ => X.x₀
-    | Y.y₁ => X.x₁
-    | Y.y₂ => X.x₁
-  have h₁ : p ⊚ a = 𝟙 X := by
-    funext x
-    cases x <;> rfl
-  intro _ x₁ x₂ h₂
-  calc x₁
-    _ = 𝟙 X ⊚ x₁ := by rw [Category.comp_id]
-    _ = (p ⊚ a) ⊚ x₁ := by rw [h₁]
-    _ = p ⊚ a ⊚ x₁ := by rw [Category.assoc]
-    _ = p ⊚ a ⊚ x₂ := by rw [h₂]
-    _ = (p ⊚ a) ⊚ x₂ := by rw [Category.assoc]
-    _ = 𝟙 X ⊚ x₂ := by rw [h₁]
-    _ = x₂ := by rw [Category.comp_id]
+    a ⊚ x₁ = a ⊚ x₂ → x₁ = x₂ :=
+  sorry
 
 /-!
 Exercise III.21 (p. 147)
@@ -863,29 +695,20 @@ example : p₁ ⊚ a = 𝟙 X := by
       first | rfl
             | simp only [reduceCtorEq]; trivial)
 
-def p₂ : Y ⟶ X
-  | Y.y₀ => X.x₀
-  | Y.y₁ => X.x₁
-  | Y.y₂ => X.x₀
+def p₂ : Y ⟶ X :=
+  sorry
 
-example : p₂ ⊚ a = 𝟙 X := by
-  funext x
-  cases x <;> rfl
+example : p₂ ⊚ a = 𝟙 X :=
+  sorry
 
 /-!
 Exercise III.22 (p. 147)
 -/
-example : ¬(p₁ ⊚ β = α ⊚ p₁) := by
-  intro h
-  have h_contra : (p₁ ⊚ β) Y.y₂ = (α ⊚ p₁) Y.y₂ := congrFun h Y.y₂
-  dsimp [p₁, α, β] at h_contra
-  contradiction
+example : ¬(p₁ ⊚ β = α ⊚ p₁) :=
+  sorry
 
-example : ¬(p₂ ⊚ β = α ⊚ p₂) := by
-  intro h
-  have h_contra : (p₂ ⊚ β) Y.y₂ = (α ⊚ p₂) Y.y₂ := congrFun h Y.y₂
-  dsimp [p₂, α, β] at h_contra
-  contradiction
+example : ¬(p₂ ⊚ β = α ⊚ p₂) :=
+  sorry
 
 /-!
 Exercise III.23 (p. 147)
@@ -895,84 +718,64 @@ def b₁ : Y ⟶ X
   | Y.y₁ => X.x₀
   | Y.y₂ => X.x₀
 
-example : b₁ ⊚ β = α ⊚ b₁ := by
-  funext y
-  cases y <;> rfl
+example : b₁ ⊚ β = α ⊚ b₁ :=
+  sorry
 
 def b₂ : Y ⟶ X
   | Y.y₀ => X.x₀
   | Y.y₁ => X.x₀
   | Y.y₂ => X.x₁
 
-example : b₂ ⊚ β = α ⊚ b₂ := by
-  funext y
-  cases y <;> rfl
+example : b₂ ⊚ β = α ⊚ b₂ :=
+  sorry
 
 def b₃ : Y ⟶ X
   | Y.y₀ => X.x₁
   | Y.y₁ => X.x₀
   | Y.y₂ => X.x₀
 
-example : b₃ ⊚ β ≠ α ⊚ b₃ := by
-  by_contra h
-  have h_contra : (b₃ ⊚ β) Y.y₀ = (α ⊚ b₃) Y.y₀ := congrFun h Y.y₀
-  dsimp [b₃, α, β] at h_contra
-  contradiction
+example : b₃ ⊚ β ≠ α ⊚ b₃ :=
+  sorry
 
 def b₄ : Y ⟶ X
   | Y.y₀ => X.x₁
   | Y.y₁ => X.x₀
   | Y.y₂ => X.x₁
 
-example : b₄ ⊚ β ≠ α ⊚ b₄ := by
-  by_contra h
-  have h_contra : (b₄ ⊚ β) Y.y₀ = (α ⊚ b₄) Y.y₀ := congrFun h Y.y₀
-  dsimp [b₄, α, β] at h_contra
-  contradiction
+example : b₄ ⊚ β ≠ α ⊚ b₄ :=
+  sorry
 
 def b₅ : Y ⟶ X
   | Y.y₀ => X.x₀
   | Y.y₁ => X.x₁
   | Y.y₂ => X.x₀
 
-example : b₅ ⊚ β ≠ α ⊚ b₅ := by
-  by_contra h
-  have h_contra : (b₅ ⊚ β) Y.y₂ = (α ⊚ b₅) Y.y₂ := congrFun h Y.y₂
-  dsimp [b₅, α, β] at h_contra
-  contradiction
+example : b₅ ⊚ β ≠ α ⊚ b₅ :=
+  sorry
 
 def b₆ : Y ⟶ X
   | Y.y₀ => X.x₀
   | Y.y₁ => X.x₁
   | Y.y₂ => X.x₁
 
-example : b₆ ⊚ β ≠ α ⊚ b₆ := by
-  by_contra h
-  have h_contra : (b₆ ⊚ β) Y.y₂ = (α ⊚ b₆) Y.y₂ := congrFun h Y.y₂
-  dsimp [b₆, α, β] at h_contra
-  contradiction
+example : b₆ ⊚ β ≠ α ⊚ b₆ :=
+  sorry
 
 def b₇ : Y ⟶ X
   | Y.y₀ => X.x₁
   | Y.y₁ => X.x₁
   | Y.y₂ => X.x₀
 
-example : b₇ ⊚ β ≠ α ⊚ b₇ := by
-  by_contra h
-  have h_contra : (b₇ ⊚ β) Y.y₂ = (α ⊚ b₇) Y.y₂ := congrFun h Y.y₂
-  dsimp [b₇, α, β] at h_contra
-  contradiction
+example : b₇ ⊚ β ≠ α ⊚ b₇ :=
+  sorry
 
 def b₈ : Y ⟶ X
   | Y.y₀ => X.x₁
   | Y.y₁ => X.x₁
   | Y.y₂ => X.x₁
 
-example : b₈ ⊚ β ≠ α ⊚ b₈ := by
-  by_contra h
-  have h_contra : (b₈ ⊚ β) Y.y₂ = (α ⊚ b₈) Y.y₂ := congrFun h Y.y₂
-  dsimp [b₈, α, β] at h_contra
-  contradiction
+example : b₈ ⊚ β ≠ α ⊚ b₈ :=
+  sorry
 
 /-!
 Exercise III.24 (p. 147)
@@ -996,58 +799,11 @@ def a'' : X' ⟶ Y' := ⟨
     cases x <;> rfl
 ⟩
 
-example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') := by
-  push Not
-  intro p
-  obtain ⟨p, hp_comm⟩ := p
-  dsimp [X', Y'] at hp_comm
-  have hpβ₀ : ∀ y, (α ⊚ p.1) y = X.x₀ := by
-    intro y
-    dsimp [α]
-    cases p.1 y <;> rfl
-  erw [← hp_comm] at hpβ₀
-  dsimp [Y'] at hpβ₀
-  have hpβ : p.2 (β Y.y₂) = X.x₀ := hpβ₀ Y.y₂
-  have hβ : β Y.y₂ = Y.y₁ := rfl
-  rw [hβ] at hpβ
-  dsimp [CategoryStruct.comp, CategoryStruct.id, a'']
-  by_contra h₁
-  have h₂ : (p.1 ⊚ a, p.2 ⊚ a) = (𝟙 X, 𝟙 X) :=
-    congrArg Subtype.val h₁
-  have h₃ : p.2 ⊚ a = 𝟙 X := congrArg Prod.snd h₂
-  have hpa₀ : ∀ x, p.2 (a x) = x := congrFun h₃
-  have hpa : p.2 (a X.x₁) = X.x₁ := hpa₀ X.x₁
-  have ha : a X.x₁ = Y.y₁ := rfl
-  rw [ha] at hpa
-  rw [hpβ] at hpa
-  contradiction
+example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') :=
+  sorry
 
-example : ¬(∃ p : Yβ ⟶ Xα, J p ⊚ J a' = J (𝟙 Xα)) := by
-  push Not
-  intro p
-  obtain ⟨p, hp_comm⟩ := p
-  dsimp [Xα, Yβ] at hp_comm
-  have hpβ₀ : ∀ y, (α ⊚ p) y = X.x₀ := by
-    intro y
-    dsimp [α]
-    cases p y <;> rfl
-  erw [← hp_comm] at hpβ₀
-  dsimp [Yβ] at hpβ₀
-  have hpβ : p (β Y.y₂) = X.x₀ := hpβ₀ Y.y₂
-  have hβ : β Y.y₂ = Y.y₁ := rfl
-  rw [hβ] at hpβ
-  dsimp [CategoryStruct.comp, CategoryStruct.id, a', J,
-      functorSetWithEndomapToSimpleGraph]
-  by_contra h₁
-  have h₂ : (p ⊚ a, p ⊚ a) = (𝟙 X, 𝟙 X) :=
-    congrArg Subtype.val h₁
-  have h₃ : p ⊚ a = 𝟙 X := congrArg Prod.snd h₂
-  have hpa₀ : ∀ x, p (a x) = x := congrFun h₃
-  have hpa : p (a X.x₁) = X.x₁ := hpa₀ X.x₁
-  have ha : a X.x₁ = Y.y₁ := rfl
-  rw [ha] at hpa
-  rw [hpβ] at hpa
-  contradiction
+example : ¬(∃ p : Yβ ⟶ Xα, J p ⊚ J a' = J (𝟙 Xα)) :=
+  sorry
 
 end ExIII_19_24
 
@@ -1059,16 +815,8 @@ namespace ExIII_25
 example {X P Y Q : Type}
     (s t : X ⟶ P) (s' t' : Y ⟶ Q) (fA : X ⟶ Y) (fD : P ⟶ Q)
     (hfSrc_comm : fD ⊚ s = s' ⊚ fA) (hfTgt_comm : fD ⊚ t = t' ⊚ fA)
-    : fD ⊚ s = fD ⊚ t ↔ ∀ x, s' (fA x) = t' (fA x) := by
-  constructor
-  · intro h x
-    change (s' ⊚ fA) x = (t' ⊚ fA) x
-    rw [← hfSrc_comm, ← hfTgt_comm]
-    exact congrFun h x
-  · intro h
-    rw [hfSrc_comm, hfTgt_comm]
-    funext x
-    exact h x
+    : fD ⊚ s = fD ⊚ t ↔ ∀ x, s' (fA x) = t' (fA x) :=
+  sorry
 
 variable (XP YQ : IrreflexiveGraph) (f : XP ⟶ YQ)
 
@@ -1083,18 +831,8 @@ local notation "s'" => YQ.toSrc
 local notation "t" => XP.toTgt
 local notation "t'" => YQ.toTgt
 
-example : (fD ⊚ s = fD ⊚ t) ↔ (∀ x, s' (fA x) = t' (fA x)) := by
-  obtain ⟨f, hfSrc_comm, hfTgt_comm⟩ := f
-  dsimp
-  constructor
-  · intro h x
-    change (s' ⊚ f.1) x = (t' ⊚ f.1) x
-    rw [← hfSrc_comm, ← hfTgt_comm]
-    exact congrFun h x
-  · intro h
-    rw [hfSrc_comm, hfTgt_comm]
-    funext x
-    exact h x
+example : (fD ⊚ s = fD ⊚ t) ↔ (∀ x, s' (fA x) = t' (fA x)) :=
+  sorry
 
 end ExIII_25
 
@@ -1103,7 +841,8 @@ Exercise III.26 (p. 148)
 -/
 namespace ExIII_26
 
-def f : ℤ ⟶ ℚ := fun x ↦ (x : ℚ)
+def f : ℤ ⟶ ℚ :=
+  sorry
 
 def Z : SetWithEndomap := {
   carrier := ℤ
@@ -1115,39 +854,15 @@ def Q : SetWithEndomap := {
   toEnd := fun x ↦ 5 * x
 }
 
-example : Z ⟶ Q := ⟨
-  f,
-  by
-    funext (x : ℤ)
-    dsimp [Z, Q, f]
-    norm_cast
-⟩
+example : Z ⟶ Q :=
+  sorry
 
-example : SetWithInvEndomap := {
-  carrier := Q.carrier
-  toEnd := Q.toEnd
-  inv := by
-    let finv : ℚ ⟶ ℚ := fun x ↦ x / 5
-    use finv
-    constructor <;> (funext x; dsimp [finv, Q]; ring)
-}
+example : SetWithInvEndomap :=
+  sorry
 
 example : ∀ {T : Type} (x₁ x₂ : T ⟶ ℤ),
-    f ⊚ x₁ = f ⊚ x₂ → x₁ = x₂ := by
-  let p : ℚ ⟶ ℤ := fun y ↦ y.num
-  have h₁ : p ⊚ f = 𝟙 ℤ := by
-    dsimp [f, p]
-    funext x
-    congr
-  intro _ x₁ x₂ h₂
-  calc x₁
-    _ = 𝟙 ℤ ⊚ x₁ := by rw [Category.comp_id]
-    _ = (p ⊚ f) ⊚ x₁ := by rw [h₁]
-    _ = p ⊚ f ⊚ x₁ := by rw [Category.assoc]
-    _ = p ⊚ f ⊚ x₂ := by rw [h₂]
-    _ = (p ⊚ f) ⊚ x₂ := by rw [Category.assoc]
-    _ = 𝟙 ℤ ⊚ x₂ := by rw [h₁]
-    _ = x₂ := by rw [Category.comp_id]
+    f ⊚ x₁ = f ⊚ x₂ → x₁ = x₂ :=
+  sorry
 
 end ExIII_26
 
@@ -1173,20 +888,8 @@ def Xα : SetWithIdemEndomap := {
 
 example (Yβ : SetWithInvEndomap)
     (f : Xα.toSetWithEndomap ⟶ Yβ.toSetWithEndomap)
-    : f X.x₀ = f X.x₁ := by
-  obtain ⟨βinv, hβ_inv, _⟩ := Yβ.inv
-  obtain ⟨f, hf_comm⟩ := f
-  have hf_comm_x₀ : (f ⊚ Xα.toEnd) X.x₀ = (Yβ.toEnd ⊚ f) X.x₀ :=
-    congrFun hf_comm X.x₀
-  have hf_comm_x₁ : (f ⊚ Xα.toEnd) X.x₁ = (Yβ.toEnd ⊚ f) X.x₁ :=
-    congrFun hf_comm X.x₁
-  dsimp [Xα, α] at hf_comm_x₀ hf_comm_x₁
-  have hβfx_eq : Yβ.toEnd (f X.x₀) = Yβ.toEnd (f X.x₁) := by
-    rw [← hf_comm_x₀, hf_comm_x₁]
-  have h_cancel
-      : (βinv ⊚ Yβ.toEnd) (f X.x₀) = (βinv ⊚ Yβ.toEnd) (f X.x₁) :=
-    congrArg βinv hβfx_eq
-  rwa [hβ_inv] at h_cancel
+    : f X.x₀ = f X.x₁ :=
+  sorry
 
 end ExIII_27
 
@@ -1198,21 +901,8 @@ example (Xα : SetWithEndomap) (Yβ : SetWithInvEndomap)
     (hf_inj : ∀ {U : Type} (y₁ y₂ : U ⟶ Xα.carrier),
         f.val ⊚ y₁ = f.val ⊚ y₂ → y₁ = y₂)
     : ∀ {T : Type} (x₁ x₂ : T ⟶ Xα.carrier),
-        Xα.toEnd ⊚ x₁ = Xα.toEnd ⊚ x₂ → x₁ = x₂ := by
-  intro _ x₁ x₂ h₁
-  have h₂ : f.val ⊚ Xα.toEnd ⊚ x₁ = f.val ⊚ Xα.toEnd ⊚ x₂ := by
-    congrm f.val ⊚ ?_
-    exact h₁
-  repeat rw [Category.assoc, f.property] at h₂
-  obtain ⟨βinv, hβ_inv⟩ := Yβ.inv
-  have h₃ : βinv ⊚ Yβ.toEnd ⊚ f.val ⊚ x₁ =
-      βinv ⊚ Yβ.toEnd ⊚ f.val ⊚ x₂ := by
-    congrm βinv ⊚ ?_
-    exact h₂
-  rw [Category.assoc, hβ_inv.1, Category.assoc (f.val ⊚ x₂),
-      hβ_inv.1] at h₃
-  repeat rw [Category.comp_id] at h₃
-  exact hf_inj x₁ x₂ h₃
+        Xα.toEnd ⊚ x₁ = Xα.toEnd ⊚ x₂ → x₁ = x₂ :=
+  sorry
 
 /-!
 Exercise III.29 (p. 150)
@@ -1221,4 +911,3 @@ Exercise III.29 (p. 150)
 Exercise III.30 (p. 151)
 -/
 end CM
-

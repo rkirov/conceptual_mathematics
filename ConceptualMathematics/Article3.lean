@@ -1235,7 +1235,7 @@ structure ParentLike where
 Define a map between such structures.
 
 ```savedLean
-def ParentLikeHom (X Y : ParentLike) := {
+def ParentLikeHom (X Y : ParentLike) : Type := {
   f : (X.carrierM ⟶ Y.carrierM) × (X.carrierF ⟶ Y.carrierF) //
       f.1 ⊚ X.φ = Y.φ ⊚ f.1 -- φ commutes
       ∧ f.1 ⊚ X.φ' = Y.φ' ⊚ f.2 -- φ' commutes

@@ -35,7 +35,7 @@ local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 The book defines the graph $`2_D` on p. 271, and we formalise it here since it will be used in Exercise 2.
 
 ```savedLean
-def IrreflexiveGraph.TwoD : IrreflexiveGraph where
+def IrreflexiveGraph.TwoD : IrreflexiveGraph := {
   carrierA := Fin 4
   carrierD := Fin 2
   toSrc := fun
@@ -48,6 +48,7 @@ def IrreflexiveGraph.TwoD : IrreflexiveGraph where
     | 1 => 0 -- b
     | 2 => 0 -- u
     | 3 => 1 -- v
+}
 ```
 
 :::question (questionTitle := "Exercise 1") (questionPage := "271")
@@ -62,11 +63,12 @@ Exercise 25.1 (p. 271)
 A graph $`2_A` has one dot and two arrows, with both arrows being loops on the single dot. Since all morphisms $`{X \rightarrow 2_A}` map every dot in $`X` to the single dot in $`2_A`, each arrow in $`X` can be mapped to either one of the two arrows in $`2_A`. The choice of mapping for each arrow divides the arrows of $`X` into two sorts. We formalise the graph $`2_A` as follows:
 
 ```savedLean
-def IrreflexiveGraph.TwoA : IrreflexiveGraph where
+def IrreflexiveGraph.TwoA : IrreflexiveGraph := {
   carrierA := Fin 2
   carrierD := Unit
   toSrc := fun _ => ()
   toTgt := fun _ => ()
+}
 ```
 :::
 

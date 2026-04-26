@@ -6,7 +6,7 @@ open Limits
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 
-def IrreflexiveGraph.TwoD : IrreflexiveGraph where
+def IrreflexiveGraph.TwoD : IrreflexiveGraph := {
   carrierA := Fin 4
   carrierD := Fin 2
   toSrc := fun
@@ -19,15 +19,17 @@ def IrreflexiveGraph.TwoD : IrreflexiveGraph where
     | 1 => 0 -- b
     | 2 => 0 -- u
     | 3 => 1 -- v
+}
 
 /-!
 Exercise 25.1 (p. 271)
 -/
-def IrreflexiveGraph.TwoA : IrreflexiveGraph where
+def IrreflexiveGraph.TwoA : IrreflexiveGraph := {
   carrierA := Fin 2
   carrierD := Unit
   toSrc := fun _ => ()
   toTgt := fun _ => ()
+}
 
 /-!
 Exercise 25.2 (p. 272)
