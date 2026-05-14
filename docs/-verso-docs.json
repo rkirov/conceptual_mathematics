@@ -901,9 +901,44 @@
  "419": "<code>∀ {Z : C} (g h : Z ⟶ X), f ⊚ g = f ⊚ h → g = h</code>",
  "418":
  "<code>CategoryTheory.Mono.mk.{v, u} {C : Type u} [Category.{v, u} C] {X Y : C} {f : X ⟶ Y}\n  (right_cancellation : ∀ {Z : C} (g h : Z ⟶ X), f ⊚ g = f ⊚ h → g = h) : Mono f</code>",
+ "4177":
+ "<code>∀ (t : ⊤_ 𝒞 ⟶ T), g ⊚ t = f ⊚ prod.lift (𝟙 T) (t₀ ⊚ terminal.from T) ⊚ t</code>",
+ "4176":
+ "<code>∀ (e : T ⟶ Y), ∃ x, ∀ (t : ⊤_ 𝒞 ⟶ T), e ⊚ t = f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T) ⊚ t</code>",
+ "4175":
+ "<code>∃ f, ∀ (e : T ⟶ Y), ∃ x, ∀ (t : ⊤_ 𝒞 ⟶ T), e ⊚ t = f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T) ⊚ t</code>",
+ "4174": "<code>g ⊚ x = y₀</code>",
+ "4173": "<code>prod.lift (𝟙 T) (𝟙 T) ⊚ x = prod.lift x x</code>",
+ "4172": "<code>α ⊚ f ⊚ prod.lift x x = f ⊚ prod.lift x x</code>",
+ "4171":
+ "<code>prod.lift (𝟙 T) (x ⊚ terminal.from T) ⊚ x = prod.lift x x</code>",
+ "4170": "<code>g ⊚ x = f ⊚ prod.lift x x</code>",
  "417": "<code>Z ⟶ X</code>",
+ "4169": "<code>g = f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T)</code>",
+ "4168": "<code>∀ (y : ⊤_ 𝒞 ⟶ Y), α ⊚ y ≠ y</code>",
+ "4167": "<code>∃ α, ∀ (y : ⊤_ 𝒞 ⟶ Y), α ⊚ y ≠ y</code>",
+ "4166":
+ "<code>CM.cantor's_contrapositive_corollary.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {T Y : 𝒞} [HasBinaryProduct T T]\n  [HasTerminal 𝒞] (h : ∃ α, ∀ (y : ⊤_ 𝒞 ⟶ Y), α ⊚ y ≠ y) (f : T ⨯ T ⟶ Y) :\n  ∃ g, ∀ (x : ⊤_ 𝒞 ⟶ T), g ≠ f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T)</code>",
+ "4165": "<code>α ⊚ y₀ = y₀</code>",
+ "4164": "<code>g ⊚ t₀ = y₀</code>",
+ "4163": "<code>prod.lift (𝟙 T) (𝟙 T) ⊚ t₀ = prod.lift t₀ t₀</code>",
+ "4162": "<code>α ⊚ f ⊚ prod.lift t₀ t₀ = f ⊚ prod.lift t₀ t₀</code>",
+ "4161":
+ "<code>prod.lift (𝟙 T) (t₀ ⊚ terminal.from T) ⊚ t₀ = prod.lift t₀ t₀</code>",
+ "4160": "<code>g ⊚ t₀ = f ⊚ prod.lift t₀ t₀</code>",
  "416":
  "<code>CategoryTheory.Mono.right_cancellation.{v, u} {C : Type u} {inst✝ : Category.{v, u} C} {X Y : C} {f : X ⟶ Y}\n  [self : Mono f] {Z : C} (g h : Z ⟶ X) : f ⊚ g = f ⊚ h → g = h</code><span class=\"sep\"></span><code class=\"docstring\">A morphism `f` is a monomorphism if it can be cancelled when postcomposed. </code>",
+ "4159": "<code>g = f ⊚ prod.lift (𝟙 T) (t₀ ⊚ terminal.from T)</code>",
+ "4158":
+ "<code>∀ (e : T ⟶ Y), ∃ x, e = f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T)</code>",
+ "4157": "<code>HasBinaryProduct T T</code>",
+ "4156": "<code>⊤_ 𝒞 ⟶ Y</code>",
+ "4155": "<code>⊤_ 𝒞 ⟶ T</code>",
+ "4154": "<code>T ⨯ T ⟶ Y</code>",
+ "4153":
+ "<code>∃ f, ∀ (e : T ⟶ Y), ∃ x, e = f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T)</code>",
+ "4152":
+ "<code>CM.diagonal_theorem.{u, v} {𝒞 : Type u} [Category.{v, u} 𝒞] {T Y : 𝒞} [HasBinaryProduct T T] [HasTerminal 𝒞]\n  (h : ∃ f, ∀ (e : T ⟶ Y), ∃ x, e = f ⊚ prod.lift (𝟙 T) (x ⊚ terminal.from T)) (α : Y ⟶ Y) : ∃ y, α ⊚ y = y</code>",
  "4151": "<code>(Fam2D2AI ((fun i ↦ i) ⟨4, ⋯⟩)).carrierD</code>",
  "4150": "<code>(Fam2D2AI ((fun i ↦ i) ⟨3, ⋯⟩)).carrierD</code>",
  "415":
