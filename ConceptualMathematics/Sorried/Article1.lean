@@ -71,6 +71,11 @@ abbrev One := Unit
 
 def Point (Y : Type) := One → Y
 
+-- These concrete example sets live in their own namespace so the names `A`/`B`
+-- do not shadow other meanings of `A` (e.g. `IrreflexiveGraph.A`) in files that
+-- import this one. Within this file we `open CM_Finset` (below) for convenience.
+namespace CM_Finset
+
 def A : Finset String := {"John" , "Mary", "Sam" }
 def B : Finset String := { "eggs" , "coffee" }
 
@@ -85,6 +90,12 @@ def f : A → B := fun a ↦
 def eggs : Point B := fun _ ↦ ⟨"eggs", by simp [B]⟩
 
 example : f ∘ John = eggs := rfl
+
+end CM_Finset
+
+-- Make `A`, `B`, and the maps above available unqualified for the rest of this
+-- file only; this `open` does not leak to importers.
+open CM_Finset
 
 /-!
 Point
