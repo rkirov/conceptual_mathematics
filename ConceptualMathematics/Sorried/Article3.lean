@@ -1,5 +1,5 @@
-import ConceptualMathematics.Article2
-import ConceptualMathematics.Review
+import ConceptualMathematics.Sorried.Article2
+import ConceptualMathematics.Sorried.Review
 import Mathlib
 open CategoryTheory
 namespace CM

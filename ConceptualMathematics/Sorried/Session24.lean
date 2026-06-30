@@ -1,6 +1,6 @@
-import ConceptualMathematics.Article3
-import ConceptualMathematics.Article4
-import ConceptualMathematics.Session21
+import ConceptualMathematics.Sorried.Article3
+import ConceptualMathematics.Sorried.Article4
+import ConceptualMathematics.Sorried.Session21
 import Mathlib
 open CategoryTheory
 open Limits

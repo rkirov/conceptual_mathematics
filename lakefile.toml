@@ -1,7 +1,7 @@
 name = "conceptual_mathematics"
 version = "0.1.0"
 keywords = ["math"]
-defaultTargets = ["companion", "textbook"]
+defaultTargets = ["ConceptualMathematics"]
 
 [leanOptions]
 weak.linter.hashCommand = false
@@ -13,12 +13,6 @@ weak.linter.style.setOption = false
 maxSynthPendingDepth = 3
 pp.rawOnError = true
 pp.unicode.fun = true
-weak.verso.code.warnLineLength = 72
-
-[[require]]
-name = "verso"
-git = "https://github.com/leanprover/verso"
-rev = "v4.29.0"
 
 [[require]]
 name = "mathlib"
@@ -27,14 +21,3 @@ rev = "v4.29.0"
 
 [[lean_lib]]
 name = "ConceptualMathematics"
-
-[[lean_exe]]
-name = "companion"
-root = "ConceptualMathematicsMain"
-
-[[lean_lib]]
-name = "TextbookTemplate"
-
-[[lean_exe]]
-name = "textbook"
-root = "TextbookTemplateMain"

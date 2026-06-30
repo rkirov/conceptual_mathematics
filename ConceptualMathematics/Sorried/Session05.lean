@@ -1,4 +1,4 @@
-import ConceptualMathematics.Article1
+import ConceptualMathematics.Sorried.Article1
 import Mathlib
 open CategoryTheory
 namespace CM
