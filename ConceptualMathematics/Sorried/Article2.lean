@@ -495,11 +495,11 @@ example : Decidable (∃ f : A ⟶ B, IsIso f) := by
 
 example : Decidable (∃ f : A ⟶ C, IsIso f) := by
   apply isFalse
-  push Not
-  intro h
-  by_contra h'
-  have := Fintype.card_eq_of_iso h'
-  norm_num
+  rintro ⟨f, hf⟩
+  rw [isIso_iff_bijective] at hf
+  have := Fintype.card_of_bijective hf
+  revert this
+  decide
 
 end ExII_11
 
