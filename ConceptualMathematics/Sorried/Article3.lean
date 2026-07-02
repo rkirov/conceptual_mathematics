@@ -631,7 +631,7 @@ namespace ExIII_19_24
 
 inductive X
   | x₀ | x₁
-  deriving Fintype
+  deriving Fintype, DecidableEq
 
 inductive Y
   | y₀ | y₁ | y₂
@@ -684,16 +684,10 @@ example : p₁ ⊚ a = 𝟙 X := by
   funext x
   cases x <;> rfl
 
-#eval Danilo's_formula (Finset.univ) (Finset.univ) a p₁
+#eval Danilo's_formula a p₁
   (by
     funext x
     fin_cases x <;> rfl)
-  (by
-    intro x y _
-    fin_cases x <;> fin_cases y
-    all_goals
-      first | rfl
-            | simp only [reduceCtorEq]; trivial)
 
 def p₂ : Y ⟶ X :=
   sorry
