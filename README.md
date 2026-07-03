@@ -12,7 +12,7 @@ This is a trimmed-down fork of David Kinkead's
 documentation toolchain and the rendered HTML have been removed so the project builds
 against mathlib alone.
 
-I am reworking the files to my own style as I go. I am currently up to Session 6.
+I am reworking the files to my own style as I go. I am currently up to Session 9.
 
 ## Building
 
