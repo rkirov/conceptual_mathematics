@@ -1,6 +1,10 @@
 import ConceptualMathematics.Sorried.Article2
 import ConceptualMathematics.Sorried.Review
-import Mathlib
+import Mathlib.Algebra.Group.Int.Defs
+import Mathlib.Algebra.Order.Group.Unbundled.Abs
+import Mathlib.CategoryTheory.ConcreteCategory.Basic
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.Data.Fintype.Defs
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g

@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.Algebra.BigOperators.Group.Finset.Defs
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.Data.Fintype.Card
+import Mathlib.Data.Nat.Choose.Basic
+import Mathlib.Tactic.FinCases
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g

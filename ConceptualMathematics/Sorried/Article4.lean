@@ -1,7 +1,7 @@
 import ConceptualMathematics.Sorried.Article1
 import ConceptualMathematics.Sorried.Article3
 import ConceptualMathematics.Sorried.Session15
-import Mathlib
+import Mathlib.Data.Fintype.Defs
 open CategoryTheory
 open Limits
 namespace CM
@@ -818,3 +818,5 @@ example
   sorry
 
 end CM
+
+#min_imports

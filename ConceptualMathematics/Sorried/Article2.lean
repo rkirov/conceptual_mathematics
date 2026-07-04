@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.Data.Fintype.BigOperators
+import Mathlib.Data.Nat.Factorial.Basic
+import Mathlib.Data.Set.Finite.Range
+import Mathlib.Data.Real.Sqrt
+import Mathlib.Tactic.FinCases
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.DeriveFintype
 open CategoryTheory
 namespace CM
 -- flip the order to match the book.
@@ -235,29 +243,69 @@ def f : Fin 2 → X
 
 end ExII_5
 
+-- IsRetractionFor f r to be read `r is a retraction for f` as in the book.
+abbrev IsRetractionFor {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
+    (f : A ⟶ B) (r : B ⟶ A) := r ⊚ f = 𝟙 A
+
 /-!
 Retraction, IsRetraction
 In Mathlib it is called `SplitMono`.
+
+Retraction packages the retraction and the proof into a structure.
+HasRetraction just records the property that a retraction exists.
 -/
 abbrev Retraction {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
     (f : A ⟶ B) := SplitMono f
-abbrev IsRetraction {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
+abbrev HasRetraction {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
     (f : A ⟶ B) := IsSplitMono f
+
+-- show that the defintions match
+example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
+  (f : A ⟶ B) (r : B ⟶ A) (h : IsRetractionFor f r) : Retraction f := ⟨r, h⟩
+
+example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : HasRetraction f ↔
+  ∃ r : B ⟶ A, IsRetractionFor f r := by
+    constructor
+    · intro h
+      obtain ⟨f, hf⟩ := h
+      use f
+    · intro ⟨f, hf⟩
+      use f
+
+-- IsSectionFor f s to be read `s is a section for f`
+abbrev IsSectionFor {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
+    (f : A ⟶ B) (s : B ⟶ A) := f ⊚ s = 𝟙 B
 
 /-!
 Section, IsSection
 In Mathlib it is called `SplitEpi`.
+
+Section packages the function and the section together.
+HasSection just records the property that a section exists.
 -/
 abbrev Section {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
     (f : A ⟶ B) := SplitEpi f
-abbrev IsSection {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
+abbrev HasSection {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
     (f : A ⟶ B) := IsSplitEpi f
+
+-- show that the defintions match
+example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
+  (f : A ⟶ B) (s : B ⟶ A) (h : IsSectionFor f s) : Section f := ⟨s, h⟩
+
+example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : HasSection f ↔
+  ∃ s : B ⟶ A, IsSectionFor f s := by
+    constructor
+    · intro h
+      obtain ⟨s, hs⟩ := h
+      use s
+    · intro ⟨s, hs⟩
+      use s
 
 /-!
 Proposition 1 (p. 51)
 -/
 theorem prop1 {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
-    (f : A ⟶ B) [hf : IsSection f]
+    (f : A ⟶ B) [hf : HasSection f]
     : ∀ y : T ⟶ B, ∃ x : T ⟶ A, f ⊚ x = y := by
   obtain ⟨s, hf⟩ := hf
   intro y
@@ -270,7 +318,7 @@ theorem prop1 {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
 Exercise II.6 (Proposition 1*) (p. 52)
 -/
 theorem «prop1*» {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
-    (f : A ⟶ B) [hf : IsRetraction f]
+    (f : A ⟶ B) [hf : HasRetraction f]
     : ∀ g : A ⟶ T, ∃ t : B ⟶ T, t ⊚ f = g := by
   obtain ⟨r, hf⟩ := hf
   intro g
@@ -283,7 +331,7 @@ theorem «prop1*» {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
 Proposition 2 (p. 52)
 -/
 theorem prop2 {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
-    (f : A ⟶ B) [hf : IsRetraction f]
+    (f : A ⟶ B) [hf : HasRetraction f]
     : ∀ x₁ x₂ : T ⟶ A, f ⊚ x₁ = f ⊚ x₂ → x₁ = x₂ := by
   obtain ⟨r, hf⟩ := hf
   intro x₁ x₂ h
@@ -299,7 +347,7 @@ theorem prop2 {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
 Exercise II.7 (Proposition 2*) (p. 53)
 -/
 theorem «prop2*» {𝒞 : Type u} [Category.{v, u} 𝒞] {A B T : 𝒞}
-    (f : A ⟶ B) [hf : IsSection f]
+    (f : A ⟶ B) [hf : HasSection f]
     : ∀ t₁ t₂ : B ⟶ T, t₁ ⊚ f = t₂ ⊚ f → t₁ = t₂ := by
   intro t₁ t₂ h
   obtain ⟨s, hf⟩ := hf
@@ -323,8 +371,8 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] {X Y Z : 𝒞}
 Proposition 3 (p. 53)
 -/
 theorem prop3 {𝒞 : Type u} [Category.{v, u} 𝒞] {A B C : 𝒞}
-    (f : A ⟶ B) (hf : IsRetraction f) (g : B ⟶ C) (hg : IsRetraction g)
-    : IsRetraction (g ⊚ f) := by
+    (f : A ⟶ B) (hf : HasRetraction f) (g : B ⟶ C) (hg : HasRetraction g)
+    : HasRetraction (g ⊚ f) := by
   obtain ⟨r₁, hf⟩ := hf
   obtain ⟨r₂, hg⟩ := hg
   use r₁ ⊚ r₂
@@ -338,15 +386,15 @@ theorem prop3 {𝒞 : Type u} [Category.{v, u} 𝒞] {A B C : 𝒞}
 This is instIsSplitMonoComp in mathlib
 -/
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B C : 𝒞}
-    (f : A ⟶ B) (hf : IsRetraction f) (g : B ⟶ C) (hg : IsRetraction g)
-    : IsRetraction (g ⊚ f) := instIsSplitMonoComp
+    (f : A ⟶ B) [hf : HasRetraction f] (g : B ⟶ C) [hg : HasRetraction g]
+    : HasRetraction (g ⊚ f) := instIsSplitMonoComp
 
 /-!
 Exercise II.8 (p. 54)
 -/
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B C : 𝒞}
-    (f : A ⟶ B) (hf : IsSection f) (g : B ⟶ C) (hg : IsSection g)
-    : IsSection (g ⊚ f) := by
+    (f : A ⟶ B) [hf : HasSection f] (g : B ⟶ C) [hg : HasSection g]
+    : HasSection (g ⊚ f) := by
   obtain ⟨s, hf⟩ := hf
   obtain ⟨t, hg⟩ := hg
   use s ⊚ t
@@ -360,8 +408,8 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B C : 𝒞}
 instIsSplitEpiComp
 -/
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B C : 𝒞}
-    (f : A ⟶ B) [hf : IsSection f] (g : B ⟶ C) [hg : IsSection g]
-    : IsSection (g ⊚ f) := instIsSplitEpiComp
+    (f : A ⟶ B) [hf : HasSection f] (g : B ⟶ C) [hg : HasSection g]
+    : HasSection (g ⊚ f) := instIsSplitEpiComp
 
 /-!
 Idempotent, IsIdempotent
