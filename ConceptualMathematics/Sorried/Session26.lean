@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.CategoryTheory.Limits.Shapes.BinaryBiproducts
+import Mathlib.CategoryTheory.Preadditive.Basic
+import Mathlib.CategoryTheory.Limits.Shapes.Terminal
+import Mathlib.Combinatorics.Quiver.ReflQuiver
 open CategoryTheory
 open Limits
 namespace CM

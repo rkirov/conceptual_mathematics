@@ -1,5 +1,4 @@
 import ConceptualMathematics.Sorried.Article4
-import Mathlib
 open CategoryTheory
 open Limits
 namespace CM

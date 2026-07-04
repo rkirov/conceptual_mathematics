@@ -1,5 +1,7 @@
 import ConceptualMathematics.Sorried.Article2
-import Mathlib
+import Mathlib.CategoryTheory.Types.Epimorphisms
+import Mathlib.CategoryTheory.Types.Monomorphisms
+import Mathlib.SetTheory.Cardinal.Order
 open CategoryTheory
 set_option linter.unusedFintypeInType false
 namespace CM

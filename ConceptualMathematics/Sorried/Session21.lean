@@ -1,6 +1,5 @@
-import ConceptualMathematics.Sorried.Article3
 import ConceptualMathematics.Sorried.Session12
-import Mathlib
+import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts
 open CategoryTheory
 open Limits
 namespace CM

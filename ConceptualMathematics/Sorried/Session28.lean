@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.CategoryTheory.Category.Pointed
+import Mathlib.CategoryTheory.Limits.Shapes.BinaryBiproducts
+import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 open CategoryTheory
 open Limits
 namespace CM

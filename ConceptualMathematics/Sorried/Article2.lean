@@ -263,7 +263,7 @@ abbrev HasRetraction {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
   (f : A ⟶ B) (r : B ⟶ A) (h : IsRetractionFor f r) : Retraction f := ⟨r, h⟩
 
-example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : HasRetraction f ↔
+theorem has_retraction_def {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : HasRetraction f ↔
   ∃ r : B ⟶ A, IsRetractionFor f r := by
     constructor
     · intro h
@@ -292,7 +292,7 @@ abbrev HasSection {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞}
   (f : A ⟶ B) (s : B ⟶ A) (h : IsSectionFor f s) : Section f := ⟨s, h⟩
 
-example {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : HasSection f ↔
+theorem has_section_def {𝒞 : Type u} [Category.{v, u} 𝒞] {A B : 𝒞} (f : A ⟶ B) : HasSection f ↔
   ∃ s : B ⟶ A, IsSectionFor f s := by
     constructor
     · intro h

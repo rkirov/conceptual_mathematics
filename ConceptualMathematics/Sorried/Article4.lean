@@ -2,6 +2,13 @@ import ConceptualMathematics.Sorried.Article1
 import ConceptualMathematics.Sorried.Article3
 import ConceptualMathematics.Sorried.Session15
 import Mathlib.Data.Fintype.Defs
+import Mathlib.CategoryTheory.Limits.Shapes.Terminal
+import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts
+import Mathlib.CategoryTheory.Limits.Shapes.Products
+import Mathlib.CategoryTheory.Limits.Types.Products
+import Mathlib.CategoryTheory.Category.Pointed
+import Mathlib.CategoryTheory.Category.Bipointed
+import Mathlib.CategoryTheory.Comma.Over.Basic
 open CategoryTheory
 open Limits
 namespace CM

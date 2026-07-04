@@ -1,5 +1,5 @@
 import ConceptualMathematics.Sorried.Article1
-import Mathlib
+import Mathlib.Tactic.DeriveFintype
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g

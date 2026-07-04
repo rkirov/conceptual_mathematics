@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.Combinatorics.Quiver.ReflQuiver
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g

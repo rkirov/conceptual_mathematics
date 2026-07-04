@@ -1,5 +1,5 @@
 import ConceptualMathematics.Sorried.Article2
-import Mathlib
+import Mathlib.CategoryTheory.Retract
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g

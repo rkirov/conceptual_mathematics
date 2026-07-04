@@ -1,4 +1,5 @@
-import Mathlib
+import Mathlib.CategoryTheory.PathCategory.Basic
+import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g

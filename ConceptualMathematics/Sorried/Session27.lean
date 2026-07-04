@@ -1,6 +1,7 @@
 import ConceptualMathematics.Sorried.Article3
 import ConceptualMathematics.Sorried.Article4
-import Mathlib
+import Mathlib.Algebra.Polynomial.Eval.Defs
+import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
 open CategoryTheory
 open Limits
 namespace CM

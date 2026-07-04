@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Analysis.RCLike.Basic
+import Mathlib.Combinatorics.Quiver.ReflQuiver
+import Mathlib.Tactic.DeriveFintype
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
