@@ -38,8 +38,8 @@ Exercise 24.2 (p. 267)
 namespace Ex24_2
 
 def IG2 : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 2
+  A := Fin 2
+  D := Fin 2
   toSrc := fun x ↦ x
   toTgt := fun x ↦ x
 }

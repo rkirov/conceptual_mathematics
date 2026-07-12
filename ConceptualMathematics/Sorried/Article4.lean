@@ -66,8 +66,8 @@ example : ∀ (X : SetWithEndomap) (x : termSWE ⟶ X),
 Exercise IV.4 (p. 214)
 -/
 def termIG : IrreflexiveGraph := {
-  carrierA := Unit
-  carrierD := Unit
+  A := Unit
+  D := Unit
   toSrc := fun _ ↦ ()
   toTgt := fun _ ↦ ()
 }
@@ -128,8 +128,8 @@ inductive XD
   | d₁ | d₂
 
 def X : IrreflexiveGraph := {
-  carrierA := XA
-  carrierD := XD
+  A := XA
+  D := XD
   toSrc := fun
     | XA.a₁ => XD.d₁
     | XA.a₂ => XD.d₂
@@ -145,8 +145,8 @@ inductive YD
   | d₁ | d₂
 
 def Y : IrreflexiveGraph := {
-  carrierA := YA
-  carrierD := YD
+  A := YA
+  D := YD
   toSrc := fun
     | YA.a₁ => YD.d₁
     | YA.a₂ => YD.d₂
@@ -170,15 +170,15 @@ end ExIV_5b
 Excerpt (p. 215)
 -/
 abbrev IrreflexiveGraph.A : IrreflexiveGraph := {
-  carrierA := Unit
-  carrierD := Fin 2
+  A := Unit
+  D := Fin 2
   toSrc := fun _ ↦ 0
   toTgt := fun _ ↦ 1
 }
 
 abbrev IrreflexiveGraph.D : IrreflexiveGraph := {
-  carrierA := Empty
-  carrierD := Unit
+  A := Empty
+  D := Unit
   toSrc := Empty.elim
   toTgt := Empty.elim
 }
@@ -244,8 +244,8 @@ example
   sorry
 
 def emptyIG : IrreflexiveGraph := {
-  carrierA := Empty
-  carrierD := Empty
+  A := Empty
+  D := Empty
   toSrc := Empty.elim
   toTgt := Empty.elim
 }
@@ -409,8 +409,8 @@ instance : HasTerminal IrreflexiveGraph where
     exists_limit := Nonempty.intro {
       cone := {
         pt := {
-          carrierA := Unit
-          carrierD := Unit
+          A := Unit
+          D := Unit
           toSrc := fun _ ↦ ()
           toTgt := fun _ ↦ ()
         }

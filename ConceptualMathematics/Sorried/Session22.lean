@@ -27,8 +27,8 @@ Exercise 22.2 (p. 252)
 namespace Ex22_2
 
 abbrev A₂ : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 3
+  A := Fin 2
+  D := Fin 3
   toSrc := fun
     | 0 => 0
     | 1 => 1

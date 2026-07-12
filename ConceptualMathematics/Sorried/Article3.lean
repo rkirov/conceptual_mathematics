@@ -5,6 +5,7 @@ import Mathlib.Algebra.Order.Group.Unbundled.Abs
 import Mathlib.CategoryTheory.ConcreteCategory.Basic
 import Mathlib.Combinatorics.Quiver.ReflQuiver
 import Mathlib.Data.Fintype.Defs
+import Mathlib.GroupTheory.Perm.Cycle.Type
 open CategoryTheory
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
@@ -58,11 +59,12 @@ example {X Y Z : Type}
     (α : X ⟶ X) (β : Y ⟶ Y) (γ : Z ⟶ Z)
     (f : X ⟶ Y) (hf_comm : f ⊚ α = β ⊚ f)
     (g : Y ⟶ Z) (hg_comm : g ⊚ β = γ ⊚ g)
-    : (g ⊚ f) ⊚ α = γ ⊚ (g ⊚ f) :=
-  sorry
+    : (g ⊚ f) ⊚ α = γ ⊚ (g ⊚ f) := by
+  rw [← Category.assoc, hf_comm, Category.assoc, hg_comm]
+  rw [Category.assoc]
 
 example {X Y Z : SetWithEndomap} (f : X ⟶ Y) (g : Y ⟶ Z) : X ⟶ Z :=
-  sorry
+  SetWithEndomapHom.comp f g
 
 /-!
 The (concrete) category 𝑺ᵉ of idempotent endomaps of sets (p. 138)
@@ -145,17 +147,123 @@ instance : ConcreteCategory InvolEndomap instCatInvolEndomap.Hom where
   hom f := f
   ofHom f := f
 
+example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞} {α β : A ⟶ A}
+    (h_idem : α ⊚ α = α) (h_section : α ⊚ β = 𝟙 A)
+    : α = 𝟙 A := by
+  have := congr_arg (· ⊚ β) h_idem
+  simp only at this
+  rw [← Category.assoc, h_section] at this
+  simp only [Category.id_comp] at this
+  exact this
+
 /-!
 Exercise III.2 (p. 139)
 -/
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞} {α β : A ⟶ A}
     (h_idem : α ⊚ α = α) (h_retraction : β ⊚ α = 𝟙 A)
-    : α = 𝟙 A :=
-  sorry
+    : α = 𝟙 A := by
+  have := congr_arg (β ⊚ ·) h_idem
+  simp only at this
+  rw [Category.assoc, h_retraction] at this
+  simp only [Category.comp_id] at this
+  exact this
 
 /-!
 Exercise III.3 (p. 140)
 -/
+def isInvo {α : Type} [Fintype α] (f : α → α) : Prop := f ∘ f = id
+
+def isEven (α : Type) [Fintype α] [DecidableEq α] : Prop := ∃ f : α → α, isInvo f ∧
+  (Finset.card {x : α | f x = x }) = 0
+
+def isOdd (α : Type) [Fintype α] [DecidableEq α] : Prop := ∃ f : α → α, isInvo f ∧
+  (Finset.card {x : α | f x = x }) = 1
+
+-- Involution principle: an involution pairs up the non-fixed points, so the
+-- cardinality has the same parity as the number of fixed points.
+private theorem card_modEq_card_fixed {α : Type} [Fintype α] [DecidableEq α]
+    {f : α → α} (hf : Function.Involutive f) :
+    Fintype.card α ≡ (Finset.card {x : α | f x = x}) [MOD 2] := by
+  have hsq : (Function.Involutive.toPerm f hf) ^ 2 = 1 := by
+    ext x; simp [pow_two, Function.Involutive.coe_toPerm, hf x]
+  have hdvd := Equiv.Perm.two_dvd_card_support hsq
+  have hsupp : (Function.Involutive.toPerm f hf).support
+      = Finset.univ.filter (fun x => ¬ f x = x) := by
+    ext x; simp [Equiv.Perm.mem_support, Function.Involutive.coe_toPerm]
+  rw [hsupp] at hdvd
+  have hsplit := Finset.card_filter_add_card_filter_not
+    (s := (Finset.univ : Finset α)) (fun x => f x = x)
+  rw [Finset.card_univ] at hsplit
+  rw [Nat.ModEq]
+  omega
+
+example {α : Type} [Fintype α] [DecidableEq α] : Even (Fintype.card α) ↔ isEven α := by
+  constructor
+  · rintro ⟨n, hn⟩
+    -- `card α = n + n`: identify `α` with `Fin n × Bool` and flip the `Bool`.
+    have hcard : Fintype.card α = Fintype.card (Fin n × Bool) := by
+      simp only [Fintype.card_prod, Fintype.card_fin, Fintype.card_bool, hn]; ring
+    obtain e := Fintype.equivOfCardEq hcard
+    refine ⟨fun x => e.symm ((e x).1, !(e x).2), ?_, ?_⟩
+    · funext x
+      simp only [Function.comp_apply, Equiv.apply_symm_apply, Bool.not_not,
+        Prod.mk.eta, Equiv.symm_apply_apply, id_eq]
+    · rw [Finset.card_eq_zero, Finset.filter_eq_empty_iff]
+      intro x _ hx
+      apply congrArg e at hx
+      rw [Equiv.apply_symm_apply] at hx
+      have : (e x).2 = !(e x).2 := (congrArg Prod.snd hx).symm
+      simp at this
+  · rintro ⟨f, hf_invo, hf_card⟩
+    have hinv : Function.Involutive f := fun x => congr_fun hf_invo x
+    have hmod := card_modEq_card_fixed hinv
+    rw [hf_card, Nat.ModEq] at hmod
+    rw [Nat.even_iff]
+    omega
+
+example {α : Type} [Fintype α] [DecidableEq α] : Odd (Fintype.card α) ↔ isOdd α := by
+  constructor
+  · rintro ⟨n, hn⟩
+    -- `card α = 2n + 1`: identify `α` with `Option (Fin n × Bool)`, flip the
+    -- `Bool` on the paired elements and fix the extra `none`.
+    have hcard : Fintype.card α = Fintype.card (Option (Fin n × Bool)) := by
+      simp only [Fintype.card_option, Fintype.card_prod, Fintype.card_fin,
+        Fintype.card_bool, hn]; ring
+    obtain e := Fintype.equivOfCardEq hcard
+    set swp : Fin n × Bool → Fin n × Bool := fun p => (p.1, !p.2) with hswp
+    have hswp2 : swp ∘ swp = id := by funext p; simp [hswp]
+    refine ⟨fun x => e.symm ((e x).map swp), ?_, ?_⟩
+    · funext x
+      simp only [Function.comp_apply, Equiv.apply_symm_apply, Option.map_map,
+        hswp2, Option.map_id, id_eq, Equiv.symm_apply_apply]
+    · rw [Finset.card_eq_one]
+      refine ⟨e.symm none, ?_⟩
+      ext x
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_singleton]
+      constructor
+      · intro hx
+        apply congrArg e at hx
+        rw [Equiv.apply_symm_apply] at hx
+        cases h : e x with
+        | none =>
+          apply congrArg e.symm at h
+          rw [Equiv.symm_apply_apply] at h
+          exact h
+        | some p =>
+          rw [h] at hx
+          simp only [Option.map_some, hswp, Option.some.injEq] at hx
+          exact absurd (congrArg Prod.snd hx) (by simp)
+      · intro hx
+        subst hx
+        simp [Equiv.apply_symm_apply]
+  · rintro ⟨f, hf_invo, hf_card⟩
+    have hinv : Function.Involutive f := fun x => congr_fun hf_invo x
+    have hmod := card_modEq_card_fixed hinv
+    rw [hf_card, Nat.ModEq] at hmod
+    rw [Nat.odd_iff]
+    omega
+
+
 /-!
 Exercise III.4 (p. 140)
 -/
@@ -163,14 +271,25 @@ namespace ExIII_4
 
 def α : ℤ ⟶ ℤ := fun x ↦ -x
 
-example : ¬(IsIdempotent α) :=
-  sorry
+example : Decidable (IsIdempotent α) := by
+  apply isFalse
+  rintro ⟨h⟩
+  have h1 := congr_fun h 1
+  simp [α] at h1
 
-example : IsInvolution α :=
-  sorry
+example : Decidable (IsInvolution α) := by
+  apply isTrue
+  refine ⟨?_⟩
+  ext x
+  simp [α]
 
-example {x : ℤ} : Function.IsFixedPt α x ↔ x = 0 :=
-  sorry
+example {x : ℤ} : Function.IsFixedPt α x ↔ x = 0 := by
+  constructor
+  · rintro h
+    simp only [Function.IsFixedPt, α] at h
+    exact self_eq_neg.mp (id (Eq.symm h))
+  · rintro rfl
+    simp [Function.IsFixedPt, α]
 
 end ExIII_4
 
@@ -181,14 +300,26 @@ namespace ExIII_5
 
 def α : ℤ ⟶ ℤ := fun x ↦ |x|
 
-example : IsIdempotent α :=
-  sorry
+example : Decidable (IsIdempotent α) := by
+  apply isTrue
+  refine ⟨?_⟩
+  ext x
+  simp [α]
 
-example : ¬(IsInvolution α) :=
-  sorry
+example : Decidable (IsInvolution α) := by
+  apply isFalse
+  rintro ⟨h⟩
+  have h1 := congr_fun h (-1)
+  simp [α] at h1
 
-example {x : ℤ} : Function.IsFixedPt α x ↔ 0 ≤ x :=
-  sorry
+example {x : ℤ} : Function.IsFixedPt α x ↔ 0 ≤ x := by
+  constructor
+  · rintro h
+    simp only [Function.IsFixedPt, α] at h
+    rw [abs_eq_self] at h
+    exact h
+  · rintro h
+    simp [Function.IsFixedPt, α, abs_of_nonneg h]
 
 end ExIII_5
 
@@ -199,8 +330,13 @@ namespace ExIII_6
 
 def α : ℤ ⟶ ℤ := fun x ↦ x + 3
 
-example : IsIso α :=
-  sorry
+example : Decidable (IsIso α) := by
+  apply isTrue
+  refine ⟨fun x ↦ x - 3, ?_, ?_⟩
+  · ext x
+    simp [α]
+  · ext x
+    simp [α]
 
 end ExIII_6
 
@@ -211,8 +347,13 @@ namespace ExIII_7
 
 def α : ℤ ⟶ ℤ := fun x ↦ 5 * x
 
-example : ¬(IsIso α) :=
-  sorry
+example : Decidable (IsIso α) := by
+  apply isFalse
+  rintro ⟨h, h_left_inv, h_right_inv⟩
+  have h1 := congr_fun h_left_inv 1
+  have h2 := congr_fun h_right_inv 1
+  simp [α] at h1 h2
+  omega
 
 end ExIII_7
 
@@ -220,20 +361,30 @@ end ExIII_7
 Exercise III.8 (p. 140)
 -/
 example {α : IdemEndomap}
-    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd :=
-  sorry
+    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd := by
+  have h_idem := α.idem
+  rw [h_idem]
+  exact h_idem
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞}
-    (α : A ⟶ A) [IsIdempotent α] : α ⊚ α ⊚ α = α :=
-  sorry
+    (α : A ⟶ A) [IsIdempotent α] : α ⊚ α ⊚ α = α := by
+  have h_idem : IsIdempotent α := inferInstance
+  obtain ⟨h_idem⟩ := h_idem
+  rw [h_idem]
+  exact h_idem
 
 example {α : InvolEndomap}
-    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd :=
-  sorry
+    : α.toEnd ⊚ α.toEnd ⊚ α.toEnd = α.toEnd := by
+  have h_invol := α.invol
+  rw [h_invol]
+  exact Category.id_comp _
 
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {A : 𝒞}
-    (α : A ⟶ A) [IsInvolution α] : α ⊚ α ⊚ α = α :=
-  sorry
+    (α : A ⟶ A) [IsInvolution α] : α ⊚ α ⊚ α = α := by
+  have h_invol : IsInvolution α := inferInstance
+  obtain ⟨h_invol⟩ := h_invol
+  rw [h_invol]
+  exact Category.id_comp _
 
 /-!
 Exercise III.9 (p. 141)
@@ -248,14 +399,21 @@ def α : A ⟶ A
   | A.a₂ => A.a₃
   | A.a₃ => A.a₂
 
-example : α ⊚ α ⊚ α = α :=
-  sorry
+example : α ⊚ α ⊚ α = α := by
+  ext x
+  cases x <;> simp [α]
 
-example : ¬(IsIdempotent α) :=
-  sorry
+example : ¬(IsIdempotent α) := by
+  intro h
+  obtain ⟨h_idem⟩ := h
+  have h1 := congr_fun h_idem A.a₁
+  simp [α] at h1
 
-example : ¬(IsInvolution α) :=
-  sorry
+example : ¬(IsInvolution α) := by
+  intro h
+  obtain ⟨h_invol⟩ := h
+  have h1 := congr_fun h_invol A.a₁
+  simp [α] at h1
 
 end ExIII_9
 
@@ -270,17 +428,29 @@ inductive X
 inductive P
   | k | m | n | p | q | r
 
-def s : X ⟶ P :=
-  sorry
+def s : X ⟶ P
+  | X.a => P.k
+  | X.b => P.m
+  | X.c => P.k
+  | X.d => P.p
+  | X.e => P.m
 
-def t : X ⟶ P :=
-  sorry
+def t : X ⟶ P
+  | X.a => P.m
+  | X.b => P.m
+  | X.c => P.m
+  | X.d => P.q
+  | X.e => P.r
 
-example : s X.b = t X.b :=
-  sorry
+example : Decidable (∃ x : X, s x = t x) := by
+  apply isTrue
+  use X.b
+  simp [s, t]
 
-example : ¬(∃ x : X, t x = P.k) :=
-  sorry
+example : Decidable (∃ x : X, t x = P.k) := by
+  apply isFalse
+  rintro ⟨x, h⟩
+  cases x <;> simp [t] at h
 
 end ExIII_10
 
@@ -288,18 +458,19 @@ end ExIII_10
 The category 𝑺⇊ of (irreflexive directed multi-) graphs (pp. 141–142)
 -/
 structure IrreflexiveGraph where
-  carrierA : Type
-  carrierD : Type
-  toSrc : carrierA ⟶ carrierD
-  toTgt : carrierA ⟶ carrierD
+  A : Type
+  D : Type
+  toSrc : A ⟶ D
+  toTgt : A ⟶ D
 
 instance instCategoryIrreflexiveGraph : Category IrreflexiveGraph where
   Hom X Y := {
-    f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
+    f : (X.A ⟶ Y.A) × (X.D ⟶ Y.D) //
         f.2 ⊚ X.toSrc = Y.toSrc ⊚ f.1 -- source commutes
         ∧ f.2 ⊚ X.toTgt = Y.toTgt ⊚ f.1 -- target commutes
   }
-  id X := ⟨(𝟙 X.carrierA, 𝟙 X.carrierD), ⟨rfl, rfl⟩⟩
+  id X := ⟨(𝟙 X.A, 𝟙 X.D), ⟨rfl, rfl⟩⟩
+  -- exerercise III.11 (p. 142)
   comp := by
     rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
     exact ⟨
@@ -325,41 +496,19 @@ Exercise III.11 (p. 142)
 -/
 namespace ExIII_11
 
-variable (X P Y Q Z R : Type)
-         (s t : X ⟶ P) (s' t' : Y ⟶ Q) (s'' t'' : Z ⟶ R)
-
-example (fA : X ⟶ Y) (fD : P ⟶ Q) (gA : Y ⟶ Z) (gD : Q ⟶ R)
-    (hfSrc_comm : fD ⊚ s = s' ⊚ fA)
-    (hfTgt_comm : fD ⊚ t = t' ⊚ fA)
-    (hgSrc_comm : gD ⊚ s' = s'' ⊚ gA)
-    (hgTgt_comm : gD ⊚ t' = t'' ⊚ gA)
-    : (gD ⊚ fD) ⊚ s = s'' ⊚ (gA ⊚ fA)
-        ∧ (gD ⊚ fD) ⊚ t = t'' ⊚ (gA ⊚ fA)
-    :=
-  sorry
-
-def graph (A D : Type) (src tgt : A ⟶ D) : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
-  toSrc := src
-  toTgt := tgt
-}
-
-example (f : graph X P s t ⟶ graph Y Q s' t')
-    (g : graph Y Q s' t' ⟶ graph Z R s'' t'')
-    : graph X P s t ⟶ graph Z R s'' t'' :=
-  sorry
+example (X Y Z : IrreflexiveGraph) (f : X ⟶ Y) (g : Y ⟶ Z) : X ⟶ Z := by
+  exact instCategoryIrreflexiveGraph.comp f g
 
 end ExIII_11
 
 /-!
 Exercise III.12 (p. 143)
 -/
-def functorSetWithEndomapToIrreflexiveGraph
+def funSetWithEndoToIrrG
     : Functor SetWithEndomap IrreflexiveGraph := {
   obj (X : SetWithEndomap) := {
-    carrierA := X.carrier
-    carrierD := X.carrier
+    A := X.carrier
+    D := X.carrier
     toSrc := 𝟙 X.carrier
     toTgt := X.toEnd
   }
@@ -375,9 +524,9 @@ def functorSetWithEndomapToIrreflexiveGraph
 }
 
 -- Helper function to align to the notation in the book
-def I {X Y : SetWithEndomap} (f : X ⟶ Y) :=
-  functorSetWithEndomapToIrreflexiveGraph.map f
+abbrev I {X Y : SetWithEndomap} (f : X ⟶ Y) := funSetWithEndoToIrrG.map f
 
+-- exercise III.12 (p. 143)
 example {X Y Z : SetWithEndomap}
     (f : X ⟶ Y) (g : Y ⟶ Z) : I (g ⊚ f) = I g ⊚ I f := rfl
 
@@ -386,38 +535,11 @@ Exercise III.13 (p. 144)
 -/
 namespace ExIII_13
 
-variable (X' Y' : SetWithEndomap)
-
-def graph₁ (S : SetWithEndomap) : IrreflexiveGraph := {
-  carrierA := S.carrier
-  carrierD := S.carrier
-  toSrc := 𝟙 S.carrier
-  toTgt := S.toEnd
-}
-
-variable (f₁ : graph₁ X' ⟶ graph₁ Y')
-
--- Align to the notation in the book: fA is f₁.val.1, fD is f₁.val.2
-set_option quotPrecheck false
-local notation "fA₁" => f₁.val.1
-local notation "fD₁" => f₁.val.2
-set_option quotPrecheck true
-
-example : fA₁ = fD₁ :=
-  sorry
-
-def graph₂ (S : SetWithEndomap) : IrreflexiveGraph :=
-  functorSetWithEndomapToIrreflexiveGraph.obj S
-
-variable (f₂ : graph₂ X' ⟶ graph₂ Y')
-
-set_option quotPrecheck false
-local notation "fA₂" => f₂.val.1
-local notation "fD₂" => f₂.val.2
-set_option quotPrecheck true
-
-example : fA₂ = fD₂ :=
-  sorry
+example (X' Y' : SetWithEndomap) (f : funSetWithEndoToIrrG.obj X' ⟶ funSetWithEndoToIrrG.obj Y') :
+  f.val.1 = f.val.2 := by
+  obtain ⟨f, hf1, hf2⟩ := f
+  simp only [funSetWithEndoToIrrG, Category.id_comp, Category.comp_id] at hf1 hf2 ⊢
+  exact hf1.symm
 
 end ExIII_13
 
@@ -425,16 +547,16 @@ end ExIII_13
 The category 𝑺↓ of simple directed graphs (pp. 144–145)
 -/
 structure SimpleGraph where
-  carrierA : Type
-  carrierD : Type
-  toFun : carrierA ⟶ carrierD
+  A : Type
+  D : Type
+  toFun : A ⟶ D
 
 instance : Category SimpleGraph where
   Hom X Y := {
-    f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
+    f : (X.A ⟶ Y.A) × (X.D ⟶ Y.D) //
         f.2 ⊚ X.toFun = Y.toFun ⊚ f.1 -- commutes
   }
-  id X := ⟨(𝟙 X.carrierA, 𝟙 X.carrierD), rfl⟩
+  id X := ⟨(𝟙 X.A, 𝟙 X.D), rfl⟩
   comp := by
     rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
     exact ⟨
@@ -452,11 +574,10 @@ lemma SimpleGraph.hom_ext {X Y : SimpleGraph}
     : f = g :=
   Subtype.ext (Prod.ext hA hD)
 
-def functorSetWithEndomapToSimpleGraph
-    : Functor SetWithEndomap SimpleGraph := {
+def funSetWithEndoToSimpG : Functor SetWithEndomap SimpleGraph := {
   obj (X : SetWithEndomap) := {
-    carrierA := X.carrier
-    carrierD := X.carrier
+    A := X.carrier
+    D := X.carrier
     toFun := X.toEnd
   }
   map {X Y : SetWithEndomap} (f : X ⟶ Y) := {
@@ -468,8 +589,8 @@ def functorSetWithEndomapToSimpleGraph
 }
 
 -- Helper function to align to the notation in the book
-def J {X Y : SetWithEndomap} (f : X ⟶ Y) :=
-  functorSetWithEndomapToSimpleGraph.map f
+abbrev J {X Y : SetWithEndomap} (f : X ⟶ Y) :=
+  funSetWithEndoToSimpG.map f
 
 example {X Y Z : SetWithEndomap}
     (f : X ⟶ Y) (g : Y ⟶ Z) : J (g ⊚ f) = J g ⊚ J f := rfl
@@ -479,26 +600,23 @@ Exercise III.14 (p. 144)
 -/
 namespace ExIII_14
 
-inductive X
-  | x₁ | x₂
-
-inductive Y
-  | y₁ | y₂
-
-def α : X ⟶ X :=
-  sorry
-
-def β : Y ⟶ Y :=
-  sorry
-
-def fA : X ⟶ Y :=
-  sorry
-
-def fD : X ⟶ Y :=
-  sorry
-
-example : fD ⊚ α = β ⊚ fA ∧ fA ≠ fD :=
-  sorry
+-- Contrast with III.13: for the simple-graph functor there is no source
+-- map to force the two components to agree.  Take the identity endomap on
+-- `Bool` for `X` and the swap (`not`) endomap for `Y`.  Every graph morphism
+-- `J X ⟶ J Y` must satisfy `f.2 = not ∘ f.1`, so `f.1 = f.2` is impossible.
+example : ∃ X Y : SetWithEndomap,
+    ∀ f : funSetWithEndoToSimpG.obj X ⟶ funSetWithEndoToSimpG.obj Y,
+    f.val.2 ⊚ X.toEnd = Y.toEnd ⊚ f.val.1 ∧ f.val.1 ≠ f.val.2 := by
+  refine ⟨⟨Bool, 𝟙 Bool⟩, ⟨Bool, fun b => !b⟩, ?_⟩
+  rintro ⟨⟨f1, f2⟩, hf⟩
+  refine ⟨hf, ?_⟩
+  intro h
+  have hh : f1 true = f2 true := congr_fun h true
+  have hb := congr_fun hf true
+  simp only [funSetWithEndoToSimpG, CategoryStruct.comp, Function.comp_apply,
+    types_id_apply] at hb
+  rw [← hh] at hb
+  simp at hb
 
 end ExIII_14
 
@@ -506,19 +624,19 @@ end ExIII_14
 The category of reflexive graphs (p. 145)
 -/
 structure ReflexiveGraph extends IrreflexiveGraph where
-  toCommonSection : carrierD ⟶ carrierA
-  section_src : toSrc ⊚ toCommonSection = 𝟙 carrierD
-  section_tgt : toTgt ⊚ toCommonSection = 𝟙 carrierD
+  toInc : D ⟶ A
+  section_src : toSrc ⊚ toInc = 𝟙 D
+  section_tgt : toTgt ⊚ toInc = 𝟙 D
 
 instance : Category ReflexiveGraph where
   Hom X Y := {
-    f : (X.carrierA ⟶ Y.carrierA) × (X.carrierD ⟶ Y.carrierD) //
+    f : (X.A ⟶ Y.A) × (X.D ⟶ Y.D) //
         f.2 ⊚ X.toSrc = Y.toSrc ⊚ f.1 -- source commutes
         ∧ f.2 ⊚ X.toTgt = Y.toTgt ⊚ f.1 -- target commutes
-        ∧ f.1 ⊚ X.toCommonSection = Y.toCommonSection ⊚ f.2
+        ∧ f.1 ⊚ X.toInc = Y.toInc ⊚ f.2
   }
   id X := ⟨
-    (𝟙 X.carrierA, 𝟙 X.carrierD),
+    (𝟙 X.A, 𝟙 X.D),
     by
       split_ands <;> first | exact fun _ hx ↦ hx | rfl
   ⟩
@@ -549,23 +667,29 @@ Exercise III.15 (p. 145)
 -/
 namespace ExIII_15
 
-variable (X : ReflexiveGraph)
-
-variable (e₁ e₀ : X.carrierA ⟶ X.carrierA)
-         (h₁ : e₁ = X.toCommonSection ⊚ X.toSrc)
-         (h₀ : e₀ = X.toCommonSection ⊚ X.toTgt)
-
-example : e₀ ⊚ e₀ = e₀ :=
-  sorry
-
-example : e₀ ⊚ e₁ = e₁ :=
-  sorry
-
-example : e₁ ⊚ e₀ = e₀ :=
-  sorry
-
-example : e₁ ⊚ e₁ = e₁ :=
-  sorry
+def e (X : ReflexiveGraph) : Set (X.A ⟶ X.A) :=
+  {X.toInc ⊚ X.toSrc, X.toInc ⊚ X.toTgt}
+example (X : ReflexiveGraph) : ∀ x y : e X, x.val ⊚ y.val = y.val := by
+  rintro ⟨x, hx⟩ ⟨y, hy⟩
+  simp only
+  simp only [e, Set.mem_insert_iff, Set.mem_singleton_iff] at hx hy
+  cases hx with
+  | inl h1 =>
+    cases hy with
+    | inl h2 =>
+      subst x y
+      rw [← Category.assoc, Category.assoc X.toSrc _, X.section_src, Category.comp_id]
+    | inr h2 =>
+      subst x y
+      rw [← Category.assoc, Category.assoc X.toTgt _, X.section_src, Category.comp_id]
+  | inr h1 =>
+    cases hy with
+    | inl h2 =>
+      subst x y
+      rw [← Category.assoc, Category.assoc X.toSrc _, X.section_tgt, Category.comp_id]
+    | inr h2 =>
+      subst x y
+      rw [← Category.assoc, Category.assoc X.toTgt _, X.section_tgt, Category.comp_id]
 
 end ExIII_15
 
@@ -586,14 +710,17 @@ local notation "s" => X.toSrc
 local notation "s'" => Y.toSrc
 local notation "t" => X.toTgt
 local notation "t'" => Y.toTgt
-local notation "i" => X.toCommonSection
-local notation "i'" => Y.toCommonSection
+local notation "i" => X.toInc
+local notation "i'" => Y.toInc
 
-example : fD = s' ⊚ fA ⊚ i :=
-  sorry
+example : fD = s' ⊚ fA ⊚ i := by
+  have h1 := f.property.1
+  rw [Category.assoc, ← h1, ← Category.assoc, X.section_src, Category.id_comp]
 
-example : fD = t' ⊚ fA ⊚ i :=
-  sorry
+-- alternative solution
+example : fD = t' ⊚ fA ⊚ i := by
+  have h1 := f.property.2.2
+  rw [h1, Category.assoc, Y.section_tgt, Category.comp_id]
 
 end ExIII_16
 
@@ -603,22 +730,37 @@ Exercise III.17 (p. 145)
 namespace ExIII_17
 
 structure ParentLike where
-  carrierM : Type
-  carrierF : Type
-  φ : carrierM ⟶ carrierM
-  φ' : carrierF ⟶ carrierM
-  μ : carrierF ⟶ carrierF
-  μ' : carrierM ⟶ carrierF
+  M : Type
+  F : Type
+  φ : M ⟶ M
+  φ' : F ⟶ M
+  μ : F ⟶ F
+  μ' : M ⟶ F
 
 def ParentLikeHom (X Y : ParentLike) : Type :=
-  sorry
+  { f : (X.M ⟶ Y.M) × (X.F ⟶ Y.F) //
+      f.1 ⊚ X.φ = Y.φ ⊚ f.1 -- φ commutes
+      ∧ f.1 ⊚ X.φ' = Y.φ' ⊚ f.2 -- φ' commutes
+      ∧ f.2 ⊚ X.μ = Y.μ ⊚ f.2 -- μ commutes
+      ∧ f.2 ⊚ X.μ' = Y.μ' ⊚ f.1
+  }
 
 instance : Category ParentLike where
   Hom := ParentLikeHom -- our map between ParentLike structures
   id X :=
-    sorry
-  comp :=
-    sorry
+    ⟨(𝟙 X.M, 𝟙 X.F), by
+      constructor <;> simp [Category.id_comp, Category.comp_id]⟩
+  comp := by
+    rintro _ _ _ ⟨f, hf⟩ ⟨g, hg⟩
+    exact ⟨
+      (g.1 ⊚ f.1, g.2 ⊚ f.2),
+      by
+        obtain ⟨hfφ_comm, hfφ'_comm, hfμ_comm, hfμ'_comm⟩ := hf
+        obtain ⟨hgφ_comm, hgφ'_comm, hgμ_comm, hgμ'_comm⟩ := hg
+        constructor
+        · grind
+        · grind
+    ⟩
 
 end ExIII_17
 
@@ -628,180 +770,217 @@ Exercise III.18 (p. 146)
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {X Y T : 𝒞}
     {a : X ⟶ Y} {p : Y ⟶ X} {x₁ x₂ : T ⟶ X}
     (h₁ : p ⊚ a = 𝟙 X) (h₂ : a ⊚ x₁ = a ⊚ x₂)
-    : x₁ = x₂ :=
-  sorry
+    : x₁ = x₂ := by
+  have h₃ := congr_arg (p ⊚ ·) h₂
+  simp only [Category.assoc, h₁, Category.comp_id] at h₃
+  exact h₃
 
 namespace ExIII_19_24
 
 inductive X
-  | x₀ | x₁
+  | x | Ø -- 0 is reserved but we can use Ø for the second element.
   deriving Fintype, DecidableEq
 
 inductive Y
-  | y₀ | y₁ | y₂
+  | ybar | y | Ø
   deriving Fintype
 
 def α : X ⟶ X
-  | X.x₀ => X.x₀
-  | X.x₁ => X.x₀
+  | X.x => X.Ø
+  | X.Ø => X.Ø
 
 def β : Y ⟶ Y
-  | Y.y₀ => Y.y₀
-  | Y.y₁ => Y.y₀
-  | Y.y₂ => Y.y₁
+  | Y.ybar => Y.y
+  | Y.y => Y.Ø
+  | Y.Ø => Y.Ø
 
 def a : X ⟶ Y
-  | X.x₀ => Y.y₀
-  | X.x₁ => Y.y₁
+  | X.x => Y.y
+  | X.Ø => Y.Ø
 
 /-!
 Exercise III.19 (p. 147)
 -/
-example : a ⊚ α = β ⊚ a :=
-  sorry
+theorem ab_comm : a ⊚ α = β ⊚ a := by
+  ext y
+  cases y <;> rfl
 
-def Xα : SetWithEndomap :=
-  sorry
-
-def Yβ : SetWithEndomap :=
-  sorry
-
-def a' : Xα ⟶ Yβ :=
-  sorry
+def Xα : SetWithEndomap := ⟨X, α⟩
+def Yβ : SetWithEndomap := ⟨Y, β⟩
+def a' : Xα ⟶ Yβ := ⟨a, ab_comm⟩
 
 /-!
 Exercise III.20 (p. 147)
 -/
 example : ∀ {T : Type} (x₁ x₂ : T ⟶ X),
-    a ⊚ x₁ = a ⊚ x₂ → x₁ = x₂ :=
-  sorry
+    a ⊚ x₁ = a ⊚ x₂ → x₁ = x₂ := by
+  intros T x₁ x₂ h
+  ext x
+  have := congr_fun h x
+  simp only [types_comp_apply] at this
+  cases h : x₁ x with
+  | x => cases h' : x₂ x with
+    | x => rfl
+    | Ø =>
+      rw [h, h'] at this
+      simp [a] at this
+  | Ø => cases h' : x₂ x with
+    | x =>
+      rw [h, h'] at this
+      simp [a] at this
+    | Ø => rfl
 
 /-!
 Exercise III.21 (p. 147)
 -/
+-- y and 0 have to go back to x and 0
+-- and ybar has choice.
 def p₁ : Y ⟶ X
-  | Y.y₀ => X.x₀
-  | Y.y₁ => X.x₁
-  | Y.y₂ => X.x₁
+  | Y.ybar => X.x
+  | Y.y => X.x
+  | Y.Ø => X.Ø
 
 example : p₁ ⊚ a = 𝟙 X := by
-  funext x
-  cases x <;> rfl
+  funext y
+  cases y <;> rfl
 
 #eval Danilo's_formula a p₁
   (by
-    funext x
-    fin_cases x <;> rfl)
+    funext y
+    fin_cases y <;> rfl)
 
-def p₂ : Y ⟶ X :=
-  sorry
+def p₂ : Y ⟶ X
+  | Y.ybar => X.Ø
+  | Y.y => X.x
+  | Y.Ø => X.Ø
 
-example : p₂ ⊚ a = 𝟙 X :=
-  sorry
+example : p₂ ⊚ a = 𝟙 X := by
+  funext y
+  cases y <;> rfl
 
 /-!
 Exercise III.22 (p. 147)
 -/
-example : ¬(p₁ ⊚ β = α ⊚ p₁) :=
-  sorry
+example : ¬(p₁ ⊚ β = α ⊚ p₁) := by
+  intro h
+  have h1 := congr_fun h Y.ybar
+  simp only [types_comp_apply] at h1
+  simp [p₁, α, β] at h1
 
-example : ¬(p₂ ⊚ β = α ⊚ p₂) :=
-  sorry
+example : ¬(p₂ ⊚ β = α ⊚ p₂) := by
+  intro h
+  have h1 := congr_fun h Y.ybar
+  simp only [types_comp_apply] at h1
+  simp [p₂, α, β] at h1
 
 /-!
 Exercise III.23 (p. 147)
 -/
 def b₁ : Y ⟶ X
-  | Y.y₀ => X.x₀
-  | Y.y₁ => X.x₀
-  | Y.y₂ => X.x₀
+  | Y.ybar => X.Ø
+  | Y.y => X.Ø
+  | Y.Ø => X.Ø
 
-example : b₁ ⊚ β = α ⊚ b₁ :=
-  sorry
+example : b₁ ⊚ β = α ⊚ b₁ := by
+  funext z
+  cases z <;> rfl
 
 def b₂ : Y ⟶ X
-  | Y.y₀ => X.x₀
-  | Y.y₁ => X.x₀
-  | Y.y₂ => X.x₁
+  | Y.ybar => X.x
+  | Y.y => X.Ø
+  | Y.Ø => X.Ø
 
-example : b₂ ⊚ β = α ⊚ b₂ :=
-  sorry
+example : b₂ ⊚ β = α ⊚ b₂ := by
+  funext z
+  cases z <;> rfl
 
 def b₃ : Y ⟶ X
-  | Y.y₀ => X.x₁
-  | Y.y₁ => X.x₀
-  | Y.y₂ => X.x₀
+  | Y.ybar => X.Ø
+  | Y.y => X.x
+  | Y.Ø => X.Ø
 
-example : b₃ ⊚ β ≠ α ⊚ b₃ :=
-  sorry
+example : b₃ ⊚ β ≠ α ⊚ b₃ := by
+  intro h
+  have h1 := congr_fun h Y.ybar
+  simp only [types_comp_apply] at h1
+  simp [b₃, α, β] at h1
 
 def b₄ : Y ⟶ X
-  | Y.y₀ => X.x₁
-  | Y.y₁ => X.x₀
-  | Y.y₂ => X.x₁
+  | Y.ybar => X.x
+  | Y.y => X.x
+  | Y.Ø => X.Ø
 
-example : b₄ ⊚ β ≠ α ⊚ b₄ :=
-  sorry
+
+example : b₄ ⊚ β ≠ α ⊚ b₄ := by
+  intro h
+  have h1 := congr_fun h Y.ybar
+  simp only [types_comp_apply] at h1
+  simp [b₄, α, β] at h1
 
 def b₅ : Y ⟶ X
-  | Y.y₀ => X.x₀
-  | Y.y₁ => X.x₁
-  | Y.y₂ => X.x₀
+  | Y.ybar => X.Ø
+  | Y.y => X.Ø
+  | Y.Ø => X.x
 
-example : b₅ ⊚ β ≠ α ⊚ b₅ :=
-  sorry
+
+example : b₅ ⊚ β ≠ α ⊚ b₅ := by
+  intro h
+  have h1 := congr_fun h Y.y
+  simp only [types_comp_apply] at h1
+  simp [b₅, α, β] at h1
 
 def b₆ : Y ⟶ X
-  | Y.y₀ => X.x₀
-  | Y.y₁ => X.x₁
-  | Y.y₂ => X.x₁
+  | Y.ybar => X.x
+  | Y.y => X.Ø
+  | Y.Ø => X.x
 
-example : b₆ ⊚ β ≠ α ⊚ b₆ :=
-  sorry
+
+example : b₆ ⊚ β ≠ α ⊚ b₆ := by
+  intro h
+  have h1 := congr_fun h Y.y
+  simp only [types_comp_apply] at h1
+  simp [b₆, α, β] at h1
 
 def b₇ : Y ⟶ X
-  | Y.y₀ => X.x₁
-  | Y.y₁ => X.x₁
-  | Y.y₂ => X.x₀
+  | Y.ybar => X.Ø
+  | Y.y => X.x
+  | Y.Ø => X.x
 
-example : b₇ ⊚ β ≠ α ⊚ b₇ :=
-  sorry
+example : b₇ ⊚ β ≠ α ⊚ b₇ := by
+  intro h
+  have h1 := congr_fun h Y.ybar
+  simp only [types_comp_apply] at h1
+  simp [b₇, α, β] at h1
 
 def b₈ : Y ⟶ X
-  | Y.y₀ => X.x₁
-  | Y.y₁ => X.x₁
-  | Y.y₂ => X.x₁
+  | Y.ybar => X.x
+  | Y.y => X.x
+  | Y.Ø => X.x
 
-example : b₈ ⊚ β ≠ α ⊚ b₈ :=
-  sorry
+example : b₈ ⊚ β ≠ α ⊚ b₈ := by
+  intro h
+  have h1 := congr_fun h Y.ybar
+  simp only [types_comp_apply] at h1
+  simp [b₈, α, β] at h1
 
 /-!
 Exercise III.24 (p. 147)
 -/
-def X' : SimpleGraph := {
-  carrierA := X
-  carrierD := X
-  toFun := α
-}
+def X' : SimpleGraph := funSetWithEndoToSimpG.obj Xα
+def Y' : SimpleGraph := funSetWithEndoToSimpG.obj Yβ
 
-def Y' : SimpleGraph := {
-  carrierA := Y
-  carrierD := Y
-  toFun := β
-}
+example : ¬(∃ p : Y' ⟶ X', p ⊚ J a' = 𝟙 X') := by
+  push Not
+  intro ⟨p, hp⟩ hp'
+  -- A retraction would make both graph components of `p ⊚ J a'` the identity.
+  have h2 : p.2 ⊚ a = 𝟙 X := congr_arg (Prod.snd ∘ Subtype.val) hp'
+  have hy := congr_fun h2 X.x
+  have hb := congr_fun hp Y.ybar
+  simp only [funSetWithEndoToSimpG, Xα, Yβ, a, α, β, types_comp_apply, types_id_apply,
+    X', Y'] at hy hb
+  rw [hy] at hb
+  cases hpb : p.1 Y.ybar <;> simp [hpb] at hb
 
-def a'' : X' ⟶ Y' := ⟨
-  (a, a),
-  by
-    funext x
-    cases x <;> rfl
-⟩
-
-example : ¬(∃ p : Y' ⟶ X', p ⊚ a'' = 𝟙 X') :=
-  sorry
-
-example : ¬(∃ p : Yβ ⟶ Xα, J p ⊚ J a' = J (𝟙 Xα)) :=
-  sorry
 
 end ExIII_19_24
 
@@ -810,27 +989,11 @@ Exercise III.25 (p. 148)
 -/
 namespace ExIII_25
 
-example {X P Y Q : Type}
-    (s t : X ⟶ P) (s' t' : Y ⟶ Q) (fA : X ⟶ Y) (fD : P ⟶ Q)
-    (hfSrc_comm : fD ⊚ s = s' ⊚ fA) (hfTgt_comm : fD ⊚ t = t' ⊚ fA)
-    : fD ⊚ s = fD ⊚ t ↔ ∀ x, s' (fA x) = t' (fA x) :=
-  sorry
-
-variable (XP YQ : IrreflexiveGraph) (f : XP ⟶ YQ)
-
--- Align to the notation in the book
-set_option quotPrecheck false
-local notation "fA" => f.val.1
-local notation "fD" => f.val.2
-set_option quotPrecheck true
-
-local notation "s" => XP.toSrc
-local notation "s'" => YQ.toSrc
-local notation "t" => XP.toTgt
-local notation "t'" => YQ.toTgt
-
-example : (fD ⊚ s = fD ⊚ t) ↔ (∀ x, s' (fA x) = t' (fA x)) :=
-  sorry
+example {X Y : IrreflexiveGraph} (f : X ⟶ Y)
+    : f.val.2 ⊚ X.toSrc = f.val.2 ⊚ X.toTgt ↔ Y.toSrc ⊚ f.val.1 = Y.toTgt ⊚ f.val.1 := by
+  have h1 := f.property.1
+  have h2 := f.property.2
+  rw [h1, h2]
 
 end ExIII_25
 
@@ -839,8 +1002,7 @@ Exercise III.26 (p. 148)
 -/
 namespace ExIII_26
 
-def f : ℤ ⟶ ℚ :=
-  sorry
+def f : ℤ ⟶ ℚ := fun x ↦ (x : ℚ)
 
 def Z : SetWithEndomap := {
   carrier := ℤ
@@ -852,15 +1014,22 @@ def Q : SetWithEndomap := {
   toEnd := fun x ↦ 5 * x
 }
 
-example : Z ⟶ Q :=
-  sorry
+def f' : Z ⟶ Q := ⟨f, by
+  funext x
+  simp [Z, Q, f]
+⟩
 
-example : SetWithInvEndomap :=
-  sorry
+example : ∃ f : ℚ → ℚ, Q.toEnd ∘ f = id ∧ f ∘ Q.toEnd = id := by
+  use fun x ↦ (x / 5 : ℚ)
+  constructor <;> funext x <;> simp [Q]; field_simp
 
 example : ∀ {T : Type} (x₁ x₂ : T ⟶ ℤ),
-    f ⊚ x₁ = f ⊚ x₂ → x₁ = x₂ :=
-  sorry
+    f ⊚ x₁ = f ⊚ x₂ → x₁ = x₂ := by
+  intros T x₁ x₂ h
+  ext t
+  have := congr_fun h t
+  simp only [types_comp_apply, f] at this
+  exact Rat.intCast_inj.mp this
 
 end ExIII_26
 
@@ -886,21 +1055,61 @@ def Xα : SetWithIdemEndomap := {
 
 example (Yβ : SetWithInvEndomap)
     (f : Xα.toSetWithEndomap ⟶ Yβ.toSetWithEndomap)
-    : f X.x₀ = f X.x₁ :=
-  sorry
+    : f.val X.x₀ = f.val X.x₁ := by
+  -- get Yβ inverse
+  -- then β f = f α, so f = β^-1 f α
+  -- since α x₀ = α x₁, we have f x₀ = f x₁.
+  have := f.property
+  obtain ⟨g, hg, hg'⟩ := Yβ.inv
+  have h1 := congr_arg (g ⊚ ·) this
+  simp only [Category.assoc] at h1
+  rw [hg, Category.comp_id] at h1
+  rw [← h1]
+  simp
+  congr
 
 end ExIII_27
+
+/-- A left-cancellable (monic) map of endomaps is injective on the underlying
+sets.  Given `a a'` with `f a = f a'`, view them as the two morphisms out of the
+free endomap `(ℕ, succ)` sending `n ↦ αⁿ a` (resp. `αⁿ a'`); these agree after
+composing with `f`, so cancelling `f` and evaluating at `0` gives `a = a'`. -/
+theorem SetWithEndomap.injective_of_mono {X Y : SetWithEndomap} (f : X ⟶ Y)
+    (hmono : ∀ {T : SetWithEndomap} (y₁ y₂ : T ⟶ X), f ⊚ y₁ = f ⊚ y₂ → y₁ = y₂)
+    : Function.Injective f.val := by
+  intro a a' haa
+  have hcomm : ∀ z, f.val (X.toEnd z) = Y.toEnd (f.val z) := (congr_fun f.property ·)
+  let orbit : X.carrier → ((⟨ℕ, Nat.succ⟩ : SetWithEndomap) ⟶ X) := fun b =>
+    ⟨(X.toEnd^[·] b), funext (Function.iterate_succ_apply' X.toEnd · b)⟩
+  have key : ∀ n, f.val (X.toEnd^[n] a) = f.val (X.toEnd^[n] a') := by
+    intro n; induction n with
+    | zero => exact haa
+    | succ k ih => rw [Function.iterate_succ_apply', Function.iterate_succ_apply',
+        hcomm, hcomm, ih]
+  simpa [orbit] using congr_fun (congr_arg Subtype.val
+    (hmono (orbit a) (orbit a') (Subtype.ext (funext key)))) 0
 
 /-!
 Exercise III.28 (p. 148)
 -/
 example (Xα : SetWithEndomap) (Yβ : SetWithInvEndomap)
     (f : Xα ⟶ Yβ.toSetWithEndomap)
-    (hf_inj : ∀ {U : Type} (y₁ y₂ : U ⟶ Xα.carrier),
-        f.val ⊚ y₁ = f.val ⊚ y₂ → y₁ = y₂)
-    : ∀ {T : Type} (x₁ x₂ : T ⟶ Xα.carrier),
-        Xα.toEnd ⊚ x₁ = Xα.toEnd ⊚ x₂ → x₁ = x₂ :=
-  sorry
+    (hf_inj : ∀ {T : SetWithEndomap} (y₁ y₂ : T ⟶ Xα),
+        f ⊚ y₁ = f ⊚ y₂ → y₁ = y₂)
+    : ∀ {T : Type} (x₁ x₂ : T → Xα.carrier),
+        Xα.toEnd ⊚ x₁ = Xα.toEnd ⊚ x₂ → x₁ = x₂ := by
+  -- `f` commutes with the endomaps (`f (α z) = β (f z)`), and `β` is injective.
+  have hcomm : ∀ z, f.val (Xα.toEnd z) = Yβ.toEnd (f.val z) := (congr_fun f.property ·)
+  obtain ⟨g, hg, -⟩ := Yβ.inv
+  have hgL : Function.LeftInverse g Yβ.toEnd := (congr_fun hg ·)
+  have hβ_inj : Function.Injective Yβ.toEnd := hgL.injective
+  -- `f` monic ⟹ `f` injective (the reusable lemma above).
+  have hf_val_inj : Function.Injective f.val := SetWithEndomap.injective_of_mono f hf_inj
+  -- `α a = α a'` ⟹ `β (f a) = β (f a')` ⟹ `f a = f a'` ⟹ `a = a'`, i.e. `α` is injective.
+  have hα_inj : Function.Injective Xα.toEnd :=
+    fun a a' h => hf_val_inj (hβ_inj (by rw [← hcomm, ← hcomm, h]))
+  intro _ x₁ x₂ h
+  exact funext fun t => hα_inj (congr_fun h t)
 
 /-!
 Exercise III.29 (p. 150)

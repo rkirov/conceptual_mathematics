@@ -55,8 +55,8 @@ example {B₁ B₂ : Type} : CategorySum B₁ B₂ := {
 }
 
 def IGSum (B₁ B₂ : IrreflexiveGraph) : IrreflexiveGraph := {
-  carrierA := Sum B₁.carrierA B₂.carrierA
-  carrierD := Sum B₁.carrierD B₂.carrierD
+  A := Sum B₁.A B₂.A
+  D := Sum B₁.D B₂.D
   toSrc := fun
     | Sum.inl a₁ => Sum.inl (B₁.toSrc a₁)
     | Sum.inr a₂ => Sum.inr (B₂.toSrc a₂)

@@ -18,8 +18,8 @@ Problem Test 4.2 (p. 300)
 namespace Test4_2
 
 def B : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 2
+  A := Fin 2
+  D := Fin 2
   toSrc := fun
     | 0 => 0
     | 1 => 0
@@ -29,8 +29,8 @@ def B : IrreflexiveGraph := {
 }
 
 def C : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 3
+  A := Fin 2
+  D := Fin 3
   toSrc := fun
     | 0 => 1
     | 1 => 1
@@ -42,8 +42,8 @@ def C : IrreflexiveGraph := {
 open IrreflexiveGraph
 
 def BuD : IrreflexiveGraph := {
-  carrierA := Sum B.carrierA D.carrierA
-  carrierD := Sum B.carrierD D.carrierD
+  A := Sum B.A D.A
+  D := Sum B.D D.D
   toSrc := fun
     | Sum.inl a => Sum.inl (B.toSrc a)
     | Sum.inr a => Sum.inr (D.toSrc a)

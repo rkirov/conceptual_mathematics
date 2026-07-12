@@ -129,10 +129,10 @@ example {𝒞 : Type u} [Category.{v, u} 𝒞]
 /-!
 Exercise 27.8 (p. 293)
 -/
-example (G : IrreflexiveGraph) (E : Type) (p : E ⟶ G.carrierA)
+example (G : IrreflexiveGraph) (E : Type) (p : E ⟶ G.A)
     (w : G.toSrc ⊚ p = G.toTgt ⊚ p)
     (t : IsLimit (Fork.ofι p w)) :
-    ∀ a : G.carrierA, (∃ x : E, p x = a) ↔
+    ∀ a : G.A, (∃ x : E, p x = a) ↔
         G.toSrc a = G.toTgt a :=
   sorry
 

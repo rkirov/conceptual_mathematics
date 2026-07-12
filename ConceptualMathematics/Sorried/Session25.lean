@@ -6,8 +6,8 @@ namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 
 def IrreflexiveGraph.TwoD : IrreflexiveGraph := {
-  carrierA := Fin 4
-  carrierD := Fin 2
+  A := Fin 4
+  D := Fin 2
   toSrc := fun
     | 0 => 0 -- a
     | 1 => 1 -- b
@@ -60,27 +60,27 @@ inductive Tricolour
   | white | red | green
 
 def IsTricolouring (X : IrreflexiveGraph)
-    (c : X.carrierD ⟶ Tricolour) : Prop :=
-  ∀ a : X.carrierA, c (X.toSrc a) ≠ c (X.toTgt a)
+    (c : X.D ⟶ Tricolour) : Prop :=
+  ∀ a : X.A, c (X.toSrc a) ≠ c (X.toTgt a)
 
 def inducedColouring {Y X : IrreflexiveGraph} (f : Y ⟶ X)
-    (c : X.carrierD ⟶ Tricolour) : Y.carrierD ⟶ Tricolour :=
+    (c : X.D ⟶ Tricolour) : Y.D ⟶ Tricolour :=
   c ⊚ f.val.2
 
 example {Y X : IrreflexiveGraph} (f : Y ⟶ X)
-    (c : X.carrierD ⟶ Tricolour) (h : IsTricolouring X c) :
+    (c : X.D ⟶ Tricolour) (h : IsTricolouring X c) :
     IsTricolouring Y (inducedColouring f c) :=
   sorry
 
 def Dot (X : IrreflexiveGraph) := IrreflexiveGraph.D ⟶ X
 
-def srcDot {X : IrreflexiveGraph} (a : X.carrierA) : Dot X := ⟨
+def srcDot {X : IrreflexiveGraph} (a : X.A) : Dot X := ⟨
   (Empty.elim, fun _ ↦ X.toSrc a),
   ⟨by funext x; exact Empty.elim x,
    by funext x; exact Empty.elim x⟩
 ⟩
 
-def tgtDot {X : IrreflexiveGraph} (a : X.carrierA) : Dot X := ⟨
+def tgtDot {X : IrreflexiveGraph} (a : X.A) : Dot X := ⟨
   (Empty.elim, fun _ ↦ X.toTgt a),
   ⟨by funext x; exact Empty.elim x,
    by funext x; exact Empty.elim x⟩
@@ -88,7 +88,7 @@ def tgtDot {X : IrreflexiveGraph} (a : X.carrierA) : Dot X := ⟨
 
 def IsTricolouring' (X : IrreflexiveGraph)
     (c : Dot X ⟶ Tricolour) : Prop :=
-  ∀ a : X.carrierA, c (srcDot a) ≠ c (tgtDot a)
+  ∀ a : X.A, c (srcDot a) ≠ c (tgtDot a)
 
 def inducedColouring' {Y X : IrreflexiveGraph} (f : Y ⟶ X)
     (c : Dot X ⟶ Tricolour) : Dot Y ⟶ Tricolour :=
@@ -100,18 +100,18 @@ example {Y X : IrreflexiveGraph} (f : Y ⟶ X)
   sorry
 
 def F : IrreflexiveGraph := {
-  carrierA := { p : Tricolour × Tricolour // p.1 ≠ p.2 }
-  carrierD := Tricolour
+  A := { p : Tricolour × Tricolour // p.1 ≠ p.2 }
+  D := Tricolour
   toSrc := fun p ↦ p.val.1
   toTgt := fun p ↦ p.val.2
 }
 
-example : IsTricolouring F (𝟙 F.carrierD) :=
+example : IsTricolouring F (𝟙 F.D) :=
   sorry
 
 example {Y : IrreflexiveGraph}
-    (c : Y.carrierD ⟶ Tricolour) (h : IsTricolouring Y c) :
-    ∃! g : Y ⟶ F, inducedColouring g (𝟙 F.carrierD) = c :=
+    (c : Y.D ⟶ Tricolour) (h : IsTricolouring Y c) :
+    ∃! g : Y ⟶ F, inducedColouring g (𝟙 F.D) = c :=
   sorry
 
 end Ex25_3
@@ -122,8 +122,8 @@ Exercise 25.4 (p. 273)
 abbrev IrreflexiveGraph.Zero : IrreflexiveGraph := emptyIG
 
 def IrreflexiveGraph.A₂ : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 3
+  A := Fin 2
+  D := Fin 3
   toSrc := fun
     | 0 => 0
     | 1 => 1
@@ -153,8 +153,8 @@ Exercise 25.5 (p. 274)
 namespace Ex25_5
 
 def B : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 3
+  A := Fin 2
+  D := Fin 3
   toSrc := fun
     | 0 => 0
     | 1 => 1
@@ -164,8 +164,8 @@ def B : IrreflexiveGraph := {
 }
 
 def C : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 3
+  A := Fin 2
+  D := Fin 3
   toSrc := fun
     | 0 => 0
     | 1 => 1
@@ -181,8 +181,8 @@ end Ex25_5
 
 def IrreflexiveGraph.prodObj (X Y : IrreflexiveGraph) :
     IrreflexiveGraph := {
-  carrierA := X.carrierA × Y.carrierA
-  carrierD := X.carrierD × Y.carrierD
+  A := X.A × Y.A
+  D := X.D × Y.D
   toSrc := fun p ↦ (X.toSrc p.1, Y.toSrc p.2)
   toTgt := fun p ↦ (X.toTgt p.1, Y.toTgt p.2)
 }

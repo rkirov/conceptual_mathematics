@@ -197,8 +197,8 @@ inductive D
   | d₁ | d₂ | d₃
 
 def graph_a : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₁
@@ -210,8 +210,8 @@ def graph_a : IrreflexiveGraph := {
 }
 
 def graph_b : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₂
@@ -223,8 +223,8 @@ def graph_b : IrreflexiveGraph := {
 }
 
 def graph_c : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₁
@@ -236,8 +236,8 @@ def graph_c : IrreflexiveGraph := {
 }
 
 def graph_d : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₃
     | A.a₂ => D.d₁
@@ -249,8 +249,8 @@ def graph_d : IrreflexiveGraph := {
 }
 
 def graph_e : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₁
@@ -262,8 +262,8 @@ def graph_e : IrreflexiveGraph := {
 }
 
 def graph_f : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₁
@@ -315,8 +315,8 @@ inductive D
   | d₁ | d₂ | d₃ | d₄ | d₅
 
 def graph_L : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₁
     | A.a₂ => D.d₂
@@ -334,8 +334,8 @@ def graph_L : IrreflexiveGraph := {
 }
 
 def graph_R : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => D.d₂
     | A.a₂ => D.d₃
@@ -374,8 +374,8 @@ inductive A
 abbrev D := Fin 2
 
 def J : IrreflexiveGraph := {
-  carrierA := A
-  carrierD := D
+  A := A
+  D := D
   toSrc := fun
     | A.a₁ => 0
     | A.a₂ => 1
@@ -386,7 +386,7 @@ def J : IrreflexiveGraph := {
     | A.a₃ => 1
 }
 
-variable (G : IrreflexiveGraph) (b e : G.carrierD)
+variable (G : IrreflexiveGraph) (b e : G.D)
 
 end Ex11_8
 

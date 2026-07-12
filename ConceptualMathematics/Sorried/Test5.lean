@@ -50,8 +50,8 @@ Problem Test 5.2 (p. 301)
 namespace Test5_2
 
 abbrev I : IrreflexiveGraph := {
-  carrierA := Fin 2
-  carrierD := Fin 3
+  A := Fin 2
+  D := Fin 3
   toSrc := fun
     | 0 => 0
     | 1 => 1
@@ -73,8 +73,8 @@ abbrev Fam2D2AI : Fin 5 → IrreflexiveGraph
   | 4 => I
 
 def G : IrreflexiveGraph := {
-  carrierA := Σ i, (Fam2D2AI i).carrierA
-  carrierD := Σ i, (Fam2D2AI i).carrierD
+  A := Σ i, (Fam2D2AI i).A
+  D := Σ i, (Fam2D2AI i).D
   toSrc := fun ⟨i, a⟩ ↦ ⟨i, (Fam2D2AI i).toSrc a⟩
   toTgt := fun ⟨i, a⟩ ↦ ⟨i, (Fam2D2AI i).toTgt a⟩
 }

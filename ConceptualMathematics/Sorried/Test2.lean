@@ -24,8 +24,8 @@ inductive D₁
   | p | q | r
 
 def G₁ : IrreflexiveGraph := {
-  carrierA := A₁
-  carrierD := D₁
+  A := A₁
+  D := D₁
   toSrc := fun
     | A₁.a => D₁.p
     | A₁.b => D₁.q
@@ -41,8 +41,8 @@ inductive D₂
   | v | w
 
 def G₂ : IrreflexiveGraph := {
-  carrierA := A₂
-  carrierD := D₂
+  A := A₂
+  D := D₂
   toSrc := fun
     | A₂.c => D₂.w
     | A₂.d => D₂.v
