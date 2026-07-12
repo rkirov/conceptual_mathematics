@@ -5,7 +5,7 @@ open Limits
 namespace CM
 local notation:80 g " ⊚ " f:80 => CategoryStruct.comp f g
 
-def IrreflexiveGraph.TwoD : IrreflexiveGraph := {
+def TwoD : IrreflexiveGraph := {
   A := Fin 4
   D := Fin 2
   toSrc := fun
@@ -23,7 +23,7 @@ def IrreflexiveGraph.TwoD : IrreflexiveGraph := {
 /-!
 Exercise 25.1 (p. 271)
 -/
-def IrreflexiveGraph.TwoA : IrreflexiveGraph :=
+def TwoA : IrreflexiveGraph :=
   sorry
 
 /-!
@@ -38,7 +38,6 @@ example (B₁ B₂ S : Type) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
         (∃! g : S ⟶ Y, g₁ = g ⊚ j₁ ∧ g₂ = g ⊚ j₂) :=
   sorry
 
-open IrreflexiveGraph
 
 example (B₁ B₂ S : IrreflexiveGraph) (j₁ : B₁ ⟶ S) (j₂ : B₂ ⟶ S)
     (hS₁ : ∀ (f₁ : B₁ ⟶ TwoA) (f₂ : B₂ ⟶ TwoA),
@@ -72,7 +71,7 @@ example {Y X : IrreflexiveGraph} (f : Y ⟶ X)
     IsTricolouring Y (inducedColouring f c) :=
   sorry
 
-def Dot (X : IrreflexiveGraph) := IrreflexiveGraph.D ⟶ X
+def Dot (X : IrreflexiveGraph) := D ⟶ X
 
 def srcDot {X : IrreflexiveGraph} (a : X.A) : Dot X := ⟨
   (Empty.elim, fun _ ↦ X.toSrc a),

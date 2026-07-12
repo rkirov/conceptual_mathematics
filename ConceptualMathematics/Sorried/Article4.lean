@@ -169,21 +169,20 @@ end ExIV_5b
 /-!
 Excerpt (p. 215)
 -/
-abbrev IrreflexiveGraph.A : IrreflexiveGraph := {
+abbrev A : IrreflexiveGraph := {
   A := Unit
   D := Fin 2
   toSrc := fun _ ↦ 0
   toTgt := fun _ ↦ 1
 }
 
-abbrev IrreflexiveGraph.D : IrreflexiveGraph := {
+abbrev D : IrreflexiveGraph := {
   A := Empty
   D := Unit
   toSrc := Empty.elim
   toTgt := Empty.elim
 }
 
-open IrreflexiveGraph in
 example
     (X Y : IrreflexiveGraph)
     (f g : X ⟶ Y)
@@ -814,7 +813,6 @@ end ExIV_20
 /-!
 Exercise IV.21 (p. 223)
 -/
-open IrreflexiveGraph in
 example
     (coneAA : BinaryFan A A)
     (limitAA : IsLimit coneAA)
