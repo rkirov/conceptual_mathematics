@@ -1112,9 +1112,250 @@ example (Xα : SetWithEndomap) (Yβ : SetWithInvEndomap)
   exact funext fun t => hα_inj (congr_fun h t)
 
 /-!
-Exercise III.29 (p. 150)
+🤖 `SetWithEndomap`, `IrreflexiveGraph`, and `ReflexiveGraph` are not three
+unrelated categories: each is the category of `Type`-valued **diagrams** on a
+fixed small "shape" (a presentation of a category by sorts, generating
+operations, and equations).  Below we build that one construction and recover
+all three by instantiating the shape.
 -/
+
+/-- A shape: sorts, generating operations (homs between sorts), and equations.
+    Each equation names a composable pair of ops — a `sect` and a `retr` —
+    required to compose to the identity, `retr ∘ sect = id`.  (These three
+    categories only ever need such section equations.) -/
+structure Shape where
+  sorts : Type
+  hom   : sorts → sorts → Type
+  eqs   : Type
+  dom   : eqs → sorts
+  cod   : eqs → sorts
+  sect  : (e : eqs) → hom (dom e) (cod e)
+  retr  : (e : eqs) → hom (cod e) (dom e)
+
+/-- A diagram of shape `S` in `Type`: a carrier per sort, a function per
+    operation, with every equation's pair composing to the identity. -/
+structure Diagram (S : Shape) where
+  obj : S.sorts → Type
+  map : ∀ a b, S.hom a b → obj a → obj b
+  resp : ∀ e, map (S.cod e) (S.dom e) (S.retr e) ∘ map (S.dom e) (S.cod e) (S.sect e) = id
+
+/-- A morphism of diagrams: a component per sort, commuting with every op. -/
+@[ext]
+structure DiagramHom {S : Shape} (X Y : Diagram S) where
+  comp : (a : S.sorts) → X.obj a → Y.obj a
+  natural : ∀ a b (e : S.hom a b), comp b ∘ X.map a b e = Y.map a b e ∘ comp a
+
+/-- Diagrams of a fixed shape form a category — uniformly, for every shape. -/
+instance (S : Shape) : Category (Diagram S) where
+  Hom X Y := DiagramHom X Y
+  id X := ⟨fun _ => id, fun _ _ _ => rfl⟩
+  comp f g := ⟨fun a => g.comp a ∘ f.comp a, by
+    intro a b e
+    funext x
+    have hf := congrFun (f.natural a b e) x
+    have hg := congrFun (g.natural a b e) (f.comp a x)
+    simp only [Function.comp_apply] at *
+    rw [hf, hg]⟩
+  id_comp _ := rfl
+  comp_id _ := rfl
+  assoc _ _ _ := rfl
+
+/-- Shape of `SetWithEndomap`: one sort `•`, one op `e : • → •`, no equations. -/
+def EndoShape : Shape where
+  sorts := Unit
+  hom _ _ := Unit
+  eqs := Empty
+  dom := nofun
+  cod := nofun
+  sect := nofun
+  retr := nofun
+
+/-- The two sorts of a graph: arrows `A` and dots `D`. -/
+inductive GraphSort | A | D
+
+/-- The two parallel operations of a graph: `toSrc, toTgt : A → D`. -/
+inductive GraphArrow | toSrc | toTgt
+
+/-- Shape of `IrreflexiveGraph`: sorts `A`, `D`; two ops `toSrc, toTgt : A → D`;
+    no equations. -/
+def IrrShape : Shape where
+  sorts := GraphSort
+  hom := fun a b => match a, b with
+    | .A, .D => GraphArrow
+    | _, _ => Empty
+  eqs := Empty
+  dom := nofun
+  cod := nofun
+  sect := nofun
+  retr := nofun
+
+/-- Shape of `ReflexiveGraph`: adds `inc : D → A` with `toSrc∘inc = toTgt∘inc = id_D`.
+    Two equations (indexed by `Bool`), each pairing `inc` as `sect` with one of
+    `toSrc`/`toTgt` as `retr`. -/
+def ReflShape : Shape where
+  sorts := GraphSort
+  hom := fun a b => match a, b with
+    | .A, .D => GraphArrow   -- toSrc, toTgt : A → D
+    | .D, .A => Unit         -- inc : D → A
+    | _, _ => Empty
+  eqs := Bool
+  dom := fun _ => .D
+  cod := fun _ => .A
+  sect := fun _ => ()                                          -- inc : D → A
+  retr := fun e => match e with | true => .toSrc | false => .toTgt
+
+-- Each structure is exactly a diagram of its shape, and back.
+def SetWithEndomap.toDiagram (S : SetWithEndomap) : Diagram EndoShape where
+  obj _ := S.carrier
+  map _ _ _ := S.toEnd
+  resp := nofun
+
+def Diagram.toSetWithEndomap (X : Diagram EndoShape) : SetWithEndomap where
+  carrier := X.obj ()
+  toEnd := X.map () () ()
+
+def IrreflexiveGraph.toDiagram (G : IrreflexiveGraph) : Diagram IrrShape where
+  obj := fun s => match s with | .A => G.A | .D => G.D
+  map := fun a b => match a, b with
+    | .A, .D => fun e => match e with | .toSrc => G.toSrc | .toTgt => G.toTgt
+    | .A, .A => fun e => e.elim
+    | .D, .A => fun e => e.elim
+    | .D, .D => fun e => e.elim
+  resp := nofun
+
+def Diagram.toIrreflexiveGraph (X : Diagram IrrShape) : IrreflexiveGraph where
+  A := X.obj .A
+  D := X.obj .D
+  toSrc := X.map .A .D .toSrc
+  toTgt := X.map .A .D .toTgt
+
+def ReflexiveGraph.toDiagram (G : ReflexiveGraph) : Diagram ReflShape where
+  obj := fun s => match s with | .A => G.A | .D => G.D
+  map := fun a b => match a, b with
+    | .A, .D => fun e => match e with | .toSrc => G.toSrc | .toTgt => G.toTgt
+    | .D, .A => fun _ => G.toInc
+    | .A, .A => fun e => e.elim
+    | .D, .D => fun e => e.elim
+  resp := fun e => match e with | true => G.section_src | false => G.section_tgt
+
+def Diagram.toReflexiveGraph (X : Diagram ReflShape) : ReflexiveGraph where
+  A := X.obj .A
+  D := X.obj .D
+  toSrc := X.map .A .D .toSrc
+  toTgt := X.map .A .D .toTgt
+  toInc := X.map .D .A ()
+  section_src := X.resp true
+  section_tgt := X.resp false
+
 /-!
 Exercise III.30 (p. 151)
+
+An abstract structure type often arises from a particular example: take a small
+family `𝒜` of objects and maps of a category `𝒳` (closed under domain and
+codomain).  Read each object `A` as the name of "`A`-shaped figures", and each
+map `a : B ⟶ A` as the name of a structural map `a*` going the other way.  Then
+every object `X` of `𝒳` becomes an `𝒜`-structure: its `A`-component is the set
+of figures `A ⟶ X`, and each structural map acts by precomposition, `a*(x) = x ∘ a`.
 -/
+
+/-- A realization of a shape `S` inside a category `𝒳` — the "small family
+    `𝒜`": each sort names an object `pt a`, and each op `a → b` names a
+    structural map going the other way, `pt b ⟶ pt a`.  `𝒳` may be large
+    (e.g. `Type`), so we only require its hom-sets to be small. -/
+structure Realization (S : Shape) (𝒳 : Type u) [Category.{0} 𝒳] where
+  pt : S.sorts → 𝒳
+  act : ∀ a b, S.hom a b → (pt b ⟶ pt a)
+  -- each equation's pair composes (the other way round) to the identity in `𝒳`
+  resp : ∀ e, act (S.dom e) (S.cod e) (S.sect e) ⊚ act (S.cod e) (S.dom e) (S.retr e)
+             = 𝟙 (pt (S.dom e))
+
+/-- Every object `X` of `𝒳` gives the `S`-diagram of its figures: the
+    `a`-component is `pt a ⟶ X`, and each structural map acts by `a*(x) = x ∘ a`.
+    The section equations hold because precomposition is functorial. -/
+def Realization.figures {S : Shape} {𝒳 : Type u} [Category.{0} 𝒳]
+    (R : Realization S 𝒳) (X : 𝒳) : Diagram S where
+  obj a := R.pt a ⟶ X
+  map a b e := fun x => x ⊚ R.act a b e
+  resp := by
+    intro e
+    funext x
+    change (x ⊚ R.act (S.dom e) (S.cod e) (S.sect e)) ⊚ R.act (S.cod e) (S.dom e) (S.retr e) = x
+    rw [← Category.assoc, R.resp e, Category.id_comp]
+
+/-- The figures construction is a functor `𝒳 ⥤ Diagram S`: a map `f : X ⟶ Y`
+    acts on figures by postcomposition. -/
+def Realization.figuresFunctor {S : Shape} {𝒳 : Type u} [Category.{0} 𝒳]
+    (R : Realization S 𝒳) : Functor 𝒳 (Diagram S) where
+  obj X := R.figures X
+  map f :=
+    { comp := fun _ x => f ⊚ x
+      -- exercise 29
+      natural := by
+        intro a b e; funext x
+        simp only [Realization.figures, Function.comp_apply, Category.assoc] }
+  map_id := by
+    intro X; apply DiagramHom.ext; funext a x
+    change 𝟙 X ⊚ x = x
+    rw [Category.comp_id]
+  map_comp := by
+    intro X Y Z f g; apply DiagramHom.ext; funext a x
+    change (g ⊚ f) ⊚ x = g ⊚ (f ⊚ x)
+    rw [Category.assoc]
+
+/-!
+Concretely, realize the graph shape `IrrShape` in the category `Type` of sets:
+a dot `D` is a point `Unit`, an arrow `A` is the two-element set `Bool`, and
+`toSrc`/`toTgt` are its two endpoints `Unit → Bool`.  The figures construction
+then turns every set `X` into an irreflexive graph — recovering the whole
+`IrreflexiveGraph` category (`≃ Diagram IrrShape`) as figures of sets.
+-/
+def irrRealization : Realization IrrShape Type where
+  pt := fun s => match s with | .A => Bool | .D => Unit
+  act := fun a b => match a, b with
+    | .A, .D => fun e => match e with
+        | .toSrc => (fun _ => false)
+        | .toTgt => (fun _ => true)
+    | .A, .A => fun e => e.elim
+    | .D, .A => fun e => e.elim
+    | .D, .D => fun e => e.elim
+  resp := nofun
+
+/-- The induced functor `Type ⥤ Diagram IrrShape`: every set `X` becomes the
+    graph with vertices `X` and edges `Bool → X` (all ordered pairs). -/
+def irrGraphFunctor : Functor Type (Diagram IrrShape) :=
+  irrRealization.figuresFunctor
+
+/-- …and, read back through `toIrreflexiveGraph`, an actual `IrreflexiveGraph`. -/
+def irrGraph (X : Type) : IrreflexiveGraph :=
+  (irrRealization.figures X).toIrreflexiveGraph
+
+/-!
+The reflexive-graph shape `ReflShape` needs the extra `inc` operation and its two
+section equations.  Realize it in `Set` the same way — dot `D = 1 = Unit`, arrow
+`A = S` for any set `S` carrying two points `s t : S` (the two maps `1 → S`) — and
+supply `inc` by the *unique* map `S → 1`.  The section laws `toSrc∘inc = toTgt∘inc
+= id` then hold automatically, because `1` is terminal: the round-trip `1 → S → 1`
+is forced to be `𝟙 1`.  So `Diagram ReflShape` really is the reflexive-graph
+category, with reflexivity coming from that unique map to `1`.
+
+Effectively exercise 30
+-/
+def reflRealization (S : Type) (s t : S) : Realization ReflShape Type where
+  pt := fun x => match x with | .A => S | .D => Unit
+  act := fun a b => match a, b with
+    | .A, .D => fun e => match e with | .toSrc => (fun _ => s) | .toTgt => (fun _ => t)
+    | .D, .A => fun _ => (fun _ => ())      -- the unique map `S → 1`
+    | .A, .A => fun e => e.elim
+    | .D, .D => fun e => e.elim
+  resp := fun _ => rfl      -- `S → 1 → S` composed the other way is `𝟙 1`, since `1` is terminal
+
+/-- The induced functor `Type ⥤ Diagram ReflShape`. -/
+def reflGraphFunctor (S : Type) (s t : S) : Functor Type (Diagram ReflShape) :=
+  (reflRealization S s t).figuresFunctor
+
+/-- …read back through `toReflexiveGraph`, an actual `ReflexiveGraph`: every set
+    `X` becomes a reflexive graph, its reflexive loops supplied by `inc = (· → 1)`. -/
+def reflGraph (S : Type) (s t : S) (X : Type) : ReflexiveGraph :=
+  ((reflRealization S s t).figures X).toReflexiveGraph
+
 end CM
