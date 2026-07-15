@@ -11,8 +11,15 @@ example {Xα Yβ : SetWithEndomap} (f : Xα ⟶ Yβ)
     (hx' : x' = (Xα.toEnd ⊚ Xα.toEnd ⊚ Xα.toEnd) x)
     (hy : y = f.val x)
     (hy' : y' = (Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd) y)
-    : f.val x' = y' :=
-  sorry
+    : f.val x' = y' := by
+  rw [hx', hy', hy]
+  suffices h : f.val ⊚ Xα.toEnd ⊚ Xα.toEnd ⊚ Xα.toEnd =
+     Yβ.toEnd ⊚ Yβ.toEnd ⊚ Yβ.toEnd ⊚ f.val by
+    have h := congr_fun h x
+    simp only [Category.assoc, types_comp_apply] at h ⊢
+    exact h
+  rw [Category.assoc, f.2, ← Category.assoc,
+    Category.assoc Xα.toEnd Xα.toEnd _, f.2, ← Category.assoc, f.2]
 
 /-!
 Exercise 12.2 (p. 162)
@@ -107,7 +114,7 @@ def G : SetWithTwoEndomaps := {
 inductive Clan
   | wolf | bear
 
-def m₂ : Clan ⟶ Clan := fun c ↦ c
+def m₂ : Clan ⟶ Clan := id
 
 def f₂ : Clan ⟶ Clan
   | Clan.wolf => Clan.bear
@@ -135,17 +142,20 @@ def P₁ : SetWithTwoEndomaps := {
   toEnd2 := father₁
 }
 
-def gender : P₁.carrier ⟶ G.carrier :=
-  sorry
+def gender : P₁.carrier ⟶ G.carrier := fun x => match x.parentType with
+  | ParentType.isMother => Gender.female
+  | ParentType.isFather => Gender.male
+
+theorem gender_comm_1 : gender ⊚ mother₁ = m₁ ⊚ gender := by
+  ext x
+  cases x.parentType <;> simp [gender, P₁, mother₁, m₁, G]
+
+theorem gender_comm_2 : gender ⊚ father₁ = f₁ ⊚ gender := by
+  ext x
+  cases x.parentType <;> simp [gender, P₁, father₁, f₁, G]
 
 def gender' : P₁ ⟶ G :=
-  sorry
-
-example : gender ⊚ mother₁ = m₁ ⊚ gender :=
-  sorry
-
-example : gender ⊚ father₁ = f₁ ⊚ gender :=
-  sorry
+  ⟨gender, ⟨gender_comm_1, gender_comm_2⟩⟩
 
 inductive ParentClan
   | isWolf | isBear
@@ -165,11 +175,19 @@ def P₂ : SetWithTwoEndomaps := {
   toEnd2 := father₂
 }
 
-def clan : P₂.carrier ⟶ C.carrier :=
-  sorry
+def clan : P₂.carrier ⟶ C.carrier := fun x => match x.parentClan with
+  | ParentClan.isWolf => Clan.wolf
+  | ParentClan.isBear => Clan.bear
 
 def clan' : P₂ ⟶ C :=
-  sorry
+  ⟨clan, by
+  constructor
+  · ext x
+    simp [clan, P₂, mother₂, C, m₂]
+  · ext x
+    simp [clan, P₂, father₂, C, f₂]
+    grind
+⟩
 
 structure Person₃ where
   parentType : ParentType
@@ -201,11 +219,23 @@ def GC : SetWithTwoEndomaps := {
   toEnd2 := f₃
 }
 
-def gender_and_clan : P₃.carrier ⟶ GC.carrier :=
-  sorry
+def gender_and_clan : P₃.carrier ⟶ GC.carrier := fun x => match x with
+  | ⟨ParentType.isMother, ParentClan.isBear⟩ => (Gender.female, Clan.bear)
+  | ⟨ParentType.isMother, ParentClan.isWolf⟩ => (Gender.female, Clan.wolf)
+  | ⟨ParentType.isFather, ParentClan.isBear⟩ => (Gender.male, Clan.bear)
+  | ⟨ParentType.isFather, ParentClan.isWolf⟩ => (Gender.male, Clan.wolf)
+
 
 def gender_and_clan' : P₃ ⟶ GC :=
-  sorry
+  ⟨gender_and_clan, by
+  constructor
+  · ext x
+    simp [P₃, gender_and_clan, GC, mother₃, m₃]
+    grind
+  · ext x
+    simp [P₃, gender_and_clan, GC, father₃, f₃]
+    grind
+ ⟩
 
 end Ex12_3
 
