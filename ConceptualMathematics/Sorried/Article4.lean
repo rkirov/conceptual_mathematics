@@ -31,21 +31,40 @@ theorem uniqueness_of_terminal_objects
   · intros
     exact hS₂.hom_ext _ _
 
+
 /-!
 Exercise IV.1 (p. 214)
 -/
+
+example {𝒞 : Type u} [Category.{v, u} 𝒞] (One : 𝒞) (hOne : IsTerminal One) :
+  ∃! (_ : One ⟶ One), True := by
+  have f := hOne.from One
+  use f
+  constructor
+  · trivial
+  · intro g
+    simp only [forall_const]
+    exact hOne.hom_ext _ _
+
+-- doesn't need any property of One.
 example {𝒞 : Type u} [Category.{v, u} 𝒞] {One X Y : 𝒞}
-    {_ : IsTerminal One} (_ : Unique (One ⟶ One))
-    (f : X ⟶ Y) (x : One ⟶ X)
-    : ∃ y : One ⟶ Y, y = f ⊚ x :=
-  sorry
+  (f : X ⟶ Y) (x : One ⟶ X) : ∃ y : One ⟶ Y, y = f ⊚ x := by
+  simp only [↓existsAndEq]
 
 /-!
 Exercise IV.2 (p. 214)
 -/
 example (X : Type) : (∀ x : Point X, (∃! x' : X, x' = x ())) ∧
-                     (∀ x' : X, (∃! x : Point X, x () = x')) :=
-  sorry
+                     (∀ x' : X, (∃! x : Point X, x () = x')) := by
+  constructor
+  · simp only [existsUnique_eq, implies_true]
+  · intro x'
+    use (fun _ ↦ x')
+    simp only [true_and]
+    intro y hy
+    funext z
+    cases z
+    rw [hy]
 
 /-!
 Exercise IV.3 (p. 214)
@@ -56,11 +75,24 @@ def termSWE : SetWithEndomap := {
 }
 
 example : Nonempty (IsTerminal termSWE) :=
-  sorry
+  ⟨IsTerminal.ofUniqueHom
+    (by
+      rintro X
+      exact ⟨fun _ => (), rfl⟩
+    )
+    (by
+      intro X m
+      rfl
+    )
+  ⟩
 
 example : ∀ (X : SetWithEndomap) (x : termSWE ⟶ X),
-    X.toEnd (x.val ()) = x.val () :=
-  sorry
+    X.toEnd (x.val ()) = x.val () := by
+  intro X f
+  have := congr_fun f.prop ()
+  simp only [types_comp_apply] at this
+  rw [←this]
+  simp only [termSWE, id_eq]
 
 /-!
 Exercise IV.4 (p. 214)
@@ -73,22 +105,54 @@ def termIG : IrreflexiveGraph := {
 }
 
 example : Nonempty (IsTerminal termIG) :=
-  sorry
+  ⟨IsTerminal.ofUniqueHom
+    (by
+      rintro X
+      exact ⟨⟨fun _ => (), fun _ => ()⟩, by
+        simp only
+        constructor
+        · rfl
+        · rfl
+      ⟩
+    )
+    (by
+      intro X m
+      rfl
+    )
+  ⟩
 
 example : ∀ (X : IrreflexiveGraph) (x : termIG ⟶ X),
-    X.toSrc (x.val.1 ()) = X.toTgt (x.val.1 ()) :=
-  sorry
+    X.toSrc (x.val.1 ()) = X.toTgt (x.val.1 ()) := by
+  intro X x
+  have h1 := congr_fun x.prop.1 ()
+  have h2 := congr_fun x.prop.2 ()
+  simp only [types_comp_apply] at h1 h2
+  rw [←h1, ←h2]
+  rfl
 
 /-!
 Exercise IV.5 (p. 214)
 -/
 namespace ExIV_5a
 
+example (X Y : Type) (f g : X → Y) (h : ∀ pt : Point X, f ∘ pt = g ∘ pt)
+  : f = g := by
+  funext x
+  specialize h (fun _ ↦ x)
+  have := congr_fun h ()
+  simp only [Function.comp_apply] at this
+  exact this
+
+
+-- construct counterexample for SetWithEndomap
+-- we pick X s.t. there is no point in it, while it has two non-equal
+-- maps to Y.
+
 inductive X
   | x₁ | x₂
 
 def α : X ⟶ X
-  | X.x₁ => X.x₁
+  | X.x₁ => X.x₂
   | X.x₂ => X.x₁
 
 def Xα : SetWithEndomap := {
@@ -101,68 +165,108 @@ inductive Y
 
 def β : Y ⟶ Y
   | Y.y₁ => Y.y₁
-  | Y.y₂ => Y.y₁
+  | Y.y₂ => Y.y₂
 
 def Yβ : SetWithEndomap := {
   carrier := Y
   toEnd := β
 }
 
-def f : Xα ⟶ Yβ :=
-  sorry
+def E : SetWithEndomap := {
+  carrier := Empty
+  toEnd := Empty.elim
+}
 
-def g : Xα ⟶ Yβ :=
-  sorry
+def f : Xα ⟶ Yβ := ⟨
+  fun
+  | X.x₁ => Y.y₁
+  | X.x₂ => Y.y₁, by
+    ext x
+    simp [Xα, Yβ, α, β]
+    cases x <;> rfl
+  ⟩
 
-example : ¬(∀ x : termSWE ⟶ Xα, f ⊚ x = g ⊚ x → f = g) :=
-  sorry
+def g : Xα ⟶ Yβ := ⟨
+  fun
+  | X.x₁ => Y.y₂
+  | X.x₂ => Y.y₂, by
+    ext x
+    simp [Xα, Yβ, α, β]
+    cases x <;> rfl
+  ⟩
+
+theorem fgneq : f ≠ g := by
+  intro h
+  have hv : f.val = g.val := by grind
+  have := congr_fun hv X.x₁
+  contradiction
+
+example : ¬((∀ x : termSWE ⟶ Xα, f ⊚ x = g ⊚ x) → f = g) := by
+  push Not
+  constructor
+  · intro h
+    exfalso
+    have := h.prop
+    have := congr_fun this ()
+    simp [termSWE, id_eq, Xα, α] at this
+    split at this <;> simp_all
+  · exact fgneq
 
 end ExIV_5a
 
 namespace ExIV_5b
 
-inductive XA
-  | a₁ | a₂
-
-inductive XD
-  | d₁ | d₂
-
 def X : IrreflexiveGraph := {
-  A := XA
-  D := XD
-  toSrc := fun
-    | XA.a₁ => XD.d₁
-    | XA.a₂ => XD.d₂
-  toTgt := fun
-    | XA.a₁ => XD.d₁
-    | XA.a₂ => XD.d₁
+  A := Empty
+  D := Fin 2
+  toSrc := Empty.elim
+  toTgt := Empty.elim
 }
 
-inductive YA
-  | a₁ | a₂
-
-inductive YD
-  | d₁ | d₂
-
 def Y : IrreflexiveGraph := {
-  A := YA
-  D := YD
-  toSrc := fun
-    | YA.a₁ => YD.d₁
-    | YA.a₂ => YD.d₂
-  toTgt := fun
-    | YA.a₁ => YD.d₁
-    | YA.a₂ => YD.d₁
+  A := Unit
+  D := Fin 2
+  toSrc := fun _ ↦ 0
+  toTgt := fun _ ↦ 1
 }
 
 def f : X ⟶ Y :=
-  sorry
+  ⟨⟨Empty.elim,
+    fun
+    | ⟨0, _⟩ => ⟨0, by simp⟩
+    | ⟨1, _⟩ => ⟨1, by simp⟩
+    ⟩,
+    (by ext x; cases x),
+    (by ext x; cases x)
+  ⟩
 
 def g : X ⟶ Y :=
-  sorry
+  ⟨⟨Empty.elim,
+    fun
+    | ⟨0, _⟩ => ⟨1, by simp⟩
+    | ⟨1, _⟩ => ⟨0, by simp⟩
+    ⟩,
+    (by ext x; cases x),
+    (by ext x; cases x)
+  ⟩
 
-example : ¬(∀ x : termIG ⟶ X, f ⊚ x = g ⊚ x → f = g) :=
-  sorry
+theorem fgneqIG : f ≠ g := by
+  intro h
+  have hv : f.val.2 = g.val.2 := by grind
+  have := congr_fun hv ⟨0, by simp⟩
+  simp [f, g] at this
+  grind
+
+example : ¬((∀ x : termIG ⟶ X, f ⊚ x = g ⊚ x) → f = g) := by
+  push Not
+  constructor
+  · intro h
+    exfalso
+    let f := h.1.1
+    simp only [termIG, X] at f
+    have x := f ()
+    exact Aesop.BuiltinRules.empty_false x
+  · exact fgneqIG
 
 end ExIV_5b
 
@@ -222,25 +326,73 @@ example
     (X Y : SetWithEndomap)
     (f g : X ⟶ Y)
     : ∃ N : SetWithEndomap,
-        (∀ x : N ⟶ X, f ⊚ x = g ⊚ x) → f = g :=
-  sorry
+        (∀ x : N ⟶ X, f ⊚ x = g ⊚ x) → f = g := by
+  use ℕσ
+  intro h
+  apply Subtype.ext
+  ext z
+  simp only at z
+  -- build a map from ℕσ to X
+  -- 0 -> z
+  -- 1 -> α z
+  -- 2 -> α (α z)
+  -- etc
+  let xz : ℕσ ⟶ X := iter X (fun _ ↦ z)
+  specialize h xz
+  have h := (Subtype.ext_iff.mp h)
+  have := congr_fun h (0 : ℕ)
+  simpa [iter, xz] using this
 
 /-!
 Exercise IV.7 (p. 215)
 -/
-example {𝒞 : Type u} [Category.{v, u} 𝒞] {S₁ S₂ : 𝒞}
+theorem initial_objects_unique_up_to_iso {𝒞 : Type u} [Category.{v, u} 𝒞] {S₁ S₂ : 𝒞}
     (hS₁ : IsInitial S₁) (hS₂ : IsInitial S₂)
-    : ∃! s : S₁ ⟶ S₂, IsIso s :=
-  sorry
+    : ∃! s : S₁ ⟶ S₂, IsIso s := by
+  let f := hS₁.to S₂
+  let g := hS₂.to S₁
+  use f
+  constructor
+  · simp only
+    use g
+    -- g comp f is S1 to S1 so it has to be unique but 1 is also S1 to S1
+    constructor
+    · exact IsInitial.hom_ext hS₁ (g ⊚ f) (𝟙 S₁)
+    · exact IsInitial.hom_ext hS₂ (f ⊚ g) (𝟙 S₂)
+  · intro h hs
+    exact IsInitial.hom_ext hS₁ h f
 
 /-!
 Exercise IV.8 (p. 216)
+
+The strategy is to define the initial objects in each category explicitly.
+Since these are mostly empty sets or build of empty sets, the functions
+from them are mostly Empty.elim or build thereof.
 -/
-example
+
+theorem initial_objects_unique_in_types
     {Zero X : Type}
     (hZero : IsInitial Zero) (f : X ⟶ Zero)
-    : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) :=
-  sorry
+    : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) := by
+  -- Zero might not be equal to Empty (just isomorphic),
+  -- but we can find a map to Empty.
+  -- and if there is a map to Empty, Zero is also empty.
+  haveI : IsEmpty Zero := Function.isEmpty (hZero.to Empty)
+
+  -- now because of f, X is also empty
+  haveI hX : IsEmpty X := Function.isEmpty f
+  constructor
+  · intro g
+    ext x
+    exact isEmptyElim x
+  · constructor
+    exact IsInitial.ofUniqueHom (
+      by
+        exact fun Y ↦ fun x => isEmptyElim x
+    ) (
+      by
+        exact fun Y ↦ fun X' ↦ funext fun x => isEmptyElim x
+    )
 
 def emptyIG : IrreflexiveGraph := {
   A := Empty
@@ -252,8 +404,31 @@ def emptyIG : IrreflexiveGraph := {
 example
     {Zero X : IrreflexiveGraph}
     (hZero : IsInitial Zero) (f : X ⟶ Zero)
-    : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) :=
-  sorry
+    : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) := by
+  -- `Zero.A`, `Zero.D` map to `Empty` (via `hZero.to emptyIG`), so both are empty
+  -- and initial in `Type`; apply the `Type`-level result on each coordinate.
+  haveI : IsEmpty emptyIG.A := inferInstanceAs (IsEmpty Empty)
+  haveI : IsEmpty emptyIG.D := inferInstanceAs (IsEmpty Empty)
+  haveI : IsEmpty Zero.A := Function.isEmpty (hZero.to emptyIG).val.1
+  haveI : IsEmpty Zero.D := Function.isEmpty (hZero.to emptyIG).val.2
+  have initA : IsInitial Zero.A :=
+    IsInitial.ofUniqueHom (fun _ z => isEmptyElim z)
+      (fun _ _ => funext fun z => isEmptyElim z)
+  have initD : IsInitial Zero.D :=
+    IsInitial.ofUniqueHom (fun _ z => isEmptyElim z)
+      (fun _ _ => funext fun z => isEmptyElim z)
+  have hCA := initial_objects_unique_in_types initA f.val.1
+  have hCD := initial_objects_unique_in_types initD f.val.2
+  -- underlying arrow/dot maps agree ⇒ the graph morphisms agree (`hom_ext`)
+  refine ⟨fun g => IrreflexiveGraph.hom_ext g f (hCA.1 g.val.1) (hCD.1 g.val.2), ⟨?_⟩⟩
+  -- `X.A`, `X.D` are empty too, so `X` is initial in `IrreflexiveGraph`.
+  haveI : IsEmpty X.A := Function.isEmpty f.val.1
+  haveI : IsEmpty X.D := Function.isEmpty f.val.2
+  exact IsInitial.ofUniqueHom
+    (fun _ => ⟨(fun a => isEmptyElim a, fun d => isEmptyElim d),
+      funext fun a => isEmptyElim a, funext fun a => isEmptyElim a⟩)
+    (fun _ _ => IrreflexiveGraph.hom_ext _ _
+      (funext fun a => isEmptyElim a) (funext fun d => isEmptyElim d))
 
 def emptySWE : SetWithEndomap := {
   carrier := Empty
@@ -263,8 +438,22 @@ def emptySWE : SetWithEndomap := {
 example
     {Zero X : SetWithEndomap}
     (hZero : IsInitial Zero) (f : X ⟶ Zero)
-    : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) :=
-  sorry
+    : (∀ g : X ⟶ Zero, g = f) ∧ Nonempty (IsInitial X) := by
+  -- `Zero.carrier` maps to `Empty` (via `hZero.to emptySWE`), so it is empty and
+  -- hence initial in `Type`; the `Type`-level result then does the real work.
+  haveI : IsEmpty emptySWE.carrier := inferInstanceAs (IsEmpty Empty)
+  haveI : IsEmpty Zero.carrier := Function.isEmpty (hZero.to emptySWE).val
+  have hZeroC : IsInitial Zero.carrier :=
+    IsInitial.ofUniqueHom (fun _ z => isEmptyElim z)
+      (fun _ _ => funext fun z => isEmptyElim z)
+  have hC := initial_objects_unique_in_types hZeroC f.val
+  -- underlying maps agree ⇒ the `SetWithEndomap` morphisms agree (`Subtype.ext`)
+  refine ⟨fun g => Subtype.ext (hC.1 g.val), ⟨?_⟩⟩
+  -- `X.carrier` is empty too, so `X` is initial in `SetWithEndomap`.
+  haveI : IsEmpty X.carrier := Function.isEmpty f.val
+  exact IsInitial.ofUniqueHom
+    (fun _ => ⟨fun x => isEmptyElim x, funext fun x => isEmptyElim x⟩)
+    (fun _ _ => Subtype.ext (funext fun x => isEmptyElim x))
 
 /-!
 Exercise IV.9 (p. 216)
