@@ -6,7 +6,6 @@ import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts
 import Mathlib.CategoryTheory.Limits.Shapes.Products
 import Mathlib.CategoryTheory.Limits.Types.Products
-import Mathlib.CategoryTheory.Category.Pointed
 import Mathlib.CategoryTheory.Category.Bipointed
 import Mathlib.CategoryTheory.Comma.Over.Basic
 open CategoryTheory
@@ -458,114 +457,85 @@ example
 /-!
 Exercise IV.9 (p. 216)
 -/
-structure PointedSet where
-  carrier : Type
-  point : One ⟶ carrier
-
-instance : Category PointedSet where
-  Hom X Y := {
-    f : X.carrier ⟶ Y.carrier //
-        f ⊚ X.point = Y.point -- commutes
-  }
-  id X := ⟨𝟙 X.carrier, rfl⟩
-  comp f g := ⟨
-    g.val ⊚ f.val,
-    by
-      obtain hf_comm := f.property
-      obtain hg_comm := g.property
-      rw [← Category.assoc, hf_comm, hg_comm]
-  ⟩
-
-example
-    {T : PointedSet}
-    (hT : IsTerminal T)
-    : Nonempty (IsInitial T)
-    ∧ ¬(∀ X : PointedSet, Nonempty (IsInitial X)) :=
-  sorry
-
-namespace ExIV_9
-
 abbrev PointedSet := Under Unit
 
 example
     {T : PointedSet}
     (hT : IsTerminal T)
-    : Nonempty (IsInitial T)
-    ∧ ¬(∀ X : PointedSet, Nonempty (IsInitial X)) :=
-  sorry
+    : Nonempty (IsInitial T) := by
+  let I : PointedSet := Under.mk (𝟙 Unit)
+  have hI_initial : IsInitial I := Under.mkIdInitial
+  have hI_terminal : IsTerminal I := IsTerminal.ofUniqueHom
+    (fun X => Under.homMk (fun _ => ()))
+    (by
+      intro X f
+      apply Under.UnderMorphism.ext
+      funext x
+      change (f.right : X.right → Unit) x = ()
+      cases f.right x
+      rfl)
+  exact ⟨IsInitial.ofIso hI_initial (hI_terminal.uniqueUpToIso hT)⟩
 
-end ExIV_9
-
-example
-    {T : Pointed.{0}}
-    (hT : IsTerminal T)
-    : Nonempty (IsInitial T)
-    ∧ ¬(∀ X : Pointed.{0}, Nonempty (IsInitial X)) :=
-  sorry
+example : ¬(∀ (Zero X : PointedSet),
+    IsInitial Zero → (f : X ⟶ Zero) → Nonempty (IsInitial X)) := by
+  intro h
+  let Zero : PointedSet := Under.mk (𝟙 Unit)
+  have hZero : IsInitial Zero := Under.mkIdInitial
+  let X : PointedSet := Under.mk (fun _ : Unit => (0 : Fin 2))
+  let toZero : X ⟶ Zero := Under.homMk (fun _ => ())
+  have hX := (h Zero X hZero toZero).some
+  let f : X ⟶ X := Under.homMk (𝟙 (Fin 2))
+  let g : X ⟶ X := Under.homMk (fun _ : Fin 2 => (0 : Fin 2))
+  have hfg : f = g := hX.hom_ext f g
+  have hright := congrArg CommaMorphism.right hfg
+  have hone := congr_fun hright (1 : Fin 2)
+  simp only [Fin.isValue, Under.homMk_right, types_id_apply, f, g] at hone
+  exact (by decide : (1 : Fin 2) ≠ 0) hone
 
 /-!
 Exercise IV.10 (p. 216)
 -/
-abbrev Two := Fin 2
 
-structure BipointedSet where
-  carrier : Type
-  point : Two ⟶ carrier
-
-instance : Category BipointedSet where
-  Hom X Y := {
-    f : X.carrier ⟶ Y.carrier //
-        f ⊚ X.point = Y.point -- commutes
-  }
-  id X := ⟨𝟙 X.carrier, rfl⟩
-  comp f g := ⟨
-    g.val ⊚ f.val,
-    by
-      obtain hf_comm := f.property
-      obtain hg_comm := g.property
-      rw [← Category.assoc, hf_comm, hg_comm]
-  ⟩
-
-namespace ExIV_10a
-
-def BSTwo : BipointedSet := {
-  carrier := Two
-  point := 𝟙 Two
-}
-
-example : Nonempty (IsInitial BSTwo)
-          ∧ ¬(∀ (X : BipointedSet) (f g : X ⟶ BSTwo), f = g) :=
-  sorry
-
-end ExIV_10a
-
-namespace ExIV_10b
+namespace ExIV_10
 
 abbrev BipointedSet := Under (Fin 2)
 
 def BSTwo : BipointedSet := Under.mk (𝟙 (Fin 2))
 
-example : Nonempty (IsInitial BSTwo)
-          ∧ ¬(∀ (X : BipointedSet) (f g : X ⟶ BSTwo), f = g) :=
-  sorry
+example : Nonempty (IsInitial BSTwo) := ⟨Under.mkIdInitial⟩
 
-end ExIV_10b
+-- Use a three-element bipointed set.  Two maps to `BSTwo` can agree on the
+-- distinguished points `0` and `1`, while differing on the extra point `2`.
+example : ¬(∀ (X : BipointedSet) (f g : X ⟶ BSTwo), f = g) := by
+  intro h
+  let X : BipointedSet := Under.mk (fun
+    | ⟨0, _⟩ => (0 : Fin 3)
+    | ⟨1, _⟩ => (1 : Fin 3))
+  let f : X ⟶ BSTwo := Under.homMk
+    (fun i : Fin 3 => if i = 1 then (1 : Fin 2) else (0 : Fin 2))
+    (by dsimp [X, BSTwo]; funext i; fin_cases i <;> rfl)
+  let g : X ⟶ BSTwo := Under.homMk
+    (fun i : Fin 3 => if i = 0 then (0 : Fin 2) else (1 : Fin 2))
+    (by dsimp [X, BSTwo]; funext i; fin_cases i <;> rfl)
+  have hfg : f = g := h X f g
+  have hright := congrArg CommaMorphism.right hfg
+  have htwo := congr_fun hright (2 : Fin 3)
+  simp only [Fin.isValue, Under.homMk_right, f, g] at htwo
+  exact (by decide : (0 : Fin 2) ≠ 1) htwo
 
-namespace ExIV_10c
-
-abbrev BSTwo : Bipointed := ⟨Fin 2, (0, 1)⟩
-
-example : Nonempty (IsInitial BSTwo)
-          ∧ ¬(∀ (X : Bipointed) (f g : X ⟶ BSTwo), f = g) :=
-  sorry
-
-end ExIV_10c
+end ExIV_10
 
 /-!
 Exercise IV.11 (p. 216)
 -/
-example : ∀ X, IsEmpty (IsInitial X) → Nonempty (⊤_ Type ⟶ X) :=
-  sorry
+example (X : Type) (h : IsEmpty (IsInitial X)) : Nonempty (Unit ⟶ X) := by
+  by_cases hX : Nonempty X
+  · obtain ⟨x⟩ := hX
+    exact ⟨fun _ => x⟩
+  · have hInitial : IsInitial X := IsInitial.ofUniqueHom
+      (fun _ x => (hX ⟨x⟩).elim)
+      (fun _ _ => funext fun x => (hX ⟨x⟩).elim)
+    exact (h.false hInitial).elim
 
 instance : HasTerminal SetWithEndomap where
   has_limit _ := HasLimit.mk' (
@@ -589,8 +559,30 @@ instance : HasTerminal SetWithEndomap where
   )
 
 example : ¬(∀ X : SetWithEndomap, IsEmpty (IsInitial X) →
-    Nonempty (⊤_ SetWithEndomap ⟶ X)) :=
-  sorry
+    Nonempty (⊤_ SetWithEndomap ⟶ X)) := by
+  push Not
+  use ℕσ
+  constructor
+  · -- not initial as there are maps from ℕσ to itself that are not equal
+    -- f x = x and g x = x + 1
+    constructor
+    intro hInitial
+    let f : ℕσ ⟶ ℕσ := 𝟙 ℕσ
+    let g : ℕσ ⟶ ℕσ := ⟨σ, rfl⟩
+    have hfg : f = g := hInitial.hom_ext f g
+    have hval := congrArg Subtype.val hfg
+    change (id : ℕ → ℕ) = σ at hval
+    have hzero := congr_fun hval 0
+    simp only [id_eq, σ] at hzero
+    grind
+  · -- no map from the Unit with f x = x to ℕσ, as there are no loops
+    constructor
+    intro m
+    let q : termSWE ⟶ ℕσ := terminalIsTerminal.from termSWE ≫ m
+    have hm := congr_fun q.property ()
+    simp only [types_comp_apply, termSWE, id_eq, ℕσ, σ] at hm
+    omega
+
 
 instance : HasTerminal IrreflexiveGraph where
   has_limit _ := HasLimit.mk' (
@@ -617,8 +609,39 @@ instance : HasTerminal IrreflexiveGraph where
   )
 
 example : ¬(∀ X : IrreflexiveGraph, IsEmpty (IsInitial X) →
-    Nonempty (⊤_ IrreflexiveGraph ⟶ X)) :=
-  sorry
+    Nonempty (⊤_ IrreflexiveGraph ⟶ X)) := by
+  push Not
+  -- use the graph with one dot and not arrows
+  let X : IrreflexiveGraph := {
+    A := Empty
+    D := Unit
+    toSrc := Empty.elim
+    toTgt := Empty.elim
+  }
+  use X
+  constructor
+  · -- not initial as we can have two maps to D:=Fin2, A:=Empty
+    constructor
+    intro hInitial
+    let Y : IrreflexiveGraph := {
+      A := Empty
+      D := Fin 2
+      toSrc := Empty.elim
+      toTgt := Empty.elim
+    }
+    let f : X ⟶ Y := ⟨(Empty.elim, fun _ => 0), by
+      constructor <;> funext a <;> exact Empty.elim a⟩
+    let g : X ⟶ Y := ⟨(Empty.elim, fun _ => 1), by
+      constructor <;> funext a <;> exact Empty.elim a⟩
+    have hfg : f = g := hInitial.hom_ext f g
+    have hD := congrArg (fun k => k.val.2) hfg
+    have hunit := congr_fun hD ()
+    exact (by decide : (0 : Fin 2) ≠ 1) (by simp [f, g] at hunit)
+  · -- no map from unit with loop, because we have no arrows in X
+    constructor
+    intro m
+    let q : termIG ⟶ X := terminalIsTerminal.from termIG ≫ m
+    exact Empty.elim (q.val.1 ())
 
 /-!
 Product (binary) (p. 217)
@@ -943,56 +966,37 @@ Exercise IV.20 (p. 223)
 -/
 namespace ExIV_20
 
-abbrev A : PointedSet := { carrier := Fin 2, point := fun _ ↦ 0 }
-abbrev B : PointedSet := { carrier := Unit, point := id }
-abbrev C : PointedSet := { carrier := Unit, point := id }
+abbrev A : PointedSet := Under.mk (fun _ : Unit ↦ (0 : Fin 2))
+abbrev B : PointedSet := Under.mk (𝟙 Unit)
+abbrev C : PointedSet := Under.mk (𝟙 Unit)
 
-abbrev AxB : PointedSet := {
-  carrier := Fin 2 × Unit
-  point := fun _ ↦ (0, ())
-}
+abbrev AxB : PointedSet := Under.mk (fun _ : Unit ↦ ((0, ()) : Fin 2 × Unit))
+abbrev AxC : PointedSet := Under.mk (fun _ : Unit ↦ ((0, ()) : Fin 2 × Unit))
+abbrev AxB_AxC : PointedSet :=
+  Under.mk (fun _ : Unit ↦ (Sum.inl (0, ()) : (Fin 2 × Unit) ⊕ Unit))
+abbrev B_C : PointedSet := Under.mk (𝟙 Unit)
+abbrev AxB_C : PointedSet := Under.mk (fun _ : Unit ↦ ((0, ()) : Fin 2 × Unit))
 
-abbrev AxC : PointedSet := {
-  carrier := Fin 2 × Unit
-  point := fun _ ↦ (0, ())
-}
+def p₁ : AxB ⟶ A := Under.homMk (fun p : Fin 2 × Unit ↦ p.1)
+def p₂ : AxB ⟶ B := Under.homMk (fun p : Fin 2 × Unit ↦ p.2)
+def p₃ : AxC ⟶ A := Under.homMk (fun p : Fin 2 × Unit ↦ p.1)
+def p₄ : AxC ⟶ C := Under.homMk (fun p : Fin 2 × Unit ↦ p.2)
 
-abbrev AxB_AxC : PointedSet := {
-  carrier := (Fin 2 × Unit) ⊕ Unit
-  point := fun _ ↦ Sum.inl (0, ())
-}
-
-abbrev B_C : PointedSet := { carrier := Unit, point := id }
-
-abbrev AxB_C : PointedSet := {
-  carrier := Fin 2 × Unit
-  point := fun _ ↦ (0, ())
-}
-
-def p₁ : AxB ⟶ A := ⟨fun p ↦ p.1, rfl⟩
-def p₂ : AxB ⟶ B := ⟨fun p ↦ p.2, rfl⟩
-def p₃ : AxC ⟶ A := ⟨fun p ↦ p.1, rfl⟩
-def p₄ : AxC ⟶ C := ⟨fun p ↦ p.2, rfl⟩
-
-def j₁ : AxB ⟶ AxB_AxC := ⟨
-  fun
+def j₁ : AxB ⟶ AxB_AxC := Under.homMk (
+  fun _p : Fin 2 × Unit ↦ match _p with
   | (0, _) => Sum.inl (0, ())
-  | (1, _) => Sum.inl (1, ()),
-  rfl
-⟩
+  | (1, _) => Sum.inl (1, ()))
 
-def j₂ : AxC ⟶ AxB_AxC := ⟨
-  fun
+def j₂ : AxC ⟶ AxB_AxC := Under.homMk (
+  fun _p : Fin 2 × Unit ↦ match _p with
   | (0, _) => Sum.inl (0, ())
-  | (1, _) => Sum.inr (),
-  rfl
-⟩
+  | (1, _) => Sum.inr ())
 
-def j₃ : B ⟶ B_C := ⟨id, rfl⟩
-def j₄ : C ⟶ B_C := ⟨id, rfl⟩
+def j₃ : B ⟶ B_C := Under.homMk id
+def j₄ : C ⟶ B_C := Under.homMk id
 
-def p₅ : AxB_C ⟶ A := ⟨fun p ↦ p.1, rfl⟩
-def p₆ : AxB_C ⟶ B_C := ⟨fun p ↦ p.2, rfl⟩
+def p₅ : AxB_C ⟶ A := Under.homMk (fun p : Fin 2 × Unit ↦ p.1)
+def p₆ : AxB_C ⟶ B_C := Under.homMk (fun p : Fin 2 × Unit ↦ p.2)
 
 example : ¬ DistributiveLaw PointedSet :=
   sorry
